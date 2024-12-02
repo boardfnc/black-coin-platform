@@ -1,0 +1,6 @@
+export { default as homeBackground } from './home-background.png';
+export { default as blockChainObject } from './block-chain-object-1.png';
+export { default as blueUserIcon } from './blue-user-icon-1.png';
+export { default as chartIcon } from './chart-icon-1.png';
+export { default as privacyImage } from './privacy-image-1.png';
+export { default as mainObject } from './main-object.png';

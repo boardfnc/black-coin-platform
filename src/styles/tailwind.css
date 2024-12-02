@@ -1,0 +1,382 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .font-suit-60-800-110 {
+    font-family: var(--font-suit);
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 110%;
+  }
+
+  .font-pre-40-r-130 {
+    font-family: var(--font-pretendard);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-32-750-130 {
+    font-family: var(--font-suit);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-suit-32-500-130 {
+    font-family: var(--font-suit);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-32-eb-130-2 {
+    font-family: var(--font-pretendard);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%;
+    letter-spacing: 0.64px;
+  }
+
+  .font-pre-28-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-26-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+  }
+
+  .font-suit-24-b-130 {
+    font-family: var(--font-suit);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-24-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-22-b-144 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 144%;
+  }
+
+  .font-suit-22-r-144 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 144%;
+  }
+
+  .font-suit-22-b-130 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-22-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-22-r-140 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  .font-suit-22-300-130 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%;
+  }
+
+  .font-suit-22-r-130 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-20-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-20-600-130 {
+    font-family: var(--font-pretendard);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+  }
+
+  .font-pre-20-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-18-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-18-b-130 {
+    font-family: var(--font-suit);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-18-500-130 {
+    font-family: var(--font-pretendard);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-18-400-156 {
+    font-family: var(--font-suit);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 156.6%;
+  }
+
+  .font-pre-17-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-17-r-130 {
+    font-family: var(--font-suit);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-16-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-16-r-130 {
+    font-family: var(--font-pretendard);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-16-400-130 {
+    font-family: var(--font-suit);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-15-r-130 {
+    font-family: var(--font-pretendard);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-15-400-130 {
+    font-family: var(--font-pretendard);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-14-750-130 {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-suit-14-r-150 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .font-suit-14-r-130 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-14-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-14-750-130 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-pre-14-b-120 {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .font-pre-14-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-14-r-130 {
+    font-family: var(--font-pretendard);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-13-b-130 {
+    font-family: var(--font-pretendard);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-pre-13-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-13-r-130 {
+    font-family: var(--font-pretendard);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-12-750-130 {
+    font-family: var(--font-pretendard);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-suit-12-750-130 {
+    font-family: var(--font-suit);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-pre-12-m-130 {
+    font-family: var(--font-pretendard);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-pre-12-r-110 {
+    font-family: var(--font-pretendard);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+  }
+
+  .font-suit-12-r-130 {
+    font-family: var(--font-suit);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-pre-11-r-113 {
+    font-family: var(--font-pretendard);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 113%;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "black-coin",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "lint": "next lint",
+    "dev:platform": "cross-env APP_NAME=platform next dev --turbopack",
+    "dev:admin": "cross-env APP_NAME=admin next dev --turbopack",
+    "start:platform": "cross-env APP_NAME=platform pm2 start ecosystem.config.cjs",
+    "start:admin": "cross-env APP_NAME=admin pm2 start ecosystem.config.cjs"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "5.62.0",
+    "@tanstack/react-query-devtools": "5.62.0",
+    "dayjs": "1.11.13",
+    "framer-motion": "11.11.17",
+    "next": "15.0.3",
+    "react": "18.3.1",
+    "react-datepicker": "7.5.0",
+    "react-dom": "18.3.1",
+    "xlsx": "0.18.5",
+    "zustand": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/eslint-plugin-jsx-a11y": "6.9.0",
+    "@types/node": "22.9.1",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@typescript-eslint/eslint-plugin": "8.15.0",
+    "@typescript-eslint/parser": "8.15.0",
+    "cross-env": "7.0.3",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.0.3",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.2",
+    "eslint-plugin-react-hooks": "5",
+    "postcss": "8.4.49",
+    "prettier": "3.3.3",
+    "tailwindcss": "3.4.15",
+    "typescript": "5.6.3"
+  },
+  "packageManager": "yarn@4.5.1"
+}
