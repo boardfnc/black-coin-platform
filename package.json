@@ -7,8 +7,8 @@
     "lint": "next lint",
     "dev:platform": "cross-env APP_NAME=platform next dev --turbopack",
     "dev:admin": "cross-env APP_NAME=admin next dev --turbopack",
-    "start:platform": "cross-env APP_NAME=platform pm2 start ecosystem.config.cjs",
-    "start:admin": "cross-env APP_NAME=admin pm2 start ecosystem.config.cjs"
+    "start:platform": "cross-env APP_NAME=platform next build && cross-env APP_NAME=platform pm2 start ecosystem.config.cjs",
+    "start:admin": "cross-env APP_NAME=admin next build && cross-env APP_NAME=admin pm2 start ecosystem.config.cjs"
   },
   "dependencies": {
     "@tanstack/react-query": "5.62.0",

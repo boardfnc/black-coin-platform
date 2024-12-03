@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["ecosystem.config.cjs"],
+      "parserOptions": {
+        "project": null,
+      },
+    },
+  ],
+}
