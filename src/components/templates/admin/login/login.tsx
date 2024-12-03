@@ -9,7 +9,7 @@ import { Image } from '@/components/atoms/images';
 import ROUTES from '@/constants/routes';
 import { useRequest } from '@/hooks';
 import LockImage from '@/images/icons/lock.png';
-import { loginService } from '@/services/auth';
+import { adminLoginService } from '@/services/auth';
 
 export default function AdminLogin() {
   const { request } = useRequest();
@@ -23,7 +23,7 @@ export default function AdminLogin() {
     event.preventDefault();
 
     const data = await request(() =>
-      loginService({
+      adminLoginService({
         login_id: loginId,
         password,
       }),

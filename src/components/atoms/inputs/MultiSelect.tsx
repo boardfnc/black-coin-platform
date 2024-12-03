@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { IconLine24ArrowDown } from '../icons/icon-line';
 
-import type { ICategoryOption } from '@/components/organisms/filter/Filter.types';
+import type { ICategoryOption } from '@/components/organisms/admin/filter/Filter.types';
 
 interface MultiSelectProps {
   options: ICategoryOption[];

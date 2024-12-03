@@ -4,16 +4,16 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { ISaleCATableData } from '@/components/organisms/table/SaleCATable.types';
+import type { ISaleCATableData } from '@/components/organisms/admin/table/SaleCATable.types';
 import type { IAdminSaleManagersRequest } from '@/services/coin/adminSale.types';
 import type { ICoinSaleManagersRequest } from '@/services/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import SaleCATable from '@/components/organisms/table/SaleCATable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import SaleCATable from '@/components/organisms/admin/table/SaleCATable';
 import { useFetch } from '@/hooks';
 import { adminSaleManagersService } from '@/services/coin/adminSale';
 import { coinSaleManagersService } from '@/services/coin/coin';

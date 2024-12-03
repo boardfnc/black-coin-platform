@@ -19,6 +19,14 @@
     line-height: 130%;
   }
 
+  .font-suit-40-900-113 {
+    font-family: var(--font-suit);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 113%;
+  }
+
   .font-suit-32-750-130 {
     font-family: var(--font-suit);
     font-size: 32px;
@@ -42,6 +50,14 @@
     font-weight: 800;
     line-height: 130%;
     letter-spacing: 0.64px;
+  }
+
+  .font-suit-30-750 {
+    font-family: var(--font-suit);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 750;
+    line-height: 130%;
   }
 
   .font-pre-28-b-130 {
@@ -100,6 +116,14 @@
     line-height: 130%;
   }
 
+  .font-suit-22-700 {
+    font-family: var(--font-suit);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
   .font-pre-22-m-130 {
     font-family: var(--font-pretendard);
     font-size: 22px;
@@ -130,6 +154,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
+  }
+
+  .font-suit-20-600-150 {
+    font-family: var(--font-suit);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
   }
 
   .font-pre-20-b-130 {
@@ -201,6 +233,14 @@
     font-size: 17px;
     font-style: normal;
     font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-16-b-130 {
+    font-family: var(--font-suit);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
     line-height: 130%;
   }
 
@@ -308,6 +348,14 @@
     line-height: 130%;
   }
 
+  .font-suit-14-400 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
   .font-pre-13-b-130 {
     font-family: var(--font-pretendard);
     font-size: 13px;
@@ -318,6 +366,14 @@
 
   .font-pre-13-m-130 {
     font-family: var(--font-pretendard);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-13-m-130 {
+    font-family: var(--font-suit);
     font-size: 13px;
     font-style: normal;
     font-weight: 500;

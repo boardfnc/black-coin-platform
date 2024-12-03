@@ -18,3 +18,15 @@ export interface ILoginResponse extends IBaseResponse {
     me: IMyData;
   };
 }
+
+export interface IAutomaticLoginRequest extends ILoginRequest {
+  code: string;
+  esntl_key: string;
+}
+
+export interface IAutomaticLoginResponse extends ILoginResponse {
+  data: {
+    token: ITokenData;
+    me: IMyData;
+  };
+}

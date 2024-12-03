@@ -8,8 +8,8 @@ import type { IGeneralUserListIdProps } from './GeneralUserListId.types';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { BankSelect } from '@/components/atoms/inputs';
-import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/modal';
-import UserDetailChangePasswordModal from '@/components/organisms/modal/UserDetailChangePasswordModal';
+import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
+import UserDetailChangePasswordModal from '@/components/organisms/admin/modal/UserDetailChangePasswordModal';
 import { useFetch, useRequest, useToast } from '@/hooks';
 import {
   adminMemberAccountNumberUpdateService,

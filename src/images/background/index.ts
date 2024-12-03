@@ -4,3 +4,6 @@ export { default as blueUserIcon } from './blue-user-icon-1.png';
 export { default as chartIcon } from './chart-icon-1.png';
 export { default as privacyImage } from './privacy-image-1.png';
 export { default as mainObject } from './main-object.png';
+export { default as helloIcon } from './hello-icon-1.png';
+export { default as coinWallet } from './wallet-banner.png';
+export { default as digitalWallet } from './digital-wallet-1.png';

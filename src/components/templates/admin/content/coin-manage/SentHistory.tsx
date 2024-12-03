@@ -4,17 +4,17 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback, useState } from 'react';
 
-import type { ISentDetailTableData } from '@/components/organisms/table/SentDetailTable.types';
+import type { ISentDetailTableData } from '@/components/organisms/admin/table/SentDetailTable.types';
 import type { IAdminSentDetailsRequest } from '@/services/coin/adminSent.types';
 import type { ICoinSentDetailsRequest } from '@/services/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { Filter } from '@/components/organisms/filter';
-import { BuyCoinModal, SellCoinModal } from '@/components/organisms/modal';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { SentDetailTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { BuyCoinModal, SellCoinModal } from '@/components/organisms/admin/modal';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { SentDetailTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminSentDetailsService } from '@/services/coin/adminSent';
 import { coinSentDetailsService } from '@/services/coin/coin';

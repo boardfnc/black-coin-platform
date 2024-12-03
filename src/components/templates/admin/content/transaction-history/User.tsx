@@ -4,15 +4,15 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type {} from '@/components/organisms/table/TransactionHistoryCATable.types';
-import type { ITransactionHistoryUserTableData } from '@/components/organisms/table/TransactionHistoryUserTable.types';
+import type {} from '@/components/organisms/admin/table/TransactionHistoryCATable.types';
+import type { ITransactionHistoryUserTableData } from '@/components/organisms/admin/table/TransactionHistoryUserTable.types';
 import type { IAdminMemberDetailsRequest } from '@/services/dealings/adminManager.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { TransactionHistoryUserTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { TransactionHistoryUserTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminMemberDetailsService } from '@/services/dealings/adminManager';
 

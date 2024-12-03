@@ -4,16 +4,16 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { ITransactionFeeHistoryTableData } from '@/components/organisms/table/TransactionFeeHistoryTable.types';
+import type { ITransactionFeeHistoryTableData } from '@/components/organisms/admin/table/TransactionFeeHistoryTable.types';
 import type { IAdminReceivedDetailsRequest } from '@/services/coin/adminReceived.types';
 import type { ICoinDealingsFeeDetailsRequest } from '@/services/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import TransactionFeeHistoryTable from '@/components/organisms/table/TransactionFeeHistoryTable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import TransactionFeeHistoryTable from '@/components/organisms/admin/table/TransactionFeeHistoryTable';
 import { useFetch } from '@/hooks';
 import { adminManagerDetailsService } from '@/services/coin/adminDealings';
 import { coinDealingsFeeDetailsService } from '@/services/coin/coin';

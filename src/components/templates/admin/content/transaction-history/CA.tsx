@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { ITransactionHistoryCATableData } from '@/components/organisms/table/TransactionHistoryCATable.types';
+import type { ITransactionHistoryCATableData } from '@/components/organisms/admin/table/TransactionHistoryCATable.types';
 import type { IAdminManagerDetailsRequest } from '@/services/dealings/adminManager.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import TransactionHistoryCATable from '@/components/organisms/table/TransactionHistoryCATable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import TransactionHistoryCATable from '@/components/organisms/admin/table/TransactionHistoryCATable';
 import { useFetch } from '@/hooks';
 import { adminManagerDetailsService } from '@/services/dealings/adminManager';
 

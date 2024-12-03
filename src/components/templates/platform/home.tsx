@@ -41,7 +41,7 @@ export default function HomePage() {
       <div className={'my-15'}>
         <div>
           <div className={'relative w-full h-[800px]'}>
-            <Image src={homeBackground} alt={'home-background'} fill objectFit={'cover'} quality={100} />
+            <Image className={'object-cover'} src={homeBackground} alt={'home-background'} fill quality={100} />
 
             <div className={'absolute w-full flex items-center h-[250px] bottom-[174px] left-0 bg-gray-50/50'}>
               <div className={'flex flex-col container mx-auto px-4 gap-5'}>
@@ -79,7 +79,7 @@ export default function HomePage() {
               {information.map((item) => (
                 <div key={item.title} className={'flex-1 flex flex-col gap-5'}>
                   <div className={'relative h-[335px] border border-line-line02 bg-[#F4F7FE]'}>
-                    <Image src={item.image} alt={item.title} fill objectFit={'cover'} />
+                    <Image className={'object-cover'} src={item.image} alt={item.title} fill />
                   </div>
 
                   <div className={'flex flex-col gap-4'}>
@@ -95,7 +95,7 @@ export default function HomePage() {
         <div className={'container mx-auto'}>
           <div className={'flex flex-col gap-[150px] '}>
             <div className={'relative w-full h-[600px]'}>
-              <Image src={mainObject} alt={'main-object'} fill objectFit={'cover'} />
+              <Image className={'object-cover'} src={mainObject} alt={'main-object'} fill />
             </div>
 
             <div>

@@ -4,16 +4,16 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { IUserListTableData } from '@/components/organisms/table/GeneralUserListTable.types';
+import type { IUserListTableData } from '@/components/organisms/admin/table/GeneralUserListTable.types';
 import type { IAdminMemberRequest } from '@/services/member/adminMembers.types';
 import type { IMembersRequest } from '@/services/member/members.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { GeneralUserListTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { GeneralUserListTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminMemberService } from '@/services/member/adminMembers';
 import { membersService } from '@/services/member/members';

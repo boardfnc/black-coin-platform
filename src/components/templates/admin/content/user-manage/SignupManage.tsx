@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { ISignupTableData } from '@/components/organisms/table/SignupTable.types';
+import type { ISignupTableData } from '@/components/organisms/admin/table/SignupTable.types';
 import type { IAdminMemberSubscribesRequest } from '@/services/member/adminMembers.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import SignupTable from '@/components/organisms/table/SignupTable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import SignupTable from '@/components/organisms/admin/table/SignupTable';
 import { useFetch } from '@/hooks';
 import { adminMemberSubscribesService } from '@/services/member/adminMembers';
 

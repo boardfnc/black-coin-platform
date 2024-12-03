@@ -4,17 +4,16 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback, useState } from 'react';
 
-import UserListCreateAuthorModal from '../../../../organisms/modal/UserListCreateAuthorModal';
-
-import type { ICAUserListTableData } from '@/components/organisms/table/CAUserListTable.types';
+import type { ICAUserListTableData } from '@/components/organisms/admin/table/CAUserListTable.types';
 import type { IAdminManagersRequest } from '@/services/member/adminManagers.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import IconLine24Plus from '@/components/atoms/icons/icon-line/Plus';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { CAUserListTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import UserListCreateAuthorModal from '@/components/organisms/admin/modal/UserListCreateAuthorModal';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { CAUserListTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminManagersService } from '@/services/member/adminManagers';
 

@@ -1,4 +1,4 @@
-import type { ITransactionHistoryUserTableData } from '@/components/organisms/table/TransactionHistoryUserTable.types';
+import type { ITransactionHistoryUserTableData } from '@/components/organisms/admin/table/TransactionHistoryUserTable.types';
 
 export interface IUserHistoryModalProps {
   transactionHistoryTableData: ITransactionHistoryUserTableData;

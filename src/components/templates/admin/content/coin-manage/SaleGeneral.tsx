@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { ISaleGeneralTableData } from '@/components/organisms/table/SaleGeneralTable.types';
+import type { ISaleGeneralTableData } from '@/components/organisms/admin/table/SaleGeneralTable.types';
 import type { IAdminSaleMembersRequest } from '@/services/coin/adminSale.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import SaleGeneralTable from '@/components/organisms/table/SaleGeneralTable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import SaleGeneralTable from '@/components/organisms/admin/table/SaleGeneralTable';
 import { useFetch } from '@/hooks';
 import { adminSaleMembersService } from '@/services/coin/adminSale';
 

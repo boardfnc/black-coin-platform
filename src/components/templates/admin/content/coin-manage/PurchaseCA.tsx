@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { IPurchaseCATableData } from '@/components/organisms/table/PurchaseCATable.types';
+import type { IPurchaseCATableData } from '@/components/organisms/admin/table/PurchaseCATable.types';
 import type { IAdminReceivedDetailsRequest } from '@/services/coin/adminReceived.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { PurchaseCATable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { PurchaseCATable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminPurchaseManagersService } from '@/services/coin/adminPurchase';
 

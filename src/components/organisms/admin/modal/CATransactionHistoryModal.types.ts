@@ -1,4 +1,4 @@
-import type { ITransactionHistoryCATableData } from '@/components/organisms/table/TransactionHistoryCATable.types';
+import type { ITransactionHistoryCATableData } from '@/components/organisms/admin/table/TransactionHistoryCATable.types';
 
 export interface ICATransactionHistoryModalProps {
   transactionHistoryTableData: ITransactionHistoryCATableData;

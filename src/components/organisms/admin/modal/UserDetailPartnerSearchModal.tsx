@@ -1,11 +1,10 @@
 import { useSearchParams } from 'next/navigation';
 
-import { Pagination } from '../pagination';
-
 import type IUserDetailPartnerSearchModalProps from './UserDetailPartnerSearchModal.types';
 
 import { IconLine24Close } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
+import { Pagination } from '@/components/organisms/admin/pagination';
 
 export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSearchModalProps) {
   const { isOpen, onClose } = props;

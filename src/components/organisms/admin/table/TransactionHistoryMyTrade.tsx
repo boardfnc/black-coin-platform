@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import type { ITransactionHistoryCATableProps } from './TransactionHistoryCATable.types';
+import type { ITransactionHistoryMyTradeTableProps } from './TransactionHistoryMyTrade.types';
 
-import { CATransactionHistoryModal } from '@/components/organisms/modal';
+import { TransactionHistoryMyTradeModal } from '@/components/organisms/admin/modal';
 import { convertDealStatus, convertDealType } from '@/utils/covert';
 
-export default function TransactionHistoryCATable({ data }: ITransactionHistoryCATableProps) {
+export default function TransactionHistoryMyTradeTable({ data }: ITransactionHistoryMyTradeTableProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectIndex, setSelectIndex] = useState(0);
 
@@ -32,16 +32,13 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
               상태
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
-              파트너사명
-            </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
-              코드명
-            </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
               구매(판매) 전 보유수량
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               구매(판매) 수량
+            </th>
+            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+              완료일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               이력
@@ -57,10 +54,9 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
               <td className={'border p-2'}>{item.applyDate}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
-              <td className={'border p-2'}>{item.partnerName}</td>
-              <td className={'border p-2'}>{item.codeName}</td>
               <td className={'border p-2'}>{item.purchasePrevCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
+              <td className={'border p-2'}>{item.completeDate}</td>
               <td className={'w-[80px] border p-2'}>
                 <button
                   className={'h-[32px] font-pre-13-m-130 text-gray-10 border rounded-lg border-gray-70 p-2'}
@@ -77,8 +73,8 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
         </tbody>
       </table>
 
-      <CATransactionHistoryModal
-        transactionHistoryTableData={data[selectIndex]}
+      <TransactionHistoryMyTradeModal
+        transactionHistoryMyTradeData={data[selectIndex]}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       />

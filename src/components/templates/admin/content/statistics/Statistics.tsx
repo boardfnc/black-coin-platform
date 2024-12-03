@@ -4,15 +4,15 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { IStatisticsTableData } from '@/components/organisms/table/StatisticsTable.types';
+import type { IStatisticsTableData } from '@/components/organisms/admin/table/StatisticsTable.types';
 import type { IAdminDatesRequest } from '@/services/statistics/adminDates.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import StatisticsTable from '@/components/organisms/table/StatisticsTable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import StatisticsTable from '@/components/organisms/admin/table/StatisticsTable';
 import { useFetch } from '@/hooks';
 import { adminDatesService } from '@/services/statistics/adminDates';
 import { datesService } from '@/services/statistics/dates';

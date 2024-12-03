@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { IPurchaseUserTableData } from '@/components/organisms/table/PurchaseUserTable.types';
+import type { IPurchaseUserTableData } from '@/components/organisms/admin/table/PurchaseUserTable.types';
 import type { IAdminPurchaseMembersRequest } from '@/services/coin/adminPurchase.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { PurchaseUserTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { PurchaseUserTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminPurchaseMembersService } from '@/services/coin/adminPurchase';
 

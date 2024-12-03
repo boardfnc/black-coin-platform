@@ -7,7 +7,7 @@ import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { BankSelect } from '@/components/atoms/inputs';
 import { DatePicker } from '@/components/atoms/inputs/';
-import { UserDetailChangePasswordModal } from '@/components/organisms/modal';
+import { UserDetailChangePasswordModal } from '@/components/organisms/admin/modal';
 import { useFetch, useRequest, useToast } from '@/hooks';
 import {
   memberMyPageAccountNumberUpdateService,

@@ -4,15 +4,15 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback, useState } from 'react';
 
-import type { ICoinBuyTableData } from '@/components/organisms/table/CoinBuyTable.types';
+import type { ICoinBuyTableData } from '@/components/organisms/admin/table/CoinBuyTable.types';
 import type { ICoinPurchaseManagersRequest } from '@/services/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { BuyCoinModal } from '@/components/organisms/modal';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import { CoinBuyTable } from '@/components/organisms/table';
+import { Filter } from '@/components/organisms/admin/filter';
+import { BuyCoinModal } from '@/components/organisms/admin/modal';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import { CoinBuyTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { coinPurchaseManagersService } from '@/services/coin/coin';
 

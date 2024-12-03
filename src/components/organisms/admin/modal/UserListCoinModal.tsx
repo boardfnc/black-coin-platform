@@ -7,7 +7,7 @@ import { IconLine24Close, IconLine24RoundWarning } from '@/components/atoms/icon
 import IconLineSavingMoney from '@/components/atoms/icons/icon-line/SavingMoney';
 import { Modal } from '@/components/atoms/modals';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { ConfirmModal } from '@/components/organisms/modal';
+import { ConfirmModal } from '@/components/organisms/admin/modal';
 import { useFetch, useRequest, useToast } from '@/hooks';
 import { adminMemberPaymentService, adminMemberRetrievalService } from '@/services/member/adminMembers';
 import { memberMyPageService, memberPaymentService, memberRetrievalService } from '@/services/member/members';

@@ -4,14 +4,14 @@ import { useSearchParams } from 'next/navigation';
 
 import { useCallback } from 'react';
 
-import type { IGradeManageTableData } from '@/components/organisms/table/GradeManageTable.types';
+import type { IGradeManageTableData } from '@/components/organisms/admin/table/GradeManageTable.types';
 import type { IAdminMemberGradesRequest } from '@/services/member/adminMembers.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
-import { Filter } from '@/components/organisms/filter';
-import { Pagination, GoToPage } from '@/components/organisms/pagination';
-import GradeManageTable from '@/components/organisms/table/GradeManageTable';
+import { Filter } from '@/components/organisms/admin/filter';
+import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
+import GradeManageTable from '@/components/organisms/admin/table/GradeManageTable';
 import { useFetch } from '@/hooks';
 import { adminMemberGradesService } from '@/services/member/adminMembers';
 
