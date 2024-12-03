@@ -39,11 +39,12 @@ const fetchFunction = async <T = Response,>(url: UrlType, options?: OptionsType)
         ...restOptions?.next,
         tags: ['fetch'],
       },
+      redirect: 'follow',
     });
 
     const endTime = new Date().getTime();
 
-    if (response.status !== 400 && response.status !== 401 && !response.ok) throw response;
+    if (response.status !== 400 && response.status !== 401 && response.status !== 303 && !response.ok) throw response;
 
     const data = await parseData(response);
 
