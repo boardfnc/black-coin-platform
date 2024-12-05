@@ -7,7 +7,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { getIsHttpProtocol, getTokenAuthorization, outPutConsoleDebug, paramsTransform, parseData } from './utils';
-import { refreshService } from '../auth/refresh';
+import { refreshService } from '../admin/auth/refresh';
 
 import type { OptionsType, ReturnType, UrlType } from './types';
 
@@ -39,7 +39,6 @@ const fetchFunction = async <T = Response,>(url: UrlType, options?: OptionsType)
         ...restOptions?.next,
         tags: ['fetch'],
       },
-      redirect: 'follow',
     });
 
     const endTime = new Date().getTime();
@@ -55,6 +54,7 @@ const fetchFunction = async <T = Response,>(url: UrlType, options?: OptionsType)
     // MARK: JWT Access Token Error Handle
     if (tokenData && isAccessTokenError(statusCode)) {
       const refreshResponse = await refreshService(tokenData);
+
       if (refreshResponse?.status) return fetchFunction(url, options);
     }
 

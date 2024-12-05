@@ -5,7 +5,7 @@ import type { ISaleGeneralCoinHistoryModalProps } from './SaleGeneralCoinHistory
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
-import { adminSaleMemberHistoryService } from '@/services/coin/adminSale';
+import { adminSaleMemberHistoryService } from '@/services/admin/coin/adminSale';
 import { convertDealStatus, convertMembershipGrade, convertBank } from '@/utils/covert';
 
 export default function SaleGeneralCoinHistoryModal(props: ISaleGeneralCoinHistoryModalProps) {

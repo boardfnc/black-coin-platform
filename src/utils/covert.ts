@@ -88,7 +88,9 @@ export const convertSaleType = (type: number | string): string => {
   return types[type] || '알 수 없음';
 };
 
-export const convertBank = (bank: string | number): string => {
+export const convertBank = (bank?: string | number): string => {
+  if (!bank) return '알 수 없음';
+
   const banks: Record<string | number, string> = {
     '002': '산업은행',
     '003': '기업은행',

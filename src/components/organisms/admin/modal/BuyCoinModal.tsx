@@ -18,8 +18,8 @@ import { Modal } from '@/components/atoms/modals';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useFetch, useRequest, useToast } from '@/hooks';
 import { buyCoin } from '@/mocks/images';
-import { coinPurchaseManagerService, coinSaleManagerService } from '@/services/coin/coin';
-import { memberMyPageService } from '@/services/member/members';
+import { coinPurchaseManagerService, coinSaleManagerService } from '@/services/admin/coin/coin';
+import { memberMyPageService } from '@/services/admin/member/members';
 import { useRefetch } from '@/stores/refetch';
 import { convertBank } from '@/utils/covert';
 

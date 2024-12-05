@@ -15,7 +15,7 @@ import {
   adminManagerAccountNumberUpdateService,
   adminManagerFeeUpdateService,
   adminManagerStatusUpdateService,
-} from '@/services/member/adminManagers';
+} from '@/services/admin/member/adminManagers';
 
 export default function SignupManageId({ id }: ISignupManageIdProps) {
   const [formData, setFormData] = useState({

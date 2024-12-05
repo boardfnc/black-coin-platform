@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { IGradeManageTableData } from '@/components/organisms/admin/table/GradeManageTable.types';
-import type { IAdminMemberGradesRequest } from '@/services/member/adminMembers.types';
+import type { IAdminMemberGradesRequest } from '@/services/admin/member/adminMembers.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -13,7 +13,7 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import GradeManageTable from '@/components/organisms/admin/table/GradeManageTable';
 import { useFetch } from '@/hooks';
-import { adminMemberGradesService } from '@/services/member/adminMembers';
+import { adminMemberGradesService } from '@/services/admin/member/adminMembers';
 
 const selectOptions = [
   { value: 'prtnr_nm', label: '파트너사명' },
@@ -63,7 +63,7 @@ export default function GradeManage() {
   return (
     <div className={'w-full h-full bg-gray-100'}>
       <div className={'flex flex-col gap-5'}>
-        <AdminHeadline title={'회원 등급 관리'} subTitle={['회원 관리', '회원 목록']} />
+        <AdminHeadline title={'회원 등급 관리'} subTitle={['회원 관리', '회원 등급 관리']} />
 
         <div className={'flex flex-col gap-8 mx-4'}>
           <Filter date={{ visible: false, text: '가입일' }} select={{ text: '검색어', options: selectOptions }} />

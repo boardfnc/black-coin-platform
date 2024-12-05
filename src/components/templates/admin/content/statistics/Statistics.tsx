@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { IStatisticsTableData } from '@/components/organisms/admin/table/StatisticsTable.types';
-import type { IAdminDatesRequest } from '@/services/statistics/adminDates.types';
+import type { IAdminDatesRequest } from '@/services/admin/statistics/adminDates.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -14,8 +14,8 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import StatisticsTable from '@/components/organisms/admin/table/StatisticsTable';
 import { useFetch } from '@/hooks';
-import { adminDatesService } from '@/services/statistics/adminDates';
-import { datesService } from '@/services/statistics/dates';
+import { adminDatesService } from '@/services/admin/statistics/adminDates';
+import { datesService } from '@/services/admin/statistics/dates';
 
 export default function Statistics() {
   const searchParams = useSearchParams();

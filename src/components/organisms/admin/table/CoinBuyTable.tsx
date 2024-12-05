@@ -8,7 +8,7 @@ import type { ICoinBuyTableData, ICoinBuyTableProps } from './CoinBuyTable.types
 
 import { IconLine24Loading, IconLine24LineCheck, IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { useRequest, useToast } from '@/hooks';
-import { coinPurchaseManagerCancelService, coinPurchaseManagerCompletionService } from '@/services/coin/coin';
+import { coinPurchaseManagerCancelService, coinPurchaseManagerCompletionService } from '@/services/admin/coin/coin';
 import { convertDealStatus } from '@/utils/covert';
 
 export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {

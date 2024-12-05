@@ -6,9 +6,10 @@ interface BankSelectProps {
   className?: string;
   value: string;
   onChange: (value: string) => void;
+  onBlur?: () => void;
 }
 
-export function BankSelect({ className, value, onChange }: BankSelectProps) {
+export function BankSelect({ className, value, onChange, onBlur }: BankSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const bankList = [
@@ -37,13 +38,13 @@ export function BankSelect({ className, value, onChange }: BankSelectProps) {
   ];
 
   return (
-    <div className={`relative w-full ${className || ''}`}>
+    <div className={`relative w-full ${className || ''}`} onBlur={onBlur}>
       <button
         type={'button'}
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex h-[56px] px-[14px] py-[15px] justify-between items-center rounded-[16px] border border-[#E2E4E7] bg-white ${className}`}
       >
-        <span>{value ? convertBank(value) : '은행을 선택해주세요'}</span>
+        <span className={'text-gray-0'}>{value ? convertBank(value) : '은행을 선택해주세요'}</span>
         <div
           className={`w-[10px] h-[10px] border-r-2 border-b-2 border-[#666666] transform transition-transform duration-200 ${
             isOpen ? 'rotate-[-135deg]' : 'rotate-45'
@@ -61,7 +62,7 @@ export function BankSelect({ className, value, onChange }: BankSelectProps) {
             <button
               key={bankCode}
               role={'button'}
-              className={'px-[14px] py-3 cursor-pointer hover:bg-gray-80'}
+              className={'px-[14px] py-3 cursor-pointer hover:bg-gray-80 text-gray-10'}
               onClick={() => {
                 onChange(bankCode);
                 setIsOpen(false);

@@ -15,7 +15,7 @@ import { useRequest, useToast } from '@/hooks';
 import {
   adminMemberSubscribeConsentService,
   adminMemberSubscribeRejectionService,
-} from '@/services/member/adminMembers';
+} from '@/services/admin/member/adminMembers';
 import { covertMemberJoinProgress } from '@/utils/covert';
 
 export default function SignupTable({ data, refetch }: ISignupTableProps) {

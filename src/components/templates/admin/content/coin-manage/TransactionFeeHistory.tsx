@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { ITransactionFeeHistoryTableData } from '@/components/organisms/admin/table/TransactionFeeHistoryTable.types';
-import type { IAdminReceivedDetailsRequest } from '@/services/coin/adminReceived.types';
-import type { ICoinDealingsFeeDetailsRequest } from '@/services/coin/coin.types';
+import type { IAdminReceivedDetailsRequest } from '@/services/admin/coin/adminReceived.types';
+import type { ICoinDealingsFeeDetailsRequest } from '@/services/admin/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -15,8 +15,8 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import TransactionFeeHistoryTable from '@/components/organisms/admin/table/TransactionFeeHistoryTable';
 import { useFetch } from '@/hooks';
-import { adminManagerDetailsService } from '@/services/coin/adminDealings';
-import { coinDealingsFeeDetailsService } from '@/services/coin/coin';
+import { adminManagerDetailsService } from '@/services/admin/coin/adminDealings';
+import { coinDealingsFeeDetailsService } from '@/services/admin/coin/coin';
 
 const filterSelect = {
   options: [
@@ -119,6 +119,9 @@ export default function TransactionFeeHistory() {
   const { isSuperAdmin } = useAuthor();
   const searchParams = useSearchParams();
 
+  const page = Number(searchParams.get('page') ?? 1);
+  const perPage = Number(searchParams.get('view') ?? 15);
+
   const fetchTransactionFeeHistory = useCallback(
     () =>
       isSuperAdmin
@@ -155,9 +158,9 @@ export default function TransactionFeeHistory() {
   };
 
   const statisticsData = data?.data?.map(
-    (item) =>
+    (item, index) =>
       ({
-        uniqueId: item.mber_id,
+        uniqueId: page * perPage - (perPage - 1) + index,
         memberId: item.mber_id,
         managerId: item.mngr_id,
         codeName: ('code' in item && typeof item.code === 'string' && item.code) || '',

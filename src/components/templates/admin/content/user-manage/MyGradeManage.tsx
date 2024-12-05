@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { useFetch, useRequest, useToast } from '@/hooks';
-import { memberGradePutService, memberGradeService } from '@/services/member/members';
+import { memberGradePutService, memberGradeService } from '@/services/admin/member/members';
 
 export default function MyGradeManage() {
   const [formData, setFormData] = useState({

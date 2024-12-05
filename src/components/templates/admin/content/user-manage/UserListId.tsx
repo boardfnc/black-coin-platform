@@ -15,7 +15,7 @@ import {
   adminManagerFeeUpdateService,
   adminManagerIdService,
   adminManagerStatusUpdateService,
-} from '@/services/member/adminManagers';
+} from '@/services/admin/member/adminManagers';
 
 export default function UserList({ id }: IUserListIdProps) {
   const [formData, setFormData] = useState({

@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import type { IReceivedDetailTableData } from '@/components/organisms/admin/table/ReceivedDetailTable.types';
-import type { IAdminReceivedDetailsRequest } from '@/services/coin/adminReceived.types';
-import type { ICoinReceivedDetailsRequest } from '@/services/coin/coin.types';
+import type { IAdminReceivedDetailsRequest } from '@/services/admin/coin/adminReceived.types';
+import type { ICoinReceivedDetailsRequest } from '@/services/admin/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -16,8 +16,8 @@ import { SellCoinModal, BuyCoinModal } from '@/components/organisms/admin/modal'
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { SentDetailTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { adminReceivedDetailsService } from '@/services/coin/adminReceived';
-import { coinReceivedDetailsService } from '@/services/coin/coin';
+import { adminReceivedDetailsService } from '@/services/admin/coin/adminReceived';
+import { coinReceivedDetailsService } from '@/services/admin/coin/coin';
 
 const checkbox = {
   text: '회원 등급',

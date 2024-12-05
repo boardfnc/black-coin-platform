@@ -8,9 +8,10 @@ import { useState, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 
 import { Image } from '@/components/atoms/images';
+import { BankSelect } from '@/components/atoms/inputs';
 import { ROUTES } from '@/constants';
 import { helloIcon } from '@/images/background';
-import { joinService } from '@/services/auth/join';
+import { joinService } from '@/services/admin/auth/join';
 
 interface IFormData {
   id: string;
@@ -72,14 +73,18 @@ export default function PlatformRegister() {
     accountNumber: false,
   });
 
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState<IFormError>({});
   const [isFormValid, setIsFormValid] = useState(false);
 
   const { mutate } = useMutation({
     mutationFn: joinService,
-    onSuccess() {
-      setSuccess(true);
+    onSuccess(data) {
+      if (data != null) {
+        if (data.status) return setSuccess(true);
+
+        throw new Error(data.message);
+      }
     },
   });
 
@@ -152,15 +157,15 @@ export default function PlatformRegister() {
   };
 
   return (
-    <div className={'w-auto max-w-[400px] mx-auto px-[30px] sm:mt-[200px]'}>
+    <div className={'w-auto mx-auto px-[30px] sm:mt-[0px] mt-[200px]'}>
       <div className={'flex flex-col gap-[70px]'}>
-        <div className={'flex flex-col gap-10 mb-[100px]'}>
+        <div className={'flex flex-col gap-[80px] mb-[100px]'}>
           <div className={'flex flex-col justify-center items-center border-b border-gray-80 gap-3'}>
             <div className={'text-yellow-50 font-suit-32-750-130 py-5'}>Service Name</div>
           </div>
 
           {!success && (
-            <div className={'flex flex-col gap-[28px]'}>
+            <div className={'max-w-[400px] mx-auto flex flex-col gap-[28px]'}>
               <div
                 className={'text-center text-gray-10 font-suit-22-b-144 whitespace-pre'}
               >{`회원가입을 위해\n아래 항목을 입력해 주세요.`}</div>
@@ -178,7 +183,7 @@ export default function PlatformRegister() {
                     <div className={'mt-1'}>
                       <input
                         value={formData.id}
-                        onChange={(e) => handleInputChange('id', e.target.value)}
+                        onChange={(event) => handleInputChange('id', event.target.value)}
                         onBlur={() => handleBlur('id')}
                         className={`w-full px-3 py-4 border-b ${touched.id && errors.id ? 'border-red-60' : 'border-gray-80'} placeholder:text-gray-60 font-suit-16-400-130`}
                         placeholder={'아이디'}
@@ -308,17 +313,12 @@ export default function PlatformRegister() {
                       <div className={'text-red-50'}>*</div>
                     </div>
 
-                    <select
+                    <BankSelect
                       value={formData.bank}
-                      onChange={(event) => handleInputChange('bank', event.target.value)}
+                      onChange={(value) => handleInputChange('bank', value)}
                       onBlur={() => handleBlur('bank')}
                       className={`w-full px-3 py-4 border-b ${touched.bank && errors.bank ? 'border-red-60' : 'border-gray-80'} text-gray-60 font-suit-16-400-130`}
-                    >
-                      <option value={''}>은행선택</option>
-                      <option value={'kb'}>국민은행</option>
-                      <option value={'shinhan'}>신한은행</option>
-                      <option value={'woori'}>우리은행</option>
-                    </select>
+                    />
 
                     {touched.bank && errors.bank && <div className={'mt-2 text-red-60 text-xs'}>{errors.bank}</div>}
                   </div>
@@ -388,7 +388,7 @@ export default function PlatformRegister() {
           )}
 
           {success && (
-            <div className={'flex flex-col gap-[80px]'}>
+            <div className={'max-w-[400px] mx-auto flex flex-col gap-[80px]'}>
               <div className={'flex flex-col gap-[66px] text-gray-10 font-suit-22-b-144'}>
                 <div className={'flex flex-col justify-center items-center gap-[80px]'}>
                   <Image src={helloIcon} alt={'success'} width={139} height={147} />

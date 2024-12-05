@@ -4,6 +4,11 @@ const config: Config = {
   content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      screens: {
+        tablet: '640px',
+        laptop: '1024px',
+        desktop: '1280px',
+      },
       lineHeight: {
         LH1: '100%',
         LH2: '110%',

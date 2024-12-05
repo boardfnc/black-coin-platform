@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { ITransactionHistoryMyTradeTableData } from '@/components/organisms/admin/table/TransactionHistoryMyTrade.types';
-import type { IAdminManagerDetailsRequest } from '@/services/dealings/adminManager.types';
+import type { IAdminManagerDetailsRequest } from '@/services/admin/dealings/adminManager.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -14,7 +14,7 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { TransactionHistoryMyTradeTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { dealingsManagerDetailsService } from '@/services/dealings/dealings';
+import { dealingsManagerDetailsService } from '@/services/admin/dealings/dealings';
 
 const category = {
   text: '거래구분/상태',

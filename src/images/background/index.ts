@@ -7,3 +7,6 @@ export { default as mainObject } from './main-object.png';
 export { default as helloIcon } from './hello-icon-1.png';
 export { default as coinWallet } from './wallet-banner.png';
 export { default as digitalWallet } from './digital-wallet-1.png';
+export { default as digitalIllustration } from './d-illustration-2.png';
+export { default as cube } from './cube.png';
+export { default as digitalCoinCartIcon } from './d-coin-cart-icon-1.png';

@@ -13,8 +13,8 @@ import { Image } from '@/components/atoms/images';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useFetch } from '@/hooks';
 import { KingProfile } from '@/mocks/images';
-import { memberMyPageService } from '@/services/member/members';
-import { adminUserService } from '@/services/setup/adminUser';
+import { memberMyPageService } from '@/services/admin/member/members';
+import { adminUserService } from '@/services/admin/setup/adminUser';
 import { useRefetch } from '@/stores/refetch';
 
 export default function SideBar({ isOpen }: ISideBarProps) {

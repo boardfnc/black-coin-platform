@@ -14,7 +14,7 @@ import {
   memberMyPageAccountUpdateService,
   memberMyPageDealingsService,
   memberMyPageService,
-} from '@/services/member/members';
+} from '@/services/admin/member/members';
 
 export default function MyPage() {
   const [formData, setFormData] = useState({

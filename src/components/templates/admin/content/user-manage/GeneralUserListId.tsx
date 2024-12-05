@@ -17,7 +17,7 @@ import {
   adminMemberGradeUpdateService,
   adminMemberIdService,
   adminMemberStatusUpdateService,
-} from '@/services/member/adminMembers';
+} from '@/services/admin/member/adminMembers';
 
 export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   const { request } = useRequest();

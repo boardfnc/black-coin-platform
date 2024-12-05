@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import type { ISentDetailTableData } from '@/components/organisms/admin/table/SentDetailTable.types';
-import type { IAdminSentDetailsRequest } from '@/services/coin/adminSent.types';
-import type { ICoinSentDetailsRequest } from '@/services/coin/coin.types';
+import type { IAdminSentDetailsRequest } from '@/services/admin/coin/adminSent.types';
+import type { ICoinSentDetailsRequest } from '@/services/admin/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -16,8 +16,8 @@ import { BuyCoinModal, SellCoinModal } from '@/components/organisms/admin/modal'
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { SentDetailTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { adminSentDetailsService } from '@/services/coin/adminSent';
-import { coinSentDetailsService } from '@/services/coin/coin';
+import { adminSentDetailsService } from '@/services/admin/coin/adminSent';
+import { coinSentDetailsService } from '@/services/admin/coin/coin';
 
 const filterSelectSuperAdminOptions = [
   {

@@ -6,6 +6,8 @@ import type { PropsWithChildren } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import type { IBaseResponse } from '@/services/_fetch/types';
+
 import { useToast } from '@/hooks';
 
 function ReactQueryProvider({ children }: PropsWithChildren) {
@@ -15,9 +17,10 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
 
   if (typeof window === 'undefined' && client == null) return children;
 
-  const openToastErrorMessage = (error: unknown) => {
+  const openToastErrorMessage = (error: Error | IBaseResponse) => {
     openToast({
-      message: error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다.',
+      type: 'error',
+      message: error.message || '알 수 없는2 오류가 발생했습니다.',
     });
   };
 

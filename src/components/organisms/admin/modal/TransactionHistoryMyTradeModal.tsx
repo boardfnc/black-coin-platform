@@ -5,7 +5,7 @@ import type { ITransactionHistoryMyTradeModalProps } from './TransactionHistoryM
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
-import { dealingsManagerDetailsHistoryService } from '@/services/dealings/dealings';
+import { dealingsManagerDetailsHistoryService } from '@/services/admin/dealings/dealings';
 import { convertDealStatus } from '@/utils/covert';
 
 export default function TransactionHistoryMyTradeModal(props: ITransactionHistoryMyTradeModalProps) {

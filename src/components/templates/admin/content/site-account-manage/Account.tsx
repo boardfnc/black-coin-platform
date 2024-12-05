@@ -2,13 +2,13 @@
 
 import { useCallback, useState, useEffect } from 'react';
 
-import type { IAdminAccountResponse } from '@/services/setup/adminAccount.types';
+import type { IAdminAccountResponse } from '@/services/admin/setup/adminAccount.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { BankSelect } from '@/components/atoms/inputs';
 import { useFetch, useRequest } from '@/hooks';
 import { useToast } from '@/hooks/toast';
-import { setUpAdminAccountService, setUpAdminAccountUpdateService } from '@/services/setup/adminAccount';
+import { setUpAdminAccountService, setUpAdminAccountUpdateService } from '@/services/admin/setup/adminAccount';
 
 export default function Account() {
   const { open: openToast } = useToast();
@@ -116,7 +116,7 @@ export default function Account() {
   return (
     <div className={'w-full h-full bg-gray-100'}>
       <div className={'flex flex-col gap-5'}>
-        <AdminHeadline title={'계좌 관리'} subTitle={['사이트/계좌 관리', '공지사항']} />
+        <AdminHeadline title={'계좌 관리'} subTitle={['사이트/계좌 관리', '계좌 관리']} />
       </div>
 
       <div className={'flex flex-col gap-5 p-5'}>

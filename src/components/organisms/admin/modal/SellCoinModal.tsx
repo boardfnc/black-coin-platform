@@ -18,8 +18,8 @@ import { Modal } from '@/components/atoms/modals';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useFetch, useRequest } from '@/hooks';
 import { sellCoin } from '@/mocks/images';
-import { coinSaleManagerService } from '@/services/coin/coin';
-import { memberMyPageService } from '@/services/member/members';
+import { coinSaleManagerService } from '@/services/admin/coin/coin';
+import { memberMyPageService } from '@/services/admin/member/members';
 import { convertBank } from '@/utils/covert';
 
 export function ConfirmModal({

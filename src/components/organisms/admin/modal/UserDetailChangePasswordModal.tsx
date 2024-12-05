@@ -5,8 +5,8 @@ import type { IUserDetailChangePasswordModalProps } from './UserDetailChangePass
 
 import Modal from '@/components/atoms/modals/Modal';
 import { useRequest, useToast } from '@/hooks';
-import { adminMemberPasswordUpdateService } from '@/services/member/adminMembers';
-import { mypagePasswordUpdateService } from '@/services/member/members';
+import { adminMemberPasswordUpdateService } from '@/services/admin/member/adminMembers';
+import { mypagePasswordUpdateService } from '@/services/admin/member/members';
 
 export default function UserDetailChangePasswordModal(props: IUserDetailChangePasswordModalProps) {
   const { isOpen, onClose, id, isMyProfile } = props;

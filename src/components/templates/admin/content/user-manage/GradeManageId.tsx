@@ -7,7 +7,7 @@ import type { IGradeManageIdProps } from './GradeManageId.types';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { useRequest, useToast } from '@/hooks';
-import { adminMemberGradeIdService } from '@/services/member/adminMembers';
+import { adminMemberGradeIdService } from '@/services/admin/member/adminMembers';
 
 export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeManageIdProps) {
   const [formData, setFormData] = useState({

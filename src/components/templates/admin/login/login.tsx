@@ -9,7 +9,7 @@ import { Image } from '@/components/atoms/images';
 import ROUTES from '@/constants/routes';
 import { useRequest } from '@/hooks';
 import LockImage from '@/images/icons/lock.png';
-import { adminLoginService } from '@/services/auth';
+import { adminLoginService } from '@/services/admin/auth';
 
 export default function AdminLogin() {
   const { request } = useRequest();

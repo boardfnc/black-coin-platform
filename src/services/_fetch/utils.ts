@@ -61,14 +61,14 @@ export const parseData = async (response: Response) => await response.json();
 export const outPutConsoleDebug = (response: Response, data?: unknown, time?: number) =>
   !IS_PRODUCTION &&
   console.debug(
-    `${response.status === 200 ? '\x1b[32m%s' : '\x1b[31m%s'}\x1b[0m%s${
-      response.status !== 200 ? '\x1b[31m%s' : '\x1b[0m'
+    `${response.status === 200 || response.status === 201 ? '\x1b[32m%s' : '\x1b[31m%s'}\x1b[0m%s${
+      response.status !== 200 && response.status !== 201 ? '\x1b[31m%s' : '\x1b[0m'
     }\x1b[30m`,
     `[${response.status}]`,
     response.url,
     `${time != null ? `(${time}ms)` : ''}`,
     `${
-      response.status !== 200
+      response.status !== 200 && response.status !== 201
         ? (() => {
             if (data != null) {
               if (typeof data === 'object' && data !== null && 'message' in data) {

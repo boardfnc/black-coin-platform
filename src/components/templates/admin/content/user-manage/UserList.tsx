@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import type { ICAUserListTableData } from '@/components/organisms/admin/table/CAUserListTable.types';
-import type { IAdminManagersRequest } from '@/services/member/adminManagers.types';
+import type { IAdminManagersRequest } from '@/services/admin/member/adminManagers.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import IconLine24Plus from '@/components/atoms/icons/icon-line/Plus';
@@ -15,7 +15,7 @@ import UserListCreateAuthorModal from '@/components/organisms/admin/modal/UserLi
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { CAUserListTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { adminManagersService } from '@/services/member/adminManagers';
+import { adminManagersService } from '@/services/admin/member/adminManagers';
 
 const filterSelect = {
   options: [

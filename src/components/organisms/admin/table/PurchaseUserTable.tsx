@@ -61,7 +61,7 @@ export default function PurchaseUserTable({ data }: IPurchaseUserTableProps) {
             'h-[32px] rounded-lg text-gray-100 bg-purple-fmg60 transition disabled:bg-gray-50 font-pre-13-m-130 px-3'
           }
           onClick={handleSendCoin}
-          disabled={!isAllChecked}
+          disabled={Object.values(checkedItems).every((value) => !value)}
         >
           입금 확인(코인 지급)
         </button>

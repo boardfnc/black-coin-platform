@@ -9,8 +9,8 @@ import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import ROUTES from '@/constants/routes';
 import { useFetch, useRequest } from '@/hooks';
 import { KingProfile } from '@/mocks/images';
-import { logoutService } from '@/services/auth';
-import { memberMyPageService } from '@/services/member/members';
+import { logoutService } from '@/services/admin/auth';
+import { memberMyPageService } from '@/services/admin/member/members';
 
 export default function Header() {
   const router = useRouter();

@@ -1,8 +1,39 @@
+'use client';
+
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+
+import { useQuery } from '@tanstack/react-query';
 
 import { coinWallet, digitalWallet } from '@/images/background';
+import { automaticLoginService } from '@/services/admin/auth/login';
+import { automaticLoginQueryKey } from '@/services/admin/auth/login.query';
+import { useLogin } from '@/stores/login';
 
 export default function Wallet() {
+  const { openModal: openLoginModal } = useLogin();
+
+  const searchParams = useSearchParams();
+
+  const code = searchParams.get('code');
+  const essentialKey = searchParams.get('essential-key');
+
+  const { data } = useQuery({
+    queryKey: automaticLoginQueryKey,
+    queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
+    enabled: !!code && !!essentialKey,
+  });
+
+  const isLogin = data?.status === true;
+
+  const onClickAuthorButton = () => {
+    if (isLogin) {
+      // TODO: 코인 구매 처리
+    } else {
+      openLoginModal();
+    }
+  };
+
   return (
     <div className={' min-h-screen bg-[#4D5258]'}>
       <div className={'pt-[40px] pb-[100px]'}>
@@ -38,7 +69,10 @@ export default function Wallet() {
           <div className={'flex flex-col justify-center items-center gap-[30px] bg-gray-95 rounded-[30px] py-10 mt-5'}>
             <Image className={'object-cover'} src={digitalWallet} alt={'digital wallet'} width={200} height={160} />
 
-            <button className={'w-[250px] h-[56px] text-gray-100 bg-gray-0 rounded-[60px] '}>
+            <button
+              className={'w-[250px] h-[56px] text-gray-100 bg-gray-0 rounded-[60px]'}
+              onClick={onClickAuthorButton}
+            >
               코인지갑 연동 및 입금하기
             </button>
           </div>

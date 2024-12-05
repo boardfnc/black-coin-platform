@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { IPurchaseUserTableData } from '@/components/organisms/admin/table/PurchaseUserTable.types';
-import type { IAdminPurchaseMembersRequest } from '@/services/coin/adminPurchase.types';
+import type { IAdminPurchaseMembersRequest } from '@/services/admin/coin/adminPurchase.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -13,7 +13,7 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { PurchaseUserTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { adminPurchaseMembersService } from '@/services/coin/adminPurchase';
+import { adminPurchaseMembersService } from '@/services/admin/coin/adminPurchase';
 
 const filterSelect = {
   options: [

@@ -1,23 +1,49 @@
 'use client';
 
+import { redirect, useSearchParams } from 'next/navigation';
+
+import { useEffect } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 
-import { userInformationShowService } from '@/services/auth/user';
+import { ROUTES } from '@/constants';
+import { logoutService } from '@/services/admin/auth';
+import { automaticLoginService } from '@/services/admin/auth/login';
+import { automaticLoginQueryKey } from '@/services/admin/auth/login.query';
+import { useJoin } from '@/stores/join';
 import { useLogin } from '@/stores/login';
 
 export default function Header() {
-  const { openModal } = useLogin();
+  const { openModal: openLoginModal } = useLogin();
+  const { openModal: openJoinModal } = useJoin();
+
+  const searchParams = useSearchParams();
+
+  const code = searchParams.get('code');
+  const essentialKey = searchParams.get('essential-key');
 
   const { data } = useQuery({
-    queryKey: ['auth', 'userInformationShow'],
-    queryFn: userInformationShowService,
+    queryKey: automaticLoginQueryKey,
+    queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
+    enabled: !!code && !!essentialKey,
   });
 
-  const isLogin = data?.data?.nm != null;
+  const isLogin = data?.status === true;
+  const isJoin = data?.status_code === '0010001';
 
   const onClickAuthorButton = () => {
-    openModal();
+    if (isLogin) {
+      logoutService();
+
+      redirect(ROUTES.PLATFORM.HOME);
+    } else {
+      openLoginModal();
+    }
   };
+
+  useEffect(() => {
+    if (isJoin) openJoinModal();
+  }, [isJoin, openJoinModal]);
 
   return (
     <div className={'sticky top-0 z-50 h-[70px] flex justify-between items-center px-10 bg-gray-0'}>

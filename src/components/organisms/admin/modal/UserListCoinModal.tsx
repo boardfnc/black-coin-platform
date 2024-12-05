@@ -9,8 +9,8 @@ import { Modal } from '@/components/atoms/modals';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { ConfirmModal } from '@/components/organisms/admin/modal';
 import { useFetch, useRequest, useToast } from '@/hooks';
-import { adminMemberPaymentService, adminMemberRetrievalService } from '@/services/member/adminMembers';
-import { memberMyPageService, memberPaymentService, memberRetrievalService } from '@/services/member/members';
+import { adminMemberPaymentService, adminMemberRetrievalService } from '@/services/admin/member/adminMembers';
+import { memberMyPageService, memberPaymentService, memberRetrievalService } from '@/services/admin/member/members';
 import { useRefetch } from '@/stores/refetch';
 
 export default function UserListCoinModal(props: IUserListCoinModalProps) {

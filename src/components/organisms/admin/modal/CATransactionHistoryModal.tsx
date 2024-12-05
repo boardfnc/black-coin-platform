@@ -5,7 +5,7 @@ import type { ICATransactionHistoryModalProps } from './CATransactionHistoryModa
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
-import { adminManagerDetailHistoryService } from '@/services/dealings/adminManager';
+import { adminManagerDetailHistoryService } from '@/services/admin/dealings/adminManager';
 import { convertDealStatus, convertBank } from '@/utils/covert';
 
 export default function CATransactionHistoryModal(props: ICATransactionHistoryModalProps) {

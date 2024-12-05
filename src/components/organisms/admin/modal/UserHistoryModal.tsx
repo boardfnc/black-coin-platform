@@ -5,7 +5,7 @@ import type { IUserHistoryModalProps } from './UserHistoryModal.types';
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
-import { adminMemberDetailHistoryService } from '@/services/dealings/adminManager';
+import { adminMemberDetailHistoryService } from '@/services/admin/dealings/adminManager';
 import { convertDealStatus, convertMembershipGrade, convertBank } from '@/utils/covert';
 
 export default function UserHistoryModal(props: IUserHistoryModalProps) {

@@ -8,8 +8,13 @@ const ROUTES = {
       ID: '/platform/forgot-author/id',
       PASSWORD: '/platform/forgot-author/password',
     },
+    MY_PAGE: '/platform/my-page',
     MAIN: '/platform/content',
     HOME: '/platform/content/home',
+    BUY: '/platform/content/buy',
+    SELL: '/platform/content/sell',
+    SEND: '/platform/content/send',
+    TRANSACTION_HISTORY: '/platform/content/transaction-history',
   },
   ADMIN: {
     ROOT: '/admin',

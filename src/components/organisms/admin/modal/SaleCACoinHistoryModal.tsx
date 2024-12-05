@@ -5,7 +5,7 @@ import type { ISaleCACoinHistoryModalProps } from './SaleCACoinHistoryModal.type
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
-import { adminSaleManagerHistoryService } from '@/services/coin/adminSale';
+import { adminSaleManagerHistoryService } from '@/services/admin/coin/adminSale';
 import { convertDealStatus, convertBank, formatPhoneNumber } from '@/utils/covert';
 
 export default function SaleCACoinHistoryModal(props: ISaleCACoinHistoryModalProps) {

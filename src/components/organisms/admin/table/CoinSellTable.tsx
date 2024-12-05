@@ -8,7 +8,7 @@ import type { ICoinSellTableData, ICoinSellTableProps } from './CoinSellTable.ty
 
 import { IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { useRequest, useToast } from '@/hooks';
-import { coinPurchaseManagerCompletionService, coinSaleManagerCancelService } from '@/services/coin/coin';
+import { coinPurchaseManagerCompletionService, coinSaleManagerCancelService } from '@/services/admin/coin/coin';
 import { convertDealStatus } from '@/utils/covert';
 
 export default function CoinSellTable({ data, refetch }: ICoinSellTableProps) {

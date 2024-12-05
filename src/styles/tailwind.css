@@ -27,6 +27,30 @@
     line-height: 113%;
   }
 
+  .font-suit-40-800-110 {
+    font-family: var(--font-suit);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 110%;
+  }
+
+  .font-pre-35-400-130 {
+    font-family: var(--font-pretendard);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-35-800-110 {
+    font-family: var(--font-suit);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 110%;
+  }
+
   .font-suit-32-750-130 {
     font-family: var(--font-suit);
     font-size: 32px;
@@ -60,6 +84,22 @@
     line-height: 130%;
   }
 
+  .font-suit-30-700-130 {
+    font-family: var(--font-suit);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-30-400-110 {
+    font-family: var(--font-suit);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%;
+  }
+
   .font-pre-28-b-130 {
     font-family: var(--font-pretendard);
     font-size: 28px;
@@ -76,11 +116,27 @@
     line-height: 130%;
   }
 
+  .font-suit-24-700-150 {
+    font-family: var(--font-suit);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+  }
+
   .font-suit-24-b-130 {
     font-family: var(--font-suit);
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-24-750-130 {
+    font-family: var(--font-suit);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 750;
     line-height: 130%;
   }
 
@@ -172,6 +228,22 @@
     line-height: 130%;
   }
 
+  .font-suit-20-b-130 {
+    font-family: var(--font-suit);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-20-r-130 {
+    font-family: var(--font-suit);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
   .font-pre-20-600-130 {
     font-family: var(--font-pretendard);
     font-size: 20px;
@@ -185,6 +257,14 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-18-750-130 {
+    font-family: var(--font-suit);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 750;
     line-height: 130%;
   }
 
@@ -218,6 +298,22 @@
     font-style: normal;
     font-weight: 400;
     line-height: 156.6%;
+  }
+
+  .font-suit-18-400-140 {
+    font-family: var(--font-suit);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  .font-suit-17-b-130 {
+    font-family: var(--font-suit);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
   }
 
   .font-pre-17-m-130 {
@@ -260,11 +356,35 @@
     line-height: 130%;
   }
 
+  .font-suit-16-400-150 {
+    font-family: var(--font-suit);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
   .font-suit-16-400-130 {
     font-family: var(--font-suit);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-15-b-130 {
+    font-family: var(--font-suit);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-15-700-130 {
+    font-family: var(--font-suit);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
     line-height: 130%;
   }
 
@@ -284,11 +404,35 @@
     line-height: 130%;
   }
 
+  .font-suit-15-r-130 {
+    font-family: var(--font-suit);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
   .font-pre-14-750-130 {
     font-family: var(--font-pretendard);
     font-size: 14px;
     font-style: normal;
     font-weight: 750;
+    line-height: 130%;
+  }
+
+  .font-suit-14-b-130 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
+  .font-suit-14-m-130 {
+    font-family: var(--font-suit);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
     line-height: 130%;
   }
 
@@ -372,6 +516,14 @@
     line-height: 130%;
   }
 
+  .font-suit-13-b-130 {
+    font-family: var(--font-suit);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+  }
+
   .font-suit-13-m-130 {
     font-family: var(--font-suit);
     font-size: 13px;
@@ -382,6 +534,14 @@
 
   .font-pre-13-r-130 {
     font-family: var(--font-pretendard);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  .font-suit-13-400-130 {
+    font-family: var(--font-suit);
     font-size: 13px;
     font-style: normal;
     font-weight: 400;

@@ -3,7 +3,7 @@ import type { UserDetailGradeResetModalProps } from './UserDetailGradeResetModal
 import { IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
 import { useRequest, useToast } from '@/hooks';
-import { adminMemberGradeUpdateService } from '@/services/member/adminMembers';
+import { adminMemberGradeUpdateService } from '@/services/admin/member/adminMembers';
 
 export default function UserDetailGradeResetModal({ isOpen, grade, onClose, id }: UserDetailGradeResetModalProps) {
   const { request } = useRequest();

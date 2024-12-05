@@ -5,8 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { IWithdrawalListTableData } from '@/components/organisms/admin/table/WithdrawalListTable.types';
-import type { IAdminMemberRetrievalMembersRequest } from '@/services/member/adminMembers.types';
-import type { IMemberRetrievalMembersRequest } from '@/services/member/members.types';
+import type { IAdminMemberRetrievalMembersRequest } from '@/services/admin/member/adminMembers.types';
+import type { IMemberRetrievalMembersRequest } from '@/services/admin/member/members.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -15,8 +15,8 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import WithdrawalListTable from '@/components/organisms/admin/table/WithdrawalListTable';
 import { useFetch } from '@/hooks';
-import { adminMemberRetrievalMembersService } from '@/services/member/adminMembers';
-import { memberRetrievalMembersService } from '@/services/member/members';
+import { adminMemberRetrievalMembersService } from '@/services/admin/member/adminMembers';
+import { memberRetrievalMembersService } from '@/services/admin/member/members';
 
 const filterSelect = {
   text: '검색어',

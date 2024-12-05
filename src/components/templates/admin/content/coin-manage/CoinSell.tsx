@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import type { ICoinSellTableData } from '@/components/organisms/admin/table/CoinSellTable.types';
-import type { ICoinSaleManagersRequest } from '@/services/coin/coin.types';
+import type { ICoinSaleManagersRequest } from '@/services/admin/coin/coin.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -14,7 +14,7 @@ import { SellCoinModal } from '@/components/organisms/admin/modal';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import { CoinSellTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
-import { coinSaleManagersService } from '@/services/coin/coin';
+import { coinSaleManagersService } from '@/services/admin/coin/coin';
 
 const filterSelect = {
   text: '거래번호',

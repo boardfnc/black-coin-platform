@@ -6,7 +6,7 @@ import type { IUserListCreateAuthorModalProps } from './UserListCreateAuthorModa
 import IconLine24SquareInfo from '@/components/atoms/icons/icon-line/SquareInfo';
 import Modal from '@/components/atoms/modals/Modal';
 import { useRequest } from '@/hooks';
-import { adminManagersPostService } from '@/services/member/adminManagers';
+import { adminManagersPostService } from '@/services/admin/member/adminManagers';
 
 export default function UserListCreateAuthorModal(props: IUserListCreateAuthorModalProps) {
   const { isOpen, onClose } = props;

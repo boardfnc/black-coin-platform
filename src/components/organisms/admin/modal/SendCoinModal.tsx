@@ -9,7 +9,7 @@ import { IconLine24RoundWarning, IconLine24SquareInfo } from '@/components/atoms
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useRequest, useToast } from '@/hooks';
-import { adminPurchaseManageService, adminPurchaseMemberService } from '@/services/coin/adminPurchase';
+import { adminPurchaseManageService, adminPurchaseMemberService } from '@/services/admin/coin/adminPurchase';
 import { useRefetch } from '@/stores/refetch';
 import { convertMembershipGrade, convertBank } from '@/utils/covert';
 
@@ -82,6 +82,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
       });
       sideBarRefetch?.();
       handleClose();
+      onClose();
     }
 
     return response;

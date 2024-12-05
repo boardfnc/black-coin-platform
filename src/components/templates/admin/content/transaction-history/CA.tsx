@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 
 import type { ITransactionHistoryCATableData } from '@/components/organisms/admin/table/TransactionHistoryCATable.types';
-import type { IAdminManagerDetailsRequest } from '@/services/dealings/adminManager.types';
+import type { IAdminManagerDetailsRequest } from '@/services/admin/dealings/adminManager.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { Select } from '@/components/atoms/inputs';
@@ -13,7 +13,7 @@ import { Filter } from '@/components/organisms/admin/filter';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
 import TransactionHistoryCATable from '@/components/organisms/admin/table/TransactionHistoryCATable';
 import { useFetch } from '@/hooks';
-import { adminManagerDetailsService } from '@/services/dealings/adminManager';
+import { adminManagerDetailsService } from '@/services/admin/dealings/adminManager';
 
 const filterSelect = {
   options: [

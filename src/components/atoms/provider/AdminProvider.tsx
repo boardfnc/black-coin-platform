@@ -4,7 +4,7 @@ import { createContext, useContext } from 'react';
 
 import type { IAdminProviderProps } from './AdminProvider.types';
 import type { ITokenData } from '@/services/_fetch/types';
-import type { IMyData } from '@/services/auth/login.types';
+import type { IMyData } from '@/services/admin/auth/login.types';
 
 const AdminContext = createContext<(ITokenData & IMyData) | undefined>(undefined);
 

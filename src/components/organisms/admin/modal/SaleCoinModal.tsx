@@ -9,7 +9,7 @@ import { IconLine24RoundWarning, IconLine24SquareInfo } from '@/components/atoms
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useRequest, useToast } from '@/hooks';
-import { adminSaleManagerService, adminSaleMemberService } from '@/services/coin/adminSale';
+import { adminSaleManagerService, adminSaleMemberService } from '@/services/admin/coin/adminSale';
 import { convertMembershipGrade, convertBank } from '@/utils/covert';
 
 export default function SaleCoinModal(props: ISaleCoinModalProps) {
