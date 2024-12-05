@@ -1,119 +1,251 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+
+import { useEffect } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
+
+import { IconLine24Filter } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
-import {
-  homeBackground,
-  blueUserIcon,
-  chartIcon,
-  blockChainObject,
-  privacyImage,
-  mainObject,
-} from '@/images/background';
+import { Pagination } from '@/components/organisms/admin/pagination';
+import { cube } from '@/images/background';
+import { dealingsService } from '@/services/platform/coin/dealings';
+import { convertBank } from '@/utils/covert';
 
-export const information = [
-  {
-    title: '고급보안',
-    description:
-      'PG사 수준에서 은행 수준의 보안 시스템을 목표로 지속적이며 주기적으로 보안업데이트를 진행하며, 내부직원 등급별 체계를 구축하여 고객자산을 상시 보호합니다.',
-    image: privacyImage,
-  },
-  {
-    title: '손쉬운 사용',
-    description:
-      '모든 사용자가 쉽게 설정 가능하고 자세하고 보기 쉬운 차트를 제공하여 이용하는 고객들이 더욱 편리하게 자산을 분석하고 관리할 수 있도록 데이터를 제공합니다.',
-    image: chartIcon,
-  },
-  {
-    title: '데이터 투명성',
-    description:
-      '분산형 블록체인 네트워크를 통해 투명성을 사용하여 사용자 간의 신뢰에 대한 필요성을 줄여 사용자의 피로도를 완화합니다.',
-    image: blockChainObject,
-  },
-  {
-    title: '사용자 편리성',
-    description:
-      'PC / 모바일 / 태블릿 등 모든 기기에 최적화된 화면을 제공하여 사용자는 어디에서 접근하여도 편리한 환경을 제공합니다.',
-    image: blueUserIcon,
-  },
-];
+export default function TransactionHistory() {
+  const searchParams = useSearchParams();
 
-export default function HomePage() {
+  const mode = searchParams.get('mode') || 1;
+  const type = searchParams.get('type') || undefined;
+  const page = Number(searchParams.get('page') ?? 1);
+  const perPage = Number(searchParams.get('view') ?? 5);
+
+  const { data, refetch } = useQuery({
+    queryKey: ['dealings'],
+    queryFn: () =>
+      dealingsService({
+        delng_se: Number(mode),
+        sale_se: !!type && Number(mode) === 1 ? Number(2 + type) : undefined,
+        purchase_se: !!type && Number(mode) === 2 ? Number(1 + type) : undefined,
+        cancel_se: !!type && Number(mode) === 4 ? Number(type) : undefined,
+        page,
+        per_page: perPage,
+      }),
+  });
+
+  const handleButtonClick = (newMode: number) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set('mode', newMode.toString());
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+  };
+
+  const handleTypeClick = (newType: string) => {
+    const params = new URLSearchParams(window.location.search);
+    if (newType === 'all') {
+      params.delete('type');
+    } else {
+      params.set('type', newType);
+    }
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+  };
+
+  const handleCopyClick = (text: string) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [refetch, searchParams]);
+
   return (
-    <div className={'w-full overflow-x-hidden'}>
+    <div className={'w-full pb-[100px]'}>
       <div className={'my-15'}>
-        <div>
-          <div className={'relative w-full h-[800px]'}>
-            <Image className={'object-cover'} src={homeBackground} alt={'home-background'} fill quality={100} />
+        <div className={'pb-[30px] sm:pb-[60px]'}>
+          <div className={'relative w-full h-[200px]'}>
+            <Image className={'object-cover'} src={cube} alt={'home-background'} quality={100} fill />
 
-            <div
-              className={'absolute w-full flex items-center h-[250px] bottom-[174px] left-0 bg-gray-50/20 p-5 sm:p-0'}
+            <div className={'absolute w-max top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2'}>
+              <div className={'flex flex-col justify-center items-center gap-2.5'}>
+                <div className={'text-gray-100 font-suit-40-800-110 sm:font-suit-60-800-110'}>Service Name</div>
+
+                <div className={'text-gray-100 font-suit-30-400-110'}>거래내역</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={'max-w-[1080px] mx-auto px-3 sm:px-0'}>
+          <div className={'w-full pb-5'}>
+            <div className={'h-[32px] text-gray-10 font-suit-16-b-130'}>Transaction details</div>
+
+            <div className={'h-[60px] text-gray-10 font-suit-24-b-130 sm:font-suit-30-700-130 border-b border-gray-50'}>
+              거래내역
+            </div>
+          </div>
+
+          <div className={'px-4 py-2 flex justify-between items-center bg-gray-95'}>
+            <div className={'text-gray-10 font-suit-15-b-130'}>전체</div>
+
+            <button
+              className={
+                'flex items-center gap-1 h-[36px] text-gray-10 bg-gray-100 rounded-[18px] border border-gray-70 px-4'
+              }
             >
-              <div className={'max-w-[1320px] w-full mx-auto flex flex-col gap-5'}>
-                <div>
-                  <div className={'text-white font-pre-20-600-130 sm:font-pre-26-b-130'}>블록체인 기술 기반</div>
-                  <div className={'text-gray-100 font-suit-35-800-110 sm:font-suit-60-800-110'}>Service Name</div>
-                </div>
+              <IconLine24Filter />
 
-                <div className={'flex flex-col gap-1.5'}>
-                  <div className={'text-gray-100 font-suit-15-300-130 sm:font-suit-22-300-130'}>
-                    탈중앙화 변조 방지 시스템으로 효율적인 결제 계정을 구축.
-                  </div>
-
-                  <div className={'text-gray-100 font-suit-15-300-130 sm:font-suit-22-300-130'}>
-                    Service Name은 트레이더들의 권익 보호를 위해 언제나 보안을 신경쓰고 있습니다.
-                  </div>
-                </div>
-              </div>
-            </div>
+              <div className={'font-suit-13-650-130'}>날짜 검색</div>
+            </button>
           </div>
-        </div>
 
-        <div className={'pb-[75px]'}>
-          <div className={'max-w-[1320px] mx-auto pt-[40px] sm:pt-[60px] pb-[80px] border-b border-gray-0'}>
-            <div className={'flex flex-col gap-[60px]'}>
-              <div className={'flex flex-col text-gray-20 font-suit-22-r-130 gap-5 px-5 sm:px-0'}>
-                <div className={'text-gray-0 font-pre-35-400-130 sm:font-pre-40-r-130 letter-spacing-[0.04px]'}>
-                  Service Name
-                </div>
+          <div className={'flex justify-between items-center pt-5'}>
+            <button
+              className={'h-[56px] flex-1 flex justify-center items-center text-gray-10 border font-suit-15-b-130'}
+              onClick={() => handleButtonClick(1)}
+            >
+              구매
+            </button>
+            <button
+              className={'h-[56px] flex-1 flex justify-center items-center text-gray-10 border font-suit-15-b-130'}
+              onClick={() => handleButtonClick(2)}
+            >
+              판매
+            </button>
+            <button
+              className={'h-[56px] flex-1 flex justify-center items-center text-gray-10 border font-suit-15-b-130'}
+              onClick={() => handleButtonClick(3)}
+            >
+              전송
+            </button>
+            <button
+              className={'h-[56px] flex-1 flex justify-center items-center text-gray-10 border font-suit-15-b-130'}
+              onClick={() => handleButtonClick(4)}
+            >
+              취소
+            </button>
+          </div>
 
-                <div className={'text-gray-20 font-suit-18-400-140 sm:font-suit-22-r-140 whitespace-pre-line'}>
-                  {`보안성 및 안정성이 입증된 콜드월렛의 코어 솔루션으로 전용 지갑을 제작하여 고객님들의 코인을 안정하게 보관할 수 있습니다.\n코인 지갑은 PC, 모바일, 태블릿 등 모든 기기에 최적화된 화면으로 구성되어 있어 어디에서 접근하여도 편리한 환경을 제공합니다.\n또한, 직관적이고 간편한 결제 시스템을 제공하여 다양한 서비스를 누구나 쉽게 이용가능합니다.\n또한, 고급 기술을 통해 고객이 소유하고 있는 자산을 디지털화 하여 작은 단위로 분할, 이를 블록체인을 통해 소유 및 이관할 수 있도록 했으며, Private Key를 개인이 보관하기 때문에 서버의 해킹으로 부터 안전하며, 분실 시에도 복구 단어 등의 고급 보안 수단을 통해 완벽한 복구가 가능합니다.`}
-                </div>
-              </div>
+          <div className={'flex justify-start py-4 gap-1'}>
+            <button
+              onClick={() => handleTypeClick('all')}
+              className={`h-[36px] px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+            >
+              전체
+            </button>
+            <button
+              onClick={() => handleTypeClick('1')}
+              className={`h-[36px] px-4 font-suit-13-b-130 ${type === '1' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+            >
+              신청
+            </button>
+            <button
+              onClick={() => handleTypeClick('2')}
+              className={`h-[36px] px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+            >
+              대기
+            </button>
+            <button
+              onClick={() => handleTypeClick('3')}
+              className={`h-[36px] px-4 font-suit-13-b-130 ${type === '3' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+            >
+              완료
+            </button>
+          </div>
 
-              <div className={'flex flex-row gap-[30px]'}>
-                {information.map((item) => (
-                  <div key={item.title} className={'flex-1 flex flex-col gap-5'}>
-                    <div className={'relative h-[335px] border border-line-line02 bg-[#F4F7FE]'}>
-                      <Image className={'object-cover'} src={item.image} alt={item.title} fill />
+          {data?.data.map((item) => {
+            const isReady = Number(item.delng_sttus) === 11 || Number(item.delng_sttus) === 21;
+            const isWait = Number(item.delng_sttus) === 12 || Number(item.delng_sttus) === 22;
+            const isComplete = Number(item.delng_sttus) === 13 || Number(item.delng_sttus) === 23;
+            const isCancel = Number(item.delng_sttus) === 14 || Number(item.delng_sttus) === 24;
+
+            const isBuyReady = Number(item.delng_se) === 1 && Number(item.delng_sttus) === 11;
+            const isSellReady = Number(item.delng_se) === 2 && Number(item.delng_sttus) === 21;
+
+            const status = (() => {
+              if (isReady) return { text: '신청', style: 'text-primary-50 bg-primary-95' };
+              if (isWait) {
+                return {
+                  text: '대기',
+                  style: 'text-yellow-50 bg-gradient-to-t from-white/85 to-white/85 bg-yellow-50',
+                };
+              }
+              if (isComplete) return { text: '완료', style: 'text-gray-0 bg-gray-95' };
+              if (isCancel) return { text: '취소', style: 'text-gray-50 bg-gray-95' };
+              return { text: '대기', style: 'text-gray-50 bg-gray-95' };
+            })();
+
+            return (
+              <div key={item.created_at} className={'w-full max-w-2xl mx-auto p-6'}>
+                <div className={'rounded-[16px] border border-line-02 overflow-hidden'}>
+                  <div className={`flex justify-between items-center ${status.style} px-5 py-2`}>
+                    <h2 className={`font-suit-22-b-130 ${status.style}`}>{status.text}</h2>
+                    <span className={'text-gray-500 text-sm'}>신청일 {item.created_at}</span>
+                  </div>
+
+                  <div className={'space-y-3 px-5 py-3'}>
+                    <div className={'flex justify-between items-center'}>
+                      <span className={'text-gray-40 font-suit-14-m-130'}>구매수량</span>
+                      <span className={'text-orange-orange50 font-suit-16-b-130'}>
+                        {(item.delng_qy || 0).toLocaleString('ko-KR')} C
+                      </span>
                     </div>
 
-                    <div className={'flex flex-col gap-4'}>
-                      <div className={'text-gray-10 font-suit-22-b-130'}>{item.title}</div>
-                      <div className={'text-gray-20 font-suit-18-400-156'}>{item.description}</div>
+                    <div className={'flex justify-between items-center'}>
+                      <span className={'text-gray-40 font-suit-14-m-130'}>입금정보</span>
+                      <div className={'flex items-center gap-2'}>
+                        <span className={'text-gray-10 font-suit-14-r-130'}>
+                          {convertBank(item.rcpmny_bank)} ({item.rcpmny_dpstr}) | {item.rcpmny_acnutno}
+                        </span>
+
+                        <button
+                          className={'h-[28px] border text-gray-10 font-suit-12-m-130 px-3 rounded-lg'}
+                          onClick={() =>
+                            handleCopyClick(
+                              `${convertBank(item.rcpmny_bank)} (${item.rcpmny_dpstr}) ${item.rcpmny_acnutno}`,
+                            )
+                          }
+                        >
+                          <span className={'text-sm'}>복사하기</span>
+                        </button>
+                      </div>
                     </div>
+
+                    <div className={'flex justify-between items-center'}>
+                      <span className={'text-gray-40 font-suit-14-m-130'}>입금금액</span>
+                      <span className={'text-gray-10 font-suit-16-b-130'}>
+                        {(item.compt_qy || 0).toLocaleString('ko-KR')}
+                      </span>
+                    </div>
+
+                    <p className={'bg-primary-99 text-gray-10 mt-4 font-suit-13-r-150'}>
+                      입금 완료 시 입금 완료 버튼을 클릭해 주시면 해당 계좌가 기능하며, 입금 확인 시{' '}
+                      <span className={'text-red-50 font-suit-13-b-130'}>가상계좌 운영정책 예금주가 다를 경우</span>{' '}
+                      처리 반환처리 되니 반드시 확인 후 입금하시기 바랍니다.
+                    </p>
+
+                    {isBuyReady && (
+                      <div className={'flex justify-center gap-4 mt-8'}>
+                        <button
+                          className={'px-8 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors'}
+                        >
+                          입금완료
+                        </button>
+
+                        <button className={'px-8 py-3 text-red-50 hover:text-red-60 transition-colors'}>
+                          신청취소
+                        </button>
+                      </div>
+                    )}
                   </div>
-                ))}
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
+      </div>
 
-        <div className={'max-w-[1320px] mx-auto mb-[150px]'}>
-          <div className={'flex flex-col gap-[150px]'}>
-            <div className={'relative w-full h-[600px]'}>
-              <Image className={'object-cover'} src={mainObject} alt={'main-object'} fill />
-            </div>
-
-            <div className={'flex flex-col gap-[30px]'}>
-              <div className={'text-gray-10 font-suit-32-500-130 whitespace-pre text-center'}>
-                {`전문 개발팀을 통해 강력한 보안 시스템을 만들어\n고객의 자산을 상시 보호 합니다.`}
-              </div>
-
-              <div className={'w-[350px] h-[56px] mx-auto'}>
-                <button className={'w-full h-full border border-gray-0 text-gray-0 font-suit-17-m-130'}>Join Us</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className={'flex justify-center items-center mt-14'}>
+        <Pagination totalPage={10} />
       </div>
     </div>
   );

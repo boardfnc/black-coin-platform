@@ -1,13 +1,5 @@
-import { redirect } from 'next/navigation';
-
-import { QueryClient, dehydrate } from '@tanstack/react-query';
-
 import Header from '@/components/organisms/layouts/wallet/Header';
 import { Wallet } from '@/components/templates/wallet';
-import { ROUTES } from '@/constants';
-import { automaticLoginService } from '@/services/admin/auth/login';
-import { automaticLoginQueryKey } from '@/services/admin/auth/login.query';
-import { QueryHydrate } from '@/utils/react-query';
 
 interface IWalletPageProps {
   searchParams: Promise<{
@@ -22,8 +14,6 @@ interface IWalletPageProps {
 }
 
 export default async function WalletPage({ searchParams }: IWalletPageProps) {
-  const queryClient = new QueryClient();
-
   const parseSearchParams = await searchParams;
 
   const params = {
@@ -48,23 +38,11 @@ export default async function WalletPage({ searchParams }: IWalletPageProps) {
     // redirect(ROUTES.ROOT);
   }
 
-  const data = await automaticLoginService({
-    code: params.code,
-    esntl_key: params.essentialKey,
-  });
-
-  await queryClient.prefetchQuery({
-    queryKey: automaticLoginQueryKey,
-    queryFn: () => data,
-  });
-
-  const dehydratedState = dehydrate(queryClient);
-
   return (
-    <QueryHydrate state={dehydratedState}>
+    <>
       <Header />
 
       <Wallet />
-    </QueryHydrate>
+    </>
   );
 }

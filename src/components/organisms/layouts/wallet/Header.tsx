@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { ROUTES } from '@/constants';
-import { logoutService } from '@/services/admin/auth';
-import { automaticLoginService } from '@/services/admin/auth/login';
-import { automaticLoginQueryKey } from '@/services/admin/auth/login.query';
+import { automaticLoginService } from '@/services/platform/auth/login';
+import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
+import { logoutService } from '@/services/platform/auth/logout';
 import { useJoin } from '@/stores/join';
 import { useLogin } from '@/stores/login';
 

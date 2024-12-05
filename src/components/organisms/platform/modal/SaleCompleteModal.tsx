@@ -1,18 +1,18 @@
-import type { IBuyCompleteModalProps } from '../../admin/modal/BuyCoinModal.types';
+import type { ISaleCompleteModalProps } from './SaleCompleteModal.types';
 
 import { IconLine24Bell, IconLine24ConfirmEtc } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
 import { convertBank } from '@/utils/covert';
 
-export default function BuyCompleteModal({
-  isOpen,
+export default function SaleCompleteModal({
   onClose,
+  isOpen,
   createdAt,
   bank,
   account,
   bankAccount,
   bankAmount,
-}: IBuyCompleteModalProps) {
+}: ISaleCompleteModalProps) {
   if (!bank || !account || !bankAccount || !bankAmount) return null;
 
   return (
@@ -22,7 +22,7 @@ export default function BuyCompleteModal({
           <IconLine24ConfirmEtc />
 
           <div className={'flex flex-col justify-center items-center gap-2'}>
-            <div className={'text-gray-10 font-suit-18-b-130'}>구매 등록이 완료되었습니다.</div>
+            <div className={'text-gray-10 font-suit-18-b-130'}>판매 등록이 완료되었습니다.</div>
             <div className={'text-gray-40 font-pre-13-r-130'}>{createdAt}</div>
           </div>
         </div>

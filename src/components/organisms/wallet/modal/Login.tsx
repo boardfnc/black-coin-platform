@@ -11,7 +11,7 @@ import { Image } from '@/components/atoms/images';
 import Modal from '@/components/atoms/modals/Modal';
 import { useToast } from '@/hooks';
 import { digitalIllustration } from '@/images/background';
-import { platformLoginService } from '@/services/admin/auth/login';
+import { platformLoginService } from '@/services/platform/auth/login';
 import { useLogin } from '@/stores/login';
 
 export default function LoginModal() {

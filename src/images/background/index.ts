@@ -10,3 +10,6 @@ export { default as digitalWallet } from './digital-wallet-1.png';
 export { default as digitalIllustration } from './d-illustration-2.png';
 export { default as cube } from './cube.png';
 export { default as digitalCoinCartIcon } from './d-coin-cart-icon-1.png';
+export { default as kingProfile } from './king-profile.png';
+export { default as buyCoin } from './buy-coin.png';
+export { default as sellCoin } from './sell-coin.png';

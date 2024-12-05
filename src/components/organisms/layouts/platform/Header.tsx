@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { IconLine24Avatar } from '@/components/atoms/icons/icon-line';
+import { PlatformLogin } from '@/components/templates/platform/login';
 import { ROUTES } from '@/constants';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
@@ -14,10 +15,14 @@ import { userInformationShowQueryKey } from '@/services/platform/auth/user.query
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
     queryFn: () => userInformationShowService(),
   });
+
+  const isLogin = !!data?.data;
 
   return (
     <>
@@ -146,29 +151,39 @@ export default function Header() {
             </div>
           </div>
 
-          <div className={'flex flex-row gap-5 items-center'}>
-            <div className={'flex flex-row gap-2 items-center'}>
-              <div className={'text-gray-30 font-suit-15-b-130'}>Coinpay</div>
+          {isLogin && (
+            <div className={'flex flex-row gap-5 items-center'}>
+              <div className={'flex flex-row gap-2 items-center'}>
+                <div className={'text-gray-30 font-suit-15-b-130'}>Coinpay</div>
 
-              <div className={'flex flex-row gap-0.5 items-center'}>
-                <div className={'text-orange-orange50 font-suit-18-750-130'}>
-                  {(data?.data.hold_coin || 0).toLocaleString('ko-KR')}
+                <div className={'flex flex-row gap-0.5 items-center'}>
+                  <div className={'text-orange-orange50 font-suit-18-750-130'}>
+                    {(data?.data?.hold_coin || 0).toLocaleString('ko-KR')}
+                  </div>
+                  <div className={'text-gray-30 font-suit-15-b-130'}>C</div>
                 </div>
-                <div className={'text-gray-30 font-suit-15-b-130'}>C</div>
               </div>
-            </div>
 
-            <div className={'flex flex-row gap-1 items-center'}>
-              <div className={'w-8 h-8 flex items-center justify-center bg-gray-0 border border-gray-0  rounded-full'}>
-                <IconLine24Avatar />
+              <div className={'flex flex-row gap-1 items-center'}>
+                <div
+                  className={'w-8 h-8 flex items-center justify-center bg-gray-0 border border-gray-0  rounded-full'}
+                >
+                  <IconLine24Avatar />
+                </div>
+                <div className={'text-gray-0 font-suit-16-m-130'}>{data?.data?.nm || '알 수 없음'}</div>
               </div>
-              <div className={'text-gray-0 font-suit-16-m-130'}>{data?.data.nm || '알 수 없음'}</div>
-            </div>
 
+              <button className={'h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'}>
+                로그아웃
+              </button>
+            </div>
+          )}
+
+          {!isLogin && (
             <button className={'h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'}>
-              로그아웃
+              로그인
             </button>
-          </div>
+          )}
         </div>
       </div>
     </>

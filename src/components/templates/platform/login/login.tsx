@@ -11,7 +11,7 @@ import { useMutation } from '@tanstack/react-query';
 import { IconLine24ArrowRight } from '@/components/atoms/icons/icon-line';
 import { AlertModal } from '@/components/organisms/platform/modal';
 import ROUTES from '@/constants/routes';
-import { platformLoginService } from '@/services/admin/auth/login';
+import { platformLoginService } from '@/services/platform/auth/login';
 
 export default function PlatformLogin() {
   const router = useRouter();

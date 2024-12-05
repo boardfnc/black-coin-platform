@@ -5,12 +5,6 @@ export interface IAdminLoginRequest {
   password: string;
 }
 
-export interface IPlatformLoginRequest {
-  login_id: string;
-  password: string;
-  code: string;
-}
-
 export interface IMyData {
   mngr_id: number;
   mngr_se: string;
@@ -19,18 +13,6 @@ export interface IMyData {
 }
 
 export interface ILoginResponse extends IBaseResponse {
-  data: {
-    token: ITokenData;
-    me: IMyData;
-  };
-}
-
-export interface IAutomaticLoginRequest {
-  code: string;
-  esntl_key: string;
-}
-
-export interface IAutomaticLoginResponse extends ILoginResponse {
   data: {
     token: ITokenData;
     me: IMyData;

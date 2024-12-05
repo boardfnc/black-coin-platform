@@ -22,3 +22,4 @@ export { default as IconLine24ConfirmEtc } from './ConfirmEtc';
 export { default as IconLine24Bell } from './Bell';
 export { default as IconLine24Send } from './Send';
 export { default as IconLine24Avatar } from './Avatar';
+export { default as IconLine24Filter } from './Filter';

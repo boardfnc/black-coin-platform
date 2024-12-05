@@ -10,5 +10,6 @@ export interface IPurchaseResponse extends IBaseWithPageResponse {
     rcpmny_dpstr: string;
     rcpmny_acnutno: string;
     rcpmny_am: number;
+    created_at: string;
   };
 }

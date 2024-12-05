@@ -6,8 +6,8 @@ import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 
 import { coinWallet, digitalWallet } from '@/images/background';
-import { automaticLoginService } from '@/services/admin/auth/login';
-import { automaticLoginQueryKey } from '@/services/admin/auth/login.query';
+import { automaticLoginService } from '@/services/platform/auth/login';
+import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
 import { useLogin } from '@/stores/login';
 
 export default function Wallet() {

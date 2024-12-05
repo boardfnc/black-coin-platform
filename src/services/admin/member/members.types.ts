@@ -33,30 +33,32 @@ export interface IMemberRequest {
 }
 
 export interface IMemberResponse extends IBaseResponse {
-  mber_id: number;
-  mngr_id: number;
-  mber_sttus: string;
-  login_id: string;
-  esntl_key: string;
-  mp_no: string;
-  bank: string;
-  dpstr: string;
-  acnutno: string;
-  mber_grd: string;
-  passiv_grd_at: string;
-  hold_coin: number;
-  rcppay_co: number;
-  rcpmny_am: number;
-  defray_am: number;
-  tot_delng_am: number;
-  confm_sttus: string;
-  confm_dt: string;
-  sbscrb_dt: string;
-  sbscrb_ip: string;
-  last_conect_dt: string;
-  last_conect_ip: string;
-  last_conect_os: string;
-  last_conect_brwsr: string;
+  data: {
+    mber_id: number;
+    mngr_id: number;
+    mber_sttus: string;
+    login_id: string;
+    esntl_key: string;
+    mp_no: string;
+    bank: string;
+    dpstr: string;
+    acnutno: string;
+    mber_grd: string;
+    passiv_grd_at: string;
+    hold_coin: number;
+    rcppay_co: number;
+    rcpmny_am: number;
+    defray_am: number;
+    tot_delng_am: number;
+    confm_sttus: string;
+    confm_dt: string;
+    sbscrb_dt: string;
+    sbscrb_ip: string;
+    last_conect_dt: string;
+    last_conect_ip: string;
+    last_conect_os: string;
+    last_conect_brwsr: string;
+  };
 }
 
 export interface IMemberDealingsRequest {
@@ -66,9 +68,11 @@ export interface IMemberDealingsRequest {
 }
 
 export interface IMemberDealingsResponse extends IBaseResponse {
-  fee_am: number;
-  purchs_am: number;
-  sle_am: number;
+  data: {
+    fee_am: number;
+    purchs_am: number;
+    sle_am: number;
+  };
 }
 
 export interface IMemberPasswordUpdateRequest {

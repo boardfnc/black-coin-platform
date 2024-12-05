@@ -83,7 +83,7 @@ export default function HomePage() {
                 {information.map((item) => (
                   <div key={item.title} className={'flex-1 flex flex-col gap-5'}>
                     <div className={'relative h-[335px] border border-line-line02 bg-[#F4F7FE]'}>
-                      <Image className={'object-cover'} src={item.image} alt={item.title} fill />
+                      <Image className={'object-none'} src={item.image} alt={item.title} fill />
                     </div>
 
                     <div className={'flex flex-col gap-4'}>

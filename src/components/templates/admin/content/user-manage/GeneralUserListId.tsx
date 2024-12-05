@@ -8,6 +8,7 @@ import type { IGeneralUserListIdProps } from './GeneralUserListId.types';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { BankSelect } from '@/components/atoms/inputs';
+import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
 import UserDetailChangePasswordModal from '@/components/organisms/admin/modal/UserDetailChangePasswordModal';
 import { useFetch, useRequest, useToast } from '@/hooks';
@@ -18,10 +19,12 @@ import {
   adminMemberIdService,
   adminMemberStatusUpdateService,
 } from '@/services/admin/member/adminMembers';
+import { memberDealingsService, memberService } from '@/services/admin/member/members';
 
 export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   const { request } = useRequest();
   const { open: openToast } = useToast();
+  const { isSuperAdmin } = useAuthor();
 
   const [isGradeResetModalOpen, setIsGradeResetModalOpen] = useState(false);
   const [isPartnerSearchModalOpen, setIsPartnerSearchModalOpen] = useState(false);
@@ -48,16 +51,23 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     endDate: '',
   });
 
-  const fetchUserList = useCallback(() => adminMemberIdService({ id: Number(id) }), [id]);
-  const fetchUserDealingsList = useCallback(
-    () =>
-      adminMemberDealingsService({
-        id: Number(id),
-        stats_de_start: searchDate.startDate,
-        stats_de_end: searchDate.endDate,
-      }),
-    [id, searchDate],
-  );
+  const fetchUserList = useCallback(() => {
+    return isSuperAdmin ? adminMemberIdService({ id: Number(id) }) : memberService({ id: Number(id) });
+  }, [id, isSuperAdmin]);
+
+  const fetchUserDealingsList = useCallback(() => {
+    return isSuperAdmin
+      ? adminMemberDealingsService({
+          id: Number(id),
+          stats_de_start: searchDate.startDate || undefined,
+          stats_de_end: searchDate.endDate || undefined,
+        })
+      : memberDealingsService({
+          id: Number(id),
+          stats_de_start: searchDate.startDate || undefined,
+          stats_de_end: searchDate.endDate || undefined,
+        });
+  }, [id, searchDate, isSuperAdmin]);
 
   const { data: userDataOrigin } = useFetch(fetchUserList);
   const { data: userDealingsDataOrigin } = useFetch(fetchUserDealingsList);
@@ -65,8 +75,18 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   useEffect(() => {
     if (userDataOrigin?.data) {
       setFormData({
-        partnerName: userDataOrigin.data.prtnr_nm,
-        codeName: userDataOrigin.data.code,
+        partnerName:
+          (userDataOrigin.data &&
+            'prtnr_nm' in userDataOrigin.data &&
+            typeof userDataOrigin.data.prtnr_nm === 'string' &&
+            userDataOrigin.data.prtnr_nm) ||
+          '',
+        codeName:
+          (userDataOrigin.data &&
+            'code' in userDataOrigin.data &&
+            typeof userDataOrigin.data.code === 'string' &&
+            userDataOrigin.data.code) ||
+          '',
         phoneNumber: userDataOrigin.data.mp_no,
         bank: userDataOrigin.data.bank,
         account: userDataOrigin.data.acnutno,

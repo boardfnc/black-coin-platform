@@ -9,15 +9,14 @@ import type { IBuyCompleteModalProps } from '@/components/organisms/platform/mod
 
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
-import { ConfirmColModal, AlertModal } from '@/components/organisms/platform/modal';
-import { BuyCompleteModal } from '@/components/organisms/platform/modal/BuyCompleteModal';
+import { ConfirmColModal, AlertModal, BuyCompleteModal } from '@/components/organisms/platform/modal';
 import { cube, digitalCoinCartIcon } from '@/images/background';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
 import { purchaseService } from '@/services/platform/coin/purchase';
 import { convertBank } from '@/utils/covert';
 
-export default function BuyPage() {
+export default function Buy() {
   const [amount, setAmount] = useState<string>('0');
 
   const [confirmModal, setConfirmModal] = useState({
@@ -51,7 +50,7 @@ export default function BuyPage() {
         setConfirmModal({ isOpen: false });
         setBuyCompleteModal({
           isOpen: true,
-          createdAt: '', // TODO: 추후 추가
+          createdAt: data.data.created_at,
           bankAmount: data.data.rcpmny_am.toLocaleString('ko-KR'),
           account: data.data.rcpmny_dpstr,
           bank: data.data.rcpmny_bank,

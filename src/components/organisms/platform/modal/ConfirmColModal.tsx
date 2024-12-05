@@ -41,7 +41,7 @@ export default function ConfirmColModal({
 
         <div className={'flex justify-end items-center gap-2'}>
           <button
-            className={'w-[90px] h-[48px] text-gray-0 font-pre-16-m-130 bg-gray-90 rounded-[24px]'}
+            className={'w-[90px] h-[48px] text-gray-0 font-pre-16-m-130 border border-gray-80 rounded-[24px]'}
             onClick={onClose}
           >
             {cancelText}

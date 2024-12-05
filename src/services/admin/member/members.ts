@@ -59,7 +59,7 @@ export async function memberService(params: IMemberRequest, options?: OptionsTyp
 }
 
 export async function memberDealingsService(params: IMemberDealingsRequest, options?: OptionsType) {
-  const response = await fetch<IMemberDealingsResponse>(`/member/member-dealings/${params.id}`, {
+  const response = await fetch<IMemberDealingsResponse>(`/member/member/dealings/${params.id}`, {
     method: 'GET',
     params,
     ...options,
