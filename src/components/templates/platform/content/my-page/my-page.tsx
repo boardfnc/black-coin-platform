@@ -166,37 +166,48 @@ export default function MyPage() {
             </div>
 
             {/* 오른쪽 MY WALLET 섹션 */}
-            <div className={'h-auto'}>
-              <div className={'rounded-2xl border border-gray-80 p-8'}>
-                <div className={'text-gray-10 font-suit-20-b-130 mb-6'}>MY WALLET</div>
-                <div className={'flex justify-between items-center mb-6'}>
-                  <div className={'flex items-center gap-1'}>
+            <div className={'w-[360px] h-auto'}>
+              <div className={'rounded-2xl border border-gray-80 pt-2 px-4 pb-4'}>
+                <div className={'h-[56px] flex items-center text-gray-10 font-suit-20-b-130'}>MY WALLET</div>
+                <div className={'flex gap-[6px] justify-between items-center border-b border-gray-20'}>
+                  <div className={'h-[56px] flex items-center gap-1'}>
                     <IconLine24SavingMoney className={'text-yellow-50'} />
-                    <span className={'text-gray-40'}>보유 수량</span>
+                    <span className={'font-suit-16-b-130 text-gray-10'}>보유 수량</span>
                   </div>
 
-                  <span className={'text-orange-500 text-xl font-bold'}>
-                    {data?.data?.hold_coin.toLocaleString('ko-KR')}C
+                  <span className={'flex gap-[2px] text-orange-500 text-xl font-bold'}>
+                    <span>{data?.data?.hold_coin.toLocaleString('ko-KR')}</span>
+                    <span>C</span>
                   </span>
                 </div>
-                <div className={'border-t border-gray-80 pt-4'}>
-                  <div className={'text-sm text-gray-40 mb-4'}>거래내역</div>
-                  <div className={'grid grid-cols-4 gap-4'}>
-                    <div className={'text-center'}>
-                      <div className={'text-xl font-bold'}>{data?.data.purchase_count}</div>
-                      <div className={'text-sm text-gray-40'}>구매</div>
+
+                <div>
+                  <div className={'font-suit-14-m-130 text-gray-40 px-1 py-5'}>거래내역</div>
+                  <div className={'flex items-center py-4'}>
+                    <div className={'flex-1 text-center h-[48px]'}>
+                      <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.purchase_count}</div>
+                      <div className={'font-suit-13-r-130 text-gray-40'}>구매</div>
                     </div>
-                    <div className={'text-center'}>
-                      <div className={'text-xl font-bold'}>{data?.data.sale_count}</div>
-                      <div className={'text-sm text-gray-40'}>판매</div>
+
+                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+
+                    <div className={'flex-1 text-center h-[48px]'}>
+                      <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.sale_count}</div>
+                      <div className={'font-suit-13-r-130 text-gray-40'}>판매</div>
                     </div>
-                    <div className={'text-center'}>
-                      <div className={'text-xl font-bold'}>0</div>
-                      <div className={'text-sm text-gray-40'}>전송</div>
+
+                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+
+                    <div className={'flex-1 text-center h-[48px]'}>
+                      <div className={'font-suit-20-750-130 text-gray-10'}>0</div>
+                      <div className={'font-suit-13-r-130 text-gray-40'}>전송</div>
                     </div>
-                    <div className={'text-center'}>
-                      <div className={'text-xl font-bold'}>{data?.data.cancel_count}</div>
-                      <div className={'text-sm text-gray-40'}>취소</div>
+
+                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+
+                    <div className={'flex-1 text-center h-[48px]'}>
+                      <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.cancel_count}</div>
+                      <div className={'font-suit-13-r-130 text-gray-40'}>취소</div>
                     </div>
                   </div>
                 </div>

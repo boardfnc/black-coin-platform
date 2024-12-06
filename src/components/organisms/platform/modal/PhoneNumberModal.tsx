@@ -38,7 +38,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
   const { mutate } = useMutation({
     mutationFn: accountContactUpdateService,
     onSuccess() {
-      openToast({ type: 'success', message: '연락처가 변경되었습니다.' });
+      openToast({ type: 'info', message: '연락처 변경 완료!' });
 
       queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
 
@@ -71,7 +71,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
         <div className={'flex flex-col gap-6'}>
           <div className={'flex flex-col gap-1'}>
             <div className={'flex gap-1'}>
-              <div className={'font-suit-13-m-130 text-gray-40'}>기존 연락처</div>
+              <div className={'font-suit-16-m-130 text-gray-40'}>기존 연락처</div>
             </div>
 
             <div className={'flex gap-2 items-center'}>
@@ -103,8 +103,8 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
 
           <div className={'flex flex-col gap-1'}>
             <div className={'flex gap-1'}>
-              <div className={'font-suit-13-m-130 text-gray-40'}>새로운 연락처</div>
-              <div className={'text-red-50'}>*</div>
+              <div className={'font-suit-16-m-130 text-gray-40'}>새로운 연락처</div>
+              <div className={'font-suit-16-m-130 text-red-50'}>*</div>
             </div>
 
             <div className={'flex gap-2 items-center'}>
@@ -149,7 +149,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
               disabled={!isFormValid}
               onClick={handleSubmit}
             >
-              변경하기
+              완료
             </button>
           </div>
         </div>
