@@ -6,18 +6,18 @@ import { convertBank } from '@/utils/covert';
 
 export default function BuyCompleteModal({
   isOpen,
-  onClose,
   createdAt,
   bank,
   account,
   bankAccount,
   bankAmount,
+  onClose,
 }: IBuyCompleteModalProps) {
   if (!bank || !account || !bankAccount || !bankAmount) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} width={'500px'}>
-      <div className={'flex flex-col gap-[30px] p-[30px]'}>
+    <Modal isOpen={isOpen} onClose={onClose} width={'400px'}>
+      <div className={'flex flex-col gap-[30px] px-[10px] py-[30px]'}>
         <div className={'flex flex-col justify-center items-center gap-4'}>
           <IconLine24ConfirmEtc />
 
@@ -65,7 +65,8 @@ export default function BuyCompleteModal({
               <div className={'p-0.5 bg-red-50 rounded-full h-max'}>
                 <IconLine24Bell />
               </div>
-              <div className={'text-gray-10 font-pre-14-m-130'}>
+
+              <div className={'text-gray-10 font-pre-13-m-130'}>
                 입금 내역 확인 시{' '}
                 <span className={'text-red-50 font-pre-13-b-130'}>기재한 은행정보와 예금주가 다를 경우 반환처리</span>{' '}
                 되니 반드시 확인 후 입금해주시기 바랍니다.
@@ -75,6 +76,14 @@ export default function BuyCompleteModal({
         </div>
 
         <div className={'flex justify-end items-center gap-2'}>
+          <button
+            className={
+              'flex-auto h-[48px] font-suit-16-m-130 text-gray-100 bg-gray-0 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'
+            }
+          >
+            입금완료
+          </button>
+
           <button
             className={'w-[80px] h-[48px] text-gray-10 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
             onClick={onClose}

@@ -4,22 +4,29 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { IconLine24Avatar } from '@/components/atoms/icons/icon-line';
-import { PlatformLogin } from '@/components/templates/platform/login';
 import { ROUTES } from '@/constants';
+import { logoutService } from '@/services/platform/auth/logout';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const queryClient = useQueryClient();
 
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
     queryFn: () => userInformationShowService(),
+  });
+
+  const { mutate: logout } = useMutation({
+    mutationFn: () => logoutService(),
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+    },
   });
 
   const isLogin = !!data?.data;
@@ -100,19 +107,35 @@ export default function Header() {
               </div>
 
               <div className={'flex flex-col items-end justify-center gap-[30px]'}>
-                <Link href={ROUTES.PLATFORM.BUY} className={'font-suit-18-b-130 text-gray-100'}>
+                <Link
+                  href={ROUTES.PLATFORM.BUY}
+                  onClick={() => setIsOpen(false)}
+                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                >
                   구매
                 </Link>
 
-                <Link href={ROUTES.PLATFORM.SELL} className={'font-suit-18-b-130 text-gray-100'}>
+                <Link
+                  href={ROUTES.PLATFORM.SELL}
+                  onClick={() => setIsOpen(false)}
+                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                >
                   판매
                 </Link>
 
-                <Link href={ROUTES.PLATFORM.SEND} className={'font-suit-18-b-130 text-gray-100'}>
+                <Link
+                  href={ROUTES.PLATFORM.SEND}
+                  onClick={() => setIsOpen(false)}
+                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                >
                   전송
                 </Link>
 
-                <Link href={ROUTES.PLATFORM.TRANSACTION_HISTORY} className={'font-suit-18-b-130 text-gray-100'}>
+                <Link
+                  href={ROUTES.PLATFORM.TRANSACTION_HISTORY}
+                  onClick={() => setIsOpen(false)}
+                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                >
                   거래내역
                 </Link>
               </div>
@@ -164,25 +187,33 @@ export default function Header() {
                 </div>
               </div>
 
-              <div className={'flex flex-row gap-1 items-center'}>
+              <Link href={ROUTES.PLATFORM.MY_PAGE} className={'flex flex-row gap-1 items-center'}>
                 <div
                   className={'w-8 h-8 flex items-center justify-center bg-gray-0 border border-gray-0  rounded-full'}
                 >
                   <IconLine24Avatar />
                 </div>
                 <div className={'text-gray-0 font-suit-16-m-130'}>{data?.data?.nm || '알 수 없음'}</div>
-              </div>
+              </Link>
 
-              <button className={'h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'}>
+              <button
+                className={'h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'}
+                onClick={() => logout()}
+              >
                 로그아웃
               </button>
             </div>
           )}
 
           {!isLogin && (
-            <button className={'h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'}>
+            <Link
+              href={ROUTES.PLATFORM.LOGIN}
+              className={
+                'flex items-center h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'
+              }
+            >
               로그인
-            </button>
+            </Link>
           )}
         </div>
       </div>

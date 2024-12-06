@@ -155,49 +155,54 @@ export default function Buy() {
                       </div>
                     </div>
                   </div>
-
-                  <div className={'flex flex-row sm:flex-row flex-wrap items-center'}>
-                    <div
-                      className={
-                        'flex items-center w-2/5 sm:w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-s border-y border-line-line02 text-gray-0 font-suit-13-b-130'
-                      }
-                    >
-                      은행명
+                  <div className={'border-s grid grid-cols-1 sm:flex sm:flex-row sm:w-full'}>
+                    <div className={'flex flex-auto'}>
+                      <div
+                        className={
+                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-b-0 border-line-line02 text-gray-0 font-suit-13-b-130'
+                        }
+                      >
+                        은행명
+                      </div>
+                      <div
+                        className={
+                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
+                        }
+                      >
+                        {convertBank(data?.data.bank)}
+                      </div>
                     </div>
-                    <div
-                      className={
-                        'flex-auto flex items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
-                      }
-                    >
-                      {convertBank(data?.data.bank)}
+                    <div className={'flex flex-auto'}>
+                      <div
+                        className={
+                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
+                        }
+                      >
+                        예금주
+                      </div>
+                      <div
+                        className={
+                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
+                        }
+                      >
+                        {data?.data.dpstr}
+                      </div>
                     </div>
-                    <div
-                      className={
-                        'flex items-center w-2/5 sm:w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130'
-                      }
-                    >
-                      예금주
-                    </div>
-                    <div
-                      className={
-                        'flex-auto flex items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
-                      }
-                    >
-                      {data?.data.dpstr}
-                    </div>
-                    <div
-                      className={
-                        'flex items-center w-2/5 sm:w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130'
-                      }
-                    >
-                      계좌번호
-                    </div>
-                    <div
-                      className={
-                        'flex-auto flex items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
-                      }
-                    >
-                      {data?.data.acnutno}
+                    <div className={'flex flex-auto'}>
+                      <div
+                        className={
+                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
+                        }
+                      >
+                        계좌번호
+                      </div>
+                      <div
+                        className={
+                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
+                        }
+                      >
+                        {data?.data.acnutno}
+                      </div>
                     </div>
                   </div>
                 </div>

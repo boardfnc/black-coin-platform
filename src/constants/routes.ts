@@ -8,7 +8,7 @@ const ROUTES = {
       ID: '/platform/forgot-author/id',
       PASSWORD: '/platform/forgot-author/password',
     },
-    MY_PAGE: '/platform/my-page',
+    MY_PAGE: '/platform/content/my-page',
     MAIN: '/platform/content',
     HOME: '/platform/content/home',
     BUY: '/platform/content/buy',

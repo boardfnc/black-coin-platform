@@ -16,8 +16,8 @@ export default function SaleCompleteModal({
   if (!bank || !account || !bankAccount || !bankAmount) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} width={'500px'}>
-      <div className={'flex flex-col gap-[30px] p-[30px]'}>
+    <Modal isOpen={isOpen} onClose={onClose} width={'400px'}>
+      <div className={'flex flex-col gap-[30px] px-[10px] py-[30px]'}>
         <div className={'flex flex-col justify-center items-center gap-4'}>
           <IconLine24ConfirmEtc />
 

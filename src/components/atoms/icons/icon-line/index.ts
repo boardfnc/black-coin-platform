@@ -23,3 +23,7 @@ export { default as IconLine24Bell } from './Bell';
 export { default as IconLine24Send } from './Send';
 export { default as IconLine24Avatar } from './Avatar';
 export { default as IconLine24Filter } from './Filter';
+export { default as IconLine24Return } from './ArrowReturn';
+export { default as IconLine24Calendar } from './Calendar';
+export { default as IconLine24ArrowReturn } from './ArrowReturn';
+export { default as IconLine24Headset } from './Headset';

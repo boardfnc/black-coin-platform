@@ -6,15 +6,17 @@ import { useRouter } from 'next/navigation';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { IconLine24ArrowRight } from '@/components/atoms/icons/icon-line';
 import { AlertModal } from '@/components/organisms/platform/modal';
 import ROUTES from '@/constants/routes';
 import { platformLoginService } from '@/services/platform/auth/login';
+import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
 
 export default function PlatformLogin() {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const [alertModal, setAlertModal] = useState({
     isOpen: false,
@@ -31,8 +33,6 @@ export default function PlatformLogin() {
     mutationFn: platformLoginService,
     onSuccess(data) {
       if (data != null) {
-        if (data.status) return router.push(ROUTES.PLATFORM.HOME);
-
         if (!data.status) {
           setAlertModal({
             isOpen: true,
@@ -40,6 +40,10 @@ export default function PlatformLogin() {
             description: data.message || '로그인에 실패하였습니다.',
           });
         }
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+
+        if (data.status) return router.push(ROUTES.PLATFORM.HOME);
       }
     },
   });
