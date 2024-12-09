@@ -27,3 +27,4 @@ export { default as IconLine24Return } from './ArrowReturn';
 export { default as IconLine24Calendar } from './Calendar';
 export { default as IconLine24ArrowReturn } from './ArrowReturn';
 export { default as IconLine24Headset } from './Headset';
+export { default as IconLine24Change } from './Change';
