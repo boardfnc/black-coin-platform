@@ -9,13 +9,20 @@ import { isRefreshTokenError } from '@/utils';
 import { isUnauthorizedError } from '@/utils/token';
 
 interface IUseFetchOptions {
-  _?: number;
+  _?: boolean;
+}
+
+interface IRequestOptions {
+  visibleErrorMessage?: boolean;
 }
 
 export default function useRequest() {
   const { open: openToast } = useToast();
 
-  const request = async <T = IBaseResponse,>(func: (options?: IUseFetchOptions) => Promise<T>) => {
+  const request = async <T = IBaseResponse,>(
+    func: (options?: IUseFetchOptions) => Promise<T>,
+    options?: IRequestOptions,
+  ) => {
     try {
       const response = await func();
 
@@ -33,21 +40,20 @@ export default function useRequest() {
           }
 
           if ('status' in response && !response.status) {
+            const message =
+              options?.visibleErrorMessage && 'message' in response && typeof response.message === 'string'
+                ? response.message
+                : `Error! [${response.status_code}] 오류로 인해 해당 작업을 완료하지 못했어요.`;
+
             openToast({
-              message: `Error! [${response.status_code}] 오류로 인해 해당 작업을 완료하지 못했어요.`,
+              message,
               type: 'error',
             });
           }
         }
 
-        if ('status' in response && response.status) {
-          return response;
-        }
-
-        throw response;
+        return response;
       }
-
-      throw response;
     } catch (error) {
       const errorResponse = error as IBaseResponse;
 

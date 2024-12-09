@@ -22,11 +22,13 @@ export default function AdminLogin() {
   const handleLoginSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    const data = await request(() =>
-      adminLoginService({
-        login_id: loginId,
-        password,
-      }),
+    const data = await request(
+      () =>
+        adminLoginService({
+          login_id: loginId,
+          password,
+        }),
+      { visibleErrorMessage: true },
     );
 
     if (data?.status) router.push(ROUTES.ADMIN.MAIN);
