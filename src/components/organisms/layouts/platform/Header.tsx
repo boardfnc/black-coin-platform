@@ -8,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { IconLine24Avatar } from '@/components/atoms/icons/icon-line';
 import { ROUTES } from '@/constants';
+import { useClient } from '@/hooks';
 import { logoutService } from '@/services/platform/auth/logout';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
@@ -16,10 +17,12 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const queryClient = useQueryClient();
+  const { isLogin: isClientLogin } = useClient();
 
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
     queryFn: () => userInformationShowService(),
+    enabled: isClientLogin,
   });
 
   const { mutate: logout } = useMutation({
@@ -31,7 +34,7 @@ export default function Header() {
     },
   });
 
-  const isLogin = !!data?.data;
+  const isLogin = !!data?.data || isClientLogin;
 
   return (
     <>
