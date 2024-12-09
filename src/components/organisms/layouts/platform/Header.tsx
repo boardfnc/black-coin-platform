@@ -24,8 +24,10 @@ export default function Header() {
 
   const { mutate: logout } = useMutation({
     mutationFn: () => logoutService(),
-    onSuccess() {
-      queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+    onSuccess(data) {
+      if (data != null) {
+        if (data.status) queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+      }
     },
   });
 

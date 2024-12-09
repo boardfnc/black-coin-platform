@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import { useState } from 'react';
@@ -14,6 +13,8 @@ import { ROUTES } from '@/constants';
 import { coinWallet, digitalWallet } from '@/images/background';
 import { automaticLoginService } from '@/services/platform/auth/login';
 import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
+import { exchangeCheckService } from '@/services/platform/coin/exchange';
+import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { useLogin } from '@/stores/login';
 
 export default function Wallet() {
@@ -34,6 +35,12 @@ export default function Wallet() {
   });
 
   const isLogin = data?.status === true;
+
+  const { data: exchangeCheckData } = useQuery({
+    queryKey: exchangeCheckQueryKey,
+    queryFn: exchangeCheckService,
+    enabled: isLogin,
+  });
 
   const onClickAuthorButton = () => {
     if (isLogin) {
@@ -78,7 +85,7 @@ export default function Wallet() {
 
             {isLogin && (
               <div className={'mt-[20px] p-[30px] bg-gray-95 rounded-[16px] border border-gray-100'}>
-                <div className={'px-[20px] bg-gray-100 pt-4 pb-5'}>
+                <div className={'px-[20px] bg-gray-100 pt-4 pb-5 rounded-[20px]'}>
                   <div className={'flex flex-col gap-2.5'}>
                     <div className={'flex items-center h-8 text-gray-0 font-suit-18-b-130'}>보유 상세</div>
 
@@ -98,7 +105,9 @@ export default function Wallet() {
                       <div className={'font-suit-18-b-130 text-gray-20'}>보유 게임 머니</div>
                       <div className={'flex gap-2 items-center'}>
                         <div className={'flex gap-1 items-center text-orange-orange50'}>
-                          <span className={'font-suit-24-750-130'}>0</span>
+                          <span className={'font-suit-24-750-130'}>
+                            {(exchangeCheckData?.data?.money || 0).toLocaleString('ko-KR')}
+                          </span>
                           <span className={'font-suit-20-750-130'}>P</span>
                         </div>
 
@@ -120,8 +129,10 @@ export default function Wallet() {
                       <div className={'font-suit-18-b-130 text-gray-20'}>보유 코인</div>
                       <div className={'flex gap-2 items-center'}>
                         <div className={'flex gap-1 items-center text-orange-orange50'}>
-                          <span className={'font-suit-24-750-130'}>0</span>
-                          <span className={'font-suit-20-750-130'}>P</span>
+                          <span className={'font-suit-24-750-130'}>
+                            {(exchangeCheckData?.data?.hold_coin || 0).toLocaleString('ko-KR')}
+                          </span>
+                          <span className={'font-suit-20-750-130'}>C</span>
                         </div>
 
                         <button
