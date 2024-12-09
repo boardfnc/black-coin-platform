@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import type { IChangeMoneyModalProps } from './ChangeMoneyModal.types';
+import type { IChangeMoneyModalProps } from './CoinToMoneyModal.types';
 
 import { Modal } from '@/components/atoms/modals';
 import { useToast } from '@/hooks';

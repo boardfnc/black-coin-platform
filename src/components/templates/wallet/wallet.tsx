@@ -143,7 +143,7 @@ export default function Wallet() {
                     <button
                       className={'flex-auto h-14 px-3 text-gray-0 border border-gray-10 rounded-2xl'}
                       onClick={() => {
-                        window.open(ROUTES.PLATFORM.BUY, '_blank', 'width=800, height=600');
+                        window.open(ROUTES.PLATFORM.BUY, '_blank', 'width=788, height=600');
                       }}
                     >
                       입금 신청
@@ -151,7 +151,7 @@ export default function Wallet() {
                     <button
                       className={'flex-auto h-14 px-3 text-gray-100 bg-primary-50 rounded-2xl'}
                       onClick={() => {
-                        window.open(ROUTES.PLATFORM.SELL, '_blank', 'width=800, height=600');
+                        window.open(ROUTES.PLATFORM.SELL, '_blank', 'width=788, height=600');
                       }}
                     >
                       출금 신청
