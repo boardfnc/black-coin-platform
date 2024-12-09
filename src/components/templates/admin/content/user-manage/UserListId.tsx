@@ -186,9 +186,9 @@ export default function UserList({ id }: IUserListIdProps) {
   return (
     <>
       <div className={'w-full h-full text-gray-0 bg-gray-100'}>
-        <div className={'flex flex-col gap-5 mt-5 mx-4'}>
-          <AdminHeadline title={'CA 회원 정보 수정'} subTitle={['회원 관리', 'CA 회원 목록', 'CA 회원 정보 수정']} />
+        <AdminHeadline title={'CA 회원 정보 수정'} subTitle={['회원 관리', 'CA 회원 목록', 'CA 회원 정보 수정']} />
 
+        <div className={'flex flex-col gap-5 mt-5 mx-4'}>
           <div className={'flex flex-row gap-5'}>
             <div className={'flex flex-row w-[500px] gap-5 bg-gray-95 p-5 rounded-[30px]'}>
               <div className={'w-full flex flex-col gap-5'}>
