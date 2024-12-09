@@ -41,9 +41,11 @@ export default function PlatformLogin() {
           });
         }
 
-        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        if (data.status) {
+          queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
 
-        if (data.status) return router.push(ROUTES.PLATFORM.HOME);
+          return router.push(ROUTES.PLATFORM.HOME);
+        }
       }
     },
   });
