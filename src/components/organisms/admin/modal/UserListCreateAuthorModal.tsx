@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { IUserListCreateAuthorModalProps } from './UserListCreateAuthorModal.types';
 
 import IconLine24SquareInfo from '@/components/atoms/icons/icon-line/SquareInfo';
+import { BankSelect } from '@/components/atoms/inputs';
 import Modal from '@/components/atoms/modals/Modal';
 import { useRequest } from '@/hooks';
 import { adminManagersPostService } from '@/services/admin/member/adminManagers';
@@ -308,14 +309,11 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               <span className={'text-gray-40'}>은행명</span>
               <span className={'text-red-50'}>*</span>
             </div>
-            <select
-              name={'bankName'}
+
+            <BankSelect
               value={formData.bankName}
-              onChange={handleChange}
-              className={'text-gray-50 font-pre-16-r-130 py-3 px-2.5 w-full border rounded-xl'}
-            >
-              <option value={''}>은행명</option>
-            </select>
+              onChange={(value) => setFormData((prev) => ({ ...prev, bankName: value }))}
+            />
           </div>
 
           <div className={'flex flex-col items-start gap-1'}>

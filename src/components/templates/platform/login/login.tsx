@@ -32,8 +32,6 @@ export default function PlatformLogin() {
   const { mutate: platformLogin } = useMutation({
     mutationFn: platformLoginService,
     onSuccess(data) {
-      console.log('data', data);
-
       if (data != null) {
         if (!data.status) {
           setAlertModal({
