@@ -3,7 +3,7 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import type { IBuyCompleteModalProps } from '@/components/organisms/platform/modal/BuyCompleteModal.types';
 
@@ -13,10 +13,14 @@ import { ConfirmColModal, AlertModal, BuyCompleteModal } from '@/components/orga
 import { cube, digitalCoinCartIcon } from '@/images/background';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
+import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { purchaseService } from '@/services/platform/coin/purchase';
+import { accountShowQueryKey } from '@/services/platform/my-page/account.query';
 import { convertBank } from '@/utils/covert';
 
 export default function Buy() {
+  const queryClient = useQueryClient();
+
   const [amount, setAmount] = useState<string>('0');
 
   const [confirmModal, setConfirmModal] = useState({
@@ -56,6 +60,10 @@ export default function Buy() {
           bank: data.data.rcpmny_bank,
           bankAccount: data.data.rcpmny_acnutno,
         });
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
       }
     },
   });

@@ -1,5 +1,5 @@
 import { Image } from '@/components/atoms/images';
-import { homeBackground, mainObject } from '@/images/background';
+import { homeBackground } from '@/images/background';
 
 export default function HomePage() {
   return (

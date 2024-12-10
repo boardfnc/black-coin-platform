@@ -1,11 +1,13 @@
 /* eslint-disable default-case */
 'use client';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 import { useSearchParams } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ko } from 'date-fns/locale';
 import dayjs from 'dayjs';
 import DatePicker from 'react-datepicker';
@@ -15,15 +17,18 @@ import { Image } from '@/components/atoms/images';
 import { Pagination } from '@/components/organisms/admin/pagination';
 import { useToast } from '@/hooks';
 import { cube } from '@/images/background';
+import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
 import { dealingsService } from '@/services/platform/coin/dealings';
+import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { purchaseCancelService, purchaseCompletionService } from '@/services/platform/coin/purchase';
 import { saleCancelService } from '@/services/platform/coin/sale';
+import { accountShowQueryKey } from '@/services/platform/my-page/account.query';
 import { convertBank } from '@/utils/covert';
-
-import 'react-datepicker/dist/react-datepicker.css';
 
 export default function TransactionHistory() {
   const searchParams = useSearchParams();
+
+  const queryClient = useQueryClient();
 
   const mode = searchParams.get('mode') || 2;
   const type = searchParams.get('type') || undefined;
@@ -55,6 +60,10 @@ export default function TransactionHistory() {
         if (!data.status) throw new Error(data.message);
 
         refetch();
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
       }
     },
   });
@@ -66,6 +75,10 @@ export default function TransactionHistory() {
         if (!data.status) throw new Error(data.message);
 
         refetch();
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
       }
     },
   });
@@ -77,6 +90,10 @@ export default function TransactionHistory() {
         if (!data.status) throw new Error(data.message);
 
         refetch();
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
       }
     },
   });

@@ -3,7 +3,7 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import type { ISaleCompleteModalProps } from '@/components/organisms/platform/modal/SaleCompleteModal.types';
 
@@ -13,10 +13,14 @@ import { ConfirmColModal, AlertModal, SaleCompleteModal } from '@/components/org
 import { cube, sellCoin } from '@/images/background';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
+import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { saleService } from '@/services/platform/coin/sale';
+import { accountShowQueryKey } from '@/services/platform/my-page/account.query';
 import { convertBank } from '@/utils/covert';
 
 export default function Sell() {
+  const queryClient = useQueryClient();
+
   const [amount, setAmount] = useState<string>('0');
 
   const [confirmModal, setConfirmModal] = useState({
@@ -56,6 +60,10 @@ export default function Sell() {
           bank: data.data.bank,
           bankAccount: data.data.acnutno,
         });
+
+        queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
       }
     },
   });
