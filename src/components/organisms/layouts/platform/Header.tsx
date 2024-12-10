@@ -9,6 +9,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { IconLine24Avatar, IconLine24Logout } from '@/components/atoms/icons/icon-line';
 import { ROUTES } from '@/constants';
 import { useClient } from '@/hooks';
+import { clientInformationKey } from '@/hooks/client';
 import { logoutService } from '@/services/platform/auth/logout';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
@@ -17,26 +18,26 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const queryClient = useQueryClient();
-  const { isLogin: isClientLogin } = useClient();
+  const { isLogin } = useClient();
 
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
     queryFn: () => userInformationShowService(),
-    enabled: isClientLogin,
   });
 
   const { mutate: logout } = useMutation({
     mutationFn: () => logoutService(),
     onSuccess(data) {
       if (data != null) {
-        if (data.status) queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+        if (data.status) {
+          queryClient.setQueryData(clientInformationKey, {
+            ...queryClient.getQueryData(clientInformationKey),
+            isLogin: false,
+          });
+        }
       }
     },
   });
-
-  const isLogin = !!data?.data || isClientLogin;
-
-  console.log(data, isClientLogin);
 
   return (
     <>
@@ -182,8 +183,8 @@ export default function Header() {
               </div>
 
               {isLogin && (
-                <button className={'w-full text-end font-suit-14-m-130 text-gray-95'} onClick={() => logout()}>
-                  <div className={'flex flex-row gap-1 items-center'}>
+                <button className={'w-full font-suit-14-m-130 text-gray-95'} onClick={() => logout()}>
+                  <div className={'flex flex-row gap-1 justify-end items-center'}>
                     <div>로그아웃</div>
                     <IconLine24Logout />
                   </div>

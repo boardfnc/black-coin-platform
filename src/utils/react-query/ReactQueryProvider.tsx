@@ -23,8 +23,8 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
       .some((cookie) => cookie.startsWith('token='));
 
     client.setQueryData(clientInformationKey, {
+      ...client.getQueryData(clientInformationKey),
       isLogin: !!hasToken,
-      isMobile: false,
     });
   }, [client]);
 

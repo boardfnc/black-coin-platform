@@ -1,12 +1,12 @@
 'use client';
 
-import { redirect, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 import { useEffect } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { ROUTES } from '@/constants';
+import useClient, { clientInformationKey } from '@/hooks/client';
 import { automaticLoginService } from '@/services/platform/auth/login';
 import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
 import { logoutService } from '@/services/platform/auth/logout';
@@ -16,7 +16,9 @@ import { useLogin } from '@/stores/login';
 export default function Header() {
   const { openModal: openLoginModal } = useLogin();
   const { openModal: openJoinModal } = useJoin();
+  const { isLogin } = useClient();
 
+  const queryClient = useQueryClient();
   const searchParams = useSearchParams();
 
   const code = searchParams.get('code');
@@ -28,14 +30,25 @@ export default function Header() {
     enabled: !!code && !!essentialKey,
   });
 
-  const isLogin = data?.status === true;
+  const { mutate: logout } = useMutation({
+    mutationFn: logoutService,
+    onSuccess(data) {
+      if (data != null) {
+        if (data.status) {
+          queryClient.setQueryData(clientInformationKey, {
+            ...queryClient.getQueryData(clientInformationKey),
+            isLogin: false,
+          });
+        }
+      }
+    },
+  });
+
   const isJoin = data?.status_code === '0010001';
 
   const onClickAuthorButton = () => {
     if (isLogin) {
-      logoutService();
-
-      redirect(ROUTES.PLATFORM.HOME);
+      logout(undefined);
     } else {
       openLoginModal();
     }
