@@ -5,10 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        sm: '1366px',
-        tablet: '640px',
-        laptop: '1024px',
-        desktop: '1280px',
+        sm: '1367px',
+        mobile: '391px',
+        tablet: '601px',
+        tablet2: '768px',
+        tablet3: '963px',
+        laptop: '1025px',
+        desktop: '1281px',
       },
       lineHeight: {
         LH1: '100%',

@@ -272,7 +272,7 @@ export default function TransactionHistory() {
                     transition-transform duration-300
                   `}
                 >
-                  <div className={'h-9 flex flex-row justify-start gap-2 mb-4'}>
+                  <div className={'h-9 flex flex-row justify-start gap-1 whitespace-pre mb-4'}>
                     <button
                       className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
                       onClick={() => handleDateButton('1주일')}

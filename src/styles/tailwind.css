@@ -116,6 +116,22 @@
     line-height: 130%;
   }
 
+  .font-suit-26-500-130 {
+    font-family: var(--font-suit);
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
+  .font-suit-28-500-130 {
+    font-family: var(--font-suit);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+  }
+
   .font-suit-24-700-150 {
     font-family: var(--font-suit);
     font-size: 24px;
