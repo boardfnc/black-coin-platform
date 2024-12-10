@@ -43,7 +43,7 @@ export default function Header() {
         if (data.status) {
           queryClient.setQueryData(clientInformationKey, {
             ...queryClient.getQueryData(clientInformationKey),
-            isLogin: false,
+            isLogin: true,
           });
         }
       }

@@ -267,170 +267,182 @@ export default function TransactionHistory() {
               {isCalendarOpen && (
                 <div
                   className={`
-                    lg:absolute lg:right-0 lg:top-[44px] !bg-white px-4 py-4 z-50 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-3xl
-                    ${!isCalendarOpen ? 'translate-y-full' : 'translate-y-0'}
-                    transition-transform duration-300
+                    fixed inset-0 z-50 lg:static lg:inset-auto
+                    lg:absolute lg:right-0 lg:top-[44px]
+                    bg-white
+                    lg:rounded-3xl lg:shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)]
+                    transition-transform duration-300 ease-in-out
+                    ${isCalendarOpen ? 'translate-y-0' : 'translate-y-full'}
+                    lg:translate-y-0
+                    lg:w-auto lg:h-auto
+                    flex flex-col
                   `}
                 >
-                  <div className={'h-9 flex flex-row justify-start gap-1 whitespace-pre mb-4'}>
-                    <button
-                      className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
-                      onClick={() => handleDateButton('1주일')}
-                    >
-                      1주일
-                    </button>
-                    <button
-                      className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
-                      onClick={() => handleDateButton('1개월')}
-                    >
-                      1개월
-                    </button>
-                    <button
-                      className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
-                      onClick={() => handleDateButton('3개월')}
-                    >
-                      3개월
-                    </button>
-                    <button
-                      className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
-                      onClick={() => handleDateButton('6개월')}
-                    >
-                      6개월
-                    </button>
-                    <button
-                      className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
-                      onClick={() => handleDateButton('1년')}
-                    >
-                      1년
-                    </button>
-                  </div>
+                  <div className={'flex-1 overflow-y-auto px-4 py-4'}>
+                    <div className={'h-9 flex flex-row justify-start gap-1 whitespace-pre mb-4'}>
+                      <button
+                        className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
+                        onClick={() => handleDateButton('1주일')}
+                      >
+                        1주일
+                      </button>
+                      <button
+                        className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
+                        onClick={() => handleDateButton('1개월')}
+                      >
+                        1개월
+                      </button>
+                      <button
+                        className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
+                        onClick={() => handleDateButton('3개월')}
+                      >
+                        3개월
+                      </button>
+                      <button
+                        className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
+                        onClick={() => handleDateButton('6개월')}
+                      >
+                        6개월
+                      </button>
+                      <button
+                        className={'h-9 px-4 rounded-[20px] text-gray-50 bg-gray-95 font-suit-13-650-130'}
+                        onClick={() => handleDateButton('1년')}
+                      >
+                        1년
+                      </button>
+                    </div>
 
-                  <div>
-                    <span className={'text-gray-50 font-suit-14-m-130'}>시작일/종료일</span>
+                    <div>
+                      <span className={'text-gray-50 font-suit-14-m-130'}>시작일/종료일</span>
 
-                    <div
-                      className={'flex justify-between items-center gap-2 mb-4 border border-gray-80 p-3 rounded-xl'}
-                    >
-                      <div className={'flex flex-row gap-[6px] items-center'}>
-                        <IconLine24Calendar />
-                        <span className={'text-gray-50 font-suit-13-r-130'}>
-                          {dayjs(startDate).format('YYYY-MM-DD')}
-                        </span>
+                      <div
+                        className={'flex justify-between items-center gap-2 mb-4 border border-gray-80 p-3 rounded-xl'}
+                      >
+                        <div className={'flex flex-row gap-[6px] items-center'}>
+                          <IconLine24Calendar />
+                          <span className={'text-gray-50 font-suit-13-r-130'}>
+                            {dayjs(startDate).format('YYYY-MM-DD')}
+                          </span>
+                        </div>
+                        <span className={'text-gray-50 font-suit-13-r-130'}>~</span>
+                        <div className={'flex flex-row gap-[6px] items-center'}>
+                          <IconLine24Calendar />
+                          <span className={'text-gray-50 font-suit-13-r-130'}>
+                            {dayjs(endDate).format('YYYY-MM-DD')}
+                          </span>
+                        </div>
                       </div>
-                      <span className={'text-gray-50 font-suit-13-r-130'}>~</span>
-                      <div className={'flex flex-row gap-[6px] items-center'}>
-                        <IconLine24Calendar />
-                        <span className={'text-gray-50 font-suit-13-r-130'}>{dayjs(endDate).format('YYYY-MM-DD')}</span>
-                      </div>
+                    </div>
+
+                    <div className={'range-picker'}>
+                      <DatePicker
+                        selected={startDate}
+                        onChange={(dates) => {
+                          const [start, end] = dates;
+                          setStartDate(start || undefined);
+                          setEndDate(end || undefined);
+                        }}
+                        startDate={startDate}
+                        endDate={endDate}
+                        selectsRange
+                        inline
+                        locale={ko}
+                        dateFormat={'yyyy-MM-dd'}
+                        maxDate={new Date()}
+                        renderCustomHeader={({
+                          date,
+                          decreaseMonth,
+                          increaseMonth,
+                          prevMonthButtonDisabled,
+                          nextMonthButtonDisabled,
+                        }) => (
+                          <div className={'flex justify-center items-center gap-4 py-3'}>
+                            <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                              <span>
+                                <svg
+                                  xmlns={'http://www.w3.org/2000/svg'}
+                                  width={'24'}
+                                  height={'24'}
+                                  viewBox={'0 0 24 24'}
+                                  fill={'none'}
+                                >
+                                  <path
+                                    d={'M15 7L10.3828 10.8477C9.66317 11.4474 9.66317 12.5526 10.3828 13.1523L15 17'}
+                                    stroke={prevMonthButtonDisabled ? '#A0A3AA' : '#28282A'}
+                                    strokeWidth={'1.5'}
+                                    strokeLinecap={'round'}
+                                    strokeLinejoin={'round'}
+                                  />
+                                </svg>
+                              </span>
+                            </button>
+
+                            <div className={'flex flex-row gap-6 text-center font-pre-20-b-130 text-gray-10'}>
+                              <span>{`${date.getFullYear()}`}</span>
+                              <span>{`${String(date.getMonth() + 1).padStart(2, '0')}`}</span>
+                            </div>
+
+                            <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                              <span>
+                                <svg
+                                  xmlns={'http://www.w3.org/2000/svg'}
+                                  width={'24'}
+                                  height={'24'}
+                                  viewBox={'0 0 24 24'}
+                                  fill={'none'}
+                                >
+                                  <path
+                                    d={'M9 7L13.6172 10.8477C14.3368 11.4474 14.3368 12.5526 13.6172 13.1523L9 17'}
+                                    stroke={nextMonthButtonDisabled ? '#A0A3AA' : '#28282A'}
+                                    strokeWidth={'1.5'}
+                                    strokeLinecap={'round'}
+                                    strokeLinejoin={'round'}
+                                  />
+                                </svg>
+                              </span>
+                            </button>
+                          </div>
+                        )}
+                      />
                     </div>
                   </div>
 
-                  <div className={'range-picker'}>
-                    <DatePicker
-                      selected={startDate}
-                      onChange={(dates) => {
-                        const [start, end] = dates;
-                        setStartDate(start || undefined);
-                        setEndDate(end || undefined);
-                      }}
-                      startDate={startDate}
-                      endDate={endDate}
-                      selectsRange
-                      inline
-                      locale={ko}
-                      dateFormat={'yyyy-MM-dd'}
-                      maxDate={new Date()}
-                      renderCustomHeader={({
-                        date,
-                        decreaseMonth,
-                        increaseMonth,
-                        prevMonthButtonDisabled,
-                        nextMonthButtonDisabled,
-                      }) => (
-                        <div className={'flex justify-center items-center gap-4 py-3'}>
-                          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-                            <span>
-                              <svg
-                                xmlns={'http://www.w3.org/2000/svg'}
-                                width={'24'}
-                                height={'24'}
-                                viewBox={'0 0 24 24'}
-                                fill={'none'}
-                              >
-                                <path
-                                  d={'M15 7L10.3828 10.8477C9.66317 11.4474 9.66317 12.5526 10.3828 13.1523L15 17'}
-                                  stroke={prevMonthButtonDisabled ? '#A0A3AA' : '#28282A'}
-                                  strokeWidth={'1.5'}
-                                  strokeLinecap={'round'}
-                                  strokeLinejoin={'round'}
-                                />
-                              </svg>
-                            </span>
-                          </button>
-
-                          <div className={'flex flex-row gap-6 text-center font-pre-20-b-130 text-gray-10'}>
-                            <span>{`${date.getFullYear()}`}</span>
-                            <span>{`${String(date.getMonth() + 1).padStart(2, '0')}`}</span>
-                          </div>
-
-                          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-                            <span>
-                              <svg
-                                xmlns={'http://www.w3.org/2000/svg'}
-                                width={'24'}
-                                height={'24'}
-                                viewBox={'0 0 24 24'}
-                                fill={'none'}
-                              >
-                                <path
-                                  d={'M9 7L13.6172 10.8477C14.3368 11.4474 14.3368 12.5526 13.6172 13.1523L9 17'}
-                                  stroke={nextMonthButtonDisabled ? '#A0A3AA' : '#28282A'}
-                                  strokeWidth={'1.5'}
-                                  strokeLinecap={'round'}
-                                  strokeLinejoin={'round'}
-                                />
-                              </svg>
-                            </span>
-                          </button>
-                        </div>
-                      )}
-                    />
-
-                    <div
-                      className={`
-                    flex justify-between gap-2 mt-3
-                    lg:static fixed bottom-0 left-0 right-0 bg-white
-                    border-t lg:border-t-0 border-gray-80
+                  <div
+                    className={`
+                    fixed bottom-0 left-0 right-0 lg:static
+                    flex justify-between gap-2 p-4
+                    border-t border-gray-80
+                    bg-white
+                    safe-area-bottom
                   `}
-                    >
-                      <button
-                        className={`
+                  >
+                    <button
+                      className={`
                         h-[48px] px-4 py-2 rounded-[60px] text-gray-10 border border-gray-10 font-suit-16-m-130 
                         flex flex-row gap-[6px] items-center justify-center flex-1 lg:flex-none
                         ${!startDate ? 'text-gray-50 !border-gray-80 cursor-not-allowed' : ''}
                       `}
-                        onClick={handleDateReset}
-                        disabled={!startDate}
-                      >
-                        <IconLine24ArrowReturn />
-                        날짜 재설정
-                      </button>
+                      onClick={handleDateReset}
+                      disabled={!startDate}
+                    >
+                      <IconLine24ArrowReturn />
+                      날짜 재설정
+                    </button>
 
-                      <button
-                        className={`
+                    <button
+                      className={`
                         h-[48px] px-4 py-2 rounded-[60px] text-gray-100 bg-gray-0 font-suit-16-b-130
                         flex-1 lg:flex-none
                         ${!(startDate && endDate) ? 'bg-gray-80 cursor-not-allowed' : ''}
                       `}
-                        onClick={() => {
-                          handleSearch();
-                          setIsCalendarOpen(false);
-                        }}
-                        disabled={!(startDate && endDate)}
-                      >
-                        선택완료
-                      </button>
-                    </div>
+                      onClick={() => {
+                        handleSearch();
+                        setIsCalendarOpen(false);
+                      }}
+                      disabled={!(startDate && endDate)}
+                    >
+                      선택완료
+                    </button>
                   </div>
                 </div>
               )}
