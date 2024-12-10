@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -16,8 +16,14 @@ import { useLogin } from '@/stores/login';
 export default function Header() {
   const { openModal: openLoginModal } = useLogin();
   const { openModal: openJoinModal } = useJoin();
-  const { isLogin } = useClient();
+  const [autoLogin] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.cookie.includes('auto-login=true');
+    }
+    return false;
+  });
 
+  const { isLogin } = useClient();
   const queryClient = useQueryClient();
   const searchParams = useSearchParams();
 
@@ -27,7 +33,7 @@ export default function Header() {
   const { data } = useQuery({
     queryKey: automaticLoginQueryKey,
     queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
-    enabled: !!code && !!essentialKey,
+    enabled: !!autoLogin && !!code && !!essentialKey,
   });
 
   const { mutate: logout } = useMutation({

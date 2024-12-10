@@ -22,6 +22,12 @@ export default function Wallet() {
 
   const [isOpenChangeCoinModal, setIsOpenChangeCoinModal] = useState(false);
   const [isOpenChangeMoneyModal, setIsOpenChangeMoneyModal] = useState(false);
+  const [autoLogin] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.cookie.includes('auto-login=true');
+    }
+    return false;
+  });
 
   const searchParams = useSearchParams();
 
@@ -31,7 +37,7 @@ export default function Wallet() {
   const { data } = useQuery({
     queryKey: automaticLoginQueryKey,
     queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
-    enabled: !!code && !!essentialKey,
+    enabled: !!autoLogin && !!code && !!essentialKey,
   });
 
   const isLogin = data?.status === true;
@@ -52,7 +58,7 @@ export default function Wallet() {
         <div className={'pt-[40px] pb-[100px]'}>
           <div className={'mx-[120px] pb-[60px]'}>
             <div className={'relative w-full h-[350px]'}>
-              <Image className={'object-cover'} src={coinWallet} alt={'coin wallet'} fill />
+              <Image className={'object-cover'} src={coinWallet} alt={'coin wallet'} fill priority />
             </div>
           </div>
 

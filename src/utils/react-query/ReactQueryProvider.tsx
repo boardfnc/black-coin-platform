@@ -33,7 +33,7 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
   const openToastErrorMessage = (error: Error | IBaseResponse) => {
     openToast({
       type: 'error',
-      message: error.message || '알 수 없는2 오류가 발생했습니다.',
+      message: error.message || '알 수 없는 오류가 발생했습니다.',
     });
   };
 

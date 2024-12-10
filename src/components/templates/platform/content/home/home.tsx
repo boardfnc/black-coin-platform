@@ -41,7 +41,7 @@ export default function HomePage() {
       <div className={'my-15'}>
         <div>
           <div className={'relative w-full h-[800px]'}>
-            <Image className={'object-cover'} src={homeBackground} alt={'home-background'} fill quality={100} />
+            <Image className={'object-cover'} src={homeBackground} alt={'home-background'} fill priority />
 
             <div
               className={'absolute w-full flex items-center h-[250px] bottom-[174px] left-0 bg-gray-50/20 p-5 sm:p-0'}
