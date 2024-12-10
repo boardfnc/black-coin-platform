@@ -32,7 +32,7 @@ export default function Header() {
 
   const { data } = useQuery({
     queryKey: automaticLoginQueryKey,
-    queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
+    queryFn: () => automaticLoginService({ autoLogin, code: code!, esntl_key: essentialKey! }),
     enabled: !!autoLogin && !!code && !!essentialKey,
   });
 
