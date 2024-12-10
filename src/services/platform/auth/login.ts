@@ -35,8 +35,8 @@ export async function platformLoginService(data: IPlatformLoginRequest, options?
     const cookie = await cookies();
 
     cookie.set('token', JSON.stringify(tokenData), {
-      httpOnly: true,
-      secure: false,
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
       expires: new Date(Date.now() + (Number(tokenData.expires_in) + 365 * 24 * 60 * 60) * 1000),
@@ -69,8 +69,8 @@ export async function automaticLoginService(data: IAutomaticLoginRequest, option
     const cookie = await cookies();
 
     cookie.set('token', JSON.stringify(tokenData), {
-      httpOnly: true,
-      secure: false,
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
       expires: new Date(Date.now() + (Number(tokenData.expires_in) + 365 * 24 * 60 * 60) * 1000),

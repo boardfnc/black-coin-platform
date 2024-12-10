@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -9,11 +9,24 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { IBaseResponse } from '@/services/_fetch/types';
 
 import { useToast } from '@/hooks';
+import { clientInformationKey } from '@/hooks/client';
 
 function ReactQueryProvider({ children }: PropsWithChildren) {
   const [client] = useState(new QueryClient());
 
   const { open: openToast } = useToast();
+
+  useEffect(() => {
+    const hasToken = document.cookie
+      .split(';')
+      .map((cookie) => cookie.trim())
+      .some((cookie) => cookie.startsWith('token='));
+
+    client.setQueryData(clientInformationKey, {
+      isLogin: !!hasToken,
+      isMobile: false,
+    });
+  }, [client]);
 
   if (typeof window === 'undefined' && client == null) return children;
 
@@ -42,6 +55,7 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={client}>
       {children}
+
       {process.env.NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import type { ChangeEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 
 import type { ISignupManageIdProps } from './SignupManageId.types';
@@ -72,16 +73,16 @@ export default function SignupManageId({ id }: ISignupManageIdProps) {
     }
   }, [userDataOrigin]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     setSearchDate((prev) => ({
       ...prev,
       [name]: value,

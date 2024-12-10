@@ -1,17 +1,20 @@
 import { useState } from 'react';
 
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import type { IChangeMoneyModalProps } from './CoinToMoneyModal.types';
 
 import { Modal } from '@/components/atoms/modals';
 import { useToast } from '@/hooks';
+import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
 import { exchangeCheckService, exchangeMoneyService } from '@/services/platform/coin/exchange';
 import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
+import { accountShowQueryKey } from '@/services/platform/my-page/account.query';
 
 export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalProps) {
   const [amount, setAmount] = useState('');
   const { open: openToast } = useToast();
+  const queryClient = useQueryClient();
 
   const { data: exchangeCheckData } = useQuery({
     queryKey: exchangeCheckQueryKey,
@@ -23,7 +26,13 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
     mutationFn: exchangeMoneyService,
     onSuccess(data) {
       if (data != null) {
-        if (data.status) openToast({ message: '교환이 성공적으로 완료되었습니다.', type: 'success' });
+        if (data.status) {
+          openToast({ message: '교환이 성공적으로 완료되었습니다.', type: 'success' });
+
+          queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
+          queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
+          queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+        }
 
         throw new Error(data.message);
       }

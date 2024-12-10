@@ -1,1 +1,1 @@
-export const automaticLoginQueryKey = ['automatic-login'];
+export const automaticLoginQueryKey = ['AUTOMATIC-LOGIN'];

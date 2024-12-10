@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { IconLine24Avatar } from '@/components/atoms/icons/icon-line';
+import { IconLine24Avatar, IconLine24Logout } from '@/components/atoms/icons/icon-line';
 import { ROUTES } from '@/constants';
 import { useClient } from '@/hooks';
 import { logoutService } from '@/services/platform/auth/logout';
@@ -36,6 +36,8 @@ export default function Header() {
 
   const isLogin = !!data?.data || isClientLogin;
 
+  console.log(data, isClientLogin);
+
   return (
     <>
       <div className={'sm:hidden sticky top-0 left-0 right-0 z-50 bg-gray-100 px-5 shadow-Z1'}>
@@ -57,7 +59,7 @@ export default function Header() {
       <div
         role={'button'}
         tabIndex={0}
-        className={`fixed inset-0 bg-gray-0 bg-opacity-50 transition-opacity z-50 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`cursor-default fixed inset-0 bg-gray-0 bg-opacity-50 transition-opacity z-50 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onKeyDown={(event) => {
           if (event.key === 'Escape') setIsOpen(false);
         }}
@@ -84,66 +86,109 @@ export default function Header() {
           <div
             role={'button'}
             tabIndex={0}
-            className={'h-full w-[280px] bg-gray-0 text-gray-100'}
+            className={'cursor-default h-full w-[280px] bg-gray-0 text-gray-100'}
             onKeyDown={(event) => {
               if (event.key === 'Escape') setIsOpen(false);
             }}
             onClick={(event) => event.stopPropagation()}
           >
             <div className={'p-6 flex flex-col gap-[30px]'}>
-              <div className={'flex flex-col gap-[10px] items-end justify-center pb-[30px] border-b border-gray-100'}>
-                <div>
-                  <button
-                    className={
-                      'w-auto h-[28px] rounded-[60px] border border-gray-100 px-4 text-gray-100 font-suit-13-m-130'
-                    }
-                  >
-                    로그인
-                  </button>
-                </div>
+              {!isLogin && (
+                <div className={'flex flex-col gap-[10px] items-end justify-center pb-[30px] border-b border-gray-100'}>
+                  <div>
+                    <button
+                      className={
+                        'w-auto h-[28px] rounded-[60px] border border-gray-100 px-4 text-gray-100 font-suit-13-m-130'
+                      }
+                    >
+                      로그인
+                    </button>
+                  </div>
 
-                <div className={'font-suit-14-m-130'}>
-                  <Link href={ROUTES.PLATFORM.REGISTER}>회원가입</Link>
-                </div>
+                  <div className={'text-gray-100 font-suit-14-m-130'}>
+                    <Link href={ROUTES.PLATFORM.REGISTER}>회원가입</Link>
+                  </div>
 
-                <div className={'font-suit-14-m-130'}>
-                  <Link href={ROUTES.PLATFORM.MY_PAGE}>마이페이지</Link>
+                  <div className={'text-gray-100 font-suit-14-m-130'}>
+                    <Link href={ROUTES.PLATFORM.REGISTER}>마이페이지</Link>
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {isLogin && (
+                <div className={'flex items-end flex-col gap-2.5 pb-[30px] border-b border-gray-100'}>
+                  <div className={'flex items-center gap-1'}>
+                    <div className={'w-[32px] h-[32px] flex items-center justify-center border rounded-full'}>
+                      <IconLine24Avatar />
+                    </div>
+
+                    <div className={'text-gray-100 font-suit-16-m-130'}>{data?.data?.nm || '알 수 없음'}</div>
+                  </div>
+
+                  <div className={'flex gap-2'}>
+                    <div className={'text-gray-100 font-suit-15-b-130'}>Coinpay</div>
+                    <div className={'flex gap-[2px]'}>
+                      <div className={'text-orange-orange50 font-suit-18-750-130'}>4,364,400</div>
+                      <div className={'text-gray-100 font-suit-18-750-130'}>C</div>
+                    </div>
+                  </div>
+
+                  <div className={'font-suit-14-m-130'}>
+                    <Link href={ROUTES.PLATFORM.MY_PAGE}>마이페이지</Link>
+                  </div>
+                </div>
+              )}
 
               <div className={'flex flex-col items-end justify-center gap-[30px]'}>
-                <Link
-                  href={ROUTES.PLATFORM.BUY}
-                  onClick={() => setIsOpen(false)}
-                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
-                >
-                  구매
-                </Link>
+                <div>
+                  <Link
+                    href={ROUTES.PLATFORM.BUY}
+                    onClick={() => setIsOpen(false)}
+                    className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                  >
+                    구매
+                  </Link>
+                </div>
 
-                <Link
-                  href={ROUTES.PLATFORM.SELL}
-                  onClick={() => setIsOpen(false)}
-                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
-                >
-                  판매
-                </Link>
+                <div>
+                  <Link
+                    href={ROUTES.PLATFORM.SELL}
+                    onClick={() => setIsOpen(false)}
+                    className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                  >
+                    판매
+                  </Link>
+                </div>
 
-                <Link
-                  href={ROUTES.PLATFORM.SEND}
-                  onClick={() => setIsOpen(false)}
-                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
-                >
-                  전송
-                </Link>
+                <div>
+                  <Link
+                    href={ROUTES.PLATFORM.SEND}
+                    onClick={() => setIsOpen(false)}
+                    className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                  >
+                    전송
+                  </Link>
+                </div>
 
-                <Link
-                  href={ROUTES.PLATFORM.TRANSACTION_HISTORY}
-                  onClick={() => setIsOpen(false)}
-                  className={'w-full text-end font-suit-18-b-130 text-gray-100'}
-                >
-                  거래내역
-                </Link>
+                <div>
+                  <Link
+                    href={ROUTES.PLATFORM.TRANSACTION_HISTORY}
+                    onClick={() => setIsOpen(false)}
+                    className={'w-full text-end font-suit-18-b-130 text-gray-100'}
+                  >
+                    거래내역
+                  </Link>
+                </div>
               </div>
+
+              {isLogin && (
+                <button className={'w-full text-end font-suit-14-m-130 text-gray-95'} onClick={() => logout()}>
+                  <div className={'flex flex-row gap-1 items-center'}>
+                    <div>로그아웃</div>
+                    <IconLine24Logout />
+                  </div>
+                </button>
+              )}
             </div>
           </div>
         </div>

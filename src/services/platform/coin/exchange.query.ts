@@ -1,1 +1,1 @@
-export const exchangeCheckQueryKey = ['exchange-check'];
+export const exchangeCheckQueryKey = ['EXCHANGE-CHECK'];

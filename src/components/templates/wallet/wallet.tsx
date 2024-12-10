@@ -43,11 +43,7 @@ export default function Wallet() {
   });
 
   const onClickAuthorButton = () => {
-    if (isLogin) {
-      // TODO: 코인 구매 처리
-    } else {
-      openLoginModal();
-    }
+    openLoginModal();
   };
 
   return (

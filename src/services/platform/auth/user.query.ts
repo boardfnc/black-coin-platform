@@ -1,1 +1,1 @@
-export const userInformationShowQueryKey = ['user-information-show'];
+export const userInformationShowQueryKey = ['USER_INFORMATION_SHOW'];

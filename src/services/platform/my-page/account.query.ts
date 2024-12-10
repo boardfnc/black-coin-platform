@@ -1,1 +1,1 @@
-export const accountShowQueryKey = ['account-show'];
+export const accountShowQueryKey = ['ACCOUNT-SHOW'];
