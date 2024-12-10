@@ -13,7 +13,7 @@ import { convertBank } from '@/utils/covert';
 export default function MyPage() {
   const { data } = useQuery({
     queryKey: accountShowQueryKey,
-    queryFn: accountShowService,
+    queryFn: () => accountShowService(),
   });
 
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);

@@ -10,15 +10,19 @@ import { useQuery } from '@tanstack/react-query';
 import { IconLine24Bell, IconLine24Change } from '@/components/atoms/icons/icon-line';
 import { CoinToMoneyModal, MoneyToCoinModal } from '@/components/organisms/platform/modal';
 import { ROUTES } from '@/constants';
+import { useClient } from '@/hooks';
 import { coinWallet, digitalWallet } from '@/images/background';
 import { automaticLoginService } from '@/services/platform/auth/login';
 import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
 import { exchangeCheckService } from '@/services/platform/coin/exchange';
 import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
+import { useJoin } from '@/stores/join';
 import { useLogin } from '@/stores/login';
 
 export default function Wallet() {
   const { openModal: openLoginModal } = useLogin();
+  const { openModal: openJoinModal } = useJoin();
+  const { isLogin } = useClient();
 
   const [isOpenChangeCoinModal, setIsOpenChangeCoinModal] = useState(false);
   const [isOpenChangeMoneyModal, setIsOpenChangeMoneyModal] = useState(false);
@@ -36,20 +40,24 @@ export default function Wallet() {
 
   const { data } = useQuery({
     queryKey: automaticLoginQueryKey,
-    queryFn: () => automaticLoginService({ code: code!, esntl_key: essentialKey! }),
-    enabled: !!autoLogin && !!code && !!essentialKey,
+    queryFn: () => automaticLoginService({ autoLogin, code: code!, esntl_key: essentialKey! }),
+    enabled: !!code && !!essentialKey,
   });
 
-  const isLogin = data?.status === true;
+  const isJoin = !data?.status;
 
   const { data: exchangeCheckData } = useQuery({
+    queryFn: () => exchangeCheckService(),
     queryKey: exchangeCheckQueryKey,
-    queryFn: exchangeCheckService,
     enabled: isLogin,
   });
 
   const onClickAuthorButton = () => {
-    openLoginModal();
+    if (isJoin) {
+      openJoinModal();
+    } else {
+      openLoginModal();
+    }
   };
 
   return (

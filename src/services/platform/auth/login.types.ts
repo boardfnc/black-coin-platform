@@ -21,6 +21,7 @@ export interface ILoginResponse extends IBaseResponse {
 }
 
 export interface IAutomaticLoginRequest {
+  autoLogin: boolean;
   code: string;
   esntl_key: string;
 }

@@ -43,7 +43,7 @@ function ReactQueryProvider({ children }: PropsWithChildren) {
       refetchOnMount: true,
       refetchOnReconnect: true,
       retryOnMount: true,
-      staleTime: 30 * 1000,
+      staleTime: 30000,
       retry: 1,
     },
     mutations: {

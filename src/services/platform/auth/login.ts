@@ -53,7 +53,7 @@ export async function automaticLoginService(data: IAutomaticLoginRequest, option
     ...options,
   });
 
-  if (response != null && response.data != null) {
+  if (data.autoLogin && response != null && response.data != null) {
     const tokenData = {
       token_type: response.data.token.token_type,
       member_type: response.data.token.member_type,

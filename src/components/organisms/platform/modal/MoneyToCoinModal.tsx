@@ -18,7 +18,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
 
   const { data: exchangeCheckData } = useQuery({
     queryKey: exchangeCheckQueryKey,
-    queryFn: exchangeCheckService,
+    queryFn: () => exchangeCheckService(),
     enabled: isOpen,
   });
 
@@ -64,7 +64,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
 
             <div className={'flex items-center gap-[2px]'}>
               <span className={'font-suit-18-750-130 text-purple-fmg50'}>
-                {(exchangeCheckData?.data.money || 0).toLocaleString('ko-KR')}
+                {(exchangeCheckData?.data?.money || 0).toLocaleString('ko-KR')}
               </span>
               <span className={'font-suit-14-b-130 text-purple-fmg50'}>C</span>
             </div>
@@ -87,7 +87,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
 
             <button
               className={'w-[90px] h-full text-gray-100 bg-gray-0 px-2 py-1 rounded-[14px]'}
-              onClick={() => setAmount(String(exchangeCheckData?.data.money || 0))}
+              onClick={() => setAmount(String(exchangeCheckData?.data?.money || 0))}
             >
               전액입력
             </button>

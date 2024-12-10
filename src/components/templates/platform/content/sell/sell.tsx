@@ -39,7 +39,7 @@ export default function Sell() {
 
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
-    queryFn: userInformationShowService,
+    queryFn: () => userInformationShowService(),
   });
 
   const { mutate } = useMutation({

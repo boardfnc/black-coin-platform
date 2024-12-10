@@ -19,7 +19,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
 
   const { data } = useQuery({
     queryKey: accountShowQueryKey,
-    queryFn: accountShowService,
+    queryFn: () => accountShowService(),
     enabled: isOpen,
   });
 
