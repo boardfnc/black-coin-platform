@@ -32,7 +32,16 @@ const useClient = () => {
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+    const hasToken = document.cookie
+      .split(';')
+      .map((cookie) => cookie.trim())
+      .some((cookie) => cookie.startsWith('token='));
+
+    queryClient.setQueryData(clientInformationKey, {
+      ...queryClient.getQueryData(clientInformationKey),
+      isLogin: !!hasToken,
+    });
+  }, [queryClient]);
 
   return { isClient, isLogin, isMobile };
 };

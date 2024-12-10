@@ -11,20 +11,20 @@ import {
 export const defaultMetaTag = {
   metadataBase: new URL(PLATFORM_URL),
   title: PLATFORM_NAME,
-  description: `원단, 부자재까지 내 취향의 모든 것을 담은 1등 원단 쇼핑앱, ${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})과 함께 원단, 부자재의 모든 것을 쇼핑하세요.`,
+  description: `${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})`,
   icons: PLATFORM_FAVICON,
   robots: 'all',
   openGraph: {
     type: 'website',
     title: PLATFORM_NAME,
-    description: `원단, 부자재까지 내 취향의 모든 것을 담은 1등 원단 쇼핑앱, ${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})과 함께 원단, 부자재의 모든 것을 쇼핑하세요.`,
+    description: `${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})`,
     images: PLATFORM_SPLASH_IMAGE,
   },
   twitter: {
     creator: '@onefabric',
     card: 'summary_large_image',
     title: PLATFORM_NAME,
-    description: `원단, 부자재까지 내 취향의 모든 것을 담은 1등 원단 쇼핑앱, ${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})과 함께 원단, 부자재의 모든 것을 쇼핑하세요.`,
+    description: `${PLATFORM_NAME}(${PLATFORM_NAME_ENGLISH})`,
     images: PLATFORM_SPLASH_IMAGE,
   },
 } satisfies Metadata;
