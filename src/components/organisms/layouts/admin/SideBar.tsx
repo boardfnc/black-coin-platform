@@ -54,7 +54,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
         {isOpen && <h1 className={'text-gray-100 font-suit-12-750-130'}>Service Name ADMIN</h1>}
       </div>
 
-      <div className={'w-[250px] h-screen bg-gray-95 border-r border-gray-80'}>
+      <div className={'relative w-[250px] h-screen bg-gray-95 border-r border-gray-80'}>
         <div className={'flex flex-col items-start gap-4 pt-10 px-[14px]'}>
           <span className={'text-gray-40 font-suit-12-750-130'}>UserInfo</span>
 
@@ -110,7 +110,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
         </div>
 
         <ul
-          className={`overflow-y-auto h-full ${isSuperAdmin ? 'max-h-[calc(100vh-320px)]' : 'max-h-[calc(100vh-440px)]'}`}
+          className={`overflow-y-auto bg-gray-100 h-full ${isSuperAdmin ? 'max-h-[calc(100vh-320px)]' : 'max-h-[calc(100vh-440px)]'}`}
         >
           {sideBarMenu.map(({ title, icon: Icon, dropdown, path }, index) => {
             const isDropdownOpen = openDropdowns.includes(index);
@@ -121,7 +121,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
                 {dropdown ? (
                   <button
                     onClick={() => toggleDropdown(index)}
-                    className={`w-full h-[56px] flex items-center justify-start px-3.5 py-3.5 bg-gray-100
+                    className={`relative z-20  w-full h-[56px] flex items-center justify-start px-3.5 py-3.5 bg-gray-100
                       ${isChildActive || dropdown.some((item) => isPathActive(item.path)) ? 'text-orange-orange45 border-r-2 border-r-orange-500' : 'text-gray-10'}`}
                   >
                     <div className={'flex flex-row items-center justify-between w-full gap-4'}>
@@ -140,7 +140,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
                 ) : (
                   <Link
                     href={path}
-                    className={`w-full h-[56px] relative flex items-center px-3.5 py-3 hover:bg-gray-80 bg-gray-100
+                    className={`relative z-20 w-full h-[56px] relative flex items-center px-3.5 py-3 hover:bg-gray-80 bg-gray-100
                       ${isPathActive(path) ? 'bg-orange-orange95 text-orange-orange45 before:absolute before:right-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-orange-500' : 'text-gray-20 before:absolute before:right-0 before:top-0 before:bottom-0 before:w-[1px] before:bg-gray-80'}`}
                   >
                     <div className={`flex items-center gap-1.5 ${pathname === path ? 'text-orange-orange50' : ''}`}>
@@ -152,7 +152,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
 
                 {dropdown && (
                   <div
-                    className={`overflow-hidden transition-all duration-300 
+                    className={`relative overflow-hidden transition-all duration-300 z-20
                     ${isDropdownOpen ? 'max-h-[500px] opacity-100 visible' : 'max-h-0 opacity-0 invisible'}`}
                   >
                     {dropdown.map(({ title, path }) => (
@@ -176,6 +176,10 @@ export default function SideBar({ isOpen }: ISideBarProps) {
             );
           })}
         </ul>
+
+        <div className={'absolute bottom-10 left-3.5 w-full h-[60px] text-gray-40 font-suit-12-750-130 z-10'}>
+          Section Name
+        </div>
       </div>
     </div>
   );
