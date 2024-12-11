@@ -210,7 +210,10 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
       <Modal isOpen={isOpen} onClose={handleClose} width={'500px'}>
         <div className={'text-gray-10 pt-1 pb-3 px-2.5 flex justify-between items-center'}>
           <div className={'font-pre-20-m-130'}>코인 판매</div>
-          <IconLine24Close className={'cursor-pointer'} onClick={handleClose} />
+
+          <button onClick={handleClose}>
+            <IconLine24Close />
+          </button>
         </div>
 
         <div className={'flex flex-col gap-[30px] pt-2 px-[10px]'}>

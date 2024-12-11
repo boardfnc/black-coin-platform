@@ -36,9 +36,10 @@ export default function TransactionHistoryMyTradeModal(props: ITransactionHistor
       <div className={'flex flex-col gap-[30px] h-full px-2.5'}>
         <div className={'flex items-center justify-between gap-2 pt-1 pb-3'}>
           <div className={'text-gray-0 font-pre-20-m-130'}>상세내역</div>
-          <div className={'text-gray-0 font-pre-13-r-130'}>
+
+          <button className={'text-gray-0 font-pre-13-r-130'} onClick={handleClose}>
             <IconLine24Close className={'text-gray-10'} />
-          </div>
+          </button>
         </div>
 
         <div className={'flex flex-col justify-between h-full'}>
