@@ -64,6 +64,7 @@ export async function coinPurchaseManagerCancelService(
   const response = await fetch<TCoinPurchaseManagerCancelResponse>(`/coin/purchase-manager/cancel/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -79,6 +80,7 @@ export async function coinPurchaseManagerCompletionService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -121,6 +123,7 @@ export async function coinSaleManagerCancelService(params: ICoinSaleManagerCance
   const response = await fetch<TCoinSaleManagerCancelResponse>(`/coin/sale-manager/cancel/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 

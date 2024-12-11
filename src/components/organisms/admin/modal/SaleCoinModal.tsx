@@ -129,7 +129,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={handleClose} width={type === 'ca' ? '960px' : '1655px'} height={'auto'}>
+      <Modal isOpen={isOpen} onClose={handleClose} width={'1655px'} height={'auto'}>
         <div className={'flex flex-col gap-[30px] px-2.5'}>
           <div className={'flex items-center justify-between gap-2 pt-1 pb-3'}>
             <div className={'text-gray-0 font-pre-20-m-130'}>

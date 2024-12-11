@@ -73,6 +73,7 @@ export async function adminManagerAccountUpdateService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -89,6 +90,7 @@ export async function adminManagerAccountNumberUpdateService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -100,6 +102,7 @@ export async function adminManagerFeeUpdateService(params: IAdminManagerFeeUpdat
   const response = await fetch<IAdminManagerFeeUpdateResponse>(`/member/admin-manager/fee-update/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -110,6 +113,7 @@ export async function adminManagerDeleteService(params: IAdminManagerDeleteReque
   const response = await fetch<IAdminManagerDeleteResponse>(`/member/admin-manager/delete/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -120,6 +124,7 @@ export async function adminManagerStatusUpdateService(params: IAdminManagerStatu
   const response = await fetch<IAdminManagerStatusUpdateResponse>(`/member/admin-manager/status-update/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 

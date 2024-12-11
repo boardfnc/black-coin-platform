@@ -121,7 +121,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
                       setCoinModalData({ memberId: item.memberId, coin: item.coin, mode: 'payment' });
                     }}
                   >
-                    잔금
+                    지급
                   </button>
                 </div>
               </td>
@@ -130,14 +130,12 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
         </tbody>
       </table>
 
-      {!isSuperAdmin && (
-        <UserListCoinModal
-          isOpen={isCoinModalOpen}
-          onClose={() => setIsCoinModalOpen(false)}
-          refetch={refetch}
-          {...coinModalData}
-        />
-      )}
+      <UserListCoinModal
+        isOpen={isCoinModalOpen}
+        onClose={() => setIsCoinModalOpen(false)}
+        refetch={refetch}
+        {...coinModalData}
+      />
     </>
   );
 }

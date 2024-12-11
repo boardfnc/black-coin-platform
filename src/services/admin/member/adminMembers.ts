@@ -77,6 +77,7 @@ export async function adminMemberPasswordUpdateService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -88,6 +89,7 @@ export async function adminMemberStatusUpdateService(params: IAdminMemberStatusU
   const response = await fetch<IAdminMemberStatusUpdateResponse>(`/member/admin-member/status-update/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -103,6 +105,7 @@ export async function adminMemberAccountNumberUpdateService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -114,6 +117,7 @@ export async function adminMemberGradeUpdateService(params: IAdminMemberGradeUpd
   const response = await fetch<IAdminMemberGradeUpdateResponse>(`/member/admin-member/grade-update/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -129,6 +133,7 @@ export async function adminMemberGradeInitializationService(
     {
       method: 'PUT',
       params,
+      body: JSON.stringify(params),
       ...options,
     },
   );
@@ -140,6 +145,7 @@ export async function adminMemberRetrievalService(params: IAdminMemberRetrievalR
   const response = await fetch<IAdminMemberRetrievalResponse>(`/member/admin-member/retrieval`, {
     method: 'POST',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -150,6 +156,7 @@ export async function adminMemberPaymentService(params: IAdminMemberPaymentReque
   const response = await fetch<IAdminMemberPaymentResponse>(`/member/admin-member/payment`, {
     method: 'POST',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -194,6 +201,7 @@ export async function adminMemberSubscribeConsentService(
   const response = await fetch<IAdminMemberSubscribeConsentResponse>(`/member/admin-member-subscribe/consent`, {
     method: 'POST',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
@@ -207,6 +215,7 @@ export async function adminMemberSubscribeRejectionService(
   const response = await fetch<IAdminMemberSubscribeRejectionResponse>(`/member/admin-member-subscribe/rejection`, {
     method: 'POST',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 

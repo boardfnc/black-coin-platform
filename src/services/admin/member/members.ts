@@ -72,6 +72,7 @@ export async function memberPasswordUpdateService(params: IMemberPasswordUpdateR
   const response = await fetch<TMemberPasswordUpdateResponse>(`/member/member/password-update/${params.id}`, {
     method: 'PUT',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 

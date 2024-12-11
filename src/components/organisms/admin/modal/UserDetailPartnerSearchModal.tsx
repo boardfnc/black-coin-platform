@@ -20,7 +20,9 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
       <div className={'flex flex-row justify-between items-center pb-5'}>
         <div className={'text-gray-10 font-pre-20-m-130'}>파트너사 검색</div>
 
-        <IconLine24Close className={'text-gray-10'} />
+        <button className={'text-gray-10'} onClick={onClose}>
+          <IconLine24Close className={'text-gray-10'} />
+        </button>
       </div>
 
       <div className={'flex flex-col gap-6'}>

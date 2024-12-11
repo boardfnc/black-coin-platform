@@ -7,7 +7,7 @@ import type { IGeneralUserListIdProps } from './GeneralUserListId.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
-import { BankSelect } from '@/components/atoms/inputs';
+import { BankSelect, DatePicker } from '@/components/atoms/inputs';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
 import UserDetailChangePasswordModal from '@/components/organisms/admin/modal/UserDetailChangePasswordModal';
@@ -193,6 +193,20 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     }
   };
 
+  const handleStartDateChange = (date: Date | null) => {
+    setSearchDate((prev) => ({
+      ...prev,
+      startDate: date ? date.toISOString().split('T')[0] : '',
+    }));
+  };
+
+  const handleEndDateChange = (date: Date | null) => {
+    setSearchDate((prev) => ({
+      ...prev,
+      endDate: date ? date.toISOString().split('T')[0] : '',
+    }));
+  };
+
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const handlePasswordModalOpen = () => setIsPasswordModalOpen(true);
   const handlePasswordModalClose = () => setIsPasswordModalOpen(false);
@@ -360,20 +374,18 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                   <div className={'flex items-center h-[40px] text-gray-10 font-pre-20-b-130'}>구입 정보</div>
 
                   <div className={'flex flex-row gap-2 items-center'}>
-                    <input
-                      type={'date'}
-                      name={'startDate'}
-                      value={searchDate.startDate}
-                      onChange={handleDateChange}
-                      className={'w-[308px] h-[40px] border border-gray-80 rounded-[12px] px-2 py-1'}
+                    <DatePicker
+                      selected={searchDate.startDate ? new Date(searchDate.startDate) : null}
+                      onChange={handleStartDateChange}
+                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      placeholder={'YYYY - MM - DD'}
                     />
                     <span>~</span>
-                    <input
-                      type={'date'}
-                      name={'endDate'}
-                      value={searchDate.endDate}
-                      onChange={handleDateChange}
-                      className={'w-[308px] h-[40px] border border-gray-80 rounded-[12px] px-2 py-1'}
+                    <DatePicker
+                      selected={searchDate.endDate ? new Date(searchDate.endDate) : null}
+                      onChange={handleEndDateChange}
+                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      placeholder={'YYYY - MM - DD'}
                     />
                     <button
                       onClick={handleSearch}
