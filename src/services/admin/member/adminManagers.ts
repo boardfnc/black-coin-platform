@@ -37,6 +37,7 @@ export async function adminManagersPostService(params: IAdminManagersPostRequest
   const response = await fetch<TAdminManagersPostResponse>('/member/admin-manager', {
     method: 'POST',
     params,
+    body: JSON.stringify(params),
     ...options,
   });
 
