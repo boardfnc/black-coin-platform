@@ -31,8 +31,8 @@ export default function Header() {
   const essentialKey = searchParams.get('essential-key');
 
   const { data } = useQuery({
-    queryKey: automaticLoginQueryKey,
     queryFn: () => automaticLoginService({ autoLogin, code: code!, esntl_key: essentialKey! }),
+    queryKey: automaticLoginQueryKey,
     enabled: !!autoLogin && !!code && !!essentialKey,
   });
 
@@ -43,7 +43,7 @@ export default function Header() {
         if (data.status) {
           queryClient.setQueryData(clientInformationKey, {
             ...queryClient.getQueryData(clientInformationKey),
-            isLogin: true,
+            isLogin: false,
           });
         }
       }
@@ -53,11 +53,8 @@ export default function Header() {
   const isJoin = data?.status_code === '0010001';
 
   const onClickAuthorButton = () => {
-    if (isLogin) {
-      logout(undefined);
-    } else {
-      openLoginModal();
-    }
+    if (isLogin) logout(undefined);
+    else openLoginModal();
   };
 
   useEffect(() => {

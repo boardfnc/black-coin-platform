@@ -79,7 +79,7 @@ export default function PlatformLogin() {
           <div className={'flex flex-col gap-10'}>
             <div className={'flex flex-col justify-center items-center gap-3'}>
               <Link href={ROUTES.PLATFORM.HOME} className={'text-yellow-50 font-suit-32-750-130'}>
-                Service Name
+                Black Coin
               </Link>
 
               <div className={'text-gray-10 font-suit-17-r-130'}>Message</div>
@@ -116,12 +116,12 @@ export default function PlatformLogin() {
                   로그인
                 </button>
 
-                <Link
+                {/* <Link
                   href={ROUTES.PLATFORM.FORGOT_AUTHOR.ID}
                   className={'text-gray-30 font-suit-14-r-130 underline mx-auto'}
                 >
                   아이디/비밀번호를 잊어버렸나요?
-                </Link>
+                </Link> */}
               </div>
             </form>
 
@@ -138,7 +138,7 @@ export default function PlatformLogin() {
           </div>
 
           <div className={'flex flex-row gap-1 justify-center whitespace-pre'}>
-            <span className={'text-yellow-50 font-suit-12-750-130'}>Service Name</span>
+            <span className={'text-yellow-50 font-suit-12-750-130'}>Black Coin</span>
             <span className={'text-gray-40 font-suit-12-r-130'}>Copyright Ⓒ 2024 company All Rights Reserved.</span>
           </div>
         </div>

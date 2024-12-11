@@ -15,7 +15,7 @@ export default function HomePage() {
               <div className={'max-w-[1320px] w-full mx-auto flex flex-col gap-5'}>
                 <div>
                   <div className={'text-white font-pre-20-600-130 sm:font-pre-26-b-130'}>블록체인 기술 기반</div>
-                  <div className={'text-gray-100 font-suit-35-800-110 sm:font-suit-60-800-110'}>Service Name</div>
+                  <div className={'text-gray-100 font-suit-35-800-110 sm:font-suit-60-800-110'}>Black Coin</div>
                 </div>
 
                 <div className={'flex flex-col gap-1.5'}>
@@ -24,7 +24,7 @@ export default function HomePage() {
                   </div>
 
                   <div className={'text-gray-100 font-suit-15-300-130 sm:font-suit-22-300-130'}>
-                    Service Name은 트레이더들의 권익 보호를 위해 언제나 보안을 신경쓰고 있습니다.
+                    Black Coin은 트레이더들의 권익 보호를 위해 언제나 보안을 신경쓰고 있습니다.
                   </div>
                 </div>
               </div>

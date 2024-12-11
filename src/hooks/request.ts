@@ -50,6 +50,16 @@ export default function useRequest() {
               type: 'error',
             });
           }
+        } else if (
+          'status' in response &&
+          !response.status &&
+          'message' in response &&
+          typeof response.message === 'string'
+        ) {
+          openToast({
+            message: response.message,
+            type: 'error',
+          });
         }
 
         return response;

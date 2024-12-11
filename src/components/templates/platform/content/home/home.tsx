@@ -1,4 +1,7 @@
+import Link from 'next/link';
+
 import { Image } from '@/components/atoms/images';
+import { ROUTES } from '@/constants';
 import {
   homeBackground,
   blueUserIcon,
@@ -51,7 +54,7 @@ export default function HomePage() {
               <div className={'max-w-[1320px] w-full mx-auto flex flex-col gap-5'}>
                 <div>
                   <div className={'text-white font-pre-20-600-130 sm:font-pre-26-b-130'}>블록체인 기술 기반</div>
-                  <div className={'text-gray-100 font-suit-35-800-110 sm:font-suit-60-800-110'}>Service Name</div>
+                  <div className={'text-gray-100 font-suit-35-800-110 sm:font-suit-60-800-110'}>Black Coin</div>
                 </div>
 
                 <div className={'flex flex-col gap-1.5'}>
@@ -60,7 +63,7 @@ export default function HomePage() {
                   </div>
 
                   <div className={'text-gray-100 font-suit-15-300-130 sm:font-suit-22-300-130'}>
-                    Service Name은 트레이더들의 권익 보호를 위해 언제나 보안을 신경쓰고 있습니다.
+                    Black Coin은 트레이더들의 권익 보호를 위해 언제나 보안을 신경쓰고 있습니다.
                   </div>
                 </div>
               </div>
@@ -74,7 +77,7 @@ export default function HomePage() {
               <div className={'flex flex-col gap-[60px]'}>
                 <div className={'flex flex-col text-gray-20 font-suit-22-r-130 gap-5'}>
                   <div className={'text-gray-0 font-pre-35-400-130 sm:font-pre-40-r-130 letter-spacing-[0.04px]'}>
-                    Service Name
+                    Black Coin
                   </div>
 
                   <div className={'text-gray-20 font-suit-18-400-140 sm:font-suit-22-r-140 whitespace-pre-line'}>
@@ -121,9 +124,11 @@ export default function HomePage() {
                 </div>
 
                 <div className={'w-[350px] h-[56px] mx-auto'}>
-                  <button className={'w-full h-full border border-gray-0 text-gray-0 font-suit-17-m-130'}>
-                    Join Us
-                  </button>
+                  <div className={'w-full h-full border border-gray-0 text-gray-0 font-suit-17-m-130'}>
+                    <Link href={ROUTES.PLATFORM.LOGIN} className={'h-full flex justify-center items-center'}>
+                      Join Us
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

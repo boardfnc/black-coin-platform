@@ -4,7 +4,7 @@ export default function PlatformFooter() {
   return (
     <div className={'bg-gray-0 px-5 py-[50px] sm:px-0'}>
       <div className={'max-w-[1320px] mx-auto flex flex-col gap-3'}>
-        <div className={'text-gray-100 font-suit-24-700-150'}>Company</div>
+        <div className={'text-gray-100 font-suit-24-700-150'}>Black Company</div>
 
         <div className={'flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3'}>
           <div className={'text-gray-100 font-suit-16-400-150'}>Copyright © 2024. company All rights reserved.</div>

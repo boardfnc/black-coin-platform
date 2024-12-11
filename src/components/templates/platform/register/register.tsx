@@ -157,11 +157,13 @@ export default function PlatformRegister() {
   };
 
   return (
-    <div className={'w-auto mx-auto px-[30px] sm:mt-[0px] mt-[200px]'}>
+    <div className={'w-auto mx-auto px-[30px]'}>
       <div className={'flex flex-col gap-[70px]'}>
         <div className={'flex flex-col gap-[80px] mb-[100px]'}>
           <div className={'flex flex-col justify-center items-center border-b border-gray-80 gap-3'}>
-            <div className={'text-yellow-50 font-suit-32-750-130 py-5'}>Service Name</div>
+            <Link href={ROUTES.PLATFORM.LOGIN} className={'flex justify-center items-center'}>
+              <div className={'text-yellow-50 font-suit-32-750-130 py-5'}>Black Coin</div>
+            </Link>
           </div>
 
           {!success && (

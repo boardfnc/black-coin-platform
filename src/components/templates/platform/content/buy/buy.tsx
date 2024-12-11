@@ -119,7 +119,7 @@ export default function Buy() {
 
               <div className={'absolute w-max top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2'}>
                 <div className={'flex flex-col justify-center items-center gap-2.5'}>
-                  <div className={'text-gray-100 font-suit-40-800-110 sm:font-suit-60-800-110'}>Service Name</div>
+                  <div className={'text-gray-100 font-suit-40-800-110 sm:font-suit-60-800-110'}>Black Coin</div>
 
                   <div className={'text-gray-100 font-suit-30-400-110'}>구매</div>
                 </div>

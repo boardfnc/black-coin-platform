@@ -103,7 +103,7 @@ export default function AdminLogin() {
                   src={LockImage}
                 />
                 <div className={'absolute h-[42px] top-[239px] left-[108px] text-orange-orange50 font-pre-32-eb-130-2'}>
-                  Service Name
+                  Black Coin
                 </div>
               </div>
             </div>

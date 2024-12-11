@@ -117,10 +117,29 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => {
+      const newFormData = {
+        ...prev,
+        [name]: value,
+      };
+
+      validateForm();
+
+      const newErrors = { ...errors };
+
+      if (name === 'password' || name === 'passwordConfirm') {
+        if (name === 'password' && value !== prev.passwordConfirm) {
+          newErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
+        } else if (name === 'passwordConfirm' && value !== prev.password) {
+          newErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
+        } else {
+          newErrors.passwordConfirm = '';
+        }
+        setErrors(newErrors);
+      }
+
+      return newFormData;
+    });
   };
 
   const handleClose = () => {
@@ -205,7 +224,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
                 value={formData.userId}
                 onChange={handleChange}
                 className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                  errors.userId ? 'border-red-60 text-red-60' : ''
+                  errors.userId ? 'border-red-60' : ''
                 }`}
                 placeholder={'아이디'}
               />
@@ -223,7 +242,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
                 onChange={handleChange}
                 type={'password'}
                 className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                  errors.password ? 'border-red-60 text-red-60' : ''
+                  errors.password ? 'border-red-60' : ''
                 }`}
                 placeholder={'비밀번호'}
               />
@@ -241,7 +260,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
                 onChange={handleChange}
                 type={'password'}
                 className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                  errors.passwordConfirm ? 'border-red-60 text-red-60' : ''
+                  errors.passwordConfirm ? 'border-red-60' : ''
                 }`}
                 placeholder={'비밀번호 확인'}
               />
@@ -261,7 +280,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               value={formData.partnerName}
               onChange={handleChange}
               className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                errors.partnerName ? 'border-red-60 text-red-60' : ''
+                errors.partnerName ? 'border-red-60' : ''
               }`}
               placeholder={'파트너사명'}
             />
@@ -278,7 +297,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               value={formData.contactNumber}
               onChange={handleChange}
               className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                errors.contactNumber ? 'border-red-60 text-red-60' : ''
+                errors.contactNumber ? 'border-red-60' : ''
               }`}
               placeholder={'담당자연락처'}
             />
@@ -295,7 +314,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               value={formData.siteUrl}
               onChange={handleChange}
               className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                errors.siteUrl ? 'border-red-60 text-red-60' : ''
+                errors.siteUrl ? 'border-red-60' : ''
               }`}
               placeholder={'사이트주소'}
             />
@@ -326,7 +345,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               value={formData.accountNumber}
               onChange={handleChange}
               className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                errors.accountNumber ? 'border-red-60 text-red-60' : ''
+                errors.accountNumber ? 'border-red-60' : ''
               }`}
               placeholder={'(-)제외 숫자만 입력'}
             />
@@ -343,7 +362,7 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
               value={formData.accountHolder}
               onChange={handleChange}
               className={`text-gray-0 placeholder:text-gray-50 font-pre-16-r-130 py-4 w-full border-b ${
-                errors.accountHolder ? 'border-red-60 text-red-60' : ''
+                errors.accountHolder ? 'border-red-60' : ''
               }`}
               placeholder={'입력'}
             />

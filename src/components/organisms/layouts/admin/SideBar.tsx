@@ -51,7 +51,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
       ${isOpen ? 'w-[250px]' : 'w-[60px]'}`}
     >
       <div className={'bg-gray-10 flex items-center justify-between h-[60px] px-4'}>
-        {isOpen && <h1 className={'text-gray-100 font-suit-12-750-130'}>Service Name ADMIN</h1>}
+        {isOpen && <h1 className={'text-gray-100 font-suit-12-750-130'}>Black Coin ADMIN</h1>}
       </div>
 
       <div className={'relative w-[250px] h-screen bg-gray-95 border-r border-gray-80'}>
@@ -140,7 +140,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
                 ) : (
                   <Link
                     href={path}
-                    className={`relative z-20 w-full h-[56px] relative flex items-center px-3.5 py-3 hover:bg-gray-80 bg-gray-100
+                    className={`relative z-20 w-full h-[56px] flex items-center px-3.5 py-3 hover:bg-gray-80 bg-gray-100
                       ${isPathActive(path) ? 'bg-orange-orange95 text-orange-orange45 before:absolute before:right-0 before:top-0 before:bottom-0 before:w-0.5 before:bg-orange-500' : 'text-gray-20 before:absolute before:right-0 before:top-0 before:bottom-0 before:w-[1px] before:bg-gray-80'}`}
                   >
                     <div className={`flex items-center gap-1.5 ${pathname === path ? 'text-orange-orange50' : ''}`}>

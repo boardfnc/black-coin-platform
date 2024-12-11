@@ -82,7 +82,7 @@ export default function Wallet() {
                 <div className={'text-gray-100 font-suit-16-b-130'}>✻ 코인 지갑 연동 안내</div>
 
                 <div className={'text-gray-100 font-suit-14-r-150 whitespace-pre-line'}>
-                  {`고객님들의 안전한 자산관리를 위하여 Service Name에서는 코인 입금 제도를 새롭게 도입하였습니다. 
+                  {`고객님들의 안전한 자산관리를 위하여 Black Coin에서는 코인 입금 제도를 새롭게 도입하였습니다. 
                 해당 사이트를 이용하시는 모든 고객님들은 별도의 거래소 가입없이 이용이 가능하며, 아래 [코인지갑 연동 및 입금]을 통해 지갑 연동 후 편리하게 이용 가능합니다.`}
                 </div>
 

@@ -44,7 +44,7 @@ export default function Header() {
       <div className={'sm:hidden sticky top-0 left-0 right-0 z-50 bg-gray-100 px-5 shadow-Z1'}>
         <div className={'flex justify-between items-center h-[60px]'}>
           <Link href={ROUTES.PLATFORM.HOME} className={'text-yellow-50 font-suit-32-750-130'}>
-            Service Name
+            Black Coin
           </Link>
 
           <button onClick={() => setIsOpen(true)}>
@@ -95,15 +95,16 @@ export default function Header() {
           >
             <div className={'p-6 flex flex-col gap-[30px]'}>
               {!isLogin && (
-                <div className={'flex flex-col gap-[10px] items-end justify-center pb-[30px] border-b border-gray-100'}>
+                <div className={'flex flex-col gap-6 items-end justify-center pb-[30px] border-b border-gray-100'}>
                   <div>
-                    <button
+                    <Link
+                      href={ROUTES.PLATFORM.LOGIN}
                       className={
-                        'w-auto h-[28px] rounded-[60px] border border-gray-100 px-4 text-gray-100 font-suit-13-m-130'
+                        'flex items-center w-auto h-[28px] rounded-[60px] border border-gray-100 px-4 text-gray-100 font-suit-13-m-130'
                       }
                     >
                       로그인
-                    </button>
+                    </Link>
                   </div>
 
                   <div className={'text-gray-100 font-suit-14-m-130'}>
@@ -111,13 +112,13 @@ export default function Header() {
                   </div>
 
                   <div className={'text-gray-100 font-suit-14-m-130'}>
-                    <Link href={ROUTES.PLATFORM.REGISTER}>마이페이지</Link>
+                    <Link href={ROUTES.PLATFORM.MY_PAGE}>마이페이지</Link>
                   </div>
                 </div>
               )}
 
               {isLogin && (
-                <div className={'flex items-end flex-col gap-2.5 pb-[30px] border-b border-gray-100'}>
+                <div className={'flex items-end flex-col gap-6 pb-[30px] border-b border-gray-100'}>
                   <div className={'flex items-center gap-1'}>
                     <div className={'w-[32px] h-[32px] flex items-center justify-center border rounded-full'}>
                       <IconLine24Avatar />
@@ -161,7 +162,7 @@ export default function Header() {
                   </Link>
                 </div>
 
-                <div>
+                {/* <div>
                   <Link
                     href={ROUTES.PLATFORM.SEND}
                     onClick={() => setIsOpen(false)}
@@ -169,7 +170,7 @@ export default function Header() {
                   >
                     전송
                   </Link>
-                </div>
+                </div> */}
 
                 <div>
                   <Link
@@ -204,7 +205,7 @@ export default function Header() {
           <div className={'flex flex-row items-center'}>
             <div className={'h-[70px] flex flex-row items-center gap-10'}>
               <Link href={ROUTES.PLATFORM.HOME} className={'text-yellow-50 font-suit-32-750-130'}>
-                Service Name
+                Black Coin
               </Link>
 
               <Link href={ROUTES.PLATFORM.BUY} className={'font-suit-18-b-130'}>
@@ -215,9 +216,9 @@ export default function Header() {
                 판매
               </Link>
 
-              <Link href={ROUTES.PLATFORM.SEND} className={'font-suit-18-b-130'}>
+              {/* <Link href={ROUTES.PLATFORM.SEND} className={'font-suit-18-b-130'}>
                 전송
-              </Link>
+              </Link> */}
 
               <Link href={ROUTES.PLATFORM.TRANSACTION_HISTORY} className={'font-suit-18-b-130'}>
                 거래내역
