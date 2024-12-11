@@ -15,7 +15,7 @@ export default async function BuyPage() {
     const data = await userInformationShowService();
 
     if (data == null) {
-      return redirect(ROUTES.ROOT);
+      return redirect(ROUTES.PLATFORM.LOGIN);
     }
 
     await queryClient.prefetchQuery({
@@ -31,6 +31,6 @@ export default async function BuyPage() {
       </QueryHydrate>
     );
   } catch (_) {
-    redirect(ROUTES.ROOT);
+    return redirect(ROUTES.PLATFORM.LOGIN);
   }
 }
