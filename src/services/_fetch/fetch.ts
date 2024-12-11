@@ -62,6 +62,8 @@ const fetchFunction = async <T = Response,>(url: UrlType, options?: OptionsType)
     if (isRefreshTokenError(statusCode)) {
       const cookie = await cookies();
       cookie.delete('token');
+
+      redirect(ROUTES.ROOT);
     }
 
     return data;
