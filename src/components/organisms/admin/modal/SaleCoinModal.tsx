@@ -13,7 +13,7 @@ import { adminSaleManagerService, adminSaleMemberService } from '@/services/admi
 import { convertMembershipGrade, convertBank } from '@/utils/covert';
 
 export default function SaleCoinModal(props: ISaleCoinModalProps) {
-  const { type, isOpen, saleCoinModalTableData, useDefaultDeposit = true, onClose } = props;
+  const { type, isOpen, saleCoinModalTableData, useDefaultDeposit = true, onClose, refetch } = props;
 
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isBonusModalOpen, setIsBonusModalOpen] = useState(false);
@@ -27,6 +27,12 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
   const { request } = useRequest();
 
   const showCheckboxes = saleCoinModalTableData?.length > 1;
+
+  const handleClose = () => {
+    setIsChecked(false);
+    setPaymentAmounts({});
+    onClose();
+  };
 
   const handleCheckboxChange = (dealingId: string) => {
     setSelectedDeals((prev) =>
@@ -71,15 +77,12 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
         message: '판매액 지급이 완료되었습니다.',
         type: 'success',
       });
+
+      refetch?.();
+      handleClose();
     }
 
     return response;
-  };
-
-  const handleClose = () => {
-    setIsChecked(false);
-    setPaymentAmounts({});
-    onClose();
   };
 
   const handlePaymentClick = () => setIsConfirmModalOpen(true);

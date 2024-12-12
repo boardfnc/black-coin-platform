@@ -8,13 +8,14 @@ import type { ISendCoinModalProps } from './SendCoinModal.types';
 import { IconLine24RoundWarning, IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
+import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useRequest, useToast } from '@/hooks';
 import { adminPurchaseManageService, adminPurchaseMemberService } from '@/services/admin/coin/adminPurchase';
 import { useRefetch } from '@/stores/refetch';
 import { convertMembershipGrade, convertBank } from '@/utils/covert';
 
 export default function SendCoinModal(props: ISendCoinModalProps) {
-  const { sendCoinModalTableData, isOpen, type, onClose } = props;
+  const { sendCoinModalTableData, isOpen, type, onClose, refetch } = props;
 
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isBonusModalOpen, setIsBonusModalOpen] = useState(false);
@@ -26,6 +27,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
   const { sideBarRefetch } = useRefetch();
   const { open: openToast } = useToast();
   const { request } = useRequest();
+  const { isSuperAdmin } = useAuthor();
 
   const showCheckboxes = sendCoinModalTableData?.length > 1;
 
@@ -75,11 +77,15 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
           }),
     );
 
+    setIsConfirmModalOpen(false);
+
     if (response != null && 'status' in response && response.status) {
       openToast({
         message: '코인 지급이 완료되었습니다.',
         type: 'success',
       });
+
+      refetch?.();
       sideBarRefetch?.();
       handleClose();
       onClose();
@@ -133,14 +139,18 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
     setPaymentAmounts(updatedPaymentAmounts);
   };
 
+  const modalTitle = (() => {
+    if (isSuperAdmin) return '코인 지급';
+    if (type === 'ca') return '코인 지급 이력';
+    return '입금 확인(코인 지급)';
+  })();
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={handleClose} width={type === 'ca' ? '1655px' : '1655px'} height={'auto'}>
         <div className={'flex flex-col gap-[30px] px-2.5'}>
           <div className={'flex items-center justify-between gap-2 pt-1 pb-3'}>
-            <div className={'text-gray-0 font-pre-20-m-130'}>
-              {type === 'ca' ? '코인 지급 이력' : '입금 확인(코인 지급)'}
-            </div>
+            <div className={'text-gray-0 font-pre-20-m-130'}>{modalTitle}</div>
 
             <button className={'text-gray-0 font-pre-13-r-130'} onClick={handleClose}>
               <IconLine24Close className={'text-gray-10'} />
@@ -231,7 +241,11 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                           <td className={'border border-gray-80'}>
                             <input
                               type={'text'}
-                              value={paymentAmounts[item.dealingId] || ''}
+                              value={
+                                isSuperAdmin
+                                  ? paymentAmounts[item.dealingId] || item.requestAmount?.toLocaleString('ko-KR') || ''
+                                  : paymentAmounts[item.dealingId] || ''
+                              }
                               onChange={(event) =>
                                 handlePaymentAmountChange(item.dealingId.toString(), event.target.value)
                               }

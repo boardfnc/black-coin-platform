@@ -7,4 +7,5 @@ export interface ISaleCoinModalProps {
   saleCoinModalTableData: ISaleCATableData[] | ISaleGeneralTableData[];
   useDefaultDeposit: boolean;
   onClose: () => void;
+  refetch?: () => void;
 }

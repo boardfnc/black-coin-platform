@@ -13,7 +13,7 @@ import excelIcon from '@/images/icons/excel.png';
 import { convertDealStatus, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
-export default function SaleCATable({ data }: ISaleCATableProps) {
+export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
   const [isCoinHistoryModalOpen, setIsCoinHistoryModalOpen] = useState(false);
   const [isSendCoinModalOpen, setIsSendCoinModalOpen] = useState(false);
   const [selectedHistoryIndex, setSelectedHistoryIndex] = useState(0);
@@ -228,6 +228,7 @@ export default function SaleCATable({ data }: ISaleCATableProps) {
 
       <SaleCoinModal
         saleCoinModalTableData={selectedItem ? [selectedItem] : data.filter((item) => checkedItems[item.uniqueId])}
+        refetch={refetch}
         isOpen={isSendCoinModalOpen}
         onClose={() => {
           setIsSendCoinModalOpen(false);

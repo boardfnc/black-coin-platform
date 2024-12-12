@@ -112,7 +112,7 @@ export default function SaleGeneral() {
     [searchParams, page, perPage],
   );
 
-  const { data } = useFetch(fetchSaleGeneral);
+  const { data, execute } = useFetch(fetchSaleGeneral);
 
   const statisticsData = data?.data?.map(
     (item, index) =>
@@ -165,7 +165,7 @@ export default function SaleGeneral() {
               </div>
             </div>
 
-            <SaleGeneralTable data={statisticsData} />
+            <SaleGeneralTable data={statisticsData} refetch={execute} />
 
             <div className={'w-full flex justify-center items-center gap-3'}>
               <Select />

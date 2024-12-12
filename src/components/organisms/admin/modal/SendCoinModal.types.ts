@@ -6,4 +6,5 @@ export interface ISendCoinModalProps {
   isOpen: boolean;
   type: 'ca' | 'user';
   onClose: () => void;
+  refetch?: () => void;
 }

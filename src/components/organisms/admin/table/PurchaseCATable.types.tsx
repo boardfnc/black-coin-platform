@@ -24,4 +24,5 @@ export interface IPurchaseCATableData {
 
 export interface IPurchaseCATableProps {
   data?: IPurchaseCATableData[];
+  refetch?: () => void;
 }

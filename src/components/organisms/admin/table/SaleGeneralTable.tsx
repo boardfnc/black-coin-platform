@@ -14,7 +14,7 @@ import excelIcon from '@/images/icons/excel.png';
 import { convertDealStatus, convertMembershipGrade, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
-export default function SaleGeneralTable({ data }: ISaleGeneralTableProps) {
+export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTableProps) {
   const [isCoinHistoryModalOpen, setIsCoinHistoryModalOpen] = useState(false);
   const [isSendCoinModalOpen, setIsSaleCoinModalOpen] = useState(false);
   const [selectedHistoryIndex, setSelectedHistoryIndex] = useState(0);
@@ -257,6 +257,7 @@ export default function SaleGeneralTable({ data }: ISaleGeneralTableProps) {
 
       <SaleCoinModal
         saleCoinModalTableData={selectedItem ? [selectedItem] : data.filter((item) => checkedItems[item.uniqueId])}
+        refetch={refetch}
         isOpen={isSendCoinModalOpen}
         onClose={() => {
           setIsSaleCoinModalOpen(false);

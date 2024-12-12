@@ -86,7 +86,7 @@ export default function PurchaseCA() {
     [searchParams, page, perPage],
   );
 
-  const { data } = useFetch(fetchPurchaseCA);
+  const { data, execute } = useFetch(fetchPurchaseCA);
 
   const statisticsData = data?.data?.map(
     (item, index) =>
@@ -140,7 +140,7 @@ export default function PurchaseCA() {
                   </div>
                 </div>
 
-                <PurchaseCATable data={statisticsData} />
+                <PurchaseCATable data={statisticsData} refetch={execute} />
 
                 <div className={'w-full flex justify-center items-center gap-3'}>
                   <Select />

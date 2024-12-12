@@ -126,7 +126,7 @@ export default function PurchaseGeneral() {
     [searchParams, page, perPage],
   );
 
-  const { data } = useFetch(fetchPurchaseGeneral);
+  const { data, execute } = useFetch(fetchPurchaseGeneral);
 
   const statisticsData = data?.data?.map(
     (item, index) =>
@@ -179,7 +179,7 @@ export default function PurchaseGeneral() {
               </div>
             </div>
 
-            <PurchaseUserTable data={statisticsData} />
+            <PurchaseUserTable data={statisticsData} refetch={execute} />
 
             <div className={'w-full flex justify-center items-center gap-3'}>
               <Select />

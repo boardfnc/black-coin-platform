@@ -25,4 +25,5 @@ export interface IPurchaseUserTableData {
 
 export interface IPurchaseUserTableProps {
   data?: IPurchaseUserTableData[];
+  refetch?: () => void;
 }

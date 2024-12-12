@@ -24,4 +24,5 @@ export interface ISaleCATableData {
 
 export interface ISaleCATableProps {
   data?: ISaleCATableData[];
+  refetch?: () => void;
 }

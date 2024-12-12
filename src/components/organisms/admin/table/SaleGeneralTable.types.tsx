@@ -25,4 +25,5 @@ export interface ISaleGeneralTableData {
 
 export interface ISaleGeneralTableProps {
   data?: ISaleGeneralTableData[];
+  refetch?: () => void;
 }

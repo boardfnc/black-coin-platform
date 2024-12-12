@@ -91,7 +91,7 @@ export default function SaleCA() {
     [searchParams, page, perPage],
   );
 
-  const { data } = useFetch(fetchSaleCA);
+  const { data, execute } = useFetch(fetchSaleCA);
 
   const statisticsData = data?.data?.map(
     (item, index) =>
@@ -144,7 +144,7 @@ export default function SaleCA() {
                 </div>
               </div>
 
-              <SaleCATable data={statisticsData} />
+              <SaleCATable data={statisticsData} refetch={execute} />
 
               <div className={'w-full flex justify-center items-center gap-3'}>
                 <Select />
