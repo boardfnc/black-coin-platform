@@ -67,7 +67,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
 
             {!isSuperAdmin && (
               <div className={'flex flex-col justify-end items-end gap-1'}>
-                <span className={'text-gray-0 font-pre-20-m-130'}>{memberData?.data.prtnr_nm}</span>
+                <span className={'text-gray-0 font-pre-20-m-130'}>{memberData?.data?.prtnr_nm}</span>
                 <span className={'text-gray-30 font-pre-14-r-130'}>{loginId}</span>
               </div>
             )}
@@ -86,7 +86,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
                   <IconLineSavingMoney />
                 </span>
                 <span className={'text-gray-0 font-pre-16-m-130'}>
-                  {(memberData?.data.hold_coin || 0).toLocaleString('ko-KR')}
+                  {(memberData?.data?.hold_coin || 0).toLocaleString('ko-KR')}
                 </span>
               </div>
             </div>
@@ -96,11 +96,11 @@ export default function SideBar({ isOpen }: ISideBarProps) {
             <span className={'text-gray-40 font-suit-12-750-130'}>IP Address</span>
 
             {!isSuperAdmin && (
-              <span className={'text-gray-30 font-suit-14-750-130'}>{memberData?.data.last_conect_ip}</span>
+              <span className={'text-gray-30 font-suit-14-750-130'}>{memberData?.data?.last_conect_ip}</span>
             )}
 
             {isSuperAdmin && (
-              <span className={'text-gray-30 font-suit-14-750-130'}>{adminData?.data.last_conect_ip}</span>
+              <span className={'text-gray-30 font-suit-14-750-130'}>{adminData?.data?.last_conect_ip}</span>
             )}
           </div>
         </div>

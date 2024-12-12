@@ -218,7 +218,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
 
         <div className={'flex flex-col gap-5 mt-5 mx-4'}>
           <div className={'flex flex-row gap-5'}>
-            <div className={'flex flex-row w-[500px] gap-5 bg-gray-95 p-5 rounded-[30px]'}>
+            <div className={'flex flex-auto flex-shrink-0 flex-row w-[500px] gap-5 bg-gray-95 p-5 rounded-[30px]'}>
               <div className={'w-full flex flex-col gap-5'}>
                 <div className={'w-full flex flex-row gap-5 '}>
                   <div className={'w-full flex flex-col gap-2.5 bg-gray-100 rounded-[30px] p-5'}>
