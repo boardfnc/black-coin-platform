@@ -29,3 +29,5 @@ export { default as IconLine24ArrowReturn } from './ArrowReturn';
 export { default as IconLine24Headset } from './Headset';
 export { default as IconLine24Change } from './Change';
 export { default as IconLine24Logout } from './Logout';
+export { default as IconLine24ArrowLongDown } from './ArrowLongDown';
+export { default as IconLine24LinkClear } from './LinkClear';

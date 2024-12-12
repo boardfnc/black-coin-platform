@@ -30,7 +30,7 @@ export default function Header() {
   const code = searchParams.get('code');
   const essentialKey = searchParams.get('essential-key');
 
-  const { data } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryFn: () => automaticLoginService({ autoLogin, code: code!, esntl_key: essentialKey! }),
     queryKey: automaticLoginQueryKey,
     enabled: !!autoLogin && !!code && !!essentialKey,
@@ -61,16 +61,27 @@ export default function Header() {
     if (isJoin) openJoinModal();
   }, [isJoin, openJoinModal]);
 
+  useEffect(() => {
+    if (isSuccess) {
+      queryClient.setQueryData(clientInformationKey, {
+        ...queryClient.getQueryData(clientInformationKey),
+        isLogin: true,
+      });
+    }
+  }, [isSuccess, queryClient]);
+
   return (
     <div className={'sticky top-0 z-50 h-[70px] flex justify-between items-center px-10 bg-gray-0'}>
       <div className={'text-yellow-50 font-suit-32-750-130'}>Navigation</div>
 
-      <button
-        className={'h-[28px] text-gray-100 bg-gray-0 border border-gray-100 rounded-[60px] px-4 font-suit-13-m-130'}
-        onClick={onClickAuthorButton}
-      >
-        {isLogin ? '로그아웃' : '로그인'}
-      </button>
+      {!isLogin && (
+        <button
+          className={'h-[28px] text-gray-100 bg-gray-0 border border-gray-100 rounded-[60px] px-4 font-suit-13-m-130'}
+          onClick={onClickAuthorButton}
+        >
+          로그인
+        </button>
+      )}
     </div>
   );
 }

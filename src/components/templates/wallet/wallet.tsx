@@ -1,19 +1,27 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
 import { useState } from 'react';
 
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { IconLine24Bell, IconLine24Change } from '@/components/atoms/icons/icon-line';
+import {
+  IconLine24ArrowLongDown,
+  IconLine24Bell,
+  IconLine24Change,
+  IconLine24LinkClear,
+} from '@/components/atoms/icons/icon-line';
 import { CoinToMoneyModal, MoneyToCoinModal } from '@/components/organisms/platform/modal';
 import { ROUTES } from '@/constants';
 import { useClient } from '@/hooks';
+import { clientInformationKey } from '@/hooks/client';
 import { coinWallet, digitalWallet } from '@/images/background';
 import { automaticLoginService } from '@/services/platform/auth/login';
 import { automaticLoginQueryKey } from '@/services/platform/auth/login.query';
+import { logoutService } from '@/services/platform/auth/logout';
 import { exchangeCheckService } from '@/services/platform/coin/exchange';
 import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { useJoin } from '@/stores/join';
@@ -22,6 +30,7 @@ import { useLogin } from '@/stores/login';
 export default function Wallet() {
   const { openModal: openLoginModal } = useLogin();
   const { openModal: openJoinModal } = useJoin();
+  const queryClient = useQueryClient();
   const { isLogin } = useClient();
 
   const [isOpenChangeCoinModal, setIsOpenChangeCoinModal] = useState(false);
@@ -52,6 +61,20 @@ export default function Wallet() {
     enabled: isLogin,
   });
 
+  const { mutate: logout } = useMutation({
+    mutationFn: logoutService,
+    onSuccess(data) {
+      if (data != null) {
+        if (data.status) {
+          queryClient.setQueryData(clientInformationKey, {
+            ...queryClient.getQueryData(clientInformationKey),
+            isLogin: false,
+          });
+        }
+      }
+    },
+  });
+
   const onClickAuthorButton = () => {
     if (isJoin) {
       openJoinModal();
@@ -72,11 +95,25 @@ export default function Wallet() {
 
           <div className={'container max-w-[1080px] mx-auto'}>
             <div className={'flex flex-col gap-5'}>
-              <div className={'flex items-center h-[88px] border-b text-gray-100 font-suit-30-750'}>My Wallet</div>
+              <div className={'flex justify-between items-center'}>
+                <div className={'flex items-center h-[88px] border-b text-gray-100 font-suit-30-750'}>My Wallet</div>
+
+                {isLogin && (
+                  <button
+                    className={
+                      'flex items-center gap-1.5 text-gray-100 font-pre-13-m-130 rounded-[60px] border-gray-100 bg-[rgba(255,255,255,0.1)] px-3 h-8 border border-gray-100'
+                    }
+                    onClick={() => logout(undefined)}
+                  >
+                    <IconLine24LinkClear />
+                    연결 해제
+                  </button>
+                )}
+              </div>
 
               <div
                 className={
-                  'flex flex-col gap-[10px] p-5 rounded-[16px] border border-gray-100 bg-[rgba(255, 255, 255, 0.05)]'
+                  'flex flex-col gap-[10px] p-5 rounded-[16px] border border-gray-100 bg-[rgba(255,255,255,0.05)]'
                 }
               >
                 <div className={'text-gray-100 font-suit-16-b-130'}>✻ 코인 지갑 연동 안내</div>
@@ -177,6 +214,26 @@ export default function Wallet() {
                     >
                       출금 신청
                     </button>
+                  </div>
+
+                  <div className={`flex ${code ? 'justify-between' : 'justify-end'} pt-5`}>
+                    {code && (
+                      <div className={'flex items-center gap-1'}>
+                        <div className={'text-gray-0 font-suit-14-m-130'}>코드명:</div>
+                        <div className={'text-gray-0 font-suit-18-750-130'}>{code}</div>
+                      </div>
+                    )}
+
+                    <Link href={ROUTES.PLATFORM.HOME} target={'_blank'} className={'flex gap-6 items-center'}>
+                      <div className={'flex flex-col gap-[2px]'}>
+                        <div className={'text-gray-0 font-suit-18-300-130 underline'}>블랙사이트 바로가기</div>
+                        <div className={'text-gray-50 font-suit-13-r-113'}>Go to black site</div>
+                      </div>
+
+                      <div className={'flex items-center justify-center w-10 h-10 bg-gray-0 rounded-full'}>
+                        <IconLine24ArrowLongDown />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>

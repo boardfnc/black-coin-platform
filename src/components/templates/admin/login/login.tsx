@@ -35,13 +35,13 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className={'bg-[#f9f3ed] flex flex-row justify-center w-full'}>
-      <div className={'bg-[#f9f3ed] w-[1920px] h-screen'}>
-        <div className={'inline-flex top-[290px] left-[460px] items-center relative'}>
+    <div className={'bg-[#f9f3ed] flex flex-row justify-center w-full min-h-screen'}>
+      <div className={'bg-[#f9f3ed] w-full flex justify-center items-center'}>
+        <div className={'flex items-center'}>
           <form
             onSubmit={handleLoginSubmit}
             className={
-              'flex flex-col w-[500px] h-[500px] gap-[60px] px-[60px] py-10 bg-white rounded-[32px_0px_0px_32px] items-center relative'
+              'flex flex-col w-full sm:w-[500px] max-w-[500px] h-[500px] gap-[60px] px-10 sm:px-[60px] py-10 bg-white rounded-[32px] desktop:rounded-[32px_0px_0px_32px] items-center'
             }
           >
             <div className={'flex-col items-center gap-10 flex-[0_0_auto] flex relative self-stretch w-full'}>
@@ -88,7 +88,7 @@ export default function AdminLogin() {
             </div>
           </form>
 
-          <div className={'relative w-[500px] h-[500px]'}>
+          <div className={'relative w-[500px] h-[500px] hidden desktop:block'}>
             <div className={'h-[500px] bg-[#ffffff4c] rounded-[0px_32px_32px_0px] backdrop-blur-sm'}>
               <div className={'relative w-[393px] h-[350px] top-[75px] left-8'}>
                 <div

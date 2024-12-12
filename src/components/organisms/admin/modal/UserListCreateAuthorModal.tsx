@@ -6,13 +6,14 @@ import type { IUserListCreateAuthorModalProps } from './UserListCreateAuthorModa
 import IconLine24SquareInfo from '@/components/atoms/icons/icon-line/SquareInfo';
 import { BankSelect } from '@/components/atoms/inputs';
 import Modal from '@/components/atoms/modals/Modal';
-import { useRequest } from '@/hooks';
+import { useRequest, useToast } from '@/hooks';
 import { adminManagersPostService } from '@/services/admin/member/adminManagers';
 
 export default function UserListCreateAuthorModal(props: IUserListCreateAuthorModalProps) {
   const { isOpen, onClose } = props;
 
   const { request } = useRequest();
+  const { open: openToast } = useToast();
 
   const [formData, setFormData] = useState({
     userId: '',
@@ -123,21 +124,84 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
         [name]: value,
       };
 
-      validateForm();
-
       const newErrors = { ...errors };
 
-      if (name === 'password' || name === 'passwordConfirm') {
-        if (name === 'password' && value !== prev.passwordConfirm) {
-          newErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
-        } else if (name === 'passwordConfirm' && value !== prev.password) {
+      if (name === 'userId') {
+        const userIdRegex = /^[A-Za-z0-9]{4,20}$/;
+        if (!value) {
+          newErrors.userId = '정보를 입력해주세요.';
+        } else if (!userIdRegex.test(value)) {
+          if (value.length < 4 || value.length > 20) {
+            newErrors.userId = '4자 ~ 20자 이하까지 입력가능합니다.';
+          } else {
+            newErrors.userId = '아이디는 영문과 숫자만 입력이 가능합니다.';
+          }
+        } else {
+          newErrors.userId = '';
+        }
+      }
+
+      if (name === 'password') {
+        if (!value) {
+          newErrors.password = '정보를 입력해주세요.';
+        } else if (value.length < 6 || value.length > 20) {
+          newErrors.password = '비밀번호는 6자~20자 이하까지 입력이 가능합니다.';
+        } else {
+          newErrors.password = '';
+        }
+      }
+
+      if (name === 'passwordConfirm' || name === 'password') {
+        if (!newFormData.passwordConfirm) {
+          newErrors.passwordConfirm = '정보를 입력해주세요.';
+        } else if (newFormData.passwordConfirm !== newFormData.password) {
           newErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
         } else {
           newErrors.passwordConfirm = '';
         }
-        setErrors(newErrors);
       }
 
+      if (name === 'partnerName') {
+        if (!value) {
+          newErrors.partnerName = '정보를 입력해주세요.';
+        } else {
+          newErrors.partnerName = '';
+        }
+      }
+
+      if (name === 'contactNumber') {
+        if (!value) {
+          newErrors.contactNumber = '정보를 입력해주세요.';
+        } else {
+          newErrors.contactNumber = '';
+        }
+      }
+
+      if (name === 'siteUrl') {
+        if (!value) {
+          newErrors.siteUrl = '정보를 입력해주세요.';
+        } else {
+          newErrors.siteUrl = '';
+        }
+      }
+
+      if (name === 'accountNumber') {
+        if (!value) {
+          newErrors.accountNumber = '정보를 입력해주세요.';
+        } else {
+          newErrors.accountNumber = '';
+        }
+      }
+
+      if (name === 'accountHolder') {
+        if (!value) {
+          newErrors.accountHolder = '정보를 입력해주세요.';
+        } else {
+          newErrors.accountHolder = '';
+        }
+      }
+
+      setErrors(newErrors);
       return newFormData;
     });
   };
@@ -170,9 +234,9 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
     onClose();
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateForm()) {
-      request(() =>
+      const data = await request(() =>
         adminManagersPostService({
           login_id: formData.userId,
           prtnr_nm: formData.partnerName,
@@ -187,6 +251,11 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
           sle_fee: Number(formData.saleFeePercent),
         }),
       );
+
+      if (data?.status) {
+        openToast({ message: '아이디 추가 생성이 완료되었습니다.' });
+        onClose();
+      }
     }
   };
 

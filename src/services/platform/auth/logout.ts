@@ -14,6 +14,7 @@ export async function logoutService(options?: OptionsType) {
 
   const cookie = await cookies();
   cookie.delete('token');
+  cookie.delete('auto-login');
 
   return response;
 }

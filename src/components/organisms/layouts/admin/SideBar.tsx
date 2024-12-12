@@ -47,7 +47,7 @@ export default function SideBar({ isOpen }: ISideBarProps) {
 
   return (
     <div
-      className={`fixed left-0 top-0 h-screen transition-all duration-300 bg-gray-100
+      className={`fixed left-0 top-0 h-screen transition-all duration-300 bg-gray-100 z-50
       ${isOpen ? 'w-[250px]' : 'w-[60px]'}`}
     >
       <div className={'bg-gray-10 flex items-center justify-between h-[60px] px-4'}>

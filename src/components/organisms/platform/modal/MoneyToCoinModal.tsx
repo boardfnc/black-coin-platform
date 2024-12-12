@@ -28,6 +28,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
       if (data != null) {
         if (data.status) {
           openToast({ message: '교환이 성공적으로 완료되었습니다.', type: 'success' });
+          setAmount('');
 
           queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
           queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
@@ -44,7 +45,13 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        setAmount('');
+        onClose();
+      }}
+    >
       <div className={'flex flex-col gap-10 p-5'}>
         <div className={'flex flex-col items-center gap-4'}>
           <div className={'text-gray-0 font-suit-40-900-113'}>blackcoin</div>
@@ -81,8 +88,11 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
               className={'flex-auto rounded-[14px] border border-gray-80 py-3 px-[14px]'}
               type={'text'}
               placeholder={'입력'}
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              value={amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              onChange={(e) => {
+                const value = e.target.value.replace(/,/g, '').replace(/^0+|[^0-9]/g, '');
+                setAmount(value);
+              }}
             />
 
             <button

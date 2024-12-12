@@ -71,8 +71,6 @@ const fetchFunction = async <T = Response,>(url: UrlType, options?: OptionsType)
     const errorResponse = error as Response;
 
     if (errorResponse?.statusText === 'Unauthorized') revalidateTag('fetch');
-
-    throw errorResponse?.statusText || 'Unknown Error';
   }
 };
 

@@ -123,7 +123,7 @@ export default function HomePage() {
                   고객의 자산을 상시 보호 합니다.
                 </div>
 
-                <div className={'w-[350px] h-[56px] mx-auto'}>
+                <div className={'w-full sm:w-[350px] h-[56px] mx-auto'}>
                   <div className={'w-full h-full border border-gray-0 text-gray-0 font-suit-17-m-130'}>
                     <Link href={ROUTES.PLATFORM.LOGIN} className={'h-full flex justify-center items-center'}>
                       Join Us
