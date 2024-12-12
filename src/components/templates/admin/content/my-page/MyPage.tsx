@@ -156,7 +156,7 @@ export default function MyPage() {
   return (
     <>
       <div className={'w-full h-full text-gray-0 bg-gray-100'}>
-        <AdminHeadline title={'마이 페이지'} subTitle={['마이 페이지']} />
+        <AdminHeadline title={'마이페이지'} subTitle={['마이페이지']} />
 
         <div className={'flex flex-col gap-5 mt-5 mx-4'}>
           <div className={'flex flex-row gap-5'}>

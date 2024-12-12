@@ -166,6 +166,8 @@ export interface IMemberMyPageResponse extends IBaseResponse {
     last_conect_ip: string;
     last_conect_os: string;
     last_conect_brwsr: string;
+    ca_mumm_rcpmny_am: number;
+    ca_mxmm_rcpmny_am: number;
   };
 }
 

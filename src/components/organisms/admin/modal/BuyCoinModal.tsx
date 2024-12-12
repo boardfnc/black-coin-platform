@@ -12,6 +12,7 @@ import {
   IconLine24Close,
   IconLine24ConfirmEtc,
   IconLine24SavingMoney,
+  IconLine24SquareInfo,
 } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
 import { Modal } from '@/components/atoms/modals';
@@ -170,6 +171,8 @@ export default function BuyCoinModal({ isOpen, mode, onClose, refetch }: IBuyCoi
   const [showCompleteModalData, setShowCompleteModalData] = useState<IBuyCompleteModalData | undefined>(undefined);
 
   const myCoin = myData?.data?.hold_coin || 0;
+  const minAmount = myData?.data?.ca_mumm_rcpmny_am || 0;
+  const maxAmount = myData?.data?.ca_mxmm_rcpmny_am || 0;
 
   const handleReset = () => setAmount(0);
 
@@ -258,6 +261,17 @@ export default function BuyCoinModal({ isOpen, mode, onClose, refetch }: IBuyCoi
                 </span>
               </div>
             )}
+          </div>
+
+          <div className={'h-10 px-2.5 flex items-center gap-1.5 bg-gray-95 rounded-lg'}>
+            <IconLine24SquareInfo className={'text-primary-50'} />
+            <div className={'text-gray-0 font-pre-13-r-130'}>
+              최소 구매 수량은{' '}
+              <span className={'text-gray-10 font-pre-13-b-130'}>{Number(minAmount).toLocaleString('ko-KR')}</span>,
+              최대 구매 수량은{' '}
+              <span className={'text-gray-10 font-pre-13-b-130'}>{Number(maxAmount).toLocaleString('ko-KR')}</span>{' '}
+              입니다.
+            </div>
           </div>
 
           <div>
