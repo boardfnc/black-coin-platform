@@ -75,7 +75,11 @@ export default function CAUserListTable({ data }: ICAUserListTableProps) {
             <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
             <td className={'border p-2'}>{item.saleCount.toLocaleString('ko-KR')}</td>
             <td className={'text-primary-50 underline border p-2'}>
-              <a href={item.siteUrl} target={'_blank'} rel={'noreferrer'}>
+              <a
+                href={item.siteUrl.startsWith('http') ? item.siteUrl : `https://${item.siteUrl}`}
+                target={'_blank'}
+                rel={'noreferrer'}
+              >
                 {item.siteUrl}
               </a>
             </td>

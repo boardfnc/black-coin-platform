@@ -23,6 +23,15 @@ const selectCovertText: Record<string, string> = {
   4: '거래 ',
 };
 
+const formatNumber = (value: number | undefined) => {
+  if (!value) return '';
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+const parseNumber = (value: string) => {
+  return Number(value.replace(/,/g, ''));
+};
+
 export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeManageIdProps) {
   const [formData, setFormData] = useState({
     type,
@@ -175,8 +184,8 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <div className={'flex flex-row gap-1 items-center'}>
                             <input
                               type={'text'}
-                              value={formData.vvip}
-                              onChange={(event) => setFormData({ ...formData, vvip: Number(event.target.value) })}
+                              value={formatNumber(formData.vvip)}
+                              onChange={(event) => setFormData({ ...formData, vvip: parseNumber(event.target.value) })}
                               className={
                                 'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
                               }
@@ -212,8 +221,8 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <div className={'flex flex-row gap-1 items-center'}>
                             <input
                               type={'text'}
-                              value={formData.vip}
-                              onChange={(event) => setFormData({ ...formData, vip: Number(event.target.value) })}
+                              value={formatNumber(formData.vip)}
+                              onChange={(event) => setFormData({ ...formData, vip: parseNumber(event.target.value) })}
                               className={
                                 'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
                               }
@@ -249,8 +258,10 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <div className={'flex flex-row gap-1 items-center'}>
                             <input
                               type={'text'}
-                              value={formData.general}
-                              onChange={(event) => setFormData({ ...formData, general: Number(event.target.value) })}
+                              value={formatNumber(formData.general)}
+                              onChange={(event) =>
+                                setFormData({ ...formData, general: parseNumber(event.target.value) })
+                              }
                               className={
                                 'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
                               }

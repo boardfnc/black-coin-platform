@@ -91,10 +91,10 @@ export const superAdminSideBarMenu = [
     title: '사이트/계좌 관리',
     icon: IconLine24Monitor2,
     dropdown: [
-      {
-        title: '공지사항',
-        path: ROUTES.ADMIN.SITE_ACCOUNT_MANAGE.NOTICE,
-      },
+      // {
+      //   title: '공지사항',
+      //   path: ROUTES.ADMIN.SITE_ACCOUNT_MANAGE.NOTICE,
+      // },
       {
         title: '계좌 관리',
         path: ROUTES.ADMIN.SITE_ACCOUNT_MANAGE.ACCOUNT,

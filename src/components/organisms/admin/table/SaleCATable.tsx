@@ -26,7 +26,7 @@ export default function SaleCATable({ data }: ISaleCATableProps) {
   const handleAllCheck = (checked: boolean) => {
     const newCheckedItems: { [key: string]: boolean } = {};
     data?.forEach((item) => {
-      if (item.type === '1' && item.status !== '24') {
+      if (item.type === '1' && item.status === '22') {
         newCheckedItems[item.uniqueId] = checked;
       }
     });
@@ -37,7 +37,7 @@ export default function SaleCATable({ data }: ISaleCATableProps) {
   const handleSingleCheck = (checked: boolean, uniqueId: string) => {
     setCheckedItems((prev) => {
       const newCheckedItems = { ...prev, [uniqueId]: checked };
-      const checkableItems = data?.filter((item) => item.type === '1' && item.status !== '24');
+      const checkableItems = data?.filter((item) => item.type === '1' && item.status === '22');
       setIsAllChecked(checkableItems?.every((item) => newCheckedItems[item.uniqueId]) ?? false);
       return newCheckedItems;
     });
@@ -181,7 +181,7 @@ export default function SaleCATable({ data }: ISaleCATableProps) {
                     checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj48cGF0aCBkPSJNMTMgMkg3QzQuMjM4NTggMiAyIDQuMjM4NTggMiA3VjEzQzIgMTUuNzYxNCA0LjIzODU4IDE4IDcgMThIMTNDMTUuNzYxNCAxOCAxOCAxNS43NjE0IDE4IDEzVjdDMTggNC4yMzg1OCAxNS43NjE0IDIgMTMgMloiIGZpbGw9IiM0MDlFRkYiIHN0cm9rZT0iIzQyODNDOSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNC4xMjUgNy43NUw4LjYyNDk3IDEzTDUuODc1IDEwLjM3NSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==')] 
                     checked:bg-no-repeat checked:bg-center checked:border-0 disabled:bg-gray-90`}
                   checked={checkedItems[item.uniqueId] || false}
-                  disabled={item.type !== '1' || item.status === '24'}
+                  disabled={item.type !== '1' || item.status !== '22'}
                   onChange={(event) => handleSingleCheck(event.target.checked, item.uniqueId.toString())}
                 />
               </td>
@@ -210,7 +210,7 @@ export default function SaleCATable({ data }: ISaleCATableProps) {
                   className={
                     'border text-primary-50 border-primary-50 bg-gray-100 px-3 py-2 rounded-lg font-pre-13-m-130 disabled:text-gray-50 disabled:bg-gray-90 disabled:border-gray-90'
                   }
-                  disabled={item.type !== '1' || item.status === '24'}
+                  disabled={item.type !== '1' || item.status !== '22'}
                 >
                   {convertSaleType(item.type)}
                 </button>
