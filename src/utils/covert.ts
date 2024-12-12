@@ -73,12 +73,30 @@ export const convertDealStatus = (status: number | string): string => {
     13: '구매완료',
     14: '구매취소',
     21: '판매신청',
-    22: '판매접수',
+    22: '판매대기',
     23: '판매완료',
     24: '판매취소',
   };
 
   return statuses[status] || '알 수 없음';
+};
+
+export const convertDealStatusColor = (status: number | string): string => {
+  const statuses: Record<number | string, string> = {
+    1: 'text-[#888B94]',
+    2: 'text-[#888B94]',
+    3: 'text-[#888B94]',
+    11: 'text-[#0000F4]',
+    12: 'text-[#F854DC]',
+    13: 'text-[#888B94]',
+    14: 'text-[#ff6c5c]',
+    21: 'text-[#0000F4]',
+    22: 'text-[#F854DC]',
+    23: 'text-[#888B94]',
+    24: 'text-[#ff6c5c]',
+  };
+
+  return statuses[status] || 'text-[#888B94]';
 };
 
 export const convertSaleType = (type: number | string): string => {

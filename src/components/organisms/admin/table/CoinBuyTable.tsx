@@ -9,7 +9,7 @@ import type { ICoinBuyTableData, ICoinBuyTableProps } from './CoinBuyTable.types
 import { IconLine24Loading, IconLine24LineCheck, IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { useRequest, useToast } from '@/hooks';
 import { coinPurchaseManagerCancelService, coinPurchaseManagerCompletionService } from '@/services/admin/coin/coin';
-import { convertDealStatus } from '@/utils/covert';
+import { convertDealStatus, convertDealStatusColor } from '@/utils/covert';
 
 export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
   const [isConfirmRowModalOpen, setIsConfirmRowModalOpen] = useState(false);
@@ -89,7 +89,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{item.applyDate}</td>
-              <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
+              <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.completeDate || '-'}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>

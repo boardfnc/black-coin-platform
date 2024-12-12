@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
+  safelist: ['text-[#888B94]', 'text-[#0000F4]', 'text-[#F854DC]', 'text-[#ff6c5c]'],
   theme: {
     extend: {
       screens: {
