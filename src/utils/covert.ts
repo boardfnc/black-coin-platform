@@ -12,10 +12,10 @@ export const formatPhoneNumber = (phoneNumber?: string): string => {
 
 export const convertMemberGradeStandard = (standard: string): string => {
   const standards: Record<string, string> = {
-    0: '입/출급 횟수',
-    1: '입금 금액',
-    2: '출금 금액',
-    3: '총 거래 금액',
+    1: '입/출급 횟수',
+    2: '입금 금액',
+    3: '출금 금액',
+    4: '총 거래 금액',
   };
 
   return standards[standard] || '알 수 없음';
