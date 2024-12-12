@@ -58,10 +58,13 @@ export default function UserList({ id }: IUserListIdProps) {
 
   useEffect(() => {
     if (userDataOrigin?.data) {
+      const phoneNumber = userDataOrigin.data.mp_no || '';
+      const formattedPhone = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+
       setFormData({
         partnerName: userDataOrigin.data.prtnr_nm || '',
         codeName: userDataOrigin.data.code || '',
-        phoneNumber: userDataOrigin.data.mp_no || '',
+        phoneNumber: formattedPhone,
         siteUrl: userDataOrigin.data.site_adres || '',
         authorStatus: userDataOrigin.data.mngr_sttus || '',
         bank: userDataOrigin.data.bank || '',
@@ -76,21 +79,31 @@ export default function UserList({ id }: IUserListIdProps) {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setSearchDate((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === 'phoneNumber') {
+      const numbers = value.replace(/[^0-9]/g, '');
+      const formatted = numbers.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+      setFormData((prev) => ({
+        ...prev,
+        [name]: formatted,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSearch = () => {
+    fetchUserDealingsList();
+  };
+
+  const handleReset = () => {
+    setSearchDate({
+      startDate: '',
+      endDate: '',
+    });
     fetchUserDealingsList();
   };
 
@@ -117,7 +130,7 @@ export default function UserList({ id }: IUserListIdProps) {
       adminManagerAccountUpdateService({
         id: Number(id),
         prtnr_nm: formData.partnerName,
-        mp_no: formData.phoneNumber,
+        mp_no: formData.phoneNumber.replace(/-/g, ''),
         site_adres: formData.siteUrl,
       }),
     );
@@ -362,6 +375,15 @@ export default function UserList({ id }: IUserListIdProps) {
                       className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-[40px] px-4 rounded-[12px]'}
                     >
                       기간검색
+                    </button>
+
+                    <button
+                      onClick={handleReset}
+                      className={
+                        'font-pre-14-m-130 border border-gray-70 text-gray-0 bg-gray-100 h-[40px] px-4 rounded-[12px]'
+                      }
+                    >
+                      초기화
                     </button>
                   </div>
 

@@ -132,47 +132,63 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
               </td>
               <td className={'w-[80px] h-[52px] border p-2'}>
                 <div className={'flex flex-row gap-[10px]'}>
-                  <button
-                    className={
-                      'border border-primary-50 bg-gray-100 px-3 py-2 rounded-lg text-primary-50 font-pre-13-m-130'
-                    }
-                    onClick={() => {
-                      setShowConfirmParams({
-                        isOpen: true,
-                        onClose: () => setShowConfirmParams((prev) => ({ ...prev, isOpen: false })),
-                        onConfirm() {
-                          consentSignup(item.id);
-                          setShowConfirmParams((prev) => ({ ...prev, isOpen: false }));
-                        },
-                        icon: <IconLine24RoundWarning />,
-                        title: '회원 가입 승인',
-                        content: '해당 회원을 가입 승인 처리 합니다.\n계속 진행하시겠습니까?',
-                      });
-                    }}
-                  >
-                    승인
-                  </button>
+                  {Number(item.memberStatus) === 3 && (
+                    <div
+                      className={
+                        'mx-auto flex justify-center items-center h-8 px-3 rounded-[8px] bg-gray-80 text-gray-100 font-pre-13-m-130'
+                      }
+                    >
+                      처리 완료
+                    </div>
+                  )}
 
-                  <button
-                    className={'border border-red-50 bg-gray-100 px-3 py-2 rounded-lg text-red-50 font-pre-13-m-130'}
-                    onClick={() => {
-                      setShowConfirmParams({
-                        isOpen: true,
-                        onClose: () => setShowConfirmParams((prev) => ({ ...prev, isOpen: false })),
-                        onConfirm() {
-                          rejectSignup(item.id);
-                          setShowConfirmParams((prev) => ({ ...prev, isOpen: false }));
-                        },
-                        icon: <IconLine24RoundWarning />,
-                        iconColor: 'red',
-                        title: '회원 가입 거절',
-                        content: '해당 회원을 가입 거절 처리 합니다.\n계속 진행하시겠습니까?',
-                      });
-                    }}
-                    disabled={Number(item.memberStatus) === 3}
-                  >
-                    거절
-                  </button>
+                  {Number(item.memberStatus) !== 3 && (
+                    <>
+                      <button
+                        className={
+                          'border border-primary-50 bg-gray-100 px-3 py-2 rounded-lg text-primary-50 font-pre-13-m-130'
+                        }
+                        onClick={() => {
+                          setShowConfirmParams({
+                            isOpen: true,
+                            onClose: () => setShowConfirmParams((prev) => ({ ...prev, isOpen: false })),
+                            onConfirm() {
+                              consentSignup(item.id);
+                              setShowConfirmParams((prev) => ({ ...prev, isOpen: false }));
+                            },
+                            icon: <IconLine24RoundWarning />,
+                            title: '회원 가입 승인',
+                            content: '해당 회원을 가입 승인 처리 합니다.\n계속 진행하시겠습니까?',
+                          });
+                        }}
+                      >
+                        승인
+                      </button>
+
+                      <button
+                        className={
+                          'border border-red-50 bg-gray-100 px-3 py-2 rounded-lg text-red-50 font-pre-13-m-130'
+                        }
+                        onClick={() => {
+                          setShowConfirmParams({
+                            isOpen: true,
+                            onClose: () => setShowConfirmParams((prev) => ({ ...prev, isOpen: false })),
+                            onConfirm() {
+                              rejectSignup(item.id);
+                              setShowConfirmParams((prev) => ({ ...prev, isOpen: false }));
+                            },
+                            icon: <IconLine24RoundWarning />,
+                            iconColor: 'red',
+                            title: '회원 가입 거절',
+                            content: '해당 회원을 가입 거절 처리 합니다.\n계속 진행하시겠습니까?',
+                          });
+                        }}
+                        disabled={Number(item.memberStatus) === 3}
+                      >
+                        거절
+                      </button>
+                    </>
+                  )}
                 </div>
               </td>
             </tr>

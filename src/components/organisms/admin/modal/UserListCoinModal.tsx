@@ -88,7 +88,7 @@ export default function UserListCoinModal(props: IUserListCoinModalProps) {
         isSuperAdmin
           ? adminMemberRetrievalService({
               mber_id: Number(memberId),
-              pymnt_coin: amount,
+              rtrvl_coin: amount,
               memo,
             })
           : memberRetrievalService({

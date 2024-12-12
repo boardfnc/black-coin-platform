@@ -6,7 +6,7 @@ import IconLine24Close from '@/components/atoms/icons/icon-line/Close';
 import Modal from '@/components/atoms/modals/Modal';
 import { useFetch } from '@/hooks';
 import { adminManagerDetailHistoryService } from '@/services/admin/dealings/adminManager';
-import { convertDealStatus, convertBank } from '@/utils/covert';
+import { convertDealStatus, convertBank, formatPhoneNumber } from '@/utils/covert';
 
 export default function CATransactionHistoryModal(props: ICATransactionHistoryModalProps) {
   const { transactionHistoryTableData, isOpen, onClose } = props;
@@ -61,7 +61,9 @@ export default function CATransactionHistoryModal(props: ICATransactionHistoryMo
 
               <div className={'flex flex-row justify-between items-center'}>
                 <div className={'text-gray-40 font-pre-14-m-130'}>담당자연락처</div>
-                <div className={'font-pre-16-r-130 text-gray-0'}>{transactionHistoryTableData?.managerPhone}</div>
+                <div className={'font-pre-16-r-130 text-gray-0'}>
+                  {formatPhoneNumber(transactionHistoryTableData?.managerPhone)}
+                </div>
               </div>
 
               <div className={'flex flex-row justify-between items-center'}>

@@ -51,8 +51,8 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
 
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
-            <tr key={item.indexId} className={'bg-gray-100'}>
-              <td className={'h-[48px] border p-2'}>{item.indexId}</td>
+            <tr key={item.uniqueId} className={'bg-gray-100'}>
+              <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{item.applyDate}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>

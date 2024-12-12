@@ -117,7 +117,7 @@ export type IAdminMemberGradeInitializationResponse = IBaseResponse;
 
 export interface IAdminMemberRetrievalRequest {
   mber_id: number;
-  pymnt_coin: number;
+  rtrvl_coin: number;
   memo: string;
 }
 

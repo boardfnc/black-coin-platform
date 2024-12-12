@@ -73,7 +73,7 @@ export default function UserList() {
     [searchParams, page, perPage],
   );
 
-  const { data } = useFetch(fetchUserList);
+  const { data, execute } = useFetch(fetchUserList);
 
   const userListData = data?.data?.map(
     (item, index) =>
@@ -151,7 +151,7 @@ export default function UserList() {
         </div>
       </div>
 
-      <UserListCreateAuthorModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <UserListCreateAuthorModal isOpen={isOpen} onClose={() => setIsOpen(false)} refetch={execute} />
     </>
   );
 }

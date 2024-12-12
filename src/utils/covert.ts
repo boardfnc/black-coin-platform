@@ -1,4 +1,6 @@
-export const formatPhoneNumber = (phoneNumber: string): string => {
+export const formatPhoneNumber = (phoneNumber?: string): string => {
+  if (!phoneNumber) return '';
+
   const cleaned = phoneNumber.replace(/\D/g, '');
 
   if (cleaned.length === 11) {

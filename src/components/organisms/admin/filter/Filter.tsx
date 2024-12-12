@@ -7,6 +7,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import type { SetStateAction } from 'react';
 import { useState, useEffect } from 'react';
 
+import dayjs from 'dayjs';
+
 import { dateRangeButtons } from './Filter.utils';
 
 import type { ICategoryOption, IFilterProps } from './Filter.types';
@@ -89,7 +91,16 @@ export default function Filter({ date, search, select, radio, category, checkbox
     }
     setSelectedStatus(statusToSet);
 
-    setSelectedRadio(searchParams.get('radio') || '');
+    const urlRadio = searchParams.get('radio');
+    const hasAllRadioOption = radio?.options?.some((option) => option.value === '0');
+    if (urlRadio) {
+      setSelectedRadio(urlRadio);
+    } else if (hasAllRadioOption) {
+      setSelectedRadio('0');
+    } else {
+      setSelectedRadio(radio?.options?.[0]?.value || '');
+    }
+
     setSecondaryCategories(
       searchParams.get('secondaryCategory')?.split(',').filter(Boolean) || defaultSecondaryCategories,
     );
@@ -120,6 +131,7 @@ export default function Filter({ date, search, select, radio, category, checkbox
     search?.defaultSearchType,
     checkbox?.options,
     subCheckbox?.options,
+    radio?.options,
   ]);
 
   useEffect(() => {
@@ -138,11 +150,17 @@ export default function Filter({ date, search, select, radio, category, checkbox
     const params = new URLSearchParams(searchParams);
 
     if (date?.visible !== false) {
-      if (startDate) params.set('startDate', startDate.toISOString().split('T')[0]);
-      else params.delete('startDate');
+      if (startDate) {
+        params.set('startDate', dayjs(startDate).format('YYYY-MM-DD'));
+      } else {
+        params.delete('startDate');
+      }
 
-      if (endDate) params.set('endDate', endDate.toISOString().split('T')[0]);
-      else params.delete('endDate');
+      if (endDate) {
+        params.set('endDate', dayjs(endDate).format('YYYY-MM-DD'));
+      } else {
+        params.delete('endDate');
+      }
     }
 
     if (select?.visible !== false) {
@@ -321,20 +339,6 @@ export default function Filter({ date, search, select, radio, category, checkbox
       }
       return updatedStatus;
     });
-  };
-
-  const handlePrimaryCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newPrimaryCategory = event.target.value;
-    setPrimaryCategory(newPrimaryCategory);
-
-    const selectedPrimaryOption = category?.options?.find((option) => option.value === newPrimaryCategory);
-    const firstSecondaryValue = selectedPrimaryOption?.children?.[0]?.value;
-
-    if (firstSecondaryValue) {
-      setSecondaryCategories([firstSecondaryValue]);
-    } else {
-      setSecondaryCategories([]);
-    }
   };
 
   return (
@@ -584,16 +588,35 @@ export default function Filter({ date, search, select, radio, category, checkbox
               </div>
 
               <div className={'flex gap-2'}>
-                <Select
-                  paramsName={'primaryCategory'}
-                  value={primaryCategory}
-                  onChange={handlePrimaryCategoryChange}
-                  options={category?.options}
+                <MultiSelect
+                  options={[{ value: '', label: '전체' }, ...(category?.options || [])]}
+                  selectedValues={[primaryCategory]}
+                  onChange={(values) => {
+                    const newValue = values[values.length - 1] || '';
+                    setPrimaryCategory(newValue);
+
+                    if (!newValue) {
+                      setSecondaryCategories([]);
+                      return;
+                    }
+
+                    const selectedPrimaryOption = category?.options?.find((option) => option.value === newValue);
+                    const firstSecondaryValue = selectedPrimaryOption?.children?.[0]?.value;
+
+                    if (firstSecondaryValue) {
+                      setSecondaryCategories([firstSecondaryValue]);
+                    } else {
+                      setSecondaryCategories([]);
+                    }
+                  }}
+                  className={'min-w-[200px]'}
+                  displayStyle={'inline'}
+                  singleSelect
                 />
 
                 {secondaryOptions && secondaryOptions.length > 0 && (
                   <MultiSelect
-                    options={secondaryOptions}
+                    options={[{ value: '', label: '전체' }, ...secondaryOptions]}
                     selectedValues={secondaryCategories}
                     onChange={setSecondaryCategories}
                     className={'min-w-[200px]'}

@@ -8,6 +8,8 @@ import { convertMemberGradeStandard } from '@/utils/covert';
 export default function GradeManageTable({ data }: IGradeManageTableProps) {
   if (!data) return null;
 
+  console.log(data);
+
   return (
     <table className={'w-full border-collapse text-center'}>
       <thead className={'text-gray-20 font-pre-13-m-130'}>

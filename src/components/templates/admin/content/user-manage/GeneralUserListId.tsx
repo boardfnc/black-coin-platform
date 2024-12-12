@@ -115,14 +115,6 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     }));
   };
 
-  const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setSearchDate((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleSearch = () => fetchUserDealingsList();
 
   const userData = {
@@ -269,7 +261,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorRankUpdate}
                         className={
-                          'w-[70px] h-[40px] flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
                         }
                       >
                         저장
@@ -334,7 +326,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorStatusUpdate}
                         className={
-                          'w-[70px] h-[40px] flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
                         }
                       >
                         저장
@@ -454,7 +446,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAccountNumberUpdate}
                         className={
-                          'w-[70px] font-pre-14-m-130 text-primary-50 border border-primary-50 h-[40px] px-4 rounded-[12px]'
+                          'w-[70px] h-8 font-pre-14-m-130 text-primary-50 border border-primary-50 px-4 rounded-[12px]'
                         }
                       >
                         저장

@@ -10,6 +10,7 @@ interface MultiSelectProps {
   onChange: (values: string[]) => void;
   className?: string;
   displayStyle?: 'default' | 'inline';
+  singleSelect?: boolean;
 }
 
 export function MultiSelect({
@@ -18,6 +19,7 @@ export function MultiSelect({
   onChange,
   className,
   displayStyle = 'default',
+  singleSelect = false,
 }: MultiSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -83,22 +85,26 @@ export function MultiSelect({
                 key={option.value}
                 onClick={() => handleOptionClick(option.value)}
                 className={`px-3 py-3 text-left rounded-[4px] text-gray-10 font-pre-13-r-130 flex items-center gap-2
+                  ${singleSelect ? 'justify-center' : 'gap-2'}
                   ${
                     selectedValues.includes(option.value)
                       ? 'bg-sub-blue-s-blue-10 text-sub-blue-s-d-blue-10'
                       : 'hover:bg-gray-90'
                   }`}
               >
-                <div
-                  className={`w-4 h-4 border rounded flex items-center justify-center
+                {!singleSelect && (
+                  <div
+                    className={`w-4 h-4 border rounded flex items-center justify-center
                     ${selectedValues.includes(option.value) ? 'border-primary-40 bg-primary-50' : 'border-gray-70'}`}
-                >
-                  {selectedValues.includes(option.value) && (
-                    <svg className={'w-3 h-3 text-white'} viewBox={'0 0 24 24'} fill={'none'} stroke={'currentColor'}>
-                      <path strokeLinecap={'round'} strokeLinejoin={'round'} strokeWidth={2} d={'M5 13l4 4L19 7'} />
-                    </svg>
-                  )}
-                </div>
+                  >
+                    {selectedValues.includes(option.value) && (
+                      <svg className={'w-3 h-3 text-white'} viewBox={'0 0 24 24'} fill={'none'} stroke={'currentColor'}>
+                        <path strokeLinecap={'round'} strokeLinejoin={'round'} strokeWidth={2} d={'M5 13l4 4L19 7'} />
+                      </svg>
+                    )}
+                  </div>
+                )}
+
                 {option.label}
               </button>
             ))}

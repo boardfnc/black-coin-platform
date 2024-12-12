@@ -10,7 +10,7 @@ import { useRequest, useToast } from '@/hooks';
 import { adminManagersPostService } from '@/services/admin/member/adminManagers';
 
 export default function UserListCreateAuthorModal(props: IUserListCreateAuthorModalProps) {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, refetch } = props;
 
   const { request } = useRequest();
   const { open: openToast } = useToast();
@@ -253,6 +253,8 @@ export default function UserListCreateAuthorModal(props: IUserListCreateAuthorMo
       );
 
       if (data?.status) {
+        refetch();
+
         openToast({ message: '아이디 추가 생성이 완료되었습니다.' });
         onClose();
       }
