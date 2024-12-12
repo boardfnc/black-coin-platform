@@ -5,10 +5,11 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
-import { BankSelect } from '@/components/atoms/inputs';
-import { DatePicker } from '@/components/atoms/inputs/';
+import { Image } from '@/components/atoms/images';
+import { BankSelect, DatePicker } from '@/components/atoms/inputs';
 import { UserDetailChangePasswordModal } from '@/components/organisms/admin/modal';
 import { useFetch, useRequest, useToast } from '@/hooks';
+import { profile } from '@/mocks/images';
 import {
   memberMyPageAccountNumberUpdateService,
   memberMyPageAccountUpdateService,
@@ -166,7 +167,9 @@ export default function MyPage() {
                     <div className={'font-pre-20-b-130 py-1 pb-4 border-b border-gray-80'}>회원 정보</div>
 
                     <div className={'flex flex-col gap-10 pt-4 justify-center items-center'}>
-                      <div className={'w-[128px] h-[128px] border border-gray-80 rounded-[44px]'}>{/* 이미지 */}</div>
+                      <div className={'relative w-[128px] h-[128px] border border-gray-80 rounded-[44px]'}>
+                        <Image src={profile} alt={'회원 프로필'} fill />
+                      </div>
 
                       <div className={'w-full flex flex-col gap-5'}>
                         <div className={'w-full flex flex-col gap-2'}>
