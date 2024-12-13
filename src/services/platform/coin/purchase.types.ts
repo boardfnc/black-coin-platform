@@ -6,6 +6,7 @@ export interface IPurchaseRequest {
 
 export interface IPurchaseResponse extends IBaseWithPageResponse {
   data: {
+    mber_delng_dtls_id: number;
     rcpmny_bank: string;
     rcpmny_dpstr: string;
     rcpmny_acnutno: string;

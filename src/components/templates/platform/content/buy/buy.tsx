@@ -54,6 +54,7 @@ export default function Buy() {
         setConfirmModal({ isOpen: false });
         setBuyCompleteModal({
           isOpen: true,
+          detailId: data.data.mber_delng_dtls_id,
           createdAt: data.data.created_at,
           bankAmount: data.data.rcpmny_am.toLocaleString('ko-KR'),
           account: data.data.rcpmny_dpstr,

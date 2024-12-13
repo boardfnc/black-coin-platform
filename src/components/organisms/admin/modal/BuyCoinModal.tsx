@@ -98,7 +98,7 @@ export function BuyCompleteModal({
 
         <div>
           <div className={'h-[32px] mb-2 border-b border-line-line02'}>
-            <div className={'text-gray-20 font-pre-18-m-130'}>ServiceName</div>
+            <div className={'text-gray-20 font-pre-18-m-130'}>BlackCoin</div>
           </div>
           <div className={'flex flex-col gap-3 pt-3'}>
             <div className={'flex flex-row justify-between items-center'}>
@@ -192,6 +192,7 @@ export default function BuyCoinModal({ isOpen, mode, onClose, refetch }: IBuyCoi
         if ('data' in response && response.data) {
           setShowComplete(true);
           setShowCompleteModalData({
+            detailId: response.data.mber_delng_dtls_id,
             createdAt: response.data.created_at,
             bank: response.data.rcpmny_bank,
             account: response.data.rcpmny_acnutno,

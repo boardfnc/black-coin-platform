@@ -9,6 +9,7 @@ import { purchaseCompletionService } from '@/services/platform/coin/purchase';
 import { convertBank } from '@/utils/covert';
 
 export default function BuyCompleteModal({
+  detailId,
   isOpen,
   createdAt,
   bank,
@@ -20,7 +21,7 @@ export default function BuyCompleteModal({
   const { open: openToast } = useToast();
 
   const { mutate } = useMutation({
-    mutationFn: () => purchaseCompletionService({ id: 1 }), // TODO: 임시 값
+    mutationFn: (detailId: number) => purchaseCompletionService({ id: detailId }),
     onSuccess() {
       openToast({ message: '입금 완료 처리되었습니다.' });
       onClose();
@@ -30,7 +31,8 @@ export default function BuyCompleteModal({
   if (!bank || !account || !bankAccount || !bankAmount) return null;
 
   const handleClick = () => {
-    mutate();
+    if (!detailId) return;
+    mutate(detailId);
   };
 
   return (

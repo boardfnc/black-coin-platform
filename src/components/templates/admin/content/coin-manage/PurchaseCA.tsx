@@ -97,9 +97,9 @@ export default function PurchaseCA() {
         bank: item.bank,
         accountNumber: item.acnutno,
         accountHolder: item.dpstr,
-        loginId: '', // TODO: 회원아이디 필요
-        name: '', // TODO: 회원명 필요
-        authorRank: '', // TODO: 회원등급 필요
+        loginId: '',
+        name: '',
+        authorRank: '',
         phoneNumber: item.mp_no,
         siteUrl: item.site_adres,
         ipAddress: item.reg_ip,

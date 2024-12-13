@@ -102,9 +102,9 @@ export default function SaleCA() {
         bank: item.bank,
         accountNumber: item.acnutno,
         accountHolder: item.dpstr,
-        loginId: '', // TODO: 회원아이디 필요
-        name: '', // TODO: 회원명 필요
-        authorRank: '', // TODO: 회원등급 필요
+        loginId: '',
+        name: '',
+        authorRank: '',
         phoneNumber: 'mp_no' in item && typeof item.mp_no === 'string' ? item.mp_no : '',
         siteUrl: 'site_adres' in item && typeof item.site_adres === 'string' ? item.site_adres : '',
         ipAddress: 'reg_ip' in item && typeof item.reg_ip === 'string' ? item.reg_ip : '',

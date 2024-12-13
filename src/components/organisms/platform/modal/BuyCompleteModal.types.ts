@@ -1,4 +1,5 @@
 export interface IBuyCompleteModalData {
+  detailId?: number;
   createdAt?: string;
   bank?: string;
   account?: string;
