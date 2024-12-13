@@ -10,7 +10,9 @@ import SaleCoinModal from '../modal/SaleCoinModal';
 import type { ISaleGeneralTableData, ISaleGeneralTableProps } from './SaleGeneralTable.types';
 
 import { ROUTES } from '@/constants';
+import { useToast } from '@/hooks';
 import excelIcon from '@/images/icons/excel.png';
+import { adminSaleMemberReceiptService } from '@/services/admin/coin/adminSale';
 import { convertDealStatus, convertMembershipGrade, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
@@ -24,10 +26,12 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
   const [selectedItem, setSelectedItem] = useState<ISaleGeneralTableData | undefined>(undefined);
   const [useDefaultDeposit, setUseDefaultDeposit] = useState(false);
 
+  const { open: openToast } = useToast();
+
   const handleAllCheck = (checked: boolean) => {
     const newCheckedItems: { [key: string]: boolean } = {};
     data?.forEach((item) => {
-      if (item.type === '1' && item.status === '22') {
+      if (item.type === '1' && (item.status === '21' || item.status === '22')) {
         newCheckedItems[item.uniqueId] = checked;
       }
     });
@@ -38,10 +42,38 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
   const handleSingleCheck = (checked: boolean, uniqueId: string) => {
     setCheckedItems((prev) => {
       const newCheckedItems = { ...prev, [uniqueId]: checked };
-      const checkableItems = data?.filter((item) => item.type === '1' && item.status === '22');
+      const checkableItems = data?.filter(
+        (item) => item.type === '1' && (item.status === '21' || item.status === '22'),
+      );
       setIsAllChecked(checkableItems?.every((item) => newCheckedItems[item.uniqueId]) ?? false);
       return newCheckedItems;
     });
+  };
+
+  const handleSaleRegister = async () => {
+    const checkedData = data?.filter(
+      (item) => item.type === '1' && item.status === '21' && checkedItems[item.uniqueId],
+    );
+
+    if (checkedData && checkedData.length > 0) {
+      try {
+        const dataTransArray = checkedData.map((item) => {
+          adminSaleMemberReceiptService({ id: item.dealingId });
+        });
+
+        await Promise.all(dataTransArray);
+
+        openToast({ message: '판매접수가 완료되었습니다.', type: 'success' });
+      } catch (_) {
+        openToast({ message: '판매접수중 오류가 발생했습니다.', type: 'error' });
+      }
+
+      refetch?.();
+      setSelectedItem(undefined);
+      setUseDefaultDeposit(false);
+    } else {
+      openToast({ message: '판매접수할 항목이 없습니다.' });
+    }
   };
 
   const handleSaleCoin = (isDeposit: boolean) => {
@@ -105,7 +137,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
           className={
             'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
           }
-          onClick={() => handleSaleCoin(false)}
+          onClick={handleSaleRegister}
         >
           판매접수
         </button>
@@ -193,7 +225,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
                     checked:bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj48cGF0aCBkPSJNMTMgMkg3QzQuMjM4NTggMiAyIDQuMjM4NTggMiA3VjEzQzIgMTUuNzYxNCA0LjIzODU4IDE4IDcgMThIMTNDMTUuNzYxNCAxOCAxOCAxNS43NjE0IDE4IDEzVjdDMTggNC4yMzg1OCAxNS43NjE0IDIgMTMgMloiIGZpbGw9IiM0MDlFRkYiIHN0cm9rZT0iIzQyODNDOSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNC4xMjUgNy43NUw4LjYyNDk3IDEzTDUuODc1IDEwLjM3NSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==')] 
                     checked:bg-no-repeat checked:bg-center checked:border-0 disabled:bg-gray-90 `}
                   checked={checkedItems[item.uniqueId] || false}
-                  disabled={item.type !== '1' || item.status !== '22'}
+                  disabled={item.type !== '1' || !(item.status === '21' || item.status === '22')}
                   onChange={(event) => handleSingleCheck(event.target.checked, item.uniqueId.toString())}
                 />
               </td>
@@ -238,7 +270,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
                     'border border-red-60 text-red-60 bg-gray-100 px-3 py-2 rounded-lg font-pre-13-m-130 disabled:text-gray-50 disabled:bg-gray-90 disabled:border-gray-90'
                   }
                   onClick={() => handleSingleSendCoin(item)}
-                  disabled={item.type !== '1' || item.status !== '22'}
+                  disabled={item.type !== '1' || !(item.status === '21' || item.status === '22')}
                 >
                   {convertSaleType(item.type)}
                 </button>

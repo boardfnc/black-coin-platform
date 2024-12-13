@@ -29,7 +29,7 @@ export default function SaleCompleteModal({
 
         <div>
           <div className={'h-[32px] mb-2 border-b border-line-line02'}>
-            <div className={'text-gray-20 font-pre-18-m-130'}>ServiceName</div>
+            <div className={'text-gray-20 font-pre-18-m-130'}>BlackCoin</div>
           </div>
           <div className={'flex flex-col gap-3 pt-3'}>
             <div className={'flex flex-row justify-between items-center'}>
@@ -65,6 +65,7 @@ export default function SaleCompleteModal({
               <div className={'p-0.5 bg-red-50 rounded-full h-max'}>
                 <IconLine24Bell />
               </div>
+
               <div className={'text-gray-10 font-pre-14-m-130'}>
                 입금 내역 확인 시{' '}
                 <span className={'text-red-50 font-pre-13-b-130'}>기재한 은행정보와 예금주가 다를 경우 반환처리</span>{' '}

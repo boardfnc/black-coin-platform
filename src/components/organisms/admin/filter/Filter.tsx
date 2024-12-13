@@ -286,13 +286,29 @@ export default function Filter({ date, search, select, radio, category, checkbox
   const handleReset = () => {
     setStartDate(null);
     setEndDate(null);
-    setSearchType('1');
+    setSearchType(select?.visible === false ? search?.defaultSearchType || '' : select?.options?.[0]?.value || '');
     setSearchKeyword('');
-    setSelectedStatus([]);
-    setSelectedRadio('');
+
+    // 체크박스 기본값 설정
+    const defaultStatus = checkbox?.options?.some((option) => option.value === '0')
+      ? checkbox.options.map((option) => option.value)
+      : [];
+    setSelectedStatus(defaultStatus);
+
+    // 라디오 기본값 설정
+    const defaultRadio = radio?.options?.some((option) => option.value === '0')
+      ? '0'
+      : radio?.options?.[0]?.value || '';
+    setSelectedRadio(defaultRadio);
+
     setPrimaryCategory('');
     setSecondaryCategories([]);
-    setSelectedSubStatus([]);
+
+    // 서브 체크박스 기본값 설정
+    const defaultSubStatus = subCheckbox?.options?.some((option) => option.value === '0')
+      ? subCheckbox.options.map((option) => option.value)
+      : [];
+    setSelectedSubStatus(defaultSubStatus);
 
     const params = new URLSearchParams(searchParams);
     params.delete('startDate');

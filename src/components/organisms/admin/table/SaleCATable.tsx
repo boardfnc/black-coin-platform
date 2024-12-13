@@ -9,7 +9,9 @@ import SaleCoinModal from '../modal/SaleCoinModal';
 
 import type { ISaleCATableData, ISaleCATableProps } from './SaleCATable.types';
 
+import { useToast } from '@/hooks';
 import excelIcon from '@/images/icons/excel.png';
+import { adminSaleManagerReceiptService } from '@/services/admin/coin/adminSale';
 import { convertDealStatus, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
@@ -17,11 +19,12 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
   const [isCoinHistoryModalOpen, setIsCoinHistoryModalOpen] = useState(false);
   const [isSendCoinModalOpen, setIsSendCoinModalOpen] = useState(false);
   const [selectedHistoryIndex, setSelectedHistoryIndex] = useState(0);
-
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [isAllChecked, setIsAllChecked] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ISaleCATableData | undefined>(undefined);
   const [useDefaultDeposit, setUseDefaultDeposit] = useState(true);
+
+  const { open: openToast } = useToast();
 
   const handleAllCheck = (checked: boolean) => {
     const newCheckedItems: { [key: string]: boolean } = {};
@@ -52,12 +55,29 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
     }
   };
 
-  const handleSaleRegister = () => {
-    const checkedData = data?.filter((item) => checkedItems[item.uniqueId]);
+  const handleSaleRegister = async () => {
+    const checkedData = data?.filter(
+      (item) => item.type === '1' && item.status === '21' && checkedItems[item.uniqueId],
+    );
+
     if (checkedData && checkedData.length > 0) {
+      try {
+        const dataTransArray = checkedData.map((item) => {
+          adminSaleManagerReceiptService({ id: item.dealingId });
+        });
+
+        await Promise.all(dataTransArray);
+
+        openToast({ message: '판매접수가 완료되었습니다.', type: 'success' });
+      } catch (_) {
+        openToast({ message: '판매접수중 오류가 발생했습니다.', type: 'error' });
+      }
+
+      refetch?.();
       setSelectedItem(undefined);
-      setIsSendCoinModalOpen(true);
       setUseDefaultDeposit(false);
+    } else {
+      openToast({ message: '판매접수할 항목이 없습니다.' });
     }
   };
 

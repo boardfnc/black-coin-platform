@@ -42,7 +42,7 @@ export default function UserListCoinModal(props: IUserListCoinModalProps) {
       return null;
     }
 
-    if (mode === 'payment' && amount > myCoin) {
+    if (!isSuperAdmin && mode === 'payment' && amount > myCoin) {
       openToast({
         message: '내가 보유한 코인 이상으로는 지급이 불가능합니다.',
         type: 'error',
@@ -76,6 +76,8 @@ export default function UserListCoinModal(props: IUserListCoinModalProps) {
         });
         refetch?.();
         sideBarRefetch?.();
+        setAmount(0);
+        setMemo('');
         onClose();
       }
 
@@ -105,6 +107,8 @@ export default function UserListCoinModal(props: IUserListCoinModalProps) {
         });
         refetch?.();
         sideBarRefetch?.();
+        setAmount(0);
+        setMemo('');
         onClose();
       }
 

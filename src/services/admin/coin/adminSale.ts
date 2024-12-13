@@ -13,6 +13,10 @@ import type {
   IAdminSaleMembersResponse,
   IAdminSaleMemberHistoryRequest,
   IAdminSaleMemberHistoryResponse,
+  IAdminSaleManagerReceiptRequest,
+  TAdminSaleManagerReceiptResponse,
+  IAdminSaleMemberReceiptRequest,
+  TAdminSaleMemberReceiptResponse,
 } from './adminSale.types';
 import type { OptionsType } from '../../_fetch/types';
 
@@ -72,6 +76,28 @@ export async function adminSaleMemberHistoryService(params: IAdminSaleMemberHist
   const response = await fetch<IAdminSaleMemberHistoryResponse>('/coin/admin-sale-member/history', {
     method: 'GET',
     params,
+    ...options,
+  });
+
+  return response;
+}
+
+export async function adminSaleManagerReceiptService(params: IAdminSaleManagerReceiptRequest, options?: OptionsType) {
+  const response = await fetch<TAdminSaleManagerReceiptResponse>(`/coin/admin-sale-manager/receipt/${params.id}`, {
+    method: 'PUT',
+    params,
+    body: JSON.stringify(params),
+    ...options,
+  });
+
+  return response;
+}
+
+export async function adminSaleMemberReceiptService(params: IAdminSaleMemberReceiptRequest, options?: OptionsType) {
+  const response = await fetch<TAdminSaleMemberReceiptResponse>(`/coin/admin-sale-member/receipt/${params.id}`, {
+    method: 'PUT',
+    params,
+    body: JSON.stringify(params),
     ...options,
   });
 

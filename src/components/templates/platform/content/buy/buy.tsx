@@ -303,7 +303,7 @@ export default function Buy() {
                 <div className={' flex justify-between items-center py-5'}>
                   <div className={'text-gray-20 font-suit-18-b-130'}>남은 수량</div>
                   <div className={'text-orange-orange50 font-suit-24-750-130'}>
-                    {(data?.data.hold_coin || 0 - Number(amount.replace(/,/g, ''))).toLocaleString('ko-KR')}
+                    {((data?.data.hold_coin || 0) - Number(amount.replace(/,/g, ''))).toLocaleString('ko-KR')}
                   </div>
                 </div>
               </div>

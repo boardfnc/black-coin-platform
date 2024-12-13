@@ -19,14 +19,25 @@ export function DatePicker({
   wrapperClassName = '',
   placeholder = 'YYYY - MM - DD',
 }: DatePickerProps) {
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      const adjustedDate = new Date(date.setHours(9, 0, 0, 0));
+      onChange(adjustedDate);
+    } else {
+      onChange(null);
+    }
+  };
+
   return (
     <div className={`relative ${wrapperClassName}`}>
       <ReactDatePicker
         locale={ko}
         selected={selected}
-        onChange={onChange}
+        onChange={handleDateChange}
         dateFormat={'yyyy - MM - dd'}
         placeholderText={placeholder}
+        startDate={selected || undefined}
+        useWeekdaysShort
         renderCustomHeader={({
           date,
           decreaseMonth,

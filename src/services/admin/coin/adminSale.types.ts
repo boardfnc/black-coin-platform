@@ -149,3 +149,15 @@ export interface IAdminSaleMemberHistoryResponse extends IBaseWithPageResponse {
     created_at: string;
   }>;
 }
+
+export interface IAdminSaleManagerReceiptRequest {
+  id: number;
+}
+
+export type TAdminSaleManagerReceiptResponse = IBaseResponse;
+
+export interface IAdminSaleMemberReceiptRequest {
+  id: number;
+}
+
+export type TAdminSaleMemberReceiptResponse = IBaseResponse;

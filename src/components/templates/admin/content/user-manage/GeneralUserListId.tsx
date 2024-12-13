@@ -13,7 +13,7 @@ import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
 import UserDetailChangePasswordModal from '@/components/organisms/admin/modal/UserDetailChangePasswordModal';
 import { useFetch, useRequest, useToast } from '@/hooks';
-import { profile } from '@/mocks/images';
+import { profile2 } from '@/mocks/images';
 import {
   adminMemberAccountNumberUpdateService,
   adminMemberDealingsService,
@@ -208,7 +208,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   return (
     <>
       <div className={'w-full h-full text-gray-0 bg-gray-100'}>
-        <AdminHeadline title={'CA 회원 정보 수정'} subTitle={['회원 관리', '회원 목록', '회원 정보 수정']} />
+        <AdminHeadline title={'회원 정보 수정'} subTitle={['회원 관리', '회원 목록', '회원 정보 수정']} />
 
         <div className={'flex flex-col gap-5 mt-5 mx-4'}>
           <div className={'flex flex-row gap-5'}>
@@ -220,7 +220,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
 
                     <div className={'flex flex-col gap-10 pt-4 justify-center items-center'}>
                       <div className={'relative w-[128px] h-[128px] border border-gray-80 rounded-[44px]'}>
-                        <Image src={profile} alt={'회원 프로필'} fill />
+                        <Image src={profile2} alt={'회원 프로필'} fill />
                       </div>
 
                       <div className={'w-full flex flex-col gap-5'}>

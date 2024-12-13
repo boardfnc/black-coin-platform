@@ -1,7 +1,11 @@
+import { useMutation } from '@tanstack/react-query';
+
 import type { IBuyCompleteModalProps } from '../../admin/modal/BuyCoinModal.types';
 
 import { IconLine24Bell, IconLine24ConfirmEtc } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
+import { useToast } from '@/hooks';
+import { purchaseCompletionService } from '@/services/platform/coin/purchase';
 import { convertBank } from '@/utils/covert';
 
 export default function BuyCompleteModal({
@@ -13,6 +17,16 @@ export default function BuyCompleteModal({
   bankAmount,
   onClose,
 }: IBuyCompleteModalProps) {
+  const { open: openToast } = useToast();
+
+  const { mutate } = useMutation({
+    mutationFn: () => purchaseCompletionService({ id: 1 }),
+    onSuccess() {
+      openToast({ message: '입금 완료 처리되었습니다.' });
+      onClose();
+    },
+  });
+
   if (!bank || !account || !bankAccount || !bankAmount) return null;
 
   return (
@@ -29,7 +43,7 @@ export default function BuyCompleteModal({
 
         <div>
           <div className={'h-[32px] mb-2 border-b border-line-line02'}>
-            <div className={'text-gray-20 font-pre-18-m-130'}>ServiceName</div>
+            <div className={'text-gray-20 font-pre-18-m-130'}>BlackCoin</div>
           </div>
           <div className={'flex flex-col gap-3 pt-3'}>
             <div className={'flex flex-row justify-between items-center'}>
