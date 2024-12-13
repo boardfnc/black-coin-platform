@@ -98,8 +98,12 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
             <td className={'border p-2'}>{item.tradeNumber}</td>
             <td className={'border p-2'}>{convertDealStatus(item.type)}</td>
             <td className={'border p-2'}>{item.perFee ? item.perFee.toLocaleString('ko-KR') : '-'}</td>
-            <td className={'border p-2'}>{item.sellFee ? item.sellFee.toLocaleString('ko-KR') : '-'}</td>
-            <td className={'border p-2'}>{item.buyFee ? item.buyFee.toLocaleString('ko-KR') : '-'}</td>
+            <td className={'border p-2'}>
+              {item.type === '1' && item.sellFee ? item.sellFee.toLocaleString('ko-KR') : '-'}
+            </td>
+            <td className={'border p-2'}>
+              {item.type === '2' && item.buyFee ? item.buyFee.toLocaleString('ko-KR') : '-'}
+            </td>
             <td className={'border p-2'}>{item.caCoin ? item.caCoin.toLocaleString('ko-KR') : '-'}</td>
           </tr>
         ))}
