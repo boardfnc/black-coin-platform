@@ -2,7 +2,7 @@
 
 import { useCallback, useState, useEffect } from 'react';
 
-import type { IAdminAccountResponse } from '@/services/admin/setup/adminAccount.types';
+import type { IAdminAccountResponseState } from './Account.types';
 
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { BankSelect } from '@/components/atoms/inputs';
@@ -17,7 +17,7 @@ export default function Account() {
 
   const { data } = useFetch(fetchAccountService);
 
-  const [formData, setFormData] = useState<IAdminAccountResponse['data']>({
+  const [formData, setFormData] = useState<IAdminAccountResponseState>({
     acnut_setup_id: 0,
     ca_rcpmny_bank: '',
     ca_rcpmny_dpstr: '',
@@ -55,7 +55,30 @@ export default function Account() {
   });
 
   useEffect(() => {
-    if (data) setFormData(data.data);
+    if (data) {
+      const formattedData = {
+        ...data.data,
+        ca_mumm_rcpmny_am: Number(data.data.ca_mumm_rcpmny_am).toLocaleString(),
+        ca_mxmm_rcpmny_am: Number(data.data.ca_mxmm_rcpmny_am).toLocaleString(),
+        vvip_mumm_rcpmny_am: Number(data.data.vvip_mumm_rcpmny_am).toLocaleString(),
+        vvip_mxmm_rcpmny_am: Number(data.data.vvip_mxmm_rcpmny_am).toLocaleString(),
+        vvip_mumm_defray_am: Number(data.data.vvip_mumm_defray_am).toLocaleString(),
+        vvip_mxmm_defray_am: Number(data.data.vvip_mxmm_defray_am).toLocaleString(),
+        vip_mumm_rcpmny_am: Number(data.data.vip_mumm_rcpmny_am).toLocaleString(),
+        vip_mxmm_rcpmny_am: Number(data.data.vip_mxmm_rcpmny_am).toLocaleString(),
+        vip_mumm_defray_am: Number(data.data.vip_mumm_defray_am).toLocaleString(),
+        vip_mxmm_defray_am: Number(data.data.vip_mxmm_defray_am).toLocaleString(),
+        gnrl_mumm_rcpmny_am: Number(data.data.gnrl_mumm_rcpmny_am).toLocaleString(),
+        gnrl_mxmm_rcpmny_am: Number(data.data.gnrl_mxmm_rcpmny_am).toLocaleString(),
+        gnrl_mumm_defray_am: Number(data.data.gnrl_mumm_defray_am).toLocaleString(),
+        gnrl_mxmm_defray_am: Number(data.data.gnrl_mxmm_defray_am).toLocaleString(),
+        new_mumm_rcpmny_am: Number(data.data.new_mumm_rcpmny_am).toLocaleString(),
+        new_mxmm_rcpmny_am: Number(data.data.new_mxmm_rcpmny_am).toLocaleString(),
+        new_mumm_defray_am: Number(data.data.new_mumm_defray_am).toLocaleString(),
+        new_mxmm_defray_am: Number(data.data.new_mxmm_defray_am).toLocaleString(),
+      };
+      setFormData(formattedData);
+    }
   }, [data]);
 
   const { request } = useRequest();
@@ -67,12 +90,14 @@ export default function Account() {
       let processedValue = value;
 
       if (field.includes('_am')) {
-        const numValue = Number(value);
+        const numericValue = value.replace(/[^\d]/g, '');
+        const numValue = Number(numericValue);
+
         if (numValue < 0) return prev;
         if (isNaN(numValue)) {
           processedValue = '0';
         } else {
-          processedValue = String(numValue);
+          processedValue = numValue.toLocaleString();
         }
       }
 
@@ -87,24 +112,24 @@ export default function Account() {
     if (formData) {
       const covertFormData = {
         ...formData,
-        ca_mumm_rcpmny_am: Number(formData.ca_mumm_rcpmny_am),
-        ca_mxmm_rcpmny_am: Number(formData.ca_mxmm_rcpmny_am),
-        vvip_mumm_rcpmny_am: Number(formData.vvip_mumm_rcpmny_am),
-        vvip_mxmm_rcpmny_am: Number(formData.vvip_mxmm_rcpmny_am),
-        vvip_mumm_defray_am: Number(formData.vvip_mumm_defray_am),
-        vvip_mxmm_defray_am: Number(formData.vvip_mxmm_defray_am),
-        vip_mumm_rcpmny_am: Number(formData.vip_mumm_rcpmny_am),
-        vip_mxmm_rcpmny_am: Number(formData.vip_mxmm_rcpmny_am),
-        vip_mumm_defray_am: Number(formData.vip_mumm_defray_am),
-        vip_mxmm_defray_am: Number(formData.vip_mxmm_defray_am),
-        gnrl_mumm_defray_am: Number(formData.gnrl_mumm_defray_am),
-        gnrl_mxmm_defray_am: Number(formData.gnrl_mxmm_defray_am),
-        gnrl_mumm_rcpmny_am: Number(formData.gnrl_mumm_rcpmny_am),
-        gnrl_mxmm_rcpmny_am: Number(formData.gnrl_mxmm_rcpmny_am),
-        new_mumm_rcpmny_am: Number(formData.new_mumm_rcpmny_am),
-        new_mxmm_rcpmny_am: Number(formData.new_mxmm_rcpmny_am),
-        new_mumm_defray_am: Number(formData.new_mumm_defray_am),
-        new_mxmm_defray_am: Number(formData.new_mxmm_defray_am),
+        ca_mumm_rcpmny_am: Number(String(formData.ca_mumm_rcpmny_am).replace(/,/g, '')),
+        ca_mxmm_rcpmny_am: Number(String(formData.ca_mxmm_rcpmny_am).replace(/,/g, '')),
+        vvip_mumm_rcpmny_am: Number(String(formData.vvip_mumm_rcpmny_am).replace(/,/g, '')),
+        vvip_mxmm_rcpmny_am: Number(String(formData.vvip_mxmm_rcpmny_am).replace(/,/g, '')),
+        vvip_mumm_defray_am: Number(String(formData.vvip_mumm_defray_am).replace(/,/g, '')),
+        vvip_mxmm_defray_am: Number(String(formData.vvip_mxmm_defray_am).replace(/,/g, '')),
+        vip_mumm_rcpmny_am: Number(String(formData.vip_mumm_rcpmny_am).replace(/,/g, '')),
+        vip_mxmm_rcpmny_am: Number(String(formData.vip_mxmm_rcpmny_am).replace(/,/g, '')),
+        vip_mumm_defray_am: Number(String(formData.vip_mumm_defray_am).replace(/,/g, '')),
+        vip_mxmm_defray_am: Number(String(formData.vip_mxmm_defray_am).replace(/,/g, '')),
+        gnrl_mumm_defray_am: Number(String(formData.gnrl_mumm_defray_am).replace(/,/g, '')),
+        gnrl_mxmm_defray_am: Number(String(formData.gnrl_mxmm_defray_am).replace(/,/g, '')),
+        gnrl_mumm_rcpmny_am: Number(String(formData.gnrl_mumm_rcpmny_am).replace(/,/g, '')),
+        gnrl_mxmm_rcpmny_am: Number(String(formData.gnrl_mxmm_rcpmny_am).replace(/,/g, '')),
+        new_mumm_rcpmny_am: Number(String(formData.new_mumm_rcpmny_am).replace(/,/g, '')),
+        new_mxmm_rcpmny_am: Number(String(formData.new_mxmm_rcpmny_am).replace(/,/g, '')),
+        new_mumm_defray_am: Number(String(formData.new_mumm_defray_am).replace(/,/g, '')),
+        new_mxmm_defray_am: Number(String(formData.new_mxmm_defray_am).replace(/,/g, '')),
       };
 
       const response = await request(() => setUpAdminAccountUpdateService(covertFormData));

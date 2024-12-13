@@ -150,7 +150,7 @@ export default function PurchaseGeneral() {
         todayPurchsCount: item.today_purchs_co,
         type: item.delng_se,
         status: item.delng_sttus,
-        requestAmount: item.pymnt_am,
+        requestAmount: item.delng_qy,
         bonusAmount: item.bnus_qy,
         paymentAmount: item.compt_qy,
       }) satisfies IPurchaseUserTableData,

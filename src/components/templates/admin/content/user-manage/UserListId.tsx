@@ -552,7 +552,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.joinDate}
@@ -561,7 +561,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입 시 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.joinIp}
@@ -572,7 +572,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginDate}
@@ -581,7 +581,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginIp}
@@ -590,7 +590,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>접속 OS</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginOs}
@@ -599,7 +599,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>브라우저</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginBrowser}

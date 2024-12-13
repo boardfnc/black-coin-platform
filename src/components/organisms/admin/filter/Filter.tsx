@@ -54,11 +54,21 @@ export default function Filter({ date, search, select, radio, category, checkbox
   const [rangeEnd, setRangeEnd] = useState('');
 
   useEffect(() => {
-    const urlPrimaryCategory = searchParams.get('primaryCategory') || category?.options?.[0]?.value || '';
+    const urlPrimaryCategory = searchParams.get('primaryCategory') || '';
     setPrimaryCategory(urlPrimaryCategory);
 
-    const firstSecondaryCategory = category?.options?.[0]?.children?.[0]?.value;
-    const defaultSecondaryCategories = firstSecondaryCategory ? [firstSecondaryCategory] : [];
+    if (urlPrimaryCategory) {
+      const urlSecondaryCategories = searchParams.get('secondaryCategory')?.split(',').filter(Boolean);
+      if (urlSecondaryCategories && urlSecondaryCategories.length > 0) {
+      } else {
+        const firstSecondaryCategory = category?.options?.find((option) => option.value === urlPrimaryCategory)
+          ?.children?.[0]?.value;
+        const defaultSecondaryCategories = firstSecondaryCategory ? [firstSecondaryCategory] : [];
+        setSecondaryCategories(defaultSecondaryCategories);
+      }
+    } else {
+      setSecondaryCategories([]);
+    }
 
     const urlStartDate = searchParams.get('startDate');
     setStartDate(urlStartDate ? new Date(urlStartDate) : null);
@@ -100,10 +110,6 @@ export default function Filter({ date, search, select, radio, category, checkbox
     } else {
       setSelectedRadio(radio?.options?.[0]?.value || '');
     }
-
-    setSecondaryCategories(
-      searchParams.get('secondaryCategory')?.split(',').filter(Boolean) || defaultSecondaryCategories,
-    );
 
     const urlSubStatus = searchParams.get('subStatus')?.split(',') || [];
     const hasSubAllOption = subCheckbox?.options?.some((option) => option.value === '0');
@@ -188,10 +194,15 @@ export default function Filter({ date, search, select, radio, category, checkbox
     }
 
     if (category?.visible !== false) {
-      if (primaryCategory) params.set('primaryCategory', primaryCategory);
-      if (secondaryCategories.length > 0) {
-        params.set('secondaryCategory', secondaryCategories.join(','));
+      if (primaryCategory) {
+        params.set('primaryCategory', primaryCategory);
+        if (secondaryCategories && secondaryCategories.length > 0) {
+          params.set('secondaryCategory', secondaryCategories.join(','));
+        } else {
+          params.delete('secondaryCategory');
+        }
       } else {
+        params.delete('primaryCategory');
         params.delete('secondaryCategory');
       }
     }
@@ -617,8 +628,26 @@ export default function Filter({ date, search, select, radio, category, checkbox
                 {secondaryOptions && secondaryOptions.length > 0 && (
                   <MultiSelect
                     options={[{ value: '', label: '전체' }, ...secondaryOptions]}
-                    selectedValues={secondaryCategories}
-                    onChange={setSecondaryCategories}
+                    selectedValues={
+                      secondaryOptions.every((opt) => secondaryCategories.includes(opt.value))
+                        ? ['', ...secondaryCategories]
+                        : secondaryCategories
+                    }
+                    onChange={(values) => {
+                      const lastValue = values[values.length - 1];
+                      const nonEmptyValues = values.filter((v) => v !== '');
+
+                      if (lastValue === '') {
+                        if (secondaryCategories.includes('')) {
+                          setSecondaryCategories([]);
+                        } else {
+                          const allSecondaryValues = secondaryOptions.map((opt) => opt.value);
+                          setSecondaryCategories(allSecondaryValues);
+                        }
+                      } else {
+                        setSecondaryCategories(nonEmptyValues);
+                      }
+                    }}
                     className={'min-w-[200px]'}
                     displayStyle={'inline'}
                   />
