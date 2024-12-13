@@ -52,7 +52,7 @@ export default function GradeManage() {
         vvipStandard: item.vvip_stdr,
         vipStandard: item.vip_stdr,
         generalStandard: item.gnrl_stdr,
-        newStandard: '-',
+        newStandard: '0',
         coin: String(item.code),
       }) satisfies IGradeManageTableData,
   );
