@@ -15,6 +15,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
   const { isOpen, onClose } = props;
 
   const [search, setSearch] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const searchParams = useSearchParams();
 
@@ -26,17 +27,22 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
       adminManagersService({
         page,
         per_page: perPage,
-        search_keyword: search,
+        search_keyword: searchKeyword,
         search_type: 'prtnr_nm',
         sbscrb_dt_start: searchParams.get('startDate') || undefined,
         sbscrb_dt_end: searchParams.get('endDate') || undefined,
         mngr_sttus: Number(searchParams.get('status')) || undefined,
         orderby: (searchParams.get('order')?.split(',') as IAdminManagersRequest['orderby']) || undefined,
       }),
-    [page, perPage, search, searchParams],
+    [page, perPage, searchKeyword, searchParams],
   );
 
   const { data, execute } = useFetch(DataParam);
+
+  const handleSearch = () => {
+    setSearchKeyword(search);
+    execute();
+  };
 
   const totalPage = data?.pagination?.total_pages ?? 0;
 
@@ -60,11 +66,16 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
             placeholder={'입력'}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch();
+              }
+            }}
           />
 
           <button
             className={'w-[90px] font-pre-14-m-130 text-gray-100 bg-gray-0 h-[32px] px-4 rounded-[8px]'}
-            onClick={() => execute()}
+            onClick={handleSearch}
           >
             조회
           </button>

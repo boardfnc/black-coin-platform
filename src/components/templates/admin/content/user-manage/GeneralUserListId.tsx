@@ -8,7 +8,8 @@ import type { IGeneralUserListIdProps } from './GeneralUserListId.types';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
-import { BankSelect, DatePicker } from '@/components/atoms/inputs';
+import { BankSelect, DatePicker, Select } from '@/components/atoms/inputs';
+import { DropdownSelect } from '@/components/atoms/inputs/DropdownSelect';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
 import UserDetailChangePasswordModal from '@/components/organisms/admin/modal/UserDetailChangePasswordModal';
@@ -279,17 +280,17 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         </button>
                       </div>
 
-                      <select
+                      <DropdownSelect
                         name={'authorRank'}
-                        className={'w-full h-[56px] border border-gray-80 rounded-[16px] px-3 py-4'}
                         value={formData.authorRank}
                         onChange={handleSelectChange}
-                      >
-                        <option value={'1'}>VVIP</option>
-                        <option value={'2'}>VIP</option>
-                        <option value={'3'}>일반 회원</option>
-                        <option value={'4'}>신규 회원</option>
-                      </select>
+                        options={[
+                          { value: '1', label: 'VVIP' },
+                          { value: '2', label: 'VIP' },
+                          { value: '3', label: '일반 회원' },
+                          { value: '4', label: '신규 회원' },
+                        ]}
+                      />
                     </div>
                   </div>
                 </div>
