@@ -16,6 +16,7 @@ import { ROUTES } from '@/constants';
 import { useToast } from '@/hooks';
 import excelIcon from '@/images/icons/excel.png';
 import { adminSaleMemberReceiptService } from '@/services/admin/coin/adminSale';
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertMembershipGrade, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
@@ -186,7 +187,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -235,7 +236,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
               </td>
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertMembershipGrade(item.authorRank)}</td>
               <td className={'border p-2'}>
                 <Link

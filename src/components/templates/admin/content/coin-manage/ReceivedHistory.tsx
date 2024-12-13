@@ -14,7 +14,7 @@ import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { Filter } from '@/components/organisms/admin/filter';
 import { SellCoinModal, BuyCoinModal } from '@/components/organisms/admin/modal';
 import { Pagination, GoToPage } from '@/components/organisms/admin/pagination';
-import { SentDetailTable } from '@/components/organisms/admin/table';
+import { ReceivedDetailTable } from '@/components/organisms/admin/table';
 import { useFetch } from '@/hooks';
 import { adminReceivedDetailsService } from '@/services/admin/coin/adminReceived';
 import { coinReceivedDetailsService } from '@/services/admin/coin/coin';
@@ -89,7 +89,7 @@ export default function SentHistory() {
         uniqueId: page * perPage - (perPage - 1) + index,
         detailId: item.mber_exchng_dtls_id,
         codeName: ('code' in item && typeof item.code === 'string' && item.code) || '',
-        tradeDate: '', // TODO: 거래일자 필요
+        tradeDate: item.created_at,
         partnerName: ('prtnr_nm' in item && typeof item.prtnr_nm === 'string' && item.prtnr_nm) || '',
         partnerCoin: item.ca_coin_bnt,
         authorRank: item.mber_grd,
@@ -178,7 +178,7 @@ export default function SentHistory() {
                 </div>
               </div>
 
-              <SentDetailTable data={statisticsData} />
+              <ReceivedDetailTable data={statisticsData} />
 
               <div className={'w-full flex justify-center items-center gap-3'}>
                 <Select />

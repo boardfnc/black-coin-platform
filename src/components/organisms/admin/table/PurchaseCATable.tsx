@@ -7,6 +7,7 @@ import SendCoinModal from '../modal/SendCoinModal';
 
 import type { IPurchaseCATableData, IPurchaseCATableProps } from './PurchaseCATable.types';
 
+import { dayjs } from '@/utils';
 import { convertDealStatus } from '@/utils/covert';
 
 export default function PurchaseCATable({ data, refetch }: IPurchaseCATableProps) {
@@ -86,7 +87,7 @@ export default function PurchaseCATable({ data, refetch }: IPurchaseCATableProps
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -132,7 +133,7 @@ export default function PurchaseCATable({ data, refetch }: IPurchaseCATableProps
               </td>
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{item.partnerName}</td>
               <td className={'border p-2'}>{item.codeName}</td>
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>

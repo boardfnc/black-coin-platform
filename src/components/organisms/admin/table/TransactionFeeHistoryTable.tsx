@@ -4,6 +4,7 @@ import type { ITransactionFeeHistoryTableProps } from './TransactionFeeHistoryTa
 
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { ROUTES } from '@/constants';
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertMembershipGrade } from '@/utils/covert';
 
 export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHistoryTableProps) {
@@ -37,7 +38,7 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             회원명
           </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
             날짜
           </th>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -93,7 +94,7 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
               </Link>
             </td>
             <td className={'border p-2'}>{item.authorName}</td>
-            <td className={'border p-2'}>{item.date}</td>
+            <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD HH:mm:ss')}</td>
             <td className={'border p-2'}>{item.tradeNumber}</td>
             <td className={'border p-2'}>{convertDealStatus(item.type)}</td>
             <td className={'border p-2'}>{item.perFee ? item.perFee.toLocaleString('ko-KR') : '-'}</td>

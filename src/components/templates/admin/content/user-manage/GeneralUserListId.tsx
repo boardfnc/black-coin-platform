@@ -8,7 +8,7 @@ import type { IGeneralUserListIdProps } from './GeneralUserListId.types';
 import { AdminHeadline } from '@/components/atoms/headlines';
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
-import { BankSelect, DatePicker, Select } from '@/components/atoms/inputs';
+import { BankSelect, DatePicker } from '@/components/atoms/inputs';
 import { DropdownSelect } from '@/components/atoms/inputs/DropdownSelect';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { UserDetailGradeResetModal, UserDetailPartnerSearchModal } from '@/components/organisms/admin/modal';
@@ -23,6 +23,7 @@ import {
   adminMemberStatusUpdateService,
 } from '@/services/admin/member/adminMembers';
 import { memberDealingsService, memberService } from '@/services/admin/member/members';
+import { dayjs } from '@/utils';
 
 export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   const { request } = useRequest();
@@ -505,7 +506,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                             'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
-                          {userData.joinDate}
+                          {dayjs(userData.joinDate).format('YYYY.MM.DD HH:mm:ss')}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입 시 IP주소</div>
@@ -525,7 +526,9 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                             'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
-                          {userData.lastLoginDate}
+                          {userData.lastLoginDate != null && userData.lastLoginDate !== '-'
+                            ? dayjs(userData.lastLoginDate).format('YYYY.MM.DD HH:mm:ss')
+                            : '-'}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속 IP주소</div>

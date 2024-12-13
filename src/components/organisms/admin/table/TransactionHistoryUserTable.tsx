@@ -4,6 +4,7 @@ import UserHistoryModal from '../modal/UserHistoryModal';
 
 import type { ITransactionHistoryUserTableProps } from './TransactionHistoryUserTable.types';
 
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertDealType, convertMembershipGrade } from '@/utils/covert';
 
 export default function TransactionHistoryUserTable({ data }: ITransactionHistoryUserTableProps) {
@@ -23,7 +24,7 @@ export default function TransactionHistoryUserTable({ data }: ITransactionHistor
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -58,7 +59,7 @@ export default function TransactionHistoryUserTable({ data }: ITransactionHistor
             <tr key={item.uniqueId} className={'bg-gray-100'}>
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(Number(item.type))}</td>
               <td className={'border p-2'}>{convertDealStatus(Number(item.status))}</td>
               <td className={'border p-2'}>{convertMembershipGrade(Number(item.authorRank))}</td>

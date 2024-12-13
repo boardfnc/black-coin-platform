@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { ICAUserListTableProps } from './CAUserListTable.types';
 
 import { ROUTES } from '@/constants';
-import { formatPhoneNumber } from '@/utils';
+import { dayjs, formatPhoneNumber } from '@/utils';
 import { convertMembershipStatus } from '@/utils/covert';
 
 export default function CAUserListTable({ data }: ICAUserListTableProps) {
@@ -16,7 +16,7 @@ export default function CAUserListTable({ data }: ICAUserListTableProps) {
           <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
             NO.
           </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
             가입일
           </th>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -66,7 +66,7 @@ export default function CAUserListTable({ data }: ICAUserListTableProps) {
         {data.map((item) => (
           <tr key={item.uniqueId} className={'bg-gray-100'}>
             <td className={'h-[52px] border p-2'}>{item.uniqueId}</td>
-            <td className={'border p-2'}>{item.date}</td>
+            <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD')}</td>
             <td className={'border p-2'}>{item.id}</td>
             <td className={'border p-2'}>{item.partnerName}</td>
             <td className={'border p-2'}>{item.codeName}</td>

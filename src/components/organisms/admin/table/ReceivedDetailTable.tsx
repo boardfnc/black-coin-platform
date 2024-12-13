@@ -2,10 +2,14 @@ import Link from 'next/link';
 
 import type { IReceivedDetailTableProps } from './ReceivedDetailTable.types';
 
+import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { ROUTES } from '@/constants';
+import { dayjs } from '@/utils';
 import { convertMembershipGrade } from '@/utils/covert';
 
 export default function ReceivedDetailTable({ data }: IReceivedDetailTableProps) {
+  const { isSuperAdmin } = useAuthor();
+
   if (!data) return null;
 
   return (
@@ -15,18 +19,34 @@ export default function ReceivedDetailTable({ data }: IReceivedDetailTableProps)
           <th className={'h-[52px] border border-gray-80 p-2'} rowSpan={2}>
             NO.
           </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            파트너사명
-          </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            코드명
-          </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            교환일
-          </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            파트너사 코인잔액
-          </th>
+          {!isSuperAdmin && (
+            <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
+              교환일
+            </th>
+          )}
+          {isSuperAdmin && (
+            <>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                파트너사명
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                코드명
+              </th>
+              <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
+                교환일
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                파트너사 코인잔액
+              </th>
+            </>
+          )}
+          {!isSuperAdmin && (
+            <>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                내 코인 잔액
+              </th>
+            </>
+          )}
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             회원등급
           </th>
@@ -36,15 +56,37 @@ export default function ReceivedDetailTable({ data }: IReceivedDetailTableProps)
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             회원명
           </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            보낸 머니수량
-          </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            받은 코인수량
-          </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
-            회원 코인잔액
-          </th>
+          {isSuperAdmin && (
+            <>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                보낸 머니수량
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                받은 코인수량
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                회원 코인잔액
+              </th>
+            </>
+          )}
+          {!isSuperAdmin && (
+            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+              받은 코인수량
+            </th>
+          )}
+          {!isSuperAdmin && (
+            <>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                지급 머니수량
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                회원 코인잔액
+              </th>
+              <th className={'border border-gray-80 p-2'} rowSpan={2}>
+                회원 머니잔액
+              </th>
+            </>
+          )}
         </tr>
       </thead>
 
@@ -58,7 +100,12 @@ export default function ReceivedDetailTable({ data }: IReceivedDetailTableProps)
               </Link>
             </td>
             <td className={'border p-2'}>{item.codeName}</td>
-            <td className={'border p-2'}>{item.tradeDate}</td>
+            <td className={'border p-2'}>
+              <div className={'flex flex-col gap-[2px]'}>
+                <div>{dayjs(item.tradeDate).format('YYYY.MM.DD')}</div>
+                <div>{dayjs(item.tradeDate).format('HH:mm:ss')}</div>
+              </div>
+            </td>
             <td className={'border p-2'}>{item.partnerCoin.toLocaleString('ko-KR')}</td>
             <td className={'border p-2'}>{convertMembershipGrade(Number(item.authorRank))}</td>
             <td className={'border p-2'}>

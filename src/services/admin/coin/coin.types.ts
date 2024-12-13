@@ -116,6 +116,7 @@ export interface ICoinReceivedDetailsResponse extends IBaseWithPageResponse {
     nm: string;
     mngr_id: number;
     exchng_se: string;
+    created_at: string;
     mber_grd: string;
     ca_coin_bnt: number;
     mber_coin_bnt: number;
@@ -199,6 +200,7 @@ export interface ICoinSentDetailsResponse extends IBaseWithPageResponse {
     nm: string;
     mngr_id: number;
     exchng_se: string;
+    created_at: string;
     mber_grd: string;
     ca_coin_bnt: number;
     mber_coin_bnt: number;

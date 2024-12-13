@@ -4,6 +4,7 @@ import type { IWithdrawalListTableProps } from './WithdrawalListTable.types';
 
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { ROUTES } from '@/constants';
+import { dayjs } from '@/utils';
 import { convertMembershipGrade, convertMembershipStatus } from '@/utils/covert';
 
 export default function WithdrawalListTable({ data }: IWithdrawalListTableProps) {
@@ -46,7 +47,7 @@ export default function WithdrawalListTable({ data }: IWithdrawalListTableProps)
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             회수자 아이디
           </th>
-          <th className={'border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'w-[120px] border border-gray-80 p-2'} rowSpan={2}>
             회수일
           </th>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -78,7 +79,7 @@ export default function WithdrawalListTable({ data }: IWithdrawalListTableProps)
             <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
             <td className={'border p-2'}>{item.saleCount.toLocaleString('ko-KR')}</td>
             <td className={'border p-2'}>{item.returnMemberId}</td>
-            <td className={'border p-2'}>{item.returnDate}</td>
+            <td className={'border p-2'}>{dayjs(item.returnDate).format('YYYY.MM.DD HH:mm')}</td>
             <td className={'border p-2'}>{item.returnCoin.toLocaleString('ko-KR')}</td>
             <td className={`border p-2 ${Number(item.memberStatus) === 2 ? 'text-red-50' : 'text-gray-0'} `}>
               {convertMembershipStatus(Number(item.memberStatus))}

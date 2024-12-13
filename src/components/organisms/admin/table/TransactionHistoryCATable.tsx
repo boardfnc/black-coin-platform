@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { ITransactionHistoryCATableProps } from './TransactionHistoryCATable.types';
 
 import { CATransactionHistoryModal } from '@/components/organisms/admin/modal';
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertDealType } from '@/utils/covert';
 
 export default function TransactionHistoryCATable({ data }: ITransactionHistoryCATableProps) {
@@ -22,7 +23,7 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -54,7 +55,7 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
             <tr key={item.uniqueId} className={'bg-gray-100'}>
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.partnerName}</td>

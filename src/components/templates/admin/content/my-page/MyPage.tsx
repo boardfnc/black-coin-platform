@@ -16,6 +16,7 @@ import {
   memberMyPageDealingsService,
   memberMyPageService,
 } from '@/services/admin/member/members';
+import { dayjs } from '@/utils';
 
 export default function MyPage() {
   const [formData, setFormData] = useState({
@@ -463,7 +464,7 @@ export default function MyPage() {
                             'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
-                          {userData.joinDate}
+                          {dayjs(userData.joinDate).format('YYYY.MM.DD HH:mm:ss')}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입 시 IP주소</div>
@@ -483,7 +484,9 @@ export default function MyPage() {
                             'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
-                          {userData.lastLoginDate}
+                          {userData.lastLoginDate != null && userData.lastLoginDate !== '-'
+                            ? dayjs(userData.lastLoginDate).format('YYYY.MM.DD HH:mm:ss')
+                            : '-'}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속 IP주소</div>

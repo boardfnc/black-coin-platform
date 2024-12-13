@@ -17,6 +17,7 @@ export interface IAdminSentDetailsResponse extends IBaseWithPageResponse {
     mber_id: number;
     login_id: string;
     nm: string;
+    created_at: string;
     mngr_id: number;
     prtnr_nm: string;
     code: string;

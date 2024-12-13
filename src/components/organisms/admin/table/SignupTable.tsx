@@ -16,6 +16,7 @@ import {
   adminMemberSubscribeConsentService,
   adminMemberSubscribeRejectionService,
 } from '@/services/admin/member/adminMembers';
+import { dayjs } from '@/utils';
 import { covertMemberJoinProgress } from '@/utils/covert';
 
 export default function SignupTable({ data, refetch }: ISignupTableProps) {
@@ -71,7 +72,7 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
             <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
               NO.
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[120px] border border-gray-80 p-2'} rowSpan={2}>
               가입일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -111,7 +112,7 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
               <td className={'border p-2'}>{item.uniqueId}</td>
-              <td className={'border p-2'}>{item.joinDate}</td>
+              <td className={'border p-2'}>{dayjs(item.joinDate).format('YYYY.MM.DD HH:mm')}</td>
               <td className={'border p-2'}>{item.loginId}</td>
               <td className={'border p-2'}>{item.phoneNumber}</td>
               <td className={'border p-2'}>{item.codeName}</td>

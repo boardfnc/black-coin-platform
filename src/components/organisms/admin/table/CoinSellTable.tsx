@@ -9,6 +9,7 @@ import type { ICoinSellTableData, ICoinSellTableProps } from './CoinSellTable.ty
 import { IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { useRequest, useToast } from '@/hooks';
 import { coinPurchaseManagerCompletionService, coinSaleManagerCancelService } from '@/services/admin/coin/coin';
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertDealStatusColor } from '@/utils/covert';
 
 export default function CoinSellTable({ data, refetch }: ICoinSellTableProps) {
@@ -56,7 +57,7 @@ export default function CoinSellTable({ data, refetch }: ICoinSellTableProps) {
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -65,7 +66,7 @@ export default function CoinSellTable({ data, refetch }: ICoinSellTableProps) {
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               판매요청수량
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[160px] border border-gray-80 p-2'} rowSpan={2}>
               완료일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -85,10 +86,15 @@ export default function CoinSellTable({ data, refetch }: ICoinSellTableProps) {
             <tr key={index} className={'bg-gray-100'}>
               <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
-              <td className={'border p-2'}>{item.completeDate || '-'}</td>
+              <td className={'border p-2'}>
+                {item.completeDate != null && item.completeDate !== '-'
+                  ? dayjs(item.completeDate).format('YYYY.MM.DD HH:mm:ss')
+                  : '-'}
+              </td>
+
               <td className={'border p-2'}>{item.holdAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>
 

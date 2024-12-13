@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { ITransactionHistoryMyTradeTableProps } from './TransactionHistoryMyTrade.types';
 
 import { TransactionHistoryMyTradeModal } from '@/components/organisms/admin/modal';
+import { dayjs } from '@/utils';
 import { convertDealStatus, convertDealType } from '@/utils/covert';
 
 export default function TransactionHistoryMyTradeTable({ data }: ITransactionHistoryMyTradeTableProps) {
@@ -22,7 +23,7 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               거래번호
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[180px] border border-gray-80 p-2'} rowSpan={2}>
               신청일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -37,7 +38,7 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               구매(판매) 수량
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[180px] border border-gray-80 p-2'} rowSpan={2}>
               완료일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -51,12 +52,15 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
             <tr key={item.indexId} className={'bg-gray-100'}>
               <td className={'h-[48px] border p-2'}>{item.indexId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
-              <td className={'border p-2'}>{item.applyDate}</td>
+              <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.purchasePrevCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
-              <td className={'border p-2'}>{item.completeDate}</td>
+              <td className={'border p-2'}>
+                {item.completeDate !== '-' ? dayjs(item.completeDate).format('YYYY.MM.DD HH:mm:ss') : '-'}
+              </td>
+
               <td className={'w-[80px] border p-2'}>
                 <button
                   className={'h-[32px] font-pre-13-m-130 text-gray-10 border rounded-lg border-gray-70 p-2'}

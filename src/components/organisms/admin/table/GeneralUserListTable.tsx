@@ -9,6 +9,7 @@ import type { ICoinSendData } from '../modal/UserListCoinModal.types';
 
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { ROUTES } from '@/constants';
+import { dayjs } from '@/utils';
 import { convertMembershipGrade, convertMembershipStatus } from '@/utils/covert';
 
 export default function GeneralUserListTable({ data, refetch }: IUserListTableProps) {
@@ -30,7 +31,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
             <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
               NO.
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
               가입일
             </th>
             {isSuperAdmin && (
@@ -58,7 +59,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
               회원등급
             </th>
-            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'w-[130px] border border-gray-80 p-2'} rowSpan={2}>
               마지막 접속일
             </th>
             <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -80,7 +81,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
               <td className={'h-[52px] border p-2'}>{item.uniqueId}</td>
-              <td className={'border p-2'}>{item.date}</td>
+              <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD')}</td>
               {isSuperAdmin && (
                 <>
                   <td className={'border p-2'}>{item.partnerName}</td>
@@ -92,8 +93,12 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
               <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{item.saleCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{convertMembershipGrade(Number(item.authorRank))}</td>
-              <td className={'border p-2'}>{item.lastAccess}</td>
-              <td className={'border p-2'}>{item.ipAddress}</td>
+              <td className={'border p-2'}>
+                {item.lastAccess != null && item.lastAccess !== '-'
+                  ? dayjs(item.lastAccess).format('YYYY.MM.DD HH:mm')
+                  : '-'}
+              </td>
+              <td className={'border p-2'}>{item.ipAddress || '-'}</td>
               <td className={'border p-2'}>{convertMembershipStatus(Number(item.authorStatus))}</td>
               <td className={'border p-2 w-[80px]'}>
                 <Link

@@ -120,7 +120,7 @@ export default function SentHistory() {
         uniqueId: page * perPage - (perPage - 1) + index,
         detailId: item.mber_exchng_dtls_id,
         codeName: ('code' in item && typeof item.code === 'string' && item.code) || '',
-        tradeDate: '', // TODO: 거래일자 필요
+        tradeDate: item.created_at,
         partnerName: ('prtnr_nm' in item && typeof item.prtnr_nm === 'string' && item.prtnr_nm) || '',
         partnerCoin: item.ca_coin_bnt,
         authorRank: item.mber_grd,
