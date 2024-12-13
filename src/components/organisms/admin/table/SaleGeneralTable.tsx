@@ -4,10 +4,13 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
+import { useMutation } from '@tanstack/react-query';
+
 import { SaleGeneralCoinHistoryModal } from '../modal';
 import SaleCoinModal from '../modal/SaleCoinModal';
 
 import type { ISaleGeneralTableData, ISaleGeneralTableProps } from './SaleGeneralTable.types';
+import type { IAdminSaleMemberReceiptRequest } from '@/services/admin/coin/adminSale.types';
 
 import { ROUTES } from '@/constants';
 import { useToast } from '@/hooks';
@@ -27,6 +30,18 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
   const [useDefaultDeposit, setUseDefaultDeposit] = useState(false);
 
   const { open: openToast } = useToast();
+
+  const { mutate } = useMutation({
+    mutationFn: (params: IAdminSaleMemberReceiptRequest) => adminSaleMemberReceiptService(params),
+    onSuccess() {
+      openToast({ message: '판매확인 처리되었습니다.', type: 'success' });
+
+      refetch?.();
+    },
+    onError() {
+      openToast({ message: '판매확인 처리중 오류가 발생했습니다.', type: 'error' });
+    },
+  });
 
   const handleAllCheck = (checked: boolean) => {
     const newCheckedItems: { [key: string]: boolean } = {};
@@ -56,24 +71,13 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
     );
 
     if (checkedData && checkedData.length > 0) {
-      try {
-        const dataTransArray = checkedData.map((item) => {
-          adminSaleMemberReceiptService({ id: item.dealingId });
-        });
-
-        await Promise.all(dataTransArray);
-
-        openToast({ message: '판매접수가 완료되었습니다.', type: 'success' });
-      } catch (_) {
-        openToast({ message: '판매접수중 오류가 발생했습니다.', type: 'error' });
-      }
-
-      refetch?.();
-      setSelectedItem(undefined);
-      setUseDefaultDeposit(false);
+      mutate({ mber_delng_dtls_id_array: checkedData.map((item) => item.dealingId) });
     } else {
       openToast({ message: '판매접수할 항목이 없습니다.' });
     }
+
+    setSelectedItem(undefined);
+    setUseDefaultDeposit(false);
   };
 
   const handleSaleCoin = (isDeposit: boolean) => {

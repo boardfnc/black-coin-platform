@@ -151,13 +151,13 @@ export interface IAdminSaleMemberHistoryResponse extends IBaseWithPageResponse {
 }
 
 export interface IAdminSaleManagerReceiptRequest {
-  id: number;
+  ca_delng_dtls_id_array: number[];
 }
 
 export type TAdminSaleManagerReceiptResponse = IBaseResponse;
 
 export interface IAdminSaleMemberReceiptRequest {
-  id: number;
+  mber_delng_dtls_id_array: number[];
 }
 
 export type TAdminSaleMemberReceiptResponse = IBaseResponse;

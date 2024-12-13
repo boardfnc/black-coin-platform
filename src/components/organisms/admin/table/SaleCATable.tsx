@@ -4,10 +4,13 @@ import Image from 'next/image';
 
 import { useState } from 'react';
 
+import { useMutation } from '@tanstack/react-query';
+
 import { SaleCACoinHistoryModal } from '../modal';
 import SaleCoinModal from '../modal/SaleCoinModal';
 
 import type { ISaleCATableData, ISaleCATableProps } from './SaleCATable.types';
+import type { IAdminSaleManagerReceiptRequest } from '@/services/admin/coin/adminSale.types';
 
 import { useToast } from '@/hooks';
 import excelIcon from '@/images/icons/excel.png';
@@ -25,6 +28,18 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
   const [useDefaultDeposit, setUseDefaultDeposit] = useState(true);
 
   const { open: openToast } = useToast();
+
+  const { mutate } = useMutation({
+    mutationFn: (params: IAdminSaleManagerReceiptRequest) => adminSaleManagerReceiptService(params),
+    onSuccess() {
+      openToast({ message: '판매확인 처리되었습니다.', type: 'success' });
+
+      refetch?.();
+    },
+    onError() {
+      openToast({ message: '판매확인 처리중 오류가 발생했습니다.', type: 'error' });
+    },
+  });
 
   const handleAllCheck = (checked: boolean) => {
     const newCheckedItems: { [key: string]: boolean } = {};
@@ -61,24 +76,13 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
     );
 
     if (checkedData && checkedData.length > 0) {
-      try {
-        const dataTransArray = checkedData.map((item) => {
-          adminSaleManagerReceiptService({ id: item.dealingId });
-        });
-
-        await Promise.all(dataTransArray);
-
-        openToast({ message: '판매접수가 완료되었습니다.', type: 'success' });
-      } catch (_) {
-        openToast({ message: '판매접수중 오류가 발생했습니다.', type: 'error' });
-      }
-
-      refetch?.();
-      setSelectedItem(undefined);
-      setUseDefaultDeposit(false);
+      mutate({ ca_delng_dtls_id_array: checkedData.map((item) => item.dealingId) });
     } else {
       openToast({ message: '판매접수할 항목이 없습니다.' });
     }
+
+    setSelectedItem(undefined);
+    setUseDefaultDeposit(false);
   };
 
   const handleExcelDownload = () => {

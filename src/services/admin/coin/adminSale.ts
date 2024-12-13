@@ -83,7 +83,7 @@ export async function adminSaleMemberHistoryService(params: IAdminSaleMemberHist
 }
 
 export async function adminSaleManagerReceiptService(params: IAdminSaleManagerReceiptRequest, options?: OptionsType) {
-  const response = await fetch<TAdminSaleManagerReceiptResponse>(`/coin/admin-sale-manager/receipt/${params.id}`, {
+  const response = await fetch<TAdminSaleManagerReceiptResponse>(`/coin/admin-sale-manager/receipt`, {
     method: 'PUT',
     params,
     body: JSON.stringify(params),
@@ -94,7 +94,7 @@ export async function adminSaleManagerReceiptService(params: IAdminSaleManagerRe
 }
 
 export async function adminSaleMemberReceiptService(params: IAdminSaleMemberReceiptRequest, options?: OptionsType) {
-  const response = await fetch<TAdminSaleMemberReceiptResponse>(`/coin/admin-sale-member/receipt/${params.id}`, {
+  const response = await fetch<TAdminSaleMemberReceiptResponse>(`/coin/admin-sale-member/receipt`, {
     method: 'PUT',
     params,
     body: JSON.stringify(params),

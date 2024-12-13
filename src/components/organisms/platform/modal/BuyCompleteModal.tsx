@@ -20,7 +20,7 @@ export default function BuyCompleteModal({
   const { open: openToast } = useToast();
 
   const { mutate } = useMutation({
-    mutationFn: () => purchaseCompletionService({ id: 1 }),
+    mutationFn: () => purchaseCompletionService({ id: 1 }), // TODO: 임시 값
     onSuccess() {
       openToast({ message: '입금 완료 처리되었습니다.' });
       onClose();
@@ -28,6 +28,10 @@ export default function BuyCompleteModal({
   });
 
   if (!bank || !account || !bankAccount || !bankAmount) return null;
+
+  const handleClick = () => {
+    mutate();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} width={'400px'}>
@@ -94,6 +98,7 @@ export default function BuyCompleteModal({
             className={
               'flex-auto h-[48px] font-suit-16-m-130 text-gray-100 bg-gray-0 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'
             }
+            onClick={handleClick}
           >
             입금완료
           </button>
