@@ -31,8 +31,7 @@ export async function adminLoginService(data: IAdminLoginRequest, options?: Opti
 
     cookie.set('token', JSON.stringify(tokenData), {
       httpOnly: true,
-      secure: false,
-      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
       path: '/',
       expires: new Date(Date.now() + (Number(tokenData.expires_in) + 365 * 24 * 60 * 60) * 1000),
     });

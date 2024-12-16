@@ -35,7 +35,7 @@ export async function platformLoginService(data: IPlatformLoginRequest, options?
     const cookie = await cookies();
 
     cookie.set('token', JSON.stringify(tokenData), {
-      httpOnly: false,
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
