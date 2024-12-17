@@ -38,6 +38,11 @@ export default function MyPage() {
     endDate: '',
   });
 
+  const [realSearchDate, setRealSearchDate] = useState({
+    startDate: '',
+    endDate: '',
+  });
+
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const handlePasswordModalOpen = () => setIsPasswordModalOpen(true);
   const handlePasswordModalClose = () => setIsPasswordModalOpen(false);
@@ -47,10 +52,10 @@ export default function MyPage() {
   const fetchUserDealingsList = useCallback(
     () =>
       memberMyPageDealingsService({
-        stats_de_start: searchDate.startDate,
-        stats_de_end: searchDate.endDate,
+        stats_de_start: realSearchDate.startDate || undefined,
+        stats_de_end: realSearchDate.endDate || undefined,
       }),
-    [searchDate],
+    [realSearchDate],
   );
 
   const { request } = useRequest();
@@ -98,6 +103,7 @@ export default function MyPage() {
   };
 
   const handleSearch = () => {
+    setRealSearchDate(searchDate);
     fetchUserDealingsList();
   };
 
@@ -194,7 +200,7 @@ export default function MyPage() {
                               'w-[136px] h-8 text-gray-100 bg-gray-0 font-pre-13-m-130 rounded-lg px-3 py-2 whitespace-pre'
                             }
                           >
-                            비밀번호 변경
+                            비밀번호 ���경
                           </button>
                         </div>
                       </div>

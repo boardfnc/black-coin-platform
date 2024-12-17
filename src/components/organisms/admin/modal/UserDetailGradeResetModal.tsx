@@ -44,6 +44,7 @@ export default function UserDetailGradeResetModal({ isOpen, onClose, id, refetch
         <div className={'w-full flex flex-col items-center justify-center gap-8'}>
           <div className={'w-full flex flex-col items-center justify-center gap-2'}>
             <h2 className={'text-gray-10 font-pre-20-m-130'}>등급 초기화</h2>
+
             <p className={'text-gray-30 font-pre-15-r-130 text-center whitespace-pre-line'}>
               {`등급 초기화 시 해당 회원의 고정된 등급은 사라지며\n설정한 기준에 맞춰 자동으로 회원등급이 조정됩니다.\n계속 진행하시겠습니까?`}
             </p>

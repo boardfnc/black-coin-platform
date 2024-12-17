@@ -149,7 +149,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
               <button
                 onClick={handleResetPaymentAmounts}
                 className={
-                  'text-gray-10 font-pre-13-m-130 h-8 px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
+                  'text-gray-10 font-pre-13-m-130 h-[32px] px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
                 }
               >
                 입금액 초기화
@@ -163,7 +163,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
                     <thead className={'sticky top-0 z-10'}>
                       <tr className={'h-8 bg-gray-95'}>
                         {showCheckboxes && (
-                          <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>
+                          <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>
                             <input
                               type={'checkbox'}
                               checked={isAllChecked}
@@ -174,7 +174,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
                             />
                           </th>
                         )}
-                        <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
+                        <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>신청일</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>IP 주소</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>파트너사명</th>
@@ -239,7 +239,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
                     <thead className={'sticky top-0 z-10'}>
                       <tr className={'h-8 bg-gray-95'}>
                         {showCheckboxes && (
-                          <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>
+                          <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>
                             <input
                               type={'checkbox'}
                               checked={isAllChecked}
@@ -250,7 +250,7 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
                             />
                           </th>
                         )}
-                        <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
+                        <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>신청일</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>IP 주소</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>회원등급</th>

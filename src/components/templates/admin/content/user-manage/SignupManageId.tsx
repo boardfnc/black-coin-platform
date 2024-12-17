@@ -49,7 +49,8 @@ export default function SignupManageId({ id }: ISignupManageIdProps) {
         stats_de_start: searchDate.startDate,
         stats_de_end: searchDate.endDate,
       }),
-    [id, searchDate],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id],
   );
 
   const { request } = useRequest();

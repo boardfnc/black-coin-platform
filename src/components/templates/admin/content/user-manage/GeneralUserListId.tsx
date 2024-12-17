@@ -55,6 +55,11 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     endDate: '',
   });
 
+  const [realSearchDate, setRealSearchDate] = useState({
+    startDate: '',
+    endDate: '',
+  });
+
   const fetchUserList = useCallback(() => {
     return isSuperAdmin ? adminMemberIdService({ id: Number(id) }) : memberService({ id: Number(id) });
   }, [id, isSuperAdmin]);
@@ -63,15 +68,15 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     return isSuperAdmin
       ? adminMemberDealingsService({
           id: Number(id),
-          stats_de_start: searchDate.startDate || undefined,
-          stats_de_end: searchDate.endDate || undefined,
+          stats_de_start: realSearchDate.startDate || undefined,
+          stats_de_end: realSearchDate.endDate || undefined,
         })
       : memberDealingsService({
           id: Number(id),
-          stats_de_start: searchDate.startDate || undefined,
-          stats_de_end: searchDate.endDate || undefined,
+          stats_de_start: realSearchDate.startDate || undefined,
+          stats_de_end: realSearchDate.endDate || undefined,
         });
-  }, [id, searchDate, isSuperAdmin]);
+  }, [id, isSuperAdmin, realSearchDate]);
 
   const { data: userDataOrigin } = useFetch(fetchUserList);
   const { data: userDealingsDataOrigin } = useFetch(fetchUserDealingsList);
@@ -117,10 +122,18 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     }));
   };
 
-  const handleSearch = () => fetchUserDealingsList();
+  const handleSearch = async () => {
+    setRealSearchDate(searchDate);
+
+    await fetchUserDealingsList();
+  };
 
   const handleReset = () => {
     setSearchDate({
+      startDate: '',
+      endDate: '',
+    });
+    setRealSearchDate({
       startDate: '',
       endDate: '',
     });

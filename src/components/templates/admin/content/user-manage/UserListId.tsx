@@ -41,16 +41,21 @@ export default function UserList({ id }: IUserListIdProps) {
     endDate: '',
   });
 
+  const [realSearchDate, setRealSearchDate] = useState({
+    startDate: '',
+    endDate: '',
+  });
+
   const { open: openToast } = useToast();
   const fetchUserList = useCallback(() => adminManagerIdService({ id: Number(id) }), [id]);
   const fetchUserDealingsList = useCallback(
     () =>
       adminManagerDealingsService({
         id: Number(id),
-        stats_de_start: searchDate.startDate,
-        stats_de_end: searchDate.endDate,
+        stats_de_start: realSearchDate.startDate || undefined,
+        stats_de_end: realSearchDate.endDate || undefined,
       }),
-    [id, searchDate],
+    [id, realSearchDate],
   );
 
   const { request } = useRequest();
@@ -98,11 +103,16 @@ export default function UserList({ id }: IUserListIdProps) {
   };
 
   const handleSearch = () => {
+    setRealSearchDate(searchDate);
     fetchUserDealingsList();
   };
 
   const handleReset = () => {
     setSearchDate({
+      startDate: '',
+      endDate: '',
+    });
+    setRealSearchDate({
       startDate: '',
       endDate: '',
     });
