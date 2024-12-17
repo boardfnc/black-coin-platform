@@ -53,6 +53,11 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             {isSuperAdmin ? 'CA 코인 잔액' : '수수료 잔액'}
           </th>
+          {isSuperAdmin && (
+            <th className={'border border-gray-80 p-2'} rowSpan={2}>
+              수수료 잔액
+            </th>
+          )}
         </tr>
         <tr className={'bg-gray-90'}>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
@@ -105,6 +110,9 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
               {item.type === '2' && item.buyFee ? item.buyFee.toLocaleString('ko-KR') : '-'}
             </td>
             <td className={'border p-2'}>{item.caCoin ? item.caCoin.toLocaleString('ko-KR') : '-'}</td>
+            {isSuperAdmin && (
+              <td className={'border p-2'}>{item.feeBalance ? item.feeBalance.toLocaleString('ko-KR') : '-'}</td>
+            )}
           </tr>
         ))}
       </tbody>

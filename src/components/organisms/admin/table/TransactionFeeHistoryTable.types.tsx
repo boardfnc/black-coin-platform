@@ -13,6 +13,7 @@ export interface ITransactionFeeHistoryTableData {
   perFee: number;
   sellFee: number;
   buyFee: number;
+  feeBalance: number;
   caCoin: number;
 }
 

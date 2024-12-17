@@ -8,7 +8,7 @@ import { Image } from '@/components/atoms/images';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import ROUTES from '@/constants/routes';
 import { useFetch, useRequest } from '@/hooks';
-import { KingProfile } from '@/mocks/images';
+import { KingProfile, profile } from '@/mocks/images';
 import { logoutService } from '@/services/admin/auth';
 import { memberMyPageService } from '@/services/admin/member/members';
 
@@ -37,7 +37,11 @@ export default function Header() {
       <div className={'inline-flex items-center gap-5'}>
         <div className={'inline-flex items-center gap-2.5'}>
           <div className={'relative w-10 h-10 bg-variable-collection-color-gray-100 rounded-20 overflow-hidden'}>
-            <Image className={'absolute w-10 h-10 top-0 left-0 object-cover'} src={KingProfile} alt={'프로필 이미지'} />
+            <Image
+              className={'absolute w-10 h-10 top-0 left-0 object-cover rounded-full'}
+              src={isSuperAdmin ? KingProfile : profile}
+              alt={'프로필 이미지'}
+            />
           </div>
 
           <div className={'inline-flex flex-col items-start gap-1'}>

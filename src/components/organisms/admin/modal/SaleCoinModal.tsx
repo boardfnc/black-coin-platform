@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import BonusCoinModal from './BonusCoinModal';
 import ConfirmRowModal from './ConfirmRowModal';
@@ -28,8 +28,29 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
 
   const showCheckboxes = saleCoinModalTableData?.length > 1;
 
+  useEffect(() => {
+    if (isOpen && saleCoinModalTableData) {
+      const initialPaymentAmounts = saleCoinModalTableData.reduce(
+        (acc, item) => ({
+          ...acc,
+          [item.dealingId]: item.requestAmount?.toLocaleString(),
+        }),
+        {},
+      );
+      setPaymentAmounts(initialPaymentAmounts);
+
+      if (saleCoinModalTableData.length > 1) {
+        setIsAllChecked(true);
+        const allDealingIds = saleCoinModalTableData.map((item) => item.dealingId.toString());
+        setSelectedDeals(allDealingIds);
+      }
+    }
+  }, [isOpen, saleCoinModalTableData]);
+
   const handleClose = () => {
     setIsChecked(false);
+    setIsAllChecked(false);
+    setSelectedDeals([]);
     setPaymentAmounts({});
     onClose();
   };
@@ -41,9 +62,17 @@ export default function SaleCoinModal(props: ISaleCoinModalProps) {
   };
 
   const handlePaymentAmountChange = (dealingId: string, value: string) => {
-    const numericValue = value.replace(/[^\d]/g, '');
-    const formattedValue = Number(numericValue).toLocaleString();
+    const item = saleCoinModalTableData.find((item) => item.dealingId.toString() === dealingId);
+    if (!item) return;
 
+    const numericValue = value.replace(/[^\d]/g, '');
+    const requestAmount = item.requestAmount;
+
+    if (Number(numericValue) !== requestAmount) {
+      return;
+    }
+
+    const formattedValue = Number(numericValue).toLocaleString();
     setPaymentAmounts((prev) => ({
       ...prev,
       [dealingId]: formattedValue,

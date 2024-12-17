@@ -175,6 +175,7 @@ export default function TransactionFeeHistory() {
         sellFee: item.purchs_fee,
         buyFee: item.purchs_fee,
         caCoin: isSuperAdmin ? item.ca_coin_blce : item.fee_blce,
+        feeBalance: item.fee_blce || 0,
       }) satisfies ITransactionFeeHistoryTableData,
   );
 

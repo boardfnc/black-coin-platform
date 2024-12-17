@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ConfirmRowModal } from '.';
 import BonusCoinModal from './BonusCoinModal';
@@ -49,9 +49,30 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
 
   const handleClose = () => {
     setIsChecked(false);
+    setIsAllChecked(false);
+    setSelectedDeals([]);
     setPaymentAmounts({});
     onClose();
   };
+
+  useEffect(() => {
+    if (isOpen && sendCoinModalTableData) {
+      const initialPaymentAmounts = sendCoinModalTableData.reduce(
+        (acc, item) => ({
+          ...acc,
+          [item.dealingId]: item.requestAmount?.toLocaleString(),
+        }),
+        {},
+      );
+      setPaymentAmounts(initialPaymentAmounts);
+
+      if (sendCoinModalTableData.length > 1) {
+        setIsAllChecked(true);
+        const allDealingIds = sendCoinModalTableData.map((item) => item.dealingId.toString());
+        setSelectedDeals(allDealingIds);
+      }
+    }
+  }, [isOpen, sendCoinModalTableData]);
 
   const handleAdminPurchaseManager = async () => {
     const targetData =

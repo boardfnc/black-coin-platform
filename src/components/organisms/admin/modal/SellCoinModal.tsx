@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
 import type {
   IBuyCoinModalProps,
@@ -171,9 +171,20 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
 
   const myCoin = myData?.data?.hold_coin || 0;
 
-  const handleReset = () => setAmount(0);
+  useEffect(() => {
+    if (isOpen && myData?.data?.hold_coin) {
+      setAmount(Number(myData?.data?.hold_coin || 0));
+    }
+  }, [isOpen, myData?.data?.hold_coin]);
+
+  const handleReset = () => {
+    setAmount(Number(myData?.data?.hold_coin || 0));
+  };
 
   const handleSubmit = async () => {
+    if (amount !== Number(myData?.data?.hold_coin || 0)) {
+      return;
+    }
     setShowConfirm(true);
   };
 
