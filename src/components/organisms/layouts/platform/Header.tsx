@@ -71,7 +71,7 @@ export default function Header() {
         >
           <button
             onClick={() => setIsOpen(false)}
-            className={'h-[40px] -ml-[40px] aspect-square flex items-center justify-center bg-gray-0'}
+            className={'h-10 -ml-10 aspect-square flex items-center justify-center bg-gray-0'}
           >
             <svg
               xmlns={'http://www.w3.org/2000/svg'}
@@ -120,7 +120,7 @@ export default function Header() {
               {isLogin && (
                 <div className={'flex items-end flex-col gap-6 pb-[30px] border-b border-gray-100'}>
                   <div className={'flex items-center gap-1'}>
-                    <div className={'w-[32px] h-[32px] flex items-center justify-center border rounded-full'}>
+                    <div className={'w-[32px] h-8 flex items-center justify-center border rounded-full'}>
                       <IconLine24Avatar />
                     </div>
 

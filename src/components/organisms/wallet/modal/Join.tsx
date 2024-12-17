@@ -104,7 +104,7 @@ export default function JoinModal() {
             </div>
 
             <button
-              className={'h-12 rounded-[24px] text-gray-100 bg-purple-fmg60'}
+              className={'h-12 rounded-3xl text-gray-100 bg-purple-fmg60'}
               onClick={() => {
                 closeJoinModal();
                 openLoginModal();

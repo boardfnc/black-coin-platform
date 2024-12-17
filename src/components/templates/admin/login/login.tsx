@@ -80,7 +80,7 @@ export default function AdminLogin() {
               <button
                 type={'submit'}
                 className={
-                  'flex h-14 items-center justify-center px-[40px] py-0 relative self-stretch w-full bg-yellow-50 rounded-2xl border border-solid border-variable-collection-color-yellow-50'
+                  'flex h-14 items-center justify-center px-10 py-0 relative self-stretch w-full bg-yellow-50 rounded-2xl border border-solid border-variable-collection-color-yellow-50'
                 }
               >
                 <div className={'text-gray-100 font-pre-17-m-130'}>Sign in</div>

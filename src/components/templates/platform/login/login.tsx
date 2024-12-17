@@ -74,7 +74,7 @@ export default function PlatformLogin() {
 
   return (
     <>
-      <div className={'w-auto max-w-[400px] mx-auto px-[30px] mt-[40px] sm:mt-[200px]'}>
+      <div className={'w-auto max-w-[400px] mx-auto px-[30px] mt-10 sm:mt-[200px]'}>
         <div className={'flex flex-col gap-[70px]'}>
           <div className={'flex flex-col gap-10'}>
             <div className={'flex flex-col justify-center items-center gap-3'}>

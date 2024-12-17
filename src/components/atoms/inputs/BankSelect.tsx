@@ -42,7 +42,7 @@ export function BankSelect({ className, value, onChange, onBlur }: BankSelectPro
       <button
         type={'button'}
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full flex h-[56px] px-[14px] py-[15px] justify-between items-center rounded-[16px] border border-[#E2E4E7] bg-white ${className}`}
+        className={`w-full flex h-14 px-3.5 py-[15px] justify-between items-center rounded-2xl border border-[#E2E4E7] bg-white ${className}`}
       >
         <span className={'text-gray-0'}>{value ? convertBank(value) : '은행을 선택해주세요'}</span>
 
@@ -70,7 +70,7 @@ export function BankSelect({ className, value, onChange, onBlur }: BankSelectPro
       {isOpen && (
         <div
           className={
-            'absolute w-full mt-1 border border-[#E2E4E7] rounded-[16px] bg-white max-h-[300px] overflow-y-auto z-10'
+            'absolute w-full mt-1 border border-[#E2E4E7] rounded-2xl bg-white max-h-[300px] overflow-y-auto z-10'
           }
         >
           <div className={'flex flex-col w-full'}>
@@ -78,7 +78,7 @@ export function BankSelect({ className, value, onChange, onBlur }: BankSelectPro
               <button
                 key={bankCode}
                 role={'button'}
-                className={`w-full px-[14px] py-3 cursor-pointer hover:bg-gray-80 text-gray-10 text-left
+                className={`w-full px-3.5 py-3 cursor-pointer hover:bg-gray-80 text-gray-10 text-left
                   ${bankCode === value ? 'text-sub-blue-s-d-blue-10 bg-sub-blue-s-blue-10' : ''}`}
                 onClick={() => {
                   onChange(bankCode);

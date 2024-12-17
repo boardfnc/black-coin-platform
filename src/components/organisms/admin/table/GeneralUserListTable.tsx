@@ -28,7 +28,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
       <table className={'w-full border-collapse text-center'}>
         <thead className={'text-gray-20 font-pre-13-m-130'}>
           <tr className={'bg-gray-99'}>
-            <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'h-12 border border-gray-80 p-2'} rowSpan={2}>
               NO.
             </th>
             <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
@@ -100,9 +100,9 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
               </td>
               <td className={'border p-2'}>{item.ipAddress || '-'}</td>
               <td className={'border p-2'}>{convertMembershipStatus(Number(item.authorStatus))}</td>
-              <td className={'border p-2 w-[80px]'}>
+              <td className={'border p-2 w-20'}>
                 <Link
-                  className={'h-[32px] text-gray-10 border rounded-lg border-gray-70 p-2'}
+                  className={'h-8 text-gray-10 border rounded-lg border-gray-70 p-2'}
                   href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.memberId)}
                 >
                   수정
@@ -111,7 +111,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
               <td className={'border p-2 w-[130px]'}>
                 <div className={'flex gap-1.5'}>
                   <button
-                    className={'w-[50px] h-[32px] border text-red-50 border-red-50 rounded-lg'}
+                    className={'w-[50px] h-8 border text-red-50 border-red-50 rounded-lg'}
                     onClick={() => {
                       setIsCoinModalOpen(true);
                       setCoinModalData({ memberId: item.memberId, coin: item.coin, mode: 'retrieval' });
@@ -120,7 +120,7 @@ export default function GeneralUserListTable({ data, refetch }: IUserListTablePr
                     회수
                   </button>
                   <button
-                    className={'w-[50px] h-[32px] border text-primary-50 border-primary-50 rounded-lg'}
+                    className={'w-[50px] h-8 border text-primary-50 border-primary-50 rounded-lg'}
                     onClick={() => {
                       setIsCoinModalOpen(true);
                       setCoinModalData({ memberId: item.memberId, coin: item.coin, mode: 'payment' });

@@ -12,7 +12,7 @@ export default function GradeManageTable({ data }: IGradeManageTableProps) {
     <table className={'w-full border-collapse text-center'}>
       <thead className={'text-gray-20 font-pre-13-m-130'}>
         <tr className={'bg-gray-99'}>
-          <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'h-12 border border-gray-80 p-2'} rowSpan={2}>
             NO.
           </th>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>

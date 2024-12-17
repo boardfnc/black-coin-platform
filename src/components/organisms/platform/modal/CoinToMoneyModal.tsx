@@ -83,9 +83,9 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
             교환수량 <span className={'font-suit-16-r-130 text-red-50'}>*</span>
           </div>
 
-          <div className={'h-[48px] flex gap-2 items-center'}>
+          <div className={'h-12 flex gap-2 items-center'}>
             <input
-              className={'flex-auto rounded-[14px] border border-gray-80 py-3 px-[14px]'}
+              className={'flex-auto rounded-[14px] border border-gray-80 py-3 px-3.5'}
               type={'text'}
               placeholder={'입력'}
               value={amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
@@ -105,10 +105,7 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
         </div>
 
         <div className={'flex gap-2'}>
-          <button
-            className={'w-[116px] h-[48px] text-gray-10 bg-gray-90 rounded-3xl font-suit-16-m-130'}
-            onClick={onClose}
-          >
+          <button className={'w-[116px] h-12 text-gray-10 bg-gray-90 rounded-3xl font-suit-16-m-130'} onClick={onClose}>
             취소
           </button>
           <button

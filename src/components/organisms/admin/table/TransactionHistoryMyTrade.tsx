@@ -50,7 +50,7 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
             <tr key={item.indexId} className={'bg-gray-100'}>
-              <td className={'h-[48px] border p-2'}>{item.indexId}</td>
+              <td className={'h-12 border p-2'}>{item.indexId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>
@@ -61,9 +61,9 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
                 {item.completeDate !== '-' ? dayjs(item.completeDate).format('YYYY.MM.DD HH:mm:ss') : '-'}
               </td>
 
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
-                  className={'h-[32px] font-pre-13-m-130 text-gray-10 border rounded-lg border-gray-70 p-2'}
+                  className={'h-8 font-pre-13-m-130 text-gray-10 border rounded-lg border-gray-70 p-2'}
                   onClick={() => {
                     setSelectIndex(index);
                     setIsOpen(true);

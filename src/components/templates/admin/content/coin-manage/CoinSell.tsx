@@ -105,7 +105,7 @@ export default function CoinSell() {
           <div className={'flex flex-col gap-8 mx-4'}>
             <div className={'flex flex-row justify-end items-center gap-2'}>
               <button
-                className={'w-[130px] h-[40px] text-gray-100 bg-green-fmg50 rounded-[12px] font-pre-14-m-130'}
+                className={'w-[130px] h-10 text-gray-100 bg-green-fmg50 rounded-xl font-pre-14-m-130'}
                 onClick={() => setIsBuyCoinModalOpen(true)}
               >
                 코인 판매

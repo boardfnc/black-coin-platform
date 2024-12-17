@@ -155,7 +155,7 @@ export default function Account() {
                   <span className={'text-gray-40 font-pre-14-m-130'}>은행명</span>
 
                   <BankSelect
-                    className={'!h-[48px]'}
+                    className={'!h-12'}
                     value={formData.ca_rcpmny_bank}
                     onChange={(value) => handleChange('ca_rcpmny_bank', value)}
                   />
@@ -165,7 +165,7 @@ export default function Account() {
                   <span className={'text-gray-40 font-pre-14-m-130'}>예금주</span>
 
                   <input
-                    className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                    className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                     placeholder={'입력'}
                     value={formData.ca_rcpmny_dpstr}
                     onChange={(event) => handleChange('ca_rcpmny_dpstr', event.target.value)}
@@ -176,7 +176,7 @@ export default function Account() {
                   <span className={'text-gray-40 font-pre-14-m-130'}>계좌번호</span>
 
                   <input
-                    className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                    className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                     value={formData.ca_rcpmny_acnutno}
                     onChange={(event) => handleChange('ca_rcpmny_acnutno', event.target.value)}
                   />
@@ -192,7 +192,7 @@ export default function Account() {
                 <div className={'flex flex-row gap-2.5 items-center'}>
                   <span className={'text-gray-20 font-pre-16-r-130'}>최소입금금액</span>
                   <input
-                    className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                    className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                     value={formData.ca_mumm_rcpmny_am}
                     onChange={(event) => handleChange('ca_mumm_rcpmny_am', event.target.value)}
                   />
@@ -201,7 +201,7 @@ export default function Account() {
 
                   <span className={'text-gray-20 font-pre-16-r-130'}>최대입금금액</span>
                   <input
-                    className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                    className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                     value={formData.ca_mxmm_rcpmny_am}
                     onChange={(event) => handleChange('ca_mxmm_rcpmny_am', event.target.value)}
                   />
@@ -214,7 +214,7 @@ export default function Account() {
           <div className={'flex flex-col gap-[30px] bg-gray-100 p-5 rounded-[20px]'}>
             <h2 className={'font-pre-20-b-130'}>소비자 등급 별 입금 계좌 및 금액 설정</h2>
 
-            <div className={'flex flex-col gap-2.5 p-5 rounded-[16px] border border-line-line03'}>
+            <div className={'flex flex-col gap-2.5 p-5 rounded-2xl border border-line-line03'}>
               <h3 className={'font-pre-20-b-130'}>VVIP 등급</h3>
 
               <div className={'flex flex-col gap-4'}>
@@ -223,7 +223,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>은행명</span>
 
                     <BankSelect
-                      className={'!h-[48px]'}
+                      className={'!h-12'}
                       value={formData.vvip_rcpmny_bank}
                       onChange={(value) => handleChange('vvip_rcpmny_bank', value)}
                     />
@@ -233,7 +233,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>예금주</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_rcpmny_dpstr}
                       onChange={(event) => handleChange('vvip_rcpmny_dpstr', event.target.value)}
                     />
@@ -243,7 +243,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>계좌번호</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_rcpmny_acnutno}
                       onChange={(event) => handleChange('vvip_rcpmny_acnutno', event.target.value)}
                     />
@@ -259,7 +259,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_mumm_rcpmny_am}
                       onChange={(event) => handleChange('vvip_mumm_rcpmny_am', event.target.value)}
                     />
@@ -268,7 +268,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_mxmm_rcpmny_am}
                       onChange={(event) => handleChange('vvip_mxmm_rcpmny_am', event.target.value)}
                     />
@@ -285,7 +285,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_mumm_defray_am || ''}
                       onChange={(event) => handleChange('vvip_mumm_defray_am', event.target.value)}
                     />
@@ -294,7 +294,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vvip_mxmm_defray_am || ''}
                       onChange={(event) => handleChange('vvip_mxmm_defray_am', event.target.value)}
                     />
@@ -304,7 +304,7 @@ export default function Account() {
               </div>
             </div>
 
-            <div className={'flex flex-col gap-2.5 p-5 rounded-[16px] border border-line-line03'}>
+            <div className={'flex flex-col gap-2.5 p-5 rounded-2xl border border-line-line03'}>
               <h3 className={'font-pre-20-b-130'}>VIP 등급</h3>
 
               <div className={'flex flex-col gap-4'}>
@@ -313,7 +313,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>은행명</span>
 
                     <BankSelect
-                      className={'!h-[48px]'}
+                      className={'!h-12'}
                       value={formData.vip_rcpmny_bank}
                       onChange={(value) => handleChange('vip_rcpmny_bank', value)}
                     />
@@ -323,7 +323,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>예금주</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.vip_rcpmny_dpstr}
                       onChange={(event) => handleChange('vip_rcpmny_dpstr', event.target.value)}
                     />
@@ -333,7 +333,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>계좌번호</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.vip_rcpmny_acnutno}
                       onChange={(event) => handleChange('vip_rcpmny_acnutno', event.target.value)}
                     />
@@ -349,7 +349,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vip_mumm_rcpmny_am}
                       onChange={(event) => handleChange('vip_mumm_rcpmny_am', event.target.value)}
                     />
@@ -358,7 +358,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vip_mxmm_rcpmny_am}
                       onChange={(event) => handleChange('vip_mxmm_rcpmny_am', event.target.value)}
                     />
@@ -375,7 +375,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vip_mumm_defray_am || ''}
                       onChange={(event) => handleChange('vip_mumm_defray_am', event.target.value)}
                     />
@@ -384,7 +384,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.vip_mxmm_defray_am || ''}
                       onChange={(event) => handleChange('vip_mxmm_defray_am', event.target.value)}
                     />
@@ -394,7 +394,7 @@ export default function Account() {
               </div>
             </div>
 
-            <div className={'flex flex-col gap-2.5 p-5 rounded-[16px] border border-line-line03'}>
+            <div className={'flex flex-col gap-2.5 p-5 rounded-2xl border border-line-line03'}>
               <h3 className={'font-pre-20-b-130'}>일반회원 등급</h3>
 
               <div className={'flex flex-col gap-4'}>
@@ -403,7 +403,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>은행명</span>
 
                     <BankSelect
-                      className={'!h-[48px]'}
+                      className={'!h-12'}
                       value={formData.gnrl_rcpmny_bank}
                       onChange={(value) => handleChange('gnrl_rcpmny_bank', value)}
                     />
@@ -413,7 +413,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>예금주</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_rcpmny_dpstr}
                       onChange={(event) => handleChange('gnrl_rcpmny_dpstr', event.target.value)}
                     />
@@ -423,7 +423,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>계좌번호</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_rcpmny_acnutno}
                       onChange={(event) => handleChange('gnrl_rcpmny_acnutno', event.target.value)}
                     />
@@ -439,7 +439,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_mumm_rcpmny_am}
                       onChange={(event) => handleChange('gnrl_mumm_rcpmny_am', event.target.value)}
                     />
@@ -448,7 +448,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_mxmm_rcpmny_am}
                       onChange={(event) => handleChange('gnrl_mxmm_rcpmny_am', event.target.value)}
                     />
@@ -465,7 +465,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_mumm_defray_am || ''}
                       onChange={(event) => handleChange('gnrl_mumm_defray_am', event.target.value)}
                     />
@@ -474,7 +474,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.gnrl_mxmm_defray_am || ''}
                       onChange={(event) => handleChange('gnrl_mxmm_defray_am', event.target.value)}
                     />
@@ -484,7 +484,7 @@ export default function Account() {
               </div>
             </div>
 
-            <div className={'flex flex-col gap-2.5 p-5 rounded-[16px] border border-line-line03'}>
+            <div className={'flex flex-col gap-2.5 p-5 rounded-2xl border border-line-line03'}>
               <h3 className={'font-pre-20-b-130'}>신규회원 등급</h3>
 
               <div className={'flex flex-col gap-4'}>
@@ -493,7 +493,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>은행명</span>
 
                     <BankSelect
-                      className={'!h-[48px]'}
+                      className={'!h-12'}
                       value={formData.new_rcpmny_bank}
                       onChange={(value) => handleChange('new_rcpmny_bank', value)}
                     />
@@ -503,7 +503,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>예금주</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.new_rcpmny_dpstr}
                       onChange={(event) => handleChange('new_rcpmny_dpstr', event.target.value)}
                     />
@@ -513,7 +513,7 @@ export default function Account() {
                     <span className={'text-gray-40 font-pre-14-m-130'}>계좌번호</span>
 
                     <input
-                      className={'h-[48px] px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-[13px] border border-gray-80 rounded-[14px]'}
                       value={formData.new_rcpmny_acnutno}
                       onChange={(event) => handleChange('new_rcpmny_acnutno', event.target.value)}
                     />
@@ -529,7 +529,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.new_mumm_rcpmny_am}
                       onChange={(event) => handleChange('new_mumm_rcpmny_am', event.target.value)}
                     />
@@ -538,7 +538,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대입금금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.new_mxmm_rcpmny_am}
                       onChange={(event) => handleChange('new_mxmm_rcpmny_am', event.target.value)}
                     />
@@ -555,7 +555,7 @@ export default function Account() {
                   <div className={'flex flex-row gap-2.5 items-center'}>
                     <span className={'text-gray-20 font-pre-16-r-130'}>최소판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.new_mumm_defray_am || ''}
                       onChange={(event) => handleChange('new_mumm_defray_am', event.target.value)}
                     />
@@ -564,7 +564,7 @@ export default function Account() {
 
                     <span className={'text-gray-20 font-pre-16-r-130'}>최대판매금액</span>
                     <input
-                      className={'h-[48px] px-3.5 py-4 border border-gray-80 rounded-[14px]'}
+                      className={'h-12 px-3.5 py-4 border border-gray-80 rounded-[14px]'}
                       value={formData.new_mxmm_defray_am || ''}
                       onChange={(event) => handleChange('new_mxmm_defray_am', event.target.value)}
                     />

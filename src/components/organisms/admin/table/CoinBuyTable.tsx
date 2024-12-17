@@ -87,7 +87,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
-              <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+              <td className={'h-12 border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
@@ -106,7 +106,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
                       setSelectedItem(item);
                       setIsConfirmColModalOpen(true);
                     }}
-                    className={'h-[32px] text-gray-100 bg-gray-0 px-3 py-2 rounded-lg font-pre-13-m-130'}
+                    className={'h-8 text-gray-100 bg-gray-0 px-3 py-2 rounded-lg font-pre-13-m-130'}
                   >
                     입금완료
                   </button>
@@ -114,7 +114,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
                 {item.status === '12' && (
                   <div
                     className={
-                      'h-[32px] flex justify-center items-center gap-1.5 ps-3 pe-4 py-2 rounded-lg bg-gray-90 text-gray-10 font-pre-13-m-130 break-keep'
+                      'h-8 flex justify-center items-center gap-1.5 ps-3 pe-4 py-2 rounded-lg bg-gray-90 text-gray-10 font-pre-13-m-130 break-keep'
                     }
                   >
                     <IconLine24Loading />
@@ -125,7 +125,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
                 {(item.status === '13' || item.status === '14') && (
                   <div
                     className={
-                      'h-[32px] flex justify-center items-center gap-1.5 ps-3 pe-4 py-2 rounded-lg bg-gray-90 text-gray-50 font-pre-13-m-130'
+                      'h-8 flex justify-center items-center gap-1.5 ps-3 pe-4 py-2 rounded-lg bg-gray-90 text-gray-50 font-pre-13-m-130'
                     }
                   >
                     <IconLine24LineCheck />
@@ -134,7 +134,7 @@ export default function CoinBuyTable({ data, refetch }: ICoinBuyTableProps) {
                   </div>
                 )}
               </td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 {item.status === '11' && (
                   <button
                     onClick={() => {

@@ -60,7 +60,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
         <div className={'flex flex-row justify-between items-center gap-[10px] pt-3 pb-2'}>
           <input
             className={
-              'w-full text-gray-10 font-pre-13-r-130 placeholder:text-gray-50 border border-gray-80 rounded-lg h-[32px] py-2 px-4'
+              'w-full text-gray-10 font-pre-13-r-130 placeholder:text-gray-50 border border-gray-80 rounded-lg h-8 py-2 px-4'
             }
             type={'text'}
             placeholder={'입력'}
@@ -74,7 +74,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
           />
 
           <button
-            className={'w-[90px] font-pre-14-m-130 text-gray-100 bg-gray-0 h-[32px] px-4 rounded-[8px]'}
+            className={'w-[90px] font-pre-14-m-130 text-gray-100 bg-gray-0 h-8 px-4 rounded-[8px]'}
             onClick={handleSearch}
           >
             조회
@@ -91,7 +91,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
             <div className={'relative'}>
               <table className={'w-full border-collapse text-center'}>
                 <thead className={'sticky top-0 z-10'}>
-                  <tr className={'h-[32px] bg-gray-95'}>
+                  <tr className={'h-8 bg-gray-95'}>
                     <th className={'px-4 font-pre-13-m-130 text-gray-0 border border-gray-80'}>NO.</th>
                     <th className={'px-4 font-pre-13-m-130 text-gray-0 border border-gray-80'}>파트너사명</th>
                     <th className={'px-4 font-pre-13-m-130 text-gray-0 border border-gray-80'}>코드명</th>

@@ -51,7 +51,7 @@ export default function Pagination({ totalPage, viewCount = 5 }: IPaginationProp
       <Link
         key={i}
         href={createPageURL(i)}
-        className={`w-[32px] h-[32px] flex justify-center items-center text-gray-0 font-pre-14-r-130 px-2 py-1 rounded ${currentPageFromURL === i ? 'bg-gray-90 active !p-[10px] !rounded-[10px]' : ''}`}
+        className={`w-[32px] h-8 flex justify-center items-center text-gray-0 font-pre-14-r-130 px-2 py-1 rounded ${currentPageFromURL === i ? 'bg-gray-90 active !p-[10px] !rounded-[10px]' : ''}`}
       >
         {i}
       </Link>,

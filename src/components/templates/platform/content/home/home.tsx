@@ -73,7 +73,7 @@ export default function HomePage() {
 
         <div className={'px-5 sm:px-0'}>
           <div className={'pb-[75px] '}>
-            <div className={'max-w-[1320px] mx-auto pt-[40px] sm:pt-[60px] pb-[80px] border-b border-gray-0'}>
+            <div className={'max-w-[1320px] mx-auto pt-10 sm:pt-[60px] pb-20 border-b border-gray-0'}>
               <div className={'flex flex-col gap-[60px]'}>
                 <div className={'flex flex-col text-gray-20 font-suit-22-r-130 gap-5'}>
                   <div className={'text-gray-0 font-pre-35-400-130 sm:font-pre-40-r-130 letter-spacing-[0.04px]'}>
@@ -123,7 +123,7 @@ export default function HomePage() {
                   고객의 자산을 상시 보호 합니다.
                 </div>
 
-                <div className={'w-full sm:w-[350px] h-[56px] mx-auto'}>
+                <div className={'w-full sm:w-[350px] h-14 mx-auto'}>
                   <div className={'w-full h-full border border-gray-0 text-gray-0 font-suit-17-m-130'}>
                     <Link href={ROUTES.PLATFORM.LOGIN} className={'h-full flex justify-center items-center'}>
                       Join Us

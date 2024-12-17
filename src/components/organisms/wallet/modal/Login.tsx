@@ -142,7 +142,7 @@ export default function LoginModal() {
               />
             </label>
 
-            <label className={'flex flex-row gap-2 items-center px-[14px]'}>
+            <label className={'flex flex-row gap-2 items-center px-3.5'}>
               <input type={'checkbox'} checked={autoLogin} onChange={handleAutoSaveChange} />
               <div className={'text-gray-40 text-sm'}>아이디, 비밀번호 자동 저장 및 지갑 연동</div>
             </label>

@@ -147,14 +147,14 @@ export default function SentHistory() {
             {!isSuperAdmin && (
               <div className={'flex flex-row justify-end items-center gap-2'}>
                 <button
-                  className={'w-[130px] h-[40px] text-gray-100 bg-orange-orange50 rounded-[12px] font-pre-14-m-130'}
+                  className={'w-[130px] h-10 text-gray-100 bg-orange-orange50 rounded-xl font-pre-14-m-130'}
                   onClick={() => setIsBuyCoinModalOpen(true)}
                 >
                   코인 구매
                 </button>
 
                 <button
-                  className={'w-[130px] h-[40px] text-gray-100 bg-green-fmg50 rounded-[12px] font-pre-14-m-130'}
+                  className={'w-[130px] h-10 text-gray-100 bg-green-fmg50 rounded-xl font-pre-14-m-130'}
                   onClick={() => setIsSellCoinModalOpen(true)}
                 >
                   코인 판매

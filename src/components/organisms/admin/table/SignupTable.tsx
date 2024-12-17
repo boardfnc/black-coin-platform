@@ -69,7 +69,7 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
       <table className={'w-full border-collapse text-center'}>
         <thead className={'text-gray-20 font-pre-13-m-130'}>
           <tr className={'bg-gray-99'}>
-            <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
+            <th className={'h-12 border border-gray-80 p-2'} rowSpan={2}>
               NO.
             </th>
             <th className={'w-[120px] border border-gray-80 p-2'} rowSpan={2}>
@@ -123,7 +123,7 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
               <td className={`border p-2 ${Number(item.memberStatus) === 3 ? 'text-red-50' : 'text-gray-0'} `}>
                 {covertMemberJoinProgress(Number(item.memberStatus))}
               </td>
-              <td className={'w-[80px] h-[52px] border p-2'}>
+              <td className={'w-20 h-[52px] border p-2'}>
                 <Link
                   className={'border border-gray-70 bg-gray-100 px-3 py-2 rounded-lg text-gray-0 font-pre-13-m-130'}
                   href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.id)}
@@ -131,7 +131,7 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
                   수정
                 </Link>
               </td>
-              <td className={'w-[80px] h-[52px] border p-2'}>
+              <td className={'w-20 h-[52px] border p-2'}>
                 <div className={'flex flex-row gap-[10px]'}>
                   {Number(item.memberStatus) === 3 && (
                     <div

@@ -76,7 +76,7 @@ export default function BonusCoinModal({ isOpen, onClose, onComplete, hasExistin
               <div className={'flex gap-[10px] items-center'}>
                 <div className={'flex items-center gap-2'}>
                   <input
-                    className={'w-full h-[48px] px-3.5 border border-gray-80 rounded-[14px]'}
+                    className={'w-full h-12 px-3.5 border border-gray-80 rounded-[14px]'}
                     type={'text'}
                     value={directInput}
                     onChange={(event) => handleDirectInputChange(event.target.value)}
@@ -99,7 +99,7 @@ export default function BonusCoinModal({ isOpen, onClose, onComplete, hasExistin
                     value={percentageInput}
                     onChange={(event) => handlePercentageInputChange(event.target.value)}
                     placeholder={'0'}
-                    className={'w-full h-[48px] px-3.5 border border-gray-80 rounded-[14px]'}
+                    className={'w-full h-12 px-3.5 border border-gray-80 rounded-[14px]'}
                   />
                   <span className={'text-gray-20 font-pre-16-r-130'}>%</span>
                 </div>
@@ -112,7 +112,7 @@ export default function BonusCoinModal({ isOpen, onClose, onComplete, hasExistin
             <button
               onClick={handleClose}
               className={
-                'text-gray-10 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
+                'text-gray-10 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
               }
             >
               취소
@@ -121,7 +121,7 @@ export default function BonusCoinModal({ isOpen, onClose, onComplete, hasExistin
               onClick={handleComplete}
               disabled={!directInput && !percentageInput}
               className={
-                'transition text-gray-100 bg-primary-50 disabled:bg-gray-50 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center rounded-[60px]'
+                'transition text-gray-100 bg-primary-50 disabled:bg-gray-50 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center rounded-[60px]'
               }
             >
               완료

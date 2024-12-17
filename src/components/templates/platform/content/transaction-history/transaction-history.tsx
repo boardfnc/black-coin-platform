@@ -132,13 +132,6 @@ export default function TransactionHistory() {
     }
   };
 
-  const handleDateSearchClick = () => {
-    const params = new URLSearchParams(window.location.search);
-    params.delete('startDate');
-    params.delete('endDate');
-    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
-  };
-
   useEffect(() => {
     refetch();
   }, [refetch, searchParams]);
@@ -224,7 +217,7 @@ export default function TransactionHistory() {
 
         <div className={'max-w-[1080px] mx-auto px-3 sm:px-0'}>
           <div className={'w-full pb-5'}>
-            <div className={'h-[32px] text-gray-10 font-suit-16-b-130'}>Transaction details</div>
+            <div className={'h-8 text-gray-10 font-suit-16-b-130'}>Transaction details</div>
 
             <div className={'h-[60px] text-gray-10 font-suit-24-b-130 sm:font-suit-30-700-130 border-b border-gray-50'}>
               거래내역
@@ -245,7 +238,7 @@ export default function TransactionHistory() {
 
             <div className={'relative'}>
               <button
-                className={`flex items-center gap-1 h-[36px] text-gray-10 bg-gray-100 rounded-[18px] border border-gray-70 px-4 ${
+                className={`flex items-center gap-1 h-9 text-gray-10 bg-gray-100 rounded-[18px] border border-gray-70 px-4 ${
                   startDateParam == null && endDateParam == null ? 'text-gray-0' : 'border-primary-50 text-primary-50'
                 }`}
                 onClick={() => setIsCalendarOpen(!isCalendarOpen)}
@@ -418,7 +411,7 @@ export default function TransactionHistory() {
                   >
                     <button
                       className={`
-                        h-[48px] px-4 py-2 rounded-[60px] text-gray-10 border border-gray-10 font-suit-16-m-130 
+                        h-12 px-4 py-2 rounded-[60px] text-gray-10 border border-gray-10 font-suit-16-m-130 
                         flex flex-row gap-[6px] items-center justify-center flex-1 lg:flex-none
                         ${!startDate ? 'text-gray-50 !border-gray-80 cursor-not-allowed' : ''}
                       `}
@@ -431,7 +424,7 @@ export default function TransactionHistory() {
 
                     <button
                       className={`
-                        h-[48px] px-4 py-2 rounded-[60px] text-gray-100 bg-gray-0 font-suit-16-b-130
+                        h-12 px-4 py-2 rounded-[60px] text-gray-100 bg-gray-0 font-suit-16-b-130
                         flex-1 lg:flex-none
                         ${!(startDate && endDate) ? 'bg-gray-80 cursor-not-allowed' : ''}
                       `}
@@ -451,25 +444,25 @@ export default function TransactionHistory() {
 
           <div className={'flex justify-between items-center pt-5'}>
             <button
-              className={`h-[56px] flex-1 flex justify-center items-center border ${Number(mode) === 2 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
+              className={`h-14 flex-1 flex justify-center items-center border ${Number(mode) === 2 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
               onClick={() => handleButtonClick(2)}
             >
               구매
             </button>
             <button
-              className={`h-[56px] flex-1 flex justify-center items-center border ${Number(mode) === 1 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
+              className={`h-14 flex-1 flex justify-center items-center border ${Number(mode) === 1 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
               onClick={() => handleButtonClick(1)}
             >
               판매
             </button>
             <button
-              className={`h-[56px] flex-1 flex justify-center items-center border ${Number(mode) === 3 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
+              className={`h-14 flex-1 flex justify-center items-center border ${Number(mode) === 3 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-e-0 border-b border-gray-200 border-b-gray-900'}`}
               onClick={() => handleButtonClick(3)}
             >
               전송
             </button>
             <button
-              className={`h-[56px] flex-1 flex justify-center items-center border ${Number(mode) === 4 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-b border-gray-200 border-b-gray-900'}`}
+              className={`h-14 flex-1 flex justify-center items-center border ${Number(mode) === 4 ? 'bg-white text-gray-900 border-b-0 border-gray-900' : 'text-gray-400 border-b border-gray-200 border-b-gray-900'}`}
               onClick={() => handleButtonClick(4)}
             >
               취소
@@ -481,19 +474,19 @@ export default function TransactionHistory() {
               <>
                 <button
                   onClick={() => handleTypeClick('all')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   전체
                 </button>
                 <button
                   onClick={() => handleTypeClick('2')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   구매
                 </button>
                 <button
                   onClick={() => handleTypeClick('1')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '1' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '1' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   판매
                 </button>
@@ -504,20 +497,20 @@ export default function TransactionHistory() {
               <>
                 <button
                   onClick={() => handleTypeClick('all')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   전체
                 </button>
 
                 <button
                   onClick={() => handleTypeClick('2')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   대기
                 </button>
                 <button
                   onClick={() => handleTypeClick('3')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '3' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '3' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   완료
                 </button>
@@ -528,25 +521,25 @@ export default function TransactionHistory() {
               <>
                 <button
                   onClick={() => handleTypeClick('all')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${!type ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   전체
                 </button>
                 <button
                   onClick={() => handleTypeClick('1')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '1' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '1' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   신청
                 </button>
                 <button
                   onClick={() => handleTypeClick('2')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '2' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   대기
                 </button>
                 <button
                   onClick={() => handleTypeClick('3')}
-                  className={`h-[36px] px-4 font-suit-13-b-130 ${type === '3' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
+                  className={`h-9 px-4 font-suit-13-b-130 ${type === '3' ? 'text-gray-100 bg-gray-0' : 'text-gray-50 bg-gray-95'} rounded-[20px]`}
                 >
                   완료
                 </button>
@@ -597,7 +590,7 @@ export default function TransactionHistory() {
 
             return (
               <div key={item.created_at} className={'w-full mx-auto pt-4 pb-[30px]'}>
-                <div className={'rounded-[16px] border border-line-02 overflow-hidden'}>
+                <div className={'rounded-2xl border border-line-02 overflow-hidden'}>
                   <div className={`flex justify-between items-center ${header.headerStyle} px-5 py-2`}>
                     <h2 className={`font-suit-22-b-130 ${header.textStyle}`}>{header.text}</h2>
 

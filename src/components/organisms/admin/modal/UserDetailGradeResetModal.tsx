@@ -3,9 +3,9 @@ import type { UserDetailGradeResetModalProps } from './UserDetailGradeResetModal
 import { IconLine24RoundWarning } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
 import { useRequest, useToast } from '@/hooks';
-import { adminMemberGradeUpdateService } from '@/services/admin/member/adminMembers';
+import { adminMemberGradeInitializationService } from '@/services/admin/member/adminMembers';
 
-export default function UserDetailGradeResetModal({ isOpen, grade, onClose, id }: UserDetailGradeResetModalProps) {
+export default function UserDetailGradeResetModal({ isOpen, onClose, id, refetch }: UserDetailGradeResetModalProps) {
   const { request } = useRequest();
   const { open: openToast } = useToast();
 
@@ -15,9 +15,8 @@ export default function UserDetailGradeResetModal({ isOpen, grade, onClose, id }
 
   const handleGradeReset = async () => {
     const data = await request(() =>
-      adminMemberGradeUpdateService({
+      adminMemberGradeInitializationService({
         id: Number(id),
-        mber_grd: grade,
       }),
     );
 
@@ -26,6 +25,8 @@ export default function UserDetailGradeResetModal({ isOpen, grade, onClose, id }
         message: '등급이 초기화되었습니다.',
         type: 'success',
       });
+
+      refetch();
     }
 
     handleGradeResetModalClose();
@@ -35,7 +36,7 @@ export default function UserDetailGradeResetModal({ isOpen, grade, onClose, id }
     <Modal width={'400px'} isOpen={isOpen} onClose={handleGradeResetModalClose}>
       <div className={'flex flex-col items-center justify-center gap-4 py-1 px-3'}>
         <div className={'flex flex-col items-center justify-center'}>
-          <div className={'w-[80px] h-[80px] flex flex-col text-red-60 bg-red-95 p-6 rounded-full'}>
+          <div className={'w-20 h-20 flex flex-col text-red-60 bg-red-95 p-6 rounded-full'}>
             <IconLine24RoundWarning width={32} height={32} preserveAspectRatio={'none'} />
           </div>
         </div>

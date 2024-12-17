@@ -70,7 +70,7 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
       <tbody className={'text-gray-0 font-pre-13-r-130'}>
         {data.map((item, index) => (
           <tr key={index} className={'bg-gray-100'}>
-            <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+            <td className={'h-12 border p-2'}>{item.uniqueId}</td>
             {isSuperAdmin && (
               <>
                 <td className={'border p-2'}>

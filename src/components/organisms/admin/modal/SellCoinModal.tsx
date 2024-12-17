@@ -52,17 +52,11 @@ export function ConfirmModal({
         </div>
 
         <div className={'flex justify-end gap-2'}>
-          <button
-            className={'w-[90px] h-[48px] text-gray-0 font-pre-16-m-130 bg-gray-90 rounded-[24px]'}
-            onClick={onClose}
-          >
+          <button className={'w-[90px] h-12 text-gray-0 font-pre-16-m-130 bg-gray-90 rounded-3xl'} onClick={onClose}>
             {cancelText}
           </button>
 
-          <button
-            className={'w-[90px] h-[48px] text-gray-100 font-pre-16-m-130 bg-gray-0 rounded-[24px]'}
-            onClick={onConfirm}
-          >
+          <button className={'w-[90px] h-12 text-gray-100 font-pre-16-m-130 bg-gray-0 rounded-3xl'} onClick={onConfirm}>
             {confirmText}
           </button>
         </div>
@@ -95,7 +89,7 @@ export function BuyCompleteModal({
         </div>
 
         <div>
-          <div className={'h-[32px] mb-2 border-b border-line-line02'}>
+          <div className={'h-8 mb-2 border-b border-line-line02'}>
             <div className={'text-gray-20 font-pre-18-m-130'}>ServiceName</div>
           </div>
           <div className={'flex flex-col gap-3 pt-3'}>
@@ -128,7 +122,7 @@ export function BuyCompleteModal({
               </div>
             </div>
 
-            <div className={'flex gap-1 p-3 bg-primary-99 rounded-[12px]'}>
+            <div className={'flex gap-1 p-3 bg-primary-99 rounded-xl'}>
               <div className={'p-0.5 bg-red-50 rounded-full h-max'}>
                 <IconLine24Bell />
               </div>
@@ -143,7 +137,7 @@ export function BuyCompleteModal({
 
         <div className={'flex justify-end items-center gap-2'}>
           <button
-            className={'w-[80px] h-[48px] text-gray-10 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
+            className={'w-20 h-12 text-gray-10 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
             onClick={onClose}
           >
             닫기
@@ -219,7 +213,7 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
         <div className={'flex flex-col gap-[30px] pt-2 px-[10px]'}>
           <div className={'flex flex-col gap-[10px]'}>
             {mode === 'payment' && (
-              <div className={'h-[56px] flex justify-between items-center border-b border-gray-20'}>
+              <div className={'h-14 flex justify-between items-center border-b border-gray-20'}>
                 <div className={'flex items-center gap-1'}>
                   <IconLine24SavingMoney className={'text-purple-fmg50'} />
                   <span className={'text-gray-10 font-pre-16-m-130'}>내 보유 코인</span>
@@ -236,7 +230,7 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
             <div className={'text-gray-40 font-pre-15-r-130 py-2'}>판매 수량</div>
             <div className={'flex justify-between items-center gap-2'}>
               <input
-                className={'w-full py-4 px-3.5 border text-gray-0 border-gray-80 rounded-[16px] font-pre-17-r-130'}
+                className={'w-full py-4 px-3.5 border text-gray-0 border-gray-80 rounded-2xl font-pre-17-r-130'}
                 type={'text'}
                 value={amount.toLocaleString('ko-KR')}
                 onChange={(event) => {
@@ -246,7 +240,7 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
               />
               <button
                 className={
-                  'w-[90px] h-[48px] flex items-center justify-center text-gray-100 border border-gray-0 bg-gray-0 rounded-[14px] font-pre-16-m-130'
+                  'w-[90px] h-12 flex items-center justify-center text-gray-100 border border-gray-0 bg-gray-0 rounded-[14px] font-pre-16-m-130'
                 }
                 onClick={handleReset}
               >
@@ -257,56 +251,56 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
 
           <div className={'grid grid-cols-4 gap-2'}>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 1000)}
             >
               {Number(1000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 5000)}
             >
               {Number(5000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 10000)}
             >
               {Number(10000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 30000)}
             >
               {Number(30000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 50000)}
             >
               {Number(50000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 100000)}
             >
               {Number(100000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 500000)}
             >
               {Number(500000).toLocaleString('ko-KR')}
             </button>
             <button
-              className={'h-10 text-gray-0 border border-gray-0 rounded-[12px] font-pre-14-m-130'}
+              className={'h-10 text-gray-0 border border-gray-0 rounded-xl font-pre-14-m-130'}
               onClick={() => setAmount((prev) => prev + 1000000)}
             >
               {Number(1000000).toLocaleString('ko-KR')}
             </button>
           </div>
 
-          <div className={'p-5 flex flex-col gap-2.5 border border-gray-80 bg-gray-100 rounded-[16px]'}>
+          <div className={'p-5 flex flex-col gap-2.5 border border-gray-80 bg-gray-100 rounded-2xl'}>
             <div className={'text-gray-30 font-pre-14-m-130'}>✻ 구매/판매 등록 안내</div>
 
             <div className={'text-gray-20 font-pre-13-r-130'}>
@@ -320,14 +314,14 @@ export default function SellCoinModal({ isOpen, mode, onClose, refetch }: IBuyCo
 
           <div className={'flex items-center justify-end gap-2'}>
             <button
-              className={'w-[90px] h-[48px] text-gray-0 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
+              className={'w-[90px] h-12 text-gray-0 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
               onClick={handleClose}
             >
               취소
             </button>
 
             <button
-              className={`flex-auto  h-[48px] text-gray-100 font-pre-16-m-130 ${
+              className={`flex-auto  h-12 text-gray-100 font-pre-16-m-130 ${
                 mode === 'payment' ? 'bg-green-fmg50' : 'bg-red-50'
               } border border-gray-80 rounded-[60px] px-4`}
               onClick={handleSubmit}

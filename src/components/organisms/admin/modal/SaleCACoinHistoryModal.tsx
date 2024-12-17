@@ -55,7 +55,7 @@ export default function SaleCACoinHistoryModal(props: ISaleCACoinHistoryModalPro
           </div>
 
           <div className={'flex-1'}>
-            <div className={'h-[120px] flex flex-col justify-between p-5 border rounded-2xl'}>
+            <div className={'h-30 flex flex-col justify-between p-5 border rounded-2xl'}>
               <div className={'flex flex-row justify-between items-center'}>
                 <div className={'text-gray-40 font-pre-14-m-130'}>코드명</div>
                 <div className={'font-pre-16-r-130 text-gray-0'}>{coinHistoryModalTableData.codeName}</div>
@@ -139,7 +139,7 @@ export default function SaleCACoinHistoryModal(props: ISaleCACoinHistoryModalPro
         <div className={'flex justify-end'}>
           <button
             className={
-              'text-gray-10 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
+              'text-gray-10 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
             }
             onClick={handleClose}
           >

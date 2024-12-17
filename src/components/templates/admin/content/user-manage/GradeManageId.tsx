@@ -85,11 +85,11 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
             <div className={'w-full flex flex-col gap-5 bg-gray-95 p-5 rounded-[30px]'}>
               <div className={'flex flex-col gap-5'}>
                 <div className={'flex flex-col gap-2.5 bg-gray-100 p-5 rounded-[20px]'}>
-                  <div className={'h-[40px] flex justify-between items-center'}>
+                  <div className={'h-10 flex justify-between items-center'}>
                     <div className={'text-gray-0 font-pre-20-b-130'}>산출 기준 선택</div>
                   </div>
 
-                  <div className={'h-[40px] ps-2.5 bg-primary-99 flex flex-row gap-1.5 items-center'}>
+                  <div className={'h-10 ps-2.5 bg-primary-99 flex flex-row gap-1.5 items-center'}>
                     <IconLine24SquareInfo className={'text-orange-orange50'} />
                     <div className={'text-gray-0 font-pre-13-r-130'}>
                       선택한 산출 기준에 따라 회원등급을 자동으로 산출합니다.
@@ -102,7 +102,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                       <button
                         type={'button'}
                         className={
-                          'w-full h-[56px] text-left font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] pe-[40px]'
+                          'w-full h-14 text-left font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 pe-10'
                         }
                         onClick={() => setIsOpen(!isOpen)}
                       >
@@ -130,14 +130,14 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                       {isOpen && (
                         <ul
                           className={
-                            'absolute z-10 w-full mt-1 bg-gray-100 border border-gray-80 rounded-[12px] overflow-hidden'
+                            'absolute z-10 w-full mt-1 bg-gray-100 border border-gray-80 rounded-xl overflow-hidden'
                           }
                         >
                           {Object.entries(selectType).map(([key, value]) => (
                             <li key={key}>
                               <button
                                 type={'button'}
-                                className={`w-full text-center font-pre-14-r-130 px-[14px] py-[13px] hover:bg-gray-90 ${
+                                className={`w-full text-center font-pre-14-r-130 px-3.5 py-[13px] hover:bg-gray-90 ${
                                   formData.type === key
                                     ? 'bg-sub-blue-s-blue-10 text-sub-blue-s-d-blue-10'
                                     : 'bg-gray-100 text-gray-0'
@@ -158,7 +158,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                 </div>
 
                 <div className={'flex flex-col gap-2.5 p-5 bg-gray-100 rounded-[20px]'}>
-                  <div className={'h-[40px] flex justify-between items-center'}>
+                  <div className={'h-10 flex justify-between items-center'}>
                     <div className={'text-gray-0 font-pre-20-b-130'}>등급 별 산출 기준 설정</div>
                   </div>
 
@@ -171,7 +171,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <input
                             type={'text'}
                             className={
-                              'w-[340px] h-[56px] bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                              'w-[340px] h-14 bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                             }
                             placeholder={'VVIP'}
                             disabled
@@ -187,7 +187,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                               value={formatNumber(formData.vvip)}
                               onChange={(event) => setFormData({ ...formData, vvip: parseNumber(event.target.value) })}
                               className={
-                                'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                                'w-[340px] h-14 disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                               }
                               placeholder={'입력'}
                             />
@@ -208,7 +208,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <input
                             type={'text'}
                             className={
-                              'w-[340px] h-[56px] bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                              'w-[340px] h-14 bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                             }
                             placeholder={'VIP'}
                             disabled
@@ -224,7 +224,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                               value={formatNumber(formData.vip)}
                               onChange={(event) => setFormData({ ...formData, vip: parseNumber(event.target.value) })}
                               className={
-                                'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                                'w-[340px] h-14 disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                               }
                               placeholder={'입력'}
                             />
@@ -245,7 +245,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <input
                             type={'text'}
                             className={
-                              'w-[340px] h-[56px] bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                              'w-[340px] h-14 bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                             }
                             placeholder={'일반회원'}
                             disabled
@@ -263,7 +263,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                                 setFormData({ ...formData, general: parseNumber(event.target.value) })
                               }
                               className={
-                                'w-[340px] h-[56px] disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                                'w-[340px] h-14 disabled:text-gray-50 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                               }
                               placeholder={'입력'}
                             />
@@ -284,7 +284,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                           <input
                             type={'text'}
                             className={
-                              'w-[340px] h-[56px] bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                              'w-[340px] h-14 bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                             }
                             placeholder={'신규회원'}
                             disabled
@@ -298,7 +298,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                             <input
                               type={'text'}
                               className={
-                                'w-[340px] h-[56px] bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-[12px] px-[14px] py-[15px]'
+                                'w-[340px] h-14 bg-gray-90 placeholder:text-gray-0 font-pre-16-r-130 border border-gray-80 rounded-xl px-3.5 py-[15px]'
                               }
                               placeholder={'0'}
                               disabled
@@ -317,7 +317,7 @@ export default function GradeManageId({ id, type, VVIP, VIP, general }: IGradeMa
                 <div className={'flex justify-center'}>
                   <button
                     className={
-                      'w-[300px] h-[40px] text-primary-50 bg-gray-100 font-pre-14-m-130 rounded-xl border border-primary-50 px-5 py-2.5 font-pre-16-m-130'
+                      'w-[300px] h-10 text-primary-50 bg-gray-100 font-pre-14-m-130 rounded-xl border border-primary-50 px-5 py-2.5 font-pre-16-m-130'
                     }
                     onClick={onClickSaveMemberGradeUpdate}
                   >

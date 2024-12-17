@@ -11,7 +11,7 @@ export default function StatisticsTable({ data }: IStatisticsTableProps) {
     <table className={'w-full border-collapse text-center'}>
       <thead className={'text-gray-20 font-pre-13-m-130'}>
         <tr className={'bg-gray-99'}>
-          <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'h-12 border border-gray-80 p-2'} rowSpan={2}>
             날짜
           </th>
           {isSuperAdmin && (
@@ -53,7 +53,7 @@ export default function StatisticsTable({ data }: IStatisticsTableProps) {
       <tbody className={'text-gray-0 font-pre-13-r-130'}>
         {data.map((item, index) => (
           <tr key={index} className={'bg-gray-100'}>
-            <td className={'h-[48px] border p-2'}>{item.date}</td>
+            <td className={'h-12 border p-2'}>{item.date}</td>
             {isSuperAdmin && <td className={'border p-2'}>{item.partnerName}</td>}
             <td className={'border p-2'}>{item.totalPurchaseCount.toLocaleString('ko-KR')}</td>
             <td className={'border p-2'}>{item.totalPurchaseCoin.toLocaleString('ko-KR')}</td>

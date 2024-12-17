@@ -74,7 +74,7 @@ export default function TransactionHistoryMyTradeModal(props: ITransactionHistor
           <div className={'flex justify-end'}>
             <button
               className={
-                'text-gray-10 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
+                'text-gray-10 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
               }
               onClick={handleClose}
             >

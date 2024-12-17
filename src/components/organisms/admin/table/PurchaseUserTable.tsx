@@ -62,7 +62,7 @@ export default function PurchaseUserTable({ data, refetch }: IPurchaseUserTableP
         <div className={'text-gray-10 font-pre-13-m-130'}>선택된 항목</div>
         <button
           className={
-            'h-[32px] rounded-lg text-gray-100 bg-purple-fmg60 transition disabled:bg-gray-50 font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-100 bg-purple-fmg60 transition disabled:bg-gray-50 font-pre-13-m-130 px-3'
           }
           onClick={handleSendCoin}
           disabled={Object.values(checkedItems).every((value) => !value)}
@@ -132,7 +132,7 @@ export default function PurchaseUserTable({ data, refetch }: IPurchaseUserTableP
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
-              <td className={'w-5 h-[48px] border p-2'}>
+              <td className={'w-5 h-12 border p-2'}>
                 <input
                   type={'checkbox'}
                   className={`w-5 h-5 appearance-none rounded-md border border-[#CDD0D5] bg-white 
@@ -143,7 +143,7 @@ export default function PurchaseUserTable({ data, refetch }: IPurchaseUserTableP
                   onChange={(event) => handleSingleCheck(event.target.checked, item.uniqueId.toString())}
                 />
               </td>
-              <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+              <td className={'h-12 border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertMembershipGrade(item.authorRank)}</td>
@@ -169,7 +169,7 @@ export default function PurchaseUserTable({ data, refetch }: IPurchaseUserTableP
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.bonusAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   onClick={() => {
                     setSelectedHistoryIndex(index);
@@ -180,7 +180,7 @@ export default function PurchaseUserTable({ data, refetch }: IPurchaseUserTableP
                   이력
                 </button>
               </td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   onClick={() => handleSingleSendCoin(item)}
                   className={

@@ -130,7 +130,7 @@ export default function Buy() {
 
           <div className={'max-w-[1080px] mx-auto px-3 sm:px-0'}>
             <div className={'w-full pb-5'}>
-              <div className={'h-[32px] text-gray-10 font-suit-16-b-130'}>Request for purchase</div>
+              <div className={'h-8 text-gray-10 font-suit-16-b-130'}>Request for purchase</div>
 
               <div
                 className={'h-[60px] text-gray-10 font-suit-24-b-130 sm:font-suit-30-700-130 border-b border-gray-50'}
@@ -168,14 +168,14 @@ export default function Buy() {
                     <div className={'flex flex-auto'}>
                       <div
                         className={
-                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-b-0 border-line-line02 text-gray-0 font-suit-13-b-130'
+                          'flex items-center w-[120px] h-12 sm:h-14 p-3 bg-gray-90 border-y border-b-0 border-line-line02 text-gray-0 font-suit-13-b-130'
                         }
                       >
                         은행명
                       </div>
                       <div
                         className={
-                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
+                          'flex w-full items-center h-12 sm:h-14 p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
                         }
                       >
                         {convertBank(data?.data.bank)}
@@ -184,14 +184,14 @@ export default function Buy() {
                     <div className={'flex flex-auto'}>
                       <div
                         className={
-                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
+                          'flex items-center w-[120px] h-12 sm:h-14 p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
                         }
                       >
                         예금주
                       </div>
                       <div
                         className={
-                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
+                          'flex w-full items-center h-12 sm:h-14 p-3 font-suit-14-r-130 text-gray-0 border border-line-line0 border-b-0 sm:border-b'
                         }
                       >
                         {data?.data.dpstr}
@@ -200,14 +200,14 @@ export default function Buy() {
                     <div className={'flex flex-auto'}>
                       <div
                         className={
-                          'flex items-center w-[120px] h-12 sm:h-[56px] p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
+                          'flex items-center w-[120px] h-12 sm:h-14 p-3 bg-gray-90 border-y border-line-line02 text-gray-0 font-suit-13-b-130 border-b-0 sm:border-b'
                         }
                       >
                         계좌번호
                       </div>
                       <div
                         className={
-                          'flex w-full items-center h-12 sm:h-[56px] p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
+                          'flex w-full items-center h-12 sm:h-14 p-3 font-suit-14-r-130 text-gray-0 border border-line-line0'
                         }
                       >
                         {data?.data.acnutno}
@@ -219,7 +219,7 @@ export default function Buy() {
             </div>
 
             <div>
-              <div className={'flex items-center h-[56px] border-b border-gray-0 text-gray-0 font-suit-16-b-130'}>
+              <div className={'flex items-center h-14 border-b border-gray-0 text-gray-0 font-suit-16-b-130'}>
                 구매수량
               </div>
 
@@ -244,7 +244,7 @@ export default function Buy() {
                   <input
                     type={'text'}
                     className={
-                      'flex-1 h-[48px] p-3 text-gray-0 border border-gray-80 rounded-[14px] text-end font-suit-17-m-130'
+                      'flex-1 h-12 p-3 text-gray-0 border border-gray-80 rounded-[14px] text-end font-suit-17-m-130'
                     }
                     value={amount}
                     onChange={handleInputChange}
@@ -266,7 +266,7 @@ export default function Buy() {
                     {buttonAmounts.map((buttonAmount) => (
                       <button
                         key={buttonAmount}
-                        className={`h-[48px] border rounded-xl font-suit-14-b-130 ${
+                        className={`h-12 border rounded-xl font-suit-14-b-130 ${
                           Number(amount.replace(/,/g, '')) === buttonAmount
                             ? 'border-sub-blue-s-d-blue-10 text-sub-blue-s-d-blue-10 bg-sub-blue-s-blue-10'
                             : 'border-gray-0 text-gray-0'
@@ -282,7 +282,7 @@ export default function Buy() {
             </div>
 
             <div className={'pb-5'}>
-              <div className={'flex items-center h-[56px] border-b border-gray-0 text-gray-0 font-suit-16-b-130'}>
+              <div className={'flex items-center h-14 border-b border-gray-0 text-gray-0 font-suit-16-b-130'}>
                 구매정보
               </div>
 
@@ -300,18 +300,11 @@ export default function Buy() {
                     {(amount || 0).toLocaleString('ko-KR')}
                   </div>
                 </div>
-
-                <div className={' flex justify-between items-center py-5'}>
-                  <div className={'text-gray-20 font-suit-18-b-130'}>남은 수량</div>
-                  <div className={'text-orange-orange50 font-suit-24-750-130'}>
-                    {((data?.data.hold_coin || 0) - Number(amount.replace(/,/g, ''))).toLocaleString('ko-KR')}
-                  </div>
-                </div>
               </div>
 
               <button
                 onClick={handleBuySubmit}
-                className={'w-full h-[56px] text-gray-100 bg-yellow-50 font-suit-17-b-130 rounded-[14px]'}
+                className={'w-full h-14 text-gray-100 bg-yellow-50 font-suit-17-b-130 rounded-[14px]'}
               >
                 구매등록
               </button>

@@ -13,7 +13,7 @@ export default function CAUserListTable({ data }: ICAUserListTableProps) {
     <table className={'w-full border-collapse text-center'}>
       <thead className={'text-gray-20 font-pre-13-m-130'}>
         <tr className={'bg-gray-99'}>
-          <th className={'h-[48px] border border-gray-80 p-2'} rowSpan={2}>
+          <th className={'h-12 border border-gray-80 p-2'} rowSpan={2}>
             NO.
           </th>
           <th className={'w-[100px] border border-gray-80 p-2'} rowSpan={2}>
@@ -89,7 +89,7 @@ export default function CAUserListTable({ data }: ICAUserListTableProps) {
             <td className={'border p-2'}>{convertMembershipStatus(Number(item.authorStatus))}</td>
             <td className={'border p-2'}>
               <Link
-                className={'h-[32px] text-gray-10 border rounded-lg border-gray-70 p-2'}
+                className={'h-8 text-gray-10 border rounded-lg border-gray-70 p-2'}
                 href={ROUTES.ADMIN.USER_MANAGE.USER_DETAIL(item.managerId)}
               >
                 수정

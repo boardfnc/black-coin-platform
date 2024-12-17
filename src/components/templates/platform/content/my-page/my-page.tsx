@@ -20,10 +20,10 @@ export default function MyPage() {
   const [isPhoneNumberModalOpen, setIsPhoneNumberModalOpen] = useState(false);
 
   return (
-    <div className={'w-full pt-[40px] pb-[100px]'}>
+    <div className={'w-full pt-10 pb-[100px]'}>
       <div className={'my-15'}>
         <div className={'max-w-[1080px] mx-auto px-3 sm:px-0'}>
-          <div className={'h-[32px] text-gray-10 font-suit-16-b-130'}>My page</div>
+          <div className={'h-8 text-gray-10 font-suit-16-b-130'}>My page</div>
           <div className={'h-[60px] text-gray-10 font-suit-30-700-130'}>마이페이지</div>
 
           <div className={'grid grid-cols-1 lg:grid-cols-3 gap-8'}>
@@ -51,7 +51,7 @@ export default function MyPage() {
                           <span className={'text-gray-40 text-sm'}>아이디(수정불가)</span>
                           <input
                             className={
-                              'w-full h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130'
+                              'w-full h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130'
                             }
                             placeholder={data?.data.login_id}
                             readOnly
@@ -66,13 +66,13 @@ export default function MyPage() {
                             <input
                               type={'password'}
                               className={
-                                'flex-1 h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130'
+                                'flex-1 h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130'
                               }
                               value={'●●●●●●●●'}
                               readOnly
                             />
                             <button
-                              className={'px-3 w-[70px] h-[32px] bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
+                              className={'px-3 w-[70px] h-8 bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
                               onClick={() => setIsPasswordModalOpen(true)}
                             >
                               변경하기
@@ -84,7 +84,7 @@ export default function MyPage() {
                           <div className={'flex gap-2 items-center'}>
                             <input
                               className={
-                                'flex-auto w-[120px] h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center '
+                                'flex-auto w-[120px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center '
                               }
                               value={'010'}
                               readOnly
@@ -92,7 +92,7 @@ export default function MyPage() {
                             <span className={'flex items-center'}>-</span>
                             <input
                               className={
-                                'flex-auto w-[120px] h-[40px] px-4 rounded-xl bg-gray-90  border border-gray-80 font-suit-16-r-130 text-center'
+                                'flex-auto w-[120px] h-10 px-4 rounded-xl bg-gray-90  border border-gray-80 font-suit-16-r-130 text-center'
                               }
                               value={'1234'}
                               readOnly
@@ -100,14 +100,14 @@ export default function MyPage() {
                             <span className={'flex items-center'}>-</span>
                             <input
                               className={
-                                'flex-auto w-[120px] h-[40px] px-4 rounded-xl border border-gray-80 font-suit-16-r-130 text-center bg-gray-90'
+                                'flex-auto w-[120px] h-10 px-4 rounded-xl border border-gray-80 font-suit-16-r-130 text-center bg-gray-90'
                               }
                               value={'5678'}
                               readOnly
                             />
 
                             <button
-                              className={'px-3 w-[70px] h-[32px] bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
+                              className={'px-3 w-[70px] h-8 bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
                               onClick={() => setIsPhoneNumberModalOpen(true)}
                             >
                               변경하기
@@ -132,19 +132,19 @@ export default function MyPage() {
                     <div className={'grid grid-cols-2 gap-x-5 gap-y-3'}>
                       <div>
                         <span className={'text-gray-40 text-sm block'}>은행명</span>
-                        <div className={'h-[48px] border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
+                        <div className={'h-12 border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
                           {convertBank(data?.data.bank)}
                         </div>
                       </div>
                       <div>
                         <span className={'text-gray-40 text-sm block'}>예금주</span>
-                        <div className={'h-[48px] border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
+                        <div className={'h-12 border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
                           {data?.data.nm}
                         </div>
                       </div>
                       <div className={'col-span-2'}>
                         <span className={'text-gray-40 text-sm block'}>계좌번호</span>
-                        <div className={'h-[48px] border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
+                        <div className={'h-12 border-b border-gray-80 font-suit-16-r-130 flex items-center'}>
                           {data?.data.acnutno}
                         </div>
                       </div>
@@ -168,9 +168,9 @@ export default function MyPage() {
             {/* 오른쪽 MY WALLET 섹션 */}
             <div className={'w-[360px] h-auto'}>
               <div className={'rounded-2xl border border-gray-80 pt-2 px-4 pb-4'}>
-                <div className={'h-[56px] flex items-center text-gray-10 font-suit-20-b-130'}>MY WALLET</div>
+                <div className={'h-14 flex items-center text-gray-10 font-suit-20-b-130'}>MY WALLET</div>
                 <div className={'flex gap-[6px] justify-between items-center border-b border-gray-20'}>
-                  <div className={'h-[56px] flex items-center gap-1'}>
+                  <div className={'h-14 flex items-center gap-1'}>
                     <IconLine24SavingMoney className={'text-yellow-50'} />
                     <span className={'font-suit-16-b-130 text-gray-10'}>보유 수량</span>
                   </div>
@@ -184,28 +184,28 @@ export default function MyPage() {
                 <div>
                   <div className={'font-suit-14-m-130 text-gray-40 px-1 py-5'}>거래내역</div>
                   <div className={'flex items-center py-4'}>
-                    <div className={'flex-1 text-center h-[48px]'}>
+                    <div className={'flex-1 text-center h-12'}>
                       <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.purchase_count}</div>
                       <div className={'font-suit-13-r-130 text-gray-40'}>구매</div>
                     </div>
 
-                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+                    <div className={'w-[1px] h-12 bg-gray-80 mx-[10px]'} />
 
-                    <div className={'flex-1 text-center h-[48px]'}>
+                    <div className={'flex-1 text-center h-12'}>
                       <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.sale_count}</div>
                       <div className={'font-suit-13-r-130 text-gray-40'}>판매</div>
                     </div>
 
-                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+                    <div className={'w-[1px] h-12 bg-gray-80 mx-[10px]'} />
 
-                    <div className={'flex-1 text-center h-[48px]'}>
+                    <div className={'flex-1 text-center h-12'}>
                       <div className={'font-suit-20-750-130 text-gray-10'}>0</div>
                       <div className={'font-suit-13-r-130 text-gray-40'}>전송</div>
                     </div>
 
-                    <div className={'w-[1px] h-[48px] bg-gray-80 mx-[10px]'} />
+                    <div className={'w-[1px] h-12 bg-gray-80 mx-[10px]'} />
 
-                    <div className={'flex-1 text-center h-[48px]'}>
+                    <div className={'flex-1 text-center h-12'}>
                       <div className={'font-suit-20-750-130 text-gray-10'}>{data?.data.cancel_count}</div>
                       <div className={'font-suit-13-r-130 text-gray-40'}>취소</div>
                     </div>

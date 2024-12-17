@@ -93,7 +93,7 @@ export default function ReceivedDetailTable({ data }: IReceivedDetailTableProps)
       <tbody className={'text-gray-0 font-pre-13-r-130'}>
         {data.map((item, index) => (
           <tr key={index} className={'bg-gray-100'}>
-            <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+            <td className={'h-12 border p-2'}>{item.uniqueId}</td>
             <td className={'border p-2'}>
               <Link className={'text-primary-50 underline'} href={ROUTES.ADMIN.USER_MANAGE.USER_DETAIL(item.partnerId)}>
                 {item.partnerName}

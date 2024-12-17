@@ -2,6 +2,7 @@ import type { ISaleCompleteModalProps } from './SaleCompleteModal.types';
 
 import { IconLine24Bell, IconLine24ConfirmEtc } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
+import { useToast } from '@/hooks';
 import { convertBank } from '@/utils/covert';
 
 export default function SaleCompleteModal({
@@ -13,7 +14,15 @@ export default function SaleCompleteModal({
   bankAccount,
   bankAmount,
 }: ISaleCompleteModalProps) {
+  const { open: openToast } = useToast();
+
   if (!bank || !account || !bankAccount || !bankAmount) return null;
+
+  const handleCopyClick = (text: string) => {
+    navigator.clipboard.writeText(text);
+
+    openToast({ message: '계좌 복사 성공!' });
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} width={'400px'}>
@@ -28,7 +37,7 @@ export default function SaleCompleteModal({
         </div>
 
         <div>
-          <div className={'h-[32px] mb-2 border-b border-line-line02'}>
+          <div className={'h-8 mb-2 border-b border-line-line02'}>
             <div className={'text-gray-20 font-pre-18-m-130'}>BlackCoin</div>
           </div>
           <div className={'flex flex-col gap-3 pt-3'}>
@@ -43,6 +52,7 @@ export default function SaleCompleteModal({
                 <div className={'text-gray-10 font-pre-14-m-130'}>{account}</div>
                 <button
                   className={'text-gray-10 font-pre-12-m-130 border border-gray-70 rounded-lg bg-gray-100 px-3 py-1.5'}
+                  onClick={() => handleCopyClick(account)}
                 >
                   복사하기
                 </button>
@@ -61,7 +71,7 @@ export default function SaleCompleteModal({
               </div>
             </div>
 
-            <div className={'flex gap-1 p-3 bg-primary-99 rounded-[12px]'}>
+            <div className={'flex gap-1 p-3 bg-primary-99 rounded-xl'}>
               <div className={'p-0.5 bg-red-50 rounded-full h-max'}>
                 <IconLine24Bell />
               </div>
@@ -77,7 +87,7 @@ export default function SaleCompleteModal({
 
         <div className={'flex justify-end items-center gap-2'}>
           <button
-            className={'w-[80px] h-[48px] text-gray-10 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
+            className={'w-20 h-12 text-gray-10 font-pre-16-m-130 border border-gray-80 rounded-[60px] px-4'}
             onClick={onClose}
           >
             닫기

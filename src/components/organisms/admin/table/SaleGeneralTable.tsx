@@ -140,7 +140,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
 
         <button
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
           }
           onClick={handleSaleRegister}
         >
@@ -149,7 +149,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
 
         <button
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
           }
           onClick={() => handleSaleCoin(true)}
         >
@@ -158,7 +158,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
 
         <button
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center gap-1.5 transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center gap-1.5 transition font-pre-13-m-130 px-3'
           }
           onClick={handleExcelDownload}
         >
@@ -223,7 +223,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
-              <td className={'w-5 h-[48px] border p-2'}>
+              <td className={'w-5 h-12 border p-2'}>
                 <input
                   type={'checkbox'}
                   className={`w-5 h-5 appearance-none rounded-md border border-[#CDD0D5] bg-white 
@@ -234,7 +234,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
                   onChange={(event) => handleSingleCheck(event.target.checked, item.uniqueId.toString())}
                 />
               </td>
-              <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+              <td className={'h-12 border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertMembershipGrade(item.authorRank)}</td>
@@ -258,7 +258,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   className={'border border-gray-70 bg-gray-100 px-3 py-2 rounded-lg text-gray-10 font-pre-13-m-130'}
                   onClick={() => {
@@ -269,7 +269,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
                   이력
                 </button>
               </td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   className={
                     'border border-red-60 text-red-60 bg-gray-100 px-3 py-2 rounded-lg font-pre-13-m-130 disabled:text-gray-50 disabled:bg-gray-90 disabled:border-gray-90'

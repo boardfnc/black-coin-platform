@@ -162,7 +162,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
               <button
                 onClick={handleResetPaymentAmounts}
                 className={
-                  'text-gray-10 font-pre-13-m-130 h-[32px] px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
+                  'text-gray-10 font-pre-13-m-130 h-8 px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
                 }
               >
                 지급수량 초기화
@@ -170,7 +170,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
               <button
                 onClick={() => setIsBonusModalOpen(true)}
                 className={
-                  'text-gray-100 bg-gray-0 font-pre-13-m-130 h-[32px] px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
+                  'text-gray-100 bg-gray-0 font-pre-13-m-130 h-8 px-3 flex justify-center items-center border border-gray-80 rounded-[9px]'
                 }
               >
                 보너스 코인 지급
@@ -184,7 +184,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                     <thead className={'sticky top-0 z-10'}>
                       <tr className={'h-8 bg-gray-95'}>
                         {showCheckboxes && (
-                          <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>
+                          <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>
                             <input
                               type={'checkbox'}
                               checked={isAllChecked}
@@ -195,7 +195,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                             />
                           </th>
                         )}
-                        <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
+                        <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>신청일</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>IP 주소</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>파트너사명</th>
@@ -264,7 +264,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                     <thead className={'sticky top-0 z-10'}>
                       <tr className={'h-8 bg-gray-95'}>
                         {showCheckboxes && (
-                          <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>
+                          <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>
                             <input
                               type={'checkbox'}
                               checked={isAllChecked}
@@ -275,7 +275,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                             />
                           </th>
                         )}
-                        <th className={'h-[32px] text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
+                        <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>신청일</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>IP 주소</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>회원등급</th>
@@ -368,7 +368,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
           <div className={'flex justify-end gap-2'}>
             <button
               className={
-                'text-gray-10 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
+                'text-gray-10 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center border border-gray-80 rounded-[60px]'
               }
               onClick={handleClose}
             >
@@ -377,7 +377,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
             <button
               disabled={!isChecked}
               className={
-                'text-gray-100 bg-primary-50 transition disabled:text-gray-50 disabled:bg-gray-90 font-pre-16-m-130 w-[90px] h-[48px] px-4 flex justify-center items-center rounded-[60px] '
+                'text-gray-100 bg-primary-50 transition disabled:text-gray-50 disabled:bg-gray-90 font-pre-16-m-130 w-[90px] h-12 px-4 flex justify-center items-center rounded-[60px] '
               }
               onClick={handlePaymentClick}
             >

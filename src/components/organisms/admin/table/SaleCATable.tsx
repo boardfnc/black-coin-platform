@@ -123,7 +123,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
         <button
           onClick={handleSaleRegister}
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
           }
         >
           판매접수
@@ -132,7 +132,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
         <button
           onClick={handleSaleConfirm}
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center transition font-pre-13-m-130 px-3'
           }
         >
           판매확인(금액 입금)
@@ -140,7 +140,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
 
         <button
           className={
-            'h-[32px] rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center gap-1.5 transition font-pre-13-m-130 px-3'
+            'h-8 rounded-lg text-gray-10 bg-gray-100 border border-gray-70 flex items-center justify-center gap-1.5 transition font-pre-13-m-130 px-3'
           }
           onClick={handleExcelDownload}
         >
@@ -199,7 +199,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
         <tbody className={'text-gray-0 font-pre-13-r-130'}>
           {data.map((item, index) => (
             <tr key={index} className={'bg-gray-100'}>
-              <td className={'h-[48px] border p-2'}>
+              <td className={'h-12 border p-2'}>
                 <input
                   type={'checkbox'}
                   className={`w-5 h-5 appearance-none rounded-md border border-[#CDD0D5] bg-white 
@@ -210,7 +210,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
                   onChange={(event) => handleSingleCheck(event.target.checked, item.uniqueId.toString())}
                 />
               </td>
-              <td className={'h-[48px] border p-2'}>{item.uniqueId}</td>
+              <td className={'h-12 border p-2'}>{item.uniqueId}</td>
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{item.partnerName}</td>
@@ -218,7 +218,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
               <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   onClick={() => {
                     setSelectedHistoryIndex(index);
@@ -229,7 +229,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
                   이력
                 </button>
               </td>
-              <td className={'w-[80px] border p-2'}>
+              <td className={'w-20 border p-2'}>
                 <button
                   onClick={() => handleSingleSendCoin(item)}
                   className={

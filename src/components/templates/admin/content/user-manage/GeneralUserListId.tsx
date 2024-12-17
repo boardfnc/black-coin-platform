@@ -119,6 +119,14 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
 
   const handleSearch = () => fetchUserDealingsList();
 
+  const handleReset = () => {
+    setSearchDate({
+      startDate: '',
+      endDate: '',
+    });
+    fetchUserDealingsList();
+  };
+
   const userData = {
     loginId: userDataOrigin?.data?.login_id,
     totalCoin: userDataOrigin?.data?.hold_coin,
@@ -245,7 +253,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                           <button
                             onClick={handlePasswordModalOpen}
                             className={
-                              'w-[136px] h-[32px] text-gray-100 bg-gray-0 font-pre-13-m-130 rounded-lg px-3 py-2 whitespace-pre'
+                              'w-[136px] h-8 text-gray-100 bg-gray-0 font-pre-13-m-130 rounded-lg px-3 py-2 whitespace-pre'
                             }
                           >
                             비밀번호 변경
@@ -263,7 +271,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorRankUpdate}
                         className={
-                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
                         }
                       >
                         저장
@@ -306,12 +314,12 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <div className={'text-gray-40 font-pre-14-m-130'}>파트너사명</div>
                       <div
                         className={
-                          'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 flex justify-between items-center px-3.5'
+                          'w-full h-14 border border-gray-80 rounded-xl p-2 flex justify-between items-center px-3.5'
                         }
                       >
                         <span>{formData.partnerName}</span>
                         <button
-                          className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-[32px] px-4 rounded-[8px]'}
+                          className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-8 px-4 rounded-[8px]'}
                           onClick={handlePartnerSearchModalOpen}
                         >
                           검색
@@ -328,7 +336,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorStatusUpdate}
                         className={
-                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
                         }
                       >
                         저장
@@ -369,27 +377,34 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                 </div>
 
                 <div className={'flex flex-col gap-2.5 p-5 bg-gray-100 rounded-[20px]'}>
-                  <div className={'flex items-center h-[40px] text-gray-10 font-pre-20-b-130'}>구입 정보</div>
+                  <div className={'flex items-center h-10 text-gray-10 font-pre-20-b-130'}>구입 정보</div>
 
                   <div className={'flex flex-row gap-2 items-center'}>
                     <DatePicker
                       selected={searchDate.startDate ? new Date(searchDate.startDate) : null}
                       onChange={handleStartDateChange}
-                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      className={'w-[308px] h-10 font-pre-16-r-130'}
                       placeholder={'YYYY - MM - DD'}
                     />
                     <span>~</span>
                     <DatePicker
                       selected={searchDate.endDate ? new Date(searchDate.endDate) : null}
                       onChange={handleEndDateChange}
-                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      className={'w-[308px] h-10 font-pre-16-r-130'}
                       placeholder={'YYYY - MM - DD'}
                     />
                     <button
                       onClick={handleSearch}
-                      className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-[40px] px-4 rounded-[12px]'}
+                      className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-10 px-4 rounded-xl'}
                     >
                       기간검색
+                    </button>
+
+                    <button
+                      onClick={handleReset}
+                      className={'font-pre-14-m-130 border border-gray-70 text-gray-0 bg-gray-100 h-10 px-4 rounded-xl'}
+                    >
+                      초기화
                     </button>
                   </div>
 
@@ -399,7 +414,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         수수료액
@@ -414,7 +429,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         구매액
@@ -429,7 +444,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         판매액
@@ -448,7 +463,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAccountNumberUpdate}
                         className={
-                          'w-[70px] h-8 font-pre-14-m-130 text-primary-50 border border-primary-50 px-4 rounded-[12px]'
+                          'w-[70px] h-8 font-pre-14-m-130 text-primary-50 border border-primary-50 px-4 rounded-xl'
                         }
                       >
                         저장
@@ -468,7 +483,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>계좌번호</div>
                         <input
                           name={'account'}
-                          className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                          className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                           value={formData.account}
                           onChange={handleInputChange}
                         />
@@ -478,7 +493,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>예금주</div>
                         <input
                           name={'accountName'}
-                          className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                          className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                           value={formData.accountName}
                           onChange={handleInputChange}
                         />
@@ -489,7 +504,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
 
                 <div className={'flex flex-row gap-5'}>
                   <div className={'flex-1 p-5 bg-gray-100 rounded-[20px]'}>
-                    <div className={'h-[40px] flex flex-row justify-between items-center font-pre-20-b-130'}>
+                    <div className={'h-10 flex flex-row justify-between items-center font-pre-20-b-130'}>
                       로그인 정보
                     </div>
 
@@ -503,7 +518,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {dayjs(userData.joinDate).format('YYYY.MM.DD HH:mm:ss')}
@@ -512,7 +527,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입 시 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {userData.joinIp}
@@ -523,7 +538,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {userData.lastLoginDate != null && userData.lastLoginDate !== '-'
@@ -534,7 +549,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {userData.lastLoginIp}
@@ -543,7 +558,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>접속 OS</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {userData.lastLoginOs}
@@ -552,7 +567,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>브라우저</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
+                            'h-14 px-3.5 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 py-4 border border-gray-80'
                           }
                         >
                           {userData.lastLoginBrowser}
@@ -570,9 +585,9 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
 
       <UserDetailGradeResetModal
         id={Number(id)}
-        grade={formData.authorRank}
         isOpen={isGradeResetModalOpen}
         onClose={handleGradeResetModalClose}
+        refetch={handleSearch}
       />
 
       <UserDetailPartnerSearchModal isOpen={isPartnerSearchModalOpen} onClose={handlePartnerSearchModalClose} />

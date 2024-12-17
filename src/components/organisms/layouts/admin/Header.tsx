@@ -36,7 +36,7 @@ export default function Header() {
     >
       <div className={'inline-flex items-center gap-5'}>
         <div className={'inline-flex items-center gap-2.5'}>
-          <div className={'relative w-10 h-10 bg-variable-collection-color-gray-100 rounded-[80px] overflow-hidden'}>
+          <div className={'relative w-10 h-10 bg-variable-collection-color-gray-100 rounded-20 overflow-hidden'}>
             <Image className={'absolute w-10 h-10 top-0 left-0 object-cover'} src={KingProfile} alt={'프로필 이미지'} />
           </div>
 

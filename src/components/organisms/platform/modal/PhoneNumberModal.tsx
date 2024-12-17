@@ -77,7 +77,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
             <div className={'flex gap-2 items-center'}>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={existingPhone1}
                 readOnly
@@ -85,7 +85,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
               <span className={'flex items-center'}>-</span>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={existingPhone2}
                 readOnly
@@ -93,7 +93,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
               <span className={'flex items-center'}>-</span>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={existingPhone3}
                 readOnly
@@ -110,7 +110,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
             <div className={'flex gap-2 items-center'}>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={phone1}
                 onChange={(e) => setPhone1(e.target.value.replace(/[^0-9]/g, '').slice(0, 3))}
@@ -119,7 +119,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
               <span className={'flex items-center'}>-</span>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={phone2}
                 onChange={(e) => setPhone2(e.target.value.replace(/[^0-9]/g, '').slice(0, 4))}
@@ -128,7 +128,7 @@ export default function ChangePhoneNumberModal({ isOpen, onClose }: ChangePhoneN
               <span className={'flex items-center'}>-</span>
               <input
                 className={
-                  'flex-auto w-[100px] h-[40px] px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
+                  'flex-auto w-[100px] h-10 px-4 rounded-xl bg-white border border-gray-80 font-suit-14-r-130 text-gray-0 text-center'
                 }
                 value={phone3}
                 onChange={(e) => setPhone3(e.target.value.replace(/[^0-9]/g, '').slice(0, 4))}

@@ -159,7 +159,7 @@ export default function PlatformRegister() {
   return (
     <div className={'w-auto mx-auto px-[30px]'}>
       <div className={'flex flex-col gap-[70px]'}>
-        <div className={'flex flex-col gap-[80px] mb-[100px]'}>
+        <div className={'flex flex-col gap-20 mb-[100px]'}>
           <div className={'flex flex-col justify-center items-center border-b border-gray-80 gap-3'}>
             <Link href={ROUTES.PLATFORM.LOGIN} className={'flex justify-center items-center'}>
               <div className={'text-yellow-50 font-suit-32-750-130 py-5'}>Black Coin</div>
@@ -172,7 +172,7 @@ export default function PlatformRegister() {
                 className={'text-center text-gray-10 font-suit-22-b-144 whitespace-pre'}
               >{`회원가입을 위해\n아래 항목을 입력해 주세요.`}</div>
 
-              <div className={'flex flex-col gap-[80px]'}>
+              <div className={'flex flex-col gap-20'}>
                 <div className={'flex flex-col gap-6'}>
                   <div>
                     <div className={'flex gap-1'}>
@@ -390,9 +390,9 @@ export default function PlatformRegister() {
           )}
 
           {success && (
-            <div className={'max-w-[400px] mx-auto flex flex-col gap-[80px]'}>
+            <div className={'max-w-[400px] mx-auto flex flex-col gap-20'}>
               <div className={'flex flex-col gap-[66px] text-gray-10 font-suit-22-b-144'}>
-                <div className={'flex flex-col justify-center items-center gap-[80px]'}>
+                <div className={'flex flex-col justify-center items-center gap-20'}>
                   <Image src={helloIcon} alt={'success'} width={139} height={147} />
                 </div>
 

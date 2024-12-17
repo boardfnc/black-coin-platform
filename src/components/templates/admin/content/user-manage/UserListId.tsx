@@ -1,5 +1,6 @@
 'use client';
 
+import type { ChangeEvent } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 
 import type { IUserListIdProps } from './UserListId.types';
@@ -78,8 +79,8 @@ export default function UserList({ id }: IUserListIdProps) {
     }
   }, [userDataOrigin]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
 
     if (name === 'phoneNumber') {
       const numbers = value.replace(/[^0-9]/g, '');
@@ -257,7 +258,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <button
                         onClick={onClickSaveAccountUpdate}
                         className={
-                          'w-[70px] h-[40px] flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-10 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
                         }
                       >
                         저장
@@ -268,7 +269,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <div className={'text-gray-40 font-pre-14-m-130'}>파트너사명</div>
                       <input
                         name={'partnerName'}
-                        className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2'}
+                        className={'w-full h-14 border border-gray-80 rounded-xl p-2'}
                         value={formData.partnerName}
                         onChange={handleInputChange}
                       />
@@ -278,7 +279,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <div className={'text-gray-40 font-pre-14-m-130'}>코드명</div>
                       <input
                         name={'codeName'}
-                        className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 disabled:bg-gray-90'}
+                        className={'w-full h-14 border border-gray-80 rounded-xl p-2 disabled:bg-gray-90'}
                         value={formData.codeName}
                         onChange={handleInputChange}
                         disabled
@@ -289,7 +290,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <div className={'text-gray-40 font-pre-14-m-130'}>담당자연락처</div>
                       <input
                         name={'phoneNumber'}
-                        className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2'}
+                        className={'w-full h-14 border border-gray-80 rounded-xl p-2'}
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
                       />
@@ -299,7 +300,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <div className={'text-gray-40 font-pre-14-m-130'}>사이트주소</div>
                       <input
                         name={'siteUrl'}
-                        className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2'}
+                        className={'w-full h-14 border border-gray-80 rounded-xl p-2'}
                         value={formData.siteUrl}
                         onChange={handleInputChange}
                       />
@@ -314,7 +315,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorStatusUpdate}
                         className={
-                          'w-[70px] h-[40px] flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-[12px]'
+                          'w-[70px] h-10 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
                         }
                       >
                         저장
@@ -355,34 +356,32 @@ export default function UserList({ id }: IUserListIdProps) {
                 </div>
 
                 <div className={'flex flex-col gap-2.5 p-5 bg-gray-100 rounded-[20px]'}>
-                  <div className={'flex items-center h-[40px] text-gray-10 font-pre-20-b-130'}>구입 정보</div>
+                  <div className={'flex items-center h-10 text-gray-10 font-pre-20-b-130'}>구입 정보</div>
 
                   <div className={'flex flex-row gap-2 items-center'}>
                     <DatePicker
                       selected={searchDate.startDate ? new Date(searchDate.startDate) : null}
                       onChange={handleStartDateChange}
-                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      className={'w-[308px] h-10 font-pre-16-r-130'}
                       placeholder={'YYYY - MM - DD'}
                     />
                     <span>~</span>
                     <DatePicker
                       selected={searchDate.endDate ? new Date(searchDate.endDate) : null}
                       onChange={handleEndDateChange}
-                      className={'w-[308px] h-[40px] font-pre-16-r-130'}
+                      className={'w-[308px] h-10 font-pre-16-r-130'}
                       placeholder={'YYYY - MM - DD'}
                     />
                     <button
                       onClick={handleSearch}
-                      className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-[40px] px-4 rounded-[12px]'}
+                      className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-10 px-4 rounded-xl'}
                     >
                       기간검색
                     </button>
 
                     <button
                       onClick={handleReset}
-                      className={
-                        'font-pre-14-m-130 border border-gray-70 text-gray-0 bg-gray-100 h-[40px] px-4 rounded-[12px]'
-                      }
+                      className={'font-pre-14-m-130 border border-gray-70 text-gray-0 bg-gray-100 h-10 px-4 rounded-xl'}
                     >
                       초기화
                     </button>
@@ -394,7 +393,7 @@ export default function UserList({ id }: IUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         수수료액
@@ -409,7 +408,7 @@ export default function UserList({ id }: IUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         구매액
@@ -424,7 +423,7 @@ export default function UserList({ id }: IUserListIdProps) {
                     >
                       <div
                         className={
-                          'h-[32px] flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
+                          'h-8 flex justify-center items-center border-b border-line-line01 text-gray-20 font-pre-14-m-130'
                         }
                       >
                         판매액
@@ -443,7 +442,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <button
                         onClick={onClickSaveAccountNumberUpdate}
                         className={
-                          'w-[70px] font-pre-14-m-130 text-primary-50 border border-primary-50 h-[40px] px-4 rounded-[12px]'
+                          'w-[70px] font-pre-14-m-130 text-primary-50 border border-primary-50 h-10 px-4 rounded-xl'
                         }
                       >
                         저장
@@ -463,7 +462,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>계좌번호</div>
                         <input
                           name={'account'}
-                          className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                          className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                           value={formData.account}
                           onChange={handleInputChange}
                         />
@@ -473,7 +472,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>예금주</div>
                         <input
                           name={'accountName'}
-                          className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                          className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                           value={formData.accountName}
                           onChange={handleInputChange}
                         />
@@ -487,7 +486,7 @@ export default function UserList({ id }: IUserListIdProps) {
                       <button
                         onClick={onClickSaveFeeUpdate}
                         className={
-                          'w-[70px] font-pre-14-m-130 text-primary-50 border border-primary-50 h-[40px] px-4 rounded-[12px]'
+                          'w-[70px] font-pre-14-m-130 text-primary-50 border border-primary-50 h-10 px-4 rounded-xl'
                         }
                       >
                         저장
@@ -500,7 +499,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'relative'}>
                           <input
                             name={'csbyFee'}
-                            className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                            className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                             value={formData.csbyFee}
                             onChange={handleInputChange}
                           />
@@ -513,7 +512,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'relative'}>
                           <input
                             name={'purchaseFee'}
-                            className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                            className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                             value={formData.purchaseFee}
                             onChange={handleInputChange}
                           />
@@ -526,7 +525,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'relative'}>
                           <input
                             name={'saleFee'}
-                            className={'w-full h-[56px] border border-gray-80 rounded-[12px] p-2 px-3.5'}
+                            className={'w-full h-14 border border-gray-80 rounded-xl p-2 px-3.5'}
                             value={formData.saleFee}
                             onChange={handleInputChange}
                           />
@@ -539,7 +538,7 @@ export default function UserList({ id }: IUserListIdProps) {
 
                 <div className={'flex flex-row gap-5'}>
                   <div className={'flex-1 p-5 bg-gray-100 rounded-[20px]'}>
-                    <div className={'h-[40px] flex flex-row justify-between items-center font-pre-20-b-130'}>
+                    <div className={'h-10 flex flex-row justify-between items-center font-pre-20-b-130'}>
                       로그인 정보
                     </div>
 
@@ -553,7 +552,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {dayjs(userData.joinDate).format('YYYY.MM.DD HH:mm:ss')}
@@ -562,7 +561,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>가입 시 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.joinIp}
@@ -573,7 +572,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속일</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginDate != null && userData.lastLoginDate !== '-'
@@ -584,7 +583,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>마지막 접속 IP주소</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginIp}
@@ -593,7 +592,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>접속 OS</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginOs}
@@ -602,7 +601,7 @@ export default function UserList({ id }: IUserListIdProps) {
                         <div className={'text-gray-40 font-pre-14-m-130'}>브라우저</div>
                         <div
                           className={
-                            'h-[56px] px-[14px] py-4 rounded-[16px] bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
+                            'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
                           {userData.lastLoginBrowser}
