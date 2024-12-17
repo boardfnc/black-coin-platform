@@ -134,6 +134,16 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
     await fetchUserDealingsList();
   };
 
+  const handleSelectReset = async () => {
+    const data = await fetchUserList();
+
+    setFormData((prev) => ({
+      ...prev,
+      authorRank: data?.data?.mber_grd ?? '',
+      authorStatus: data?.data?.mber_sttus ?? '',
+    }));
+  };
+
   const handleReset = () => {
     setSearchDate({
       startDate: '',
@@ -628,7 +638,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
         id={Number(id)}
         isOpen={isGradeResetModalOpen}
         onClose={handleGradeResetModalClose}
-        refetch={handleSearch}
+        refetch={handleSelectReset}
       />
 
       <UserDetailPartnerSearchModal isOpen={isPartnerSearchModalOpen} onClose={handlePartnerSearchModalClose} />
