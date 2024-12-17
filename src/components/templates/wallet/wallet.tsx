@@ -96,12 +96,14 @@ export default function Wallet() {
           <div className={'container max-w-[1080px] mx-auto'}>
             <div className={'flex flex-col gap-5'}>
               <div className={'flex justify-between items-center'}>
-                <div className={'flex items-center h-[88px] border-b text-gray-100 font-suit-30-750'}>My Wallet</div>
+                <div className={'flex items-center h-[88px] border-b text-gray-100 font-suit-30-750 w-full'}>
+                  My Wallet
+                </div>
 
                 {isLogin && (
                   <button
                     className={
-                      'flex items-center gap-1.5 text-gray-100 font-pre-13-m-130 rounded-[60px] border-gray-100 bg-[rgba(255,255,255,0.1)] px-3 h-8 border border-gray-100'
+                      'flex items-center gap-1.5 text-gray-100 font-pre-13-m-130 rounded-[60px] border-gray-100 bg-[rgba(255,255,255,0.1)] px-3 h-8 border'
                     }
                     onClick={() => logout(undefined)}
                   >

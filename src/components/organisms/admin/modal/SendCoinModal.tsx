@@ -23,6 +23,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
   const [isAllChecked, setIsAllChecked] = useState(false);
   const [paymentAmounts, setPaymentAmounts] = useState<Record<string, string>>({});
   const [selectedDeals, setSelectedDeals] = useState<string[]>([]);
+  const [bonusAmounts, setBonusAmounts] = useState<Record<string, number>>({});
 
   const { sideBarRefetch } = useRefetch();
   const { open: openToast } = useToast();
@@ -52,6 +53,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
     setIsAllChecked(false);
     setSelectedDeals([]);
     setPaymentAmounts({});
+    setBonusAmounts({});
     onClose();
   };
 
@@ -85,14 +87,14 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
         ? adminPurchaseManageService({
             _bc_ca_delng_dtls: targetData.map((item) => ({
               ca_delng_dtls_id: item.dealingId,
-              bnus_qy: item.bonusAmount || 0,
+              bnus_qy: bonusAmounts[item.dealingId] || 0,
               compt_qy: Number(paymentAmounts[item.dealingId]?.replace(/,/g, '') || item.requestAmount),
             })),
           })
         : adminPurchaseMemberService({
             _bc_mber_delng_dtls: targetData.map((item) => ({
               mber_delng_dtls_id: item.dealingId,
-              bnus_qy: item.bonusAmount || 0,
+              bnus_qy: bonusAmounts[item.dealingId] || 0,
               compt_qy: Number(paymentAmounts[item.dealingId]?.replace(/,/g, '') || item.requestAmount),
             })),
           }),
@@ -133,15 +135,15 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
     setPaymentAmounts({});
   };
 
-  const hasExistingPaymentAmounts = () => {
+  const hasExistingValue = () => {
     const dealsToCheck =
       sendCoinModalTableData.length === 1 ? [sendCoinModalTableData[0].dealingId.toString()] : selectedDeals;
 
-    return dealsToCheck.some((dealId) => paymentAmounts[dealId]);
+    return dealsToCheck.some((dealId) => bonusAmounts[dealId]);
   };
 
   const handleBonusComplete = (bonusAmount: number, isPercentage: boolean) => {
-    const updatedPaymentAmounts = { ...paymentAmounts };
+    const updatedBonusAmounts = { ...bonusAmounts };
 
     const dealsToUpdate =
       sendCoinModalTableData.length === 1 ? [sendCoinModalTableData[0].dealingId.toString()] : selectedDeals;
@@ -151,13 +153,11 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
       if (!item) return;
 
       const requestAmount = item.requestAmount;
-      const bonusValue = isPercentage ? (requestAmount * bonusAmount) / 100 : bonusAmount;
-
-      const currentAmount = Number(paymentAmounts[dealId]?.replace(/,/g, '') || requestAmount);
-      updatedPaymentAmounts[dealId] = Math.floor(currentAmount + bonusValue).toLocaleString();
+      const bonusValue = isPercentage ? Math.floor((requestAmount * bonusAmount) / 100) : bonusAmount;
+      updatedBonusAmounts[dealId] = bonusValue;
     });
 
-    setPaymentAmounts(updatedPaymentAmounts);
+    setBonusAmounts(updatedBonusAmounts);
   };
 
   const modalTitle = (() => {
@@ -257,7 +257,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                             {item.requestAmount?.toLocaleString('ko-KR') || 0}
                           </td>
                           <td className={'border border-gray-80 bg-gray-90'}>
-                            {item.bonusAmount?.toLocaleString('ko-KR') || 0}
+                            {(bonusAmounts[item.dealingId] || 0).toLocaleString('ko-KR')}
                           </td>
                           <td className={'border border-gray-80'}>
                             <input
@@ -299,7 +299,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                         <th className={'h-8 text-gray-20 font-pre-13-m-130 border border-gray-80'}>거래번호</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>신청일</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>IP 주소</th>
-                        <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>회원등급</th>
+                        <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>회원급</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>아이디</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>회원명</th>
                         <th className={'text-gray-20 font-pre-13-m-130 border border-gray-80'}>추천파트너사명</th>
@@ -343,7 +343,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
                             {item.requestAmount?.toLocaleString('ko-KR') || 0}
                           </td>
                           <td className={'border border-gray-80 bg-gray-90'}>
-                            {item.bonusAmount?.toLocaleString('ko-KR') || 0}
+                            {(bonusAmounts[item.dealingId] || 0).toLocaleString('ko-KR')}
                           </td>
                           <td className={'border border-gray-80'}>
                             <input
@@ -412,7 +412,7 @@ export default function SendCoinModal(props: ISendCoinModalProps) {
         isOpen={isBonusModalOpen}
         onClose={() => setIsBonusModalOpen(false)}
         onComplete={handleBonusComplete}
-        hasExistingValue={hasExistingPaymentAmounts}
+        hasExistingValue={hasExistingValue}
       />
 
       <ConfirmRowModal
