@@ -1,6 +1,7 @@
 export interface ITransactionHistoryUserTableData {
   indexId: number;
   uniqueId: number;
+  memberId: number;
   tradeNumber: string;
   applyDate: string;
   type: number | string;

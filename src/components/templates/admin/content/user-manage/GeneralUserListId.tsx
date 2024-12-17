@@ -338,6 +338,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         className={
                           'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
                         }
+                        disabled={userDataOrigin?.data.confm_sttus !== '1'}
                       >
                         저장
                       </button>
@@ -349,6 +350,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         type={'radio'}
                         checked={formData.authorStatus === '1'}
                         onChange={() => setFormData((prev) => ({ ...prev, authorStatus: '1' }))}
+                        disabled={userDataOrigin?.data.confm_sttus !== '1'}
                       />
                       <div className={'text-gray-0 font-pre-13-r-130'}>정상</div>
                     </label>
@@ -359,6 +361,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                         type={'radio'}
                         checked={formData.authorStatus === '2'}
                         onChange={() => setFormData((prev) => ({ ...prev, authorStatus: '2' }))}
+                        disabled={userDataOrigin?.data.confm_sttus !== '1'}
                       />
                       <div className={'text-gray-0 font-pre-13-r-130'}>차단</div>
                     </label>

@@ -33,7 +33,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
   const { mutate } = useMutation({
     mutationFn: (params: IAdminSaleManagerReceiptRequest) => adminSaleManagerReceiptService(params),
     onSuccess() {
-      openToast({ message: '판매확인 처리되었습니다.', type: 'success' });
+      openToast({ message: '판매 접수 처리 되었습니다.', type: 'success' });
 
       refetch?.();
     },

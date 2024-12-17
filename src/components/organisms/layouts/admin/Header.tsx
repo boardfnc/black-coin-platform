@@ -50,7 +50,7 @@ export default function Header() {
 
         <button
           onClick={handleLogout}
-          className={'flex items-center justify-center h-[24px] px-3 py-1 rounded-[20px] border border-white'}
+          className={'flex items-center justify-center h-6 px-3 py-1 rounded-[20px] border border-white'}
         >
           <span className={'font-pre-12-m-130 text-gray-100'}>로그아웃</span>
         </button>

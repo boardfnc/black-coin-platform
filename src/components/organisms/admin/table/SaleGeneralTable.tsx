@@ -35,7 +35,7 @@ export default function SaleGeneralTable({ data, refetch }: ISaleGeneralTablePro
   const { mutate } = useMutation({
     mutationFn: (params: IAdminSaleMemberReceiptRequest) => adminSaleMemberReceiptService(params),
     onSuccess() {
-      openToast({ message: '판매확인 처리되었습니다.', type: 'success' });
+      openToast({ message: '판매 접수 처리 되었습니다.', type: 'success' });
 
       refetch?.();
     },

@@ -142,6 +142,7 @@ export default function TransactionHistoryUser() {
     (item, index) =>
       ({
         uniqueId: page * perPage - (perPage - 1) + index,
+        memberId: item.mber_id,
         indexId: item.mber_delng_dtls_id,
         tradeNumber: item.delng_no,
         applyDate: item.created_at,

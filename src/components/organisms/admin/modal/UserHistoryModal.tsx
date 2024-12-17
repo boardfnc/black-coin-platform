@@ -14,7 +14,7 @@ export default function UserHistoryModal(props: IUserHistoryModalProps) {
   const fetchStatistics = useCallback(
     () =>
       adminMemberDetailHistoryService({
-        mber_id: Number(transactionHistoryTableData.indexId),
+        mber_id: transactionHistoryTableData.memberId,
         page: 1,
         per_page: Number.MAX_SAFE_INTEGER,
       }),
