@@ -16,7 +16,7 @@ import { useToast } from '@/hooks';
 import excelIcon from '@/images/icons/excel.png';
 import { adminSaleManagerReceiptService } from '@/services/admin/coin/adminSale';
 import { dayjs } from '@/utils';
-import { convertDealStatus, convertSaleType } from '@/utils/covert';
+import { convertDealStatus, convertDealStatusColor, convertSaleType } from '@/utils/covert';
 import { downloadExcel } from '@/utils/excel';
 
 export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
@@ -215,7 +215,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{item.partnerName}</td>
               <td className={'border p-2'}>{item.codeName}</td>
-              <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
+              <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'w-20 border p-2'}>

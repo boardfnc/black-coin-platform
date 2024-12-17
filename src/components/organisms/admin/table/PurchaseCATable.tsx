@@ -8,7 +8,7 @@ import SendCoinModal from '../modal/SendCoinModal';
 import type { IPurchaseCATableData, IPurchaseCATableProps } from './PurchaseCATable.types';
 
 import { dayjs } from '@/utils';
-import { convertDealStatus } from '@/utils/covert';
+import { convertDealStatus, convertDealStatusColor } from '@/utils/covert';
 
 export default function PurchaseCATable({ data, refetch }: IPurchaseCATableProps) {
   const [isCoinHistoryModalOpen, setIsCoinHistoryModalOpen] = useState(false);
@@ -136,7 +136,7 @@ export default function PurchaseCATable({ data, refetch }: IPurchaseCATableProps
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{item.partnerName}</td>
               <td className={'border p-2'}>{item.codeName}</td>
-              <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
+              <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.requestAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.bonusAmount?.toLocaleString('ko-KR') || 0}</td>
               <td className={'border p-2'}>{item.paymentAmount?.toLocaleString('ko-KR') || 0}</td>

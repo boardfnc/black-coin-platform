@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <button onclick="openNewWindow()">버튼</button>
+
+    <iframe src="https://black-platform.onefabric.co.kr/wallet"></iframe>
+
+    <script>
+      function openNewWindow() {
+        const url =
+          'https://black-platform.onefabric.co.kr/wallet?code=BFB30AFWA&essential-key=123456&name=%EC%82%AC%ED%83%84%ED%86%B5%EC%9E%A5&phone=01011112222&bank=004&bank-account=12341234&bank-account-holder=12341234';
+
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const width = Math.max(window.innerWidth, 1024);
+        const height = Math.max(window.innerHeight, 768);
+
+        if (isIOS) {
+          window.location.href = url;
+        } else {
+          window.open(url, '_blank', `width=${width},height=${height}`);
+        }
+      }
+    </script>
+  </body>
+</html>

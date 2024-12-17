@@ -641,7 +641,8 @@ export default function TransactionHistory() {
                           <span className={'text-gray-40 font-suit-14-m-130'}>{isSell ? '계좌정보' : '입금정보'}</span>
                           <div className={'flex items-center gap-2'}>
                             <span className={'text-gray-10 font-suit-14-r-130'}>
-                              {convertBank(item.rcpmny_bank)} ({item.rcpmny_dpstr}) | {item.rcpmny_acnutno}
+                              {convertBank(item.rcpmny_bank || item.bank)} ({item.rcpmny_dpstr || item.dpstr}) |{' '}
+                              {item.rcpmny_acnutno || item.acnutno}
                             </span>
 
                             {isBuy && (

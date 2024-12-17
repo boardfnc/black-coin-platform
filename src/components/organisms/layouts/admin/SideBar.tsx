@@ -12,7 +12,7 @@ import IconLineSavingMoney from '@/components/atoms/icons/icon-line/SavingMoney'
 import { Image } from '@/components/atoms/images';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useFetch } from '@/hooks';
-import { KingProfile } from '@/mocks/images';
+import { KingProfile, profile } from '@/mocks/images';
 import { memberMyPageService } from '@/services/admin/member/members';
 import { adminUserService } from '@/services/admin/setup/adminUser';
 import { useRefetch } from '@/stores/refetch';
@@ -59,8 +59,8 @@ export default function SideBar({ isOpen }: ISideBarProps) {
           <span className={'text-gray-40 font-suit-12-750-130'}>UserInfo</span>
 
           <div className={`flex flex-row items-center gap-4 self-stretch ${!isSuperAdmin ? 'justify-between' : ''}`}>
-            <div className={'w-[67px] h-[67px] rounded-[140px] overflow-hidden'}>
-              <Image src={KingProfile} alt={'프로필 이미지'} priority />
+            <div className={'w-[67px] h-[67px] rounded-[140px] border border-[rgba(0,0,0,0.1)] overflow-hidden'}>
+              <Image src={isSuperAdmin ? KingProfile : profile} alt={'프로필 이미지'} priority />
             </div>
 
             {isSuperAdmin && <span className={'text-gray-0 font-pre-20-m-130'}>SuperAdmin</span>}

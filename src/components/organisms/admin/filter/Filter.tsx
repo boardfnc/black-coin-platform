@@ -312,6 +312,10 @@ export default function Filter({ date, search, select, radio, category, checkbox
       : [];
     setSelectedSubStatus(defaultSubStatus);
 
+    // range 초기화 추가
+    setRangeStart('');
+    setRangeEnd('');
+
     const params = new URLSearchParams(searchParams);
     params.delete('startDate');
     params.delete('endDate');
@@ -322,6 +326,8 @@ export default function Filter({ date, search, select, radio, category, checkbox
     params.delete('primaryCategory');
     params.delete('secondaryCategory');
     params.delete('subStatus');
+    params.delete('rangeStart');
+    params.delete('rangeEnd');
 
     router.push(`?${params.toString()}`);
   };

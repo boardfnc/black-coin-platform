@@ -22,7 +22,13 @@ import {
   adminMemberIdService,
   adminMemberStatusUpdateService,
 } from '@/services/admin/member/adminMembers';
-import { memberDealingsService, memberService } from '@/services/admin/member/members';
+import {
+  memberAccountNumberUpdateService,
+  memberDealingsService,
+  memberGradeUpdateService,
+  memberService,
+  memberStatusUpdateService,
+} from '@/services/admin/member/members';
 import { dayjs } from '@/utils';
 
 export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
@@ -160,12 +166,19 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   // NOTE: 계좌 정보 업데이트
   const onClickSaveAccountNumberUpdate = async () => {
     const data = await request(() =>
-      adminMemberAccountNumberUpdateService({
-        id: Number(id),
-        bank: formData.bank,
-        acnutno: formData.account,
-        dpstr: formData.accountName,
-      }),
+      isSuperAdmin
+        ? adminMemberAccountNumberUpdateService({
+            id: Number(id),
+            bank: formData.bank,
+            acnutno: formData.account,
+            dpstr: formData.accountName,
+          })
+        : memberAccountNumberUpdateService({
+            id: Number(id),
+            bank: formData.bank,
+            acnutno: formData.account,
+            dpstr: formData.accountName,
+          }),
     );
 
     if (data?.status) {
@@ -179,10 +192,15 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   // NOTE: 회원 등급 업데이트
   const onClickSaveAuthorRankUpdate = async () => {
     const data = await request(() =>
-      adminMemberGradeUpdateService({
-        id: Number(id),
-        mber_grd: formData.authorRank,
-      }),
+      isSuperAdmin
+        ? adminMemberGradeUpdateService({
+            id: Number(id),
+            mber_grd: formData.authorRank,
+          })
+        : memberGradeUpdateService({
+            id: Number(id),
+            mber_grd: formData.authorRank,
+          }),
     );
 
     if (data?.status) {
@@ -196,10 +214,15 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
   // NOTE: 상태 정보 업데이트
   const onClickSaveAuthorStatusUpdate = async () => {
     const data = await request(() =>
-      adminMemberStatusUpdateService({
-        id: Number(id),
-        mber_sttus: formData.authorStatus,
-      }),
+      isSuperAdmin
+        ? adminMemberStatusUpdateService({
+            id: Number(id),
+            mber_sttus: formData.authorStatus,
+          })
+        : memberStatusUpdateService({
+            id: Number(id),
+            mber_sttus: formData.authorStatus,
+          }),
     );
 
     if (data?.status) {
@@ -317,30 +340,32 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                   </div>
                 </div>
 
-                <div className={'w-full flex flex-row bg-gray-95 justify-end gap-5 rounded-[30px] '}>
-                  <div className={'w-full flex flex-col rounded-[30px] gap-5 bg-gray-100 p-5'}>
-                    <div className={'w-full flex flex-row justify-between'}>
-                      <div className={'font-pre-20-b-130 py-2'}>계정 정보</div>
-                    </div>
+                {isSuperAdmin && (
+                  <div className={'w-full flex flex-row bg-gray-95 justify-end gap-5 rounded-[30px] '}>
+                    <div className={'w-full flex flex-col rounded-[30px] gap-5 bg-gray-100 p-5'}>
+                      <div className={'w-full flex flex-row justify-between'}>
+                        <div className={'font-pre-20-b-130 py-2'}>계정 정보</div>
+                      </div>
 
-                    <div className={'flex flex-col gap-1'}>
-                      <div className={'text-gray-40 font-pre-14-m-130'}>파트너사명</div>
-                      <div
-                        className={
-                          'w-full h-14 border border-gray-80 rounded-xl p-2 flex justify-between items-center px-3.5'
-                        }
-                      >
-                        <span>{formData.partnerName}</span>
-                        <button
-                          className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-8 px-4 rounded-[8px]'}
-                          onClick={handlePartnerSearchModalOpen}
+                      <div className={'flex flex-col gap-1'}>
+                        <div className={'text-gray-40 font-pre-14-m-130'}>파트너사명</div>
+                        <div
+                          className={
+                            'w-full h-14 border border-gray-80 rounded-xl p-2 flex justify-between items-center px-3.5'
+                          }
                         >
-                          검색
-                        </button>
+                          <span>{formData.partnerName}</span>
+                          <button
+                            className={'font-pre-14-m-130 text-gray-100 bg-gray-0 h-8 px-4 rounded-[8px]'}
+                            onClick={handlePartnerSearchModalOpen}
+                          >
+                            검색
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 <div className={'w-full flex flex-row bg-gray-95 justify-end gap-5 rounded-[30px]'}>
                   <div className={'w-full flex flex-col rounded-[30px] gap-5 bg-gray-100 p-5'}>

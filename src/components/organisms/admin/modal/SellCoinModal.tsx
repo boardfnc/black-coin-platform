@@ -16,7 +16,7 @@ import {
 import { Image } from '@/components/atoms/images';
 import { Modal } from '@/components/atoms/modals';
 import { useAuthor } from '@/components/atoms/provider/AdminProvider';
-import { useFetch, useRequest } from '@/hooks';
+import { useFetch, useRequest, useToast } from '@/hooks';
 import { sellCoin } from '@/mocks/images';
 import { coinSaleManagerService } from '@/services/admin/coin/coin';
 import { memberMyPageService } from '@/services/admin/member/members';
@@ -74,7 +74,15 @@ export function BuyCompleteModal({
   bankAccount,
   bankAmount,
 }: IBuyCompleteModalProps) {
+  const { open: openToast } = useToast();
+
   if (!bank || !account || !bankAccount || !bankAmount) return null;
+
+  const handleCopyClick = (text: string) => {
+    navigator.clipboard.writeText(text);
+
+    openToast({ message: '계좌 복사 성공!' });
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} width={'500px'}>
@@ -104,6 +112,7 @@ export function BuyCompleteModal({
                 <div className={'text-gray-10 font-pre-14-m-130'}>{account}</div>
                 <button
                   className={'text-gray-10 font-pre-12-m-130 border border-gray-70 rounded-lg bg-gray-100 px-3 py-1.5'}
+                  onClick={() => handleCopyClick(account)}
                 >
                   복사하기
                 </button>

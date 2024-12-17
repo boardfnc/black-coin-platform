@@ -200,7 +200,7 @@ export default function MyPage() {
                               'w-[136px] h-8 text-gray-100 bg-gray-0 font-pre-13-m-130 rounded-lg px-3 py-2 whitespace-pre'
                             }
                           >
-                            비밀번호 ���경
+                            비밀번호 변경
                           </button>
                         </div>
                       </div>

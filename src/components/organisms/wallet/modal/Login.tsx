@@ -65,6 +65,8 @@ export default function LoginModal() {
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (!isFormValid) return;
+
     mutate({
       login_id: id,
       password,

@@ -62,7 +62,7 @@ export default function TransactionHistoryCATable({ data }: ITransactionHistoryC
               <td className={'border p-2'}>{item.codeName}</td>
               <td className={'border p-2'}>{item.purchasePrevCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
-              <td className={'w-20 border p-2'}>
+              <td className={'w-[80px] border p-2'}>
                 <button
                   className={'h-8 font-pre-13-m-130 text-gray-10 border rounded-lg border-gray-70 p-2'}
                   onClick={() => {
