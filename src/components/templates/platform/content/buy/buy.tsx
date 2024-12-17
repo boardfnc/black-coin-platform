@@ -143,8 +143,7 @@ export default function Buy() {
               <div className={'py-5 flex flex-col gap-5 border rounded-2xl border-gray-0'}>
                 <div className={'text-center text-gray-10 font-suit-16-b-130 sm:font-suit-20-b-130'}>
                   등록하신 본인 계좌 입금만 허용되며,
-                  <br className={'sm:hidden'} /> 입금 내역 확인 시<br className={'hidden sm:block'} />
-                  기재한{' '}
+                  <br className={'sm:hidden'} /> 입금 내역 확인 시<br className={'hidden sm:block'} /> 기재한{' '}
                   <span className={'text-orange-orange50'}>
                     은행정보가 예금주가
                     <br className={'sm:hidden'} /> 다를 경우 반환처리
