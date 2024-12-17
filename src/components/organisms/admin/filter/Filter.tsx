@@ -224,6 +224,8 @@ export default function Filter({ date, search, select, radio, category, checkbox
       else params.delete('rangeEnd');
     }
 
+    params.set('page', '1');
+
     router.push(`?${params.toString()}`);
   };
 
