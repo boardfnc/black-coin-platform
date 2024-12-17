@@ -75,7 +75,7 @@ export default function Statistics() {
         totalFeePerCase: item.csby_fee_am,
         purchaseFee: item.purchs_fee_am,
         saleFee: item.sle_fee_am,
-        total: item.purchs_co - (item.sle_co + item.hold_qy) - item.csby_fee_am - item.purchs_fee_am - item.sle_fee_am,
+        total: item.purchs_qy - (item.sle_co + item.hold_qy) - item.csby_fee_am - item.purchs_fee_am - item.sle_fee_am,
       }) satisfies IStatisticsTableData,
   );
 
