@@ -36,7 +36,7 @@ export default function MyPage() {
                   {/* 사용자 정보 */}
                   <div className={'flex flex-col gap-2.5'}>
                     <span className={'text-gray-40 font-suit-14-m-130'}>사용자 정보</span>
-                    <div className={'flex gap-4'}>
+                    <div className={'flex flex-col sm:flex-row gap-4'}>
                       <div className={'w-[128px] h-[128px] bg-gray-95 rounded-[44px] relative'}>
                         <button
                           className={
@@ -46,6 +46,7 @@ export default function MyPage() {
                           <span>+</span>
                         </button>
                       </div>
+
                       <div className={'flex-1 space-y-4'}>
                         <div className={'flex flex-col gap-1'}>
                           <span className={'text-gray-40 text-sm'}>아이디(수정불가)</span>
@@ -81,10 +82,10 @@ export default function MyPage() {
                         </div>
                         <div className={'flex flex-col gap-1'}>
                           <span className={'text-gray-40 text-sm'}>연락처</span>
-                          <div className={'flex gap-2 items-center'}>
+                          <div className={'flex flex-col lg:flex-row gap-2 items-center'}>
                             <input
                               className={
-                                'flex-auto w-[120px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center '
+                                'w-full lg:w-[120px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center'
                               }
                               value={'010'}
                               readOnly
@@ -92,7 +93,7 @@ export default function MyPage() {
                             <span className={'flex items-center'}>-</span>
                             <input
                               className={
-                                'flex-auto w-[120px] h-10 px-4 rounded-xl bg-gray-90  border border-gray-80 font-suit-16-r-130 text-center'
+                                'w-full lg:w-[120px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center'
                               }
                               value={'1234'}
                               readOnly
@@ -100,14 +101,13 @@ export default function MyPage() {
                             <span className={'flex items-center'}>-</span>
                             <input
                               className={
-                                'flex-auto w-[120px] h-10 px-4 rounded-xl border border-gray-80 font-suit-16-r-130 text-center bg-gray-90'
+                                'w-full lg:w-[120px] h-10 px-4 rounded-xl bg-gray-90 border border-gray-80 font-suit-16-r-130 text-center'
                               }
                               value={'5678'}
                               readOnly
                             />
-
                             <button
-                              className={'px-3 w-[70px] h-8 bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
+                              className={'w-full lg:w-[70px] h-8 bg-gray-0 text-gray-100 rounded-xl font-suit-13-m-130'}
                               onClick={() => setIsPhoneNumberModalOpen(true)}
                             >
                               변경하기
