@@ -166,7 +166,6 @@ export default function Wallet() {
                         >
                           <div>
                             <IconLine24Change />
-                            ㅜㅡ
                           </div>
                           <div className={'whitespace-nowrap text-gray-10 font-pre-13-m-130'}>코인으로 교환</div>
                         </button>
