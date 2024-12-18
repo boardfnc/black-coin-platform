@@ -327,12 +327,15 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                     <div className={'flex flex-col gap-1'}>
                       <div className={'flex justify-between items-center'}>
                         <div className={'text-gray-40 font-pre-14-m-130'}>회원등급</div>
-                        <button
-                          onClick={handleGradeResetModalOpen}
-                          className={'text-gray-10 font-pre-14-m-130 underline'}
-                        >
-                          등급 초기화
-                        </button>
+
+                        {isSuperAdmin && (
+                          <button
+                            onClick={handleGradeResetModalOpen}
+                            className={'text-gray-10 font-pre-14-m-130 underline'}
+                          >
+                            등급 초기화
+                          </button>
+                        )}
                       </div>
 
                       <DropdownSelect
