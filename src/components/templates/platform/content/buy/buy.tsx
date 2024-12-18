@@ -10,6 +10,7 @@ import type { IBuyCompleteModalProps } from '@/components/organisms/platform/mod
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
 import { ConfirmColModal, AlertModal, BuyCompleteModal } from '@/components/organisms/platform/modal';
+import { useToast } from '@/hooks';
 import { cube, digitalCoinCartIcon } from '@/images/background';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
@@ -20,6 +21,7 @@ import { convertBank } from '@/utils/covert';
 
 export default function Buy() {
   const queryClient = useQueryClient();
+  const { open: openToast } = useToast();
 
   const [amount, setAmount] = useState<string>('0');
 
@@ -90,18 +92,16 @@ export default function Buy() {
     const maxAmount = data?.data.mxmm_rcpmny_am || 0;
 
     if (numAmount < minAmount) {
-      return setAlertModal({
-        isOpen: true,
-        title: '구매 등록 오류',
-        description: `최소 구매 수량은 <span class="text-red-50 font-suit-17-b-130">${minAmount.toLocaleString()}</span> 입니다.`,
+      return openToast({
+        type: 'transparent',
+        message: `최소 구매 수량은 ${minAmount.toLocaleString()} 입니다.`,
       });
     }
 
     if (numAmount > maxAmount) {
-      return setAlertModal({
-        isOpen: true,
-        title: '구매 등록 오류',
-        description: `최대 구매 수량은 <span class="text-red-50 font-suit-17-b-130">${maxAmount.toLocaleString()}</span> 입니다.`,
+      return openToast({
+        type: 'transparent',
+        message: `최대 구매 수량은 ${maxAmount.toLocaleString()} 입니다.`,
       });
     }
 

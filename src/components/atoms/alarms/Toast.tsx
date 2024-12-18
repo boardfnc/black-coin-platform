@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+import { useEffect, useState } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,6 +14,9 @@ import { useToastStore } from '@/stores/toast';
 
 export default function Toast() {
   const { message, type, isOpen, duration } = useToastStore();
+  const pathname = usePathname();
+  const [transparentType, setTransparentType] = useState(false);
+  const [isCenterPosition, setIsCenterPosition] = useState(false);
 
   const closeToast = () => {
     useToastStore.setState({ isOpen: false });
@@ -27,15 +32,33 @@ export default function Toast() {
     }
   }, [isOpen, duration]);
 
+  useEffect(() => {
+    if (pathname.includes('wallet') || IS_ADMIN) {
+      setTransparentType(false);
+      setIsCenterPosition(true);
+      return;
+    }
+
+    if (IS_ADMIN) {
+      setIsCenterPosition(false);
+      return;
+    }
+
+    setTransparentType(false);
+    setIsCenterPosition(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (type === 'transparent') setTransparentType(true);
+    else setTransparentType(false);
+  }, [type]);
+
   const toastIcons = {
     success: <IconLine24Confirm className={'text-[#59C173]'} />,
     error: <IconLine24Warning className={'text-[#FF6C5C]'} />,
-    info: IS_ADMIN ? (
-      <IconLine24Confirm className={'text-[#2196F3]'} />
-    ) : (
-      <IconLine24ConfirmEtc width={32} height={32} />
-    ),
+    info: <IconLine24Confirm className={'text-[#2196F3]'} />,
     warning: <IconLine24Warning className={'text-[#FF9800]'} />,
+    transparent: <IconLine24Warning className={'text-[#FF6C5C]'} width={32} height={32} />,
   };
 
   const toastColors = {
@@ -43,6 +66,7 @@ export default function Toast() {
     error: 'bg-[#FEF8F8]',
     info: 'bg-[#F8FBFE]',
     warning: 'bg-[#FFFBF5]',
+    transparent: 'bg-transparent',
   };
 
   const toastBorderColors = {
@@ -50,6 +74,7 @@ export default function Toast() {
     error: 'border-[#FF6C5C]',
     info: 'border-[#2196F3]',
     warning: 'border-[#FF9800]',
+    transparent: 'border-transparent',
   };
 
   return (
@@ -57,7 +82,9 @@ export default function Toast() {
       {isOpen && (
         <motion.div
           className={`fixed ${
-            IS_ADMIN ? 'top-[184px] left-0 right-0 flex justify-center' : 'inset-0 flex items-center justify-center'
+            !isCenterPosition
+              ? 'top-[184px] left-0 right-0 flex justify-center'
+              : 'inset-0 flex items-center justify-center'
           } z-50 pointer-events-none`}
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -68,16 +95,21 @@ export default function Toast() {
             exit: { duration: 0.4 },
           }}
         >
-          {!IS_ADMIN && (
+          {transparentType && (
             <div
-              className={`max-w-[480px] w-full flex flex-col justify-center items-center gap-4 bg-gray-0 bg-opacity-30 py-6 px-8 rounded-xl ${toastColors[type]}`}
+              className={`max-w-[480px] w-full flex flex-col justify-center items-center gap-4 bg-gray-0 bg-opacity-30 py-6 px-8 rounded-xl`}
             >
-              <span>{toastIcons[type]}</span>
-              <span className={'text-gray-100 font-suit-18-m-130'}>{message}</span>
+              <div>{toastIcons[type]}</div>
+
+              <div className={'flex flex-col items-center gap-2.5'}>
+                <div className={'text-gray-100 font-suit-18-700-130'}>Error</div>
+
+                <div className={'text-gray-100 font-suit-16-m-130'}>{message}</div>
+              </div>
             </div>
           )}
 
-          {IS_ADMIN && (
+          {!transparentType && (
             <div
               onClick={closeToast}
               className={`${toastColors[type]} pointer-events-auto text-gray-0 border ${toastBorderColors[type]} rounded-2xl shadow-lg p-4 flex flex-row items-center justify-start gap-4 text-start min-w-[450px] cursor-pointer`}

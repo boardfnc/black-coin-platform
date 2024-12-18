@@ -6,10 +6,11 @@ import { MyPage } from '@/components/templates/platform/content/my-page';
 import { ROUTES } from '@/constants';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
-import { generateQueryClient, QueryHydrate } from '@/utils/react-query';
+import { QueryHydrate } from '@/utils/react-query';
+import getQueryClient from '@/utils/react-query/getQueryClient';
 
 export default async function MyPagePage() {
-  const queryClient = await generateQueryClient();
+  const { queryClient } = await getQueryClient();
 
   try {
     const data = await userInformationShowService();

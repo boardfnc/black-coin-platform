@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 
+import type { FormEvent } from 'react';
 import { useState, useMemo } from 'react';
 
 import { useMutation } from '@tanstack/react-query';
@@ -26,6 +27,13 @@ export default function JoinModal() {
   const { openModal: openLoginModal } = useLogin();
 
   const searchParams = useSearchParams();
+
+  const handleCloseModal = () => {
+    setId('');
+    setPassword('');
+    setPasswordConfirm('');
+    closeJoinModal();
+  };
 
   const { mutate } = useMutation({
     mutationFn: joinService,
@@ -52,7 +60,9 @@ export default function JoinModal() {
     return id !== '' && password !== '' && passwordConfirm !== '';
   }, [id, password, passwordConfirm]);
 
-  const handleJoin = () => {
+  const handleJoin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     if (
       !id ||
       !password ||
@@ -82,11 +92,11 @@ export default function JoinModal() {
   };
 
   return (
-    <Modal isOpen={isJoinOpen} onClose={closeJoinModal} width={success ? '500px' : '450px'}>
+    <Modal isOpen={isJoinOpen} onClose={handleCloseModal} width={success ? '500px' : '450px'}>
       {success && (
         <div className={'p-5'}>
           <div className={'flex justify-end'}>
-            <button onClick={closeJoinModal}>
+            <button onClick={handleCloseModal}>
               <IconLine24Close />
             </button>
           </div>
@@ -118,7 +128,7 @@ export default function JoinModal() {
 
       {!success && (
         <div className={'flex flex-col gap-[70px] p-10'}>
-          <div className={'flex flex-col gap-10'}>
+          <form onSubmit={handleJoin} className={'flex flex-col gap-10'}>
             <div className={'flex flex-col justify-center items-center gap-4'}>
               <div className={'text-gray-0 font-suit-40-900-113'}>Blackcoin</div>
 
@@ -186,6 +196,7 @@ export default function JoinModal() {
 
             <div className={'flex gap-4 mt-6'}>
               <button
+                type={'button'}
                 className={'w-1/3 p-3 text-gray-10 bg-gray-80 rounded-3xl font-suit-17-m-130'}
                 onClick={closeJoinModal}
               >
@@ -193,16 +204,16 @@ export default function JoinModal() {
               </button>
 
               <button
+                type={'submit'}
                 className={
                   'w-2/3 p-3 text-gray-100 bg-gray-0 rounded-3xl font-suit-17-m-130 disabled:bg-gray-90 disabled:text-gray-50'
                 }
                 disabled={!isFormValid}
-                onClick={handleJoin}
               >
                 회원가입
               </button>
             </div>
-          </div>
+          </form>
         </div>
       )}
     </Modal>

@@ -58,6 +58,7 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
             수수료 잔액
           </th>
         </tr>
+
         <tr className={'bg-gray-90'}>
           <th className={'border border-gray-80 p-2'} rowSpan={2}>
             건당 수수료
@@ -85,20 +86,24 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
                     {item.partnerName}
                   </Link>
                 </td>
-                <td className={'border p-2'}>{item.codeName}</td>
+                <td className={'border p-2'}>{item.codeName || '-'}</td>
               </>
             )}
             <td className={'border p-2'}>{convertMembershipGrade(Number(item.authorRank))}</td>
             <td className={'border p-2'}>
-              <Link
-                className={'text-primary-50 underline'}
-                href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.memberId)}
-              >
-                {item.loginId}
-              </Link>
+              {item.loginId && (
+                <Link
+                  className={'text-primary-50 underline'}
+                  href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.memberId)}
+                >
+                  {item.loginId}
+                </Link>
+              )}
+
+              {!item.loginId && <div>{item.loginId || '-'}</div>}
             </td>
-            <td className={'border p-2'}>{item.authorName}</td>
-            <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD HH:mm:ss')}</td>
+            <td className={'border p-2'}>{item.authorName || '-'}</td>
+            <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD HH:mm:ss') || '-'}</td>
             <td className={'border p-2'}>{item.tradeNumber}</td>
             <td className={'border p-2'}>{convertDealStatus(item.type)}</td>
             <td className={'border p-2'}>{item.perFee ? item.perFee.toLocaleString('ko-KR') : '-'}</td>

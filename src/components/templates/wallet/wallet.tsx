@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -33,16 +33,20 @@ export default function Wallet() {
   const queryClient = useQueryClient();
   const { isLogin } = useClient();
 
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [isOpenChangeCoinModal, setIsOpenChangeCoinModal] = useState(false);
   const [isOpenChangeMoneyModal, setIsOpenChangeMoneyModal] = useState(false);
-  const [autoLogin] = useState(() => {
+  const autoLogin = (() => {
+    const autoLogin = searchParams.get('auto-login');
+
+    if (autoLogin === 'true') return true;
+
     if (typeof window !== 'undefined') {
       return document.cookie.includes('auto-login=true');
     }
     return false;
-  });
-
-  const searchParams = useSearchParams();
+  })();
 
   const code = searchParams.get('code');
   const essentialKey = searchParams.get('essential-key');
@@ -62,7 +66,7 @@ export default function Wallet() {
   });
 
   const { mutate: logout } = useMutation({
-    mutationFn: logoutService,
+    mutationFn: () => logoutService(),
     onSuccess(data) {
       if (data != null) {
         if (data.status) {
@@ -76,12 +80,17 @@ export default function Wallet() {
   });
 
   const onClickAuthorButton = () => {
-    if (isJoin) {
-      openJoinModal();
-    } else {
-      openLoginModal();
-    }
+    if (isJoin) openJoinModal();
+    else openLoginModal();
   };
+
+  useEffect(() => {
+    if (code) {
+      router.replace(`/wallet?code=${code}`);
+    } else {
+      router.replace('/wallet');
+    }
+  }, [router, code]);
 
   return (
     <>

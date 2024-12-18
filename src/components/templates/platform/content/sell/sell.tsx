@@ -10,6 +10,7 @@ import type { ISaleCompleteModalProps } from '@/components/organisms/platform/mo
 import { IconLine24SquareInfo } from '@/components/atoms/icons/icon-line';
 import { Image } from '@/components/atoms/images';
 import { ConfirmColModal, AlertModal, SaleCompleteModal } from '@/components/organisms/platform/modal';
+import { useToast } from '@/hooks';
 import { cube, sellCoin } from '@/images/background';
 import { userInformationShowService } from '@/services/platform/auth/user';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
@@ -22,6 +23,7 @@ export default function Sell() {
   const queryClient = useQueryClient();
 
   const [amount, setAmount] = useState<string>('0');
+  const { open: openToast } = useToast();
 
   const [confirmModal, setConfirmModal] = useState({
     isOpen: false,
@@ -89,18 +91,16 @@ export default function Sell() {
     const maxAmount = data?.data.mxmm_defray_am || 0;
 
     if (numAmount < minAmount) {
-      return setAlertModal({
-        isOpen: true,
-        title: '판매 등록 오류',
-        description: `최소 판매 수량은 <span class="text-red-50 font-suit-17-b-130">${minAmount.toLocaleString()}</span> 입니다.`,
+      return openToast({
+        type: 'transparent',
+        message: `최소 판매 수량은 ${minAmount.toLocaleString()} 입니다.`,
       });
     }
 
     if (numAmount > maxAmount) {
-      return setAlertModal({
-        isOpen: true,
-        title: '판매 등록 오류',
-        description: `최대 판매 수량은 <span class="text-red-50 font-suit-17-b-130">${maxAmount.toLocaleString()}</span> 입니다.`,
+      return openToast({
+        type: 'transparent',
+        message: `최대 판매 수량은 ${maxAmount.toLocaleString()} 입니다.`,
       });
     }
 

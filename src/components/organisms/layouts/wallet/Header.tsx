@@ -16,12 +16,12 @@ import { useLogin } from '@/stores/login';
 export default function Header() {
   const { openModal: openLoginModal } = useLogin();
   const { openModal: openJoinModal } = useJoin();
-  const [autoLogin] = useState(() => {
+  const autoLogin = (() => {
     if (typeof window !== 'undefined') {
-      return document.cookie.includes('auto-login=true');
+      return true;
     }
     return false;
-  });
+  })();
 
   const { isLogin } = useClient();
   const queryClient = useQueryClient();
@@ -37,7 +37,7 @@ export default function Header() {
   });
 
   const { mutate: logout } = useMutation({
-    mutationFn: logoutService,
+    mutationFn: () => logoutService(),
     onSuccess(data) {
       if (data != null) {
         if (data.status) {

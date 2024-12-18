@@ -23,6 +23,7 @@ export default function Header() {
   const { data } = useQuery({
     queryKey: userInformationShowQueryKey,
     queryFn: () => userInformationShowService(),
+    enabled: isLogin,
   });
 
   const { mutate: logout } = useMutation({
@@ -264,7 +265,7 @@ export default function Header() {
                 'flex items-center h-[28px] rounded-[60px] border border-gray-0 px-4 text-gray-0 font-suit-13-m-130'
               }
             >
-              로그인
+              로그인 {isLogin ? 'true' : 'false'}
             </Link>
           )}
         </div>

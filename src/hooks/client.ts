@@ -21,7 +21,6 @@ const useClient = () => {
   const { data } = useQuery<IClientInformationData | undefined>({
     queryKey: clientInformationKey,
     queryFn: async () => initialData,
-    enabled: initialData != null,
     staleTime: Infinity,
     gcTime: Infinity,
   });
@@ -32,15 +31,6 @@ const useClient = () => {
 
   useEffect(() => {
     setIsClient(true);
-    const hasToken = document.cookie
-      .split(';')
-      .map((cookie) => cookie.trim())
-      .some((cookie) => cookie.startsWith('token='));
-
-    queryClient.setQueryData(clientInformationKey, {
-      ...queryClient.getQueryData(clientInformationKey),
-      isLogin: !!hasToken,
-    });
   }, [queryClient]);
 
   return { isClient, isLogin, isMobile };

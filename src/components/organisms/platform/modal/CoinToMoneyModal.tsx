@@ -22,17 +22,24 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
     enabled: isOpen,
   });
 
+  const modalClose = () => {
+    setAmount('');
+    onClose();
+  };
+
   const { mutate: exchangeCoin } = useMutation({
     mutationFn: exchangeCoinService,
     onSuccess(data) {
       if (data != null) {
         if (data.status) {
           openToast({ message: '교환이 성공적으로 완료되었습니다.', type: 'success' });
-          setAmount('');
 
           queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
           queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
           queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+
+          modalClose();
+          return;
         }
 
         throw new Error(data.message);
@@ -45,13 +52,7 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => {
-        setAmount('');
-        onClose();
-      }}
-    >
+    <Modal isOpen={isOpen} onClose={modalClose}>
       <div className={'flex flex-col gap-10 p-5'}>
         <div className={'flex flex-col items-center gap-4'}>
           <div className={'text-gray-0 font-suit-40-900-113'}>blackcoin</div>

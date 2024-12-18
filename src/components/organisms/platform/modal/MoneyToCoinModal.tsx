@@ -22,17 +22,24 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
     enabled: isOpen,
   });
 
+  const modalClose = () => {
+    setAmount('');
+    onClose();
+  };
+
   const { mutate: exchangeMoney } = useMutation({
     mutationFn: exchangeMoneyService,
     onSuccess(data) {
       if (data != null) {
         if (data.status) {
           openToast({ message: '교환이 성공적으로 완료되었습니다.', type: 'success' });
-          setAmount('');
 
           queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });
           queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
           queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
+
+          modalClose();
+          return;
         }
 
         throw new Error(data.message);
@@ -45,13 +52,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => {
-        setAmount('');
-        onClose();
-      }}
-    >
+    <Modal isOpen={isOpen} onClose={modalClose}>
       <div className={'flex flex-col gap-10 p-5'}>
         <div className={'flex flex-col items-center gap-4'}>
           <div className={'text-gray-0 font-suit-40-900-113'}>blackcoin</div>
@@ -71,7 +72,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
 
             <div className={'flex items-center gap-[2px]'}>
               <span className={'font-suit-18-750-130 text-purple-fmg50'}>
-                {(exchangeCheckData?.data?.money || 0).toLocaleString('ko-KR')}
+                {(exchangeCheckData?.data?.hold_coin || 0).toLocaleString('ko-KR')}
               </span>
               <span className={'font-suit-14-b-130 text-purple-fmg50'}>C</span>
             </div>

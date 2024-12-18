@@ -32,6 +32,13 @@ export default function LoginModal() {
     return false;
   });
 
+  const handleCloseModal = () => {
+    setCode('');
+    setId('');
+    setPassword('');
+    closeModal();
+  };
+
   const originCode = searchParams.get('code');
 
   const { mutate } = useMutation({
@@ -82,7 +89,7 @@ export default function LoginModal() {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} width={'450px'}>
+    <Modal isOpen={isOpen} onClose={handleCloseModal} width={'450px'}>
       <div className={'flex flex-col gap-[70px] p-10'}>
         <form onSubmit={handleLogin} className={'flex flex-col gap-10'}>
           <div className={'flex flex-col justify-center items-center gap-4'}>
@@ -152,7 +159,11 @@ export default function LoginModal() {
           </div>
 
           <div className={'flex gap-4'}>
-            <button className={'w-1/3 p-3 text-gray-10 bg-gray-80 rounded-3xl font-suit-17-m-130'} onClick={closeModal}>
+            <button
+              type={'button'}
+              className={'w-1/3 p-3 text-gray-10 bg-gray-80 rounded-3xl font-suit-17-m-130'}
+              onClick={closeModal}
+            >
               취소
             </button>
 
