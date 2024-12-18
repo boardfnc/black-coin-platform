@@ -63,6 +63,7 @@ export default function Wallet() {
     queryFn: () => exchangeCheckService(),
     queryKey: exchangeCheckQueryKey,
     enabled: isLogin,
+    refetchInterval: 2000,
   });
 
   const { mutate: logout } = useMutation({

@@ -88,7 +88,7 @@ export default function Demo() {
 
   useEffect(() => {
     getMoney();
-    const interval = setInterval(getMoney, 5000);
+    const interval = setInterval(getMoney, 2000);
 
     return () => clearInterval(interval);
   }, []);
