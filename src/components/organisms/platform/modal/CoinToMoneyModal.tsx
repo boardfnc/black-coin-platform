@@ -106,7 +106,10 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
         </div>
 
         <div className={'flex gap-2'}>
-          <button className={'w-[116px] h-12 text-gray-10 bg-gray-90 rounded-3xl font-suit-16-m-130'} onClick={onClose}>
+          <button
+            className={'w-[116px] h-12 text-gray-10 bg-gray-90 rounded-3xl font-suit-16-m-130'}
+            onClick={modalClose}
+          >
             취소
           </button>
           <button
