@@ -75,7 +75,6 @@ export default function Buy() {
     const value = event.target.value.replace(/[^0-9]/g, '');
     const numValue = Number(value);
     const maxAmount = data?.data.mxmm_rcpmny_am || 0;
-    const holdCoin = data?.data.hold_coin || 0;
 
     if (numValue > maxAmount) {
       openToast({
@@ -86,30 +85,12 @@ export default function Buy() {
       return;
     }
 
-    if (numValue > holdCoin) {
-      openToast({
-        type: 'transparent',
-        message: `보유 수량은 ${holdCoin.toLocaleString()} 입니다.`,
-      });
-      setAmount(holdCoin.toLocaleString());
-      return;
-    }
-
     setAmount(value ? numValue.toLocaleString() : '0');
   };
 
   const handleButtonClick = (value: number) => {
     const currentAmount = Number(amount.replace(/,/g, '')) || 0;
     const newAmount = currentAmount + value;
-    const holdCoin = data?.data.hold_coin || 0;
-
-    if (newAmount > holdCoin) {
-      openToast({
-        type: 'transparent',
-        message: `보유 수량은 ${holdCoin.toLocaleString()} 입니다.`,
-      });
-      return;
-    }
 
     setAmount(newAmount.toLocaleString());
   };
