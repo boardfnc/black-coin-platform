@@ -27,7 +27,6 @@ import { convertBank } from '@/utils/covert';
 
 export default function TransactionHistory() {
   const searchParams = useSearchParams();
-
   const queryClient = useQueryClient();
 
   const mode = searchParams.get('mode') || 2;
@@ -125,11 +124,8 @@ export default function TransactionHistory() {
   };
 
   const handleSaleCancelClick = (type: 'sell' | 'buy', id: number) => {
-    if (type === 'sell') {
-      saleCancelMutate(id);
-    } else {
-      purchaseCancelMutate(id);
-    }
+    if (type === 'sell') saleCancelMutate(id);
+    else purchaseCancelMutate(id);
   };
 
   useEffect(() => {

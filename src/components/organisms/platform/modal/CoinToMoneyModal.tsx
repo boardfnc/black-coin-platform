@@ -7,7 +7,7 @@ import type { IChangeMoneyModalProps } from './CoinToMoneyModal.types';
 import { Modal } from '@/components/atoms/modals';
 import { useToast } from '@/hooks';
 import { userInformationShowQueryKey } from '@/services/platform/auth/user.query';
-import { exchangeCheckService, exchangeMoneyService } from '@/services/platform/coin/exchange';
+import { exchangeCheckService, exchangeCoinService } from '@/services/platform/coin/exchange';
 import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { accountShowQueryKey } from '@/services/platform/my-page/account.query';
 
@@ -23,7 +23,7 @@ export default function ChangeMoneyModal({ isOpen, onClose }: IChangeMoneyModalP
   });
 
   const { mutate: exchangeCoin } = useMutation({
-    mutationFn: exchangeMoneyService,
+    mutationFn: exchangeCoinService,
     onSuccess(data) {
       if (data != null) {
         if (data.status) {
