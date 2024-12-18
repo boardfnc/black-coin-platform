@@ -1,6 +1,8 @@
 import { dehydrate } from '@tanstack/react-query';
 
 import { Wallet } from '@/components/templates/wallet';
+import { exchangeCheckService } from '@/services/platform/coin/exchange';
+import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { QueryHydrate } from '@/utils/react-query';
 import getQueryClient from '@/utils/react-query/getQueryClient';
 
@@ -18,7 +20,14 @@ interface IWalletPageProps {
 }
 
 export default async function WalletPage(_: IWalletPageProps) {
-  const { queryClient } = await getQueryClient();
+  const { queryClient, isLogin } = await getQueryClient();
+
+  if (isLogin) {
+    queryClient.prefetchQuery({
+      queryKey: exchangeCheckQueryKey,
+      queryFn: () => exchangeCheckService(),
+    });
+  }
 
   const dehydratedState = dehydrate(queryClient);
 
