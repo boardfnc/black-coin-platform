@@ -94,7 +94,7 @@ export default function Demo() {
   }, []);
 
   return (
-    <div className={'min-h-screen bg-[#4D5258] pt-[5.625rem]'}>
+    <div className={'min-h-screen bg-[#4D5258] py-[5.625rem]'}>
       <div className={'flex flex-col gap-8 container mx-auto'}>
         <div className={'w-[1352px] h-[750px] mx-auto relative bg-gray-100 rounded-lg p-8'}>
           <div className={'text-red-50 text-lg font-bold'}>※1회 배팅시 100원 소모! (승리시 +200원)</div>
