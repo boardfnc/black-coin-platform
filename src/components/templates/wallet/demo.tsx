@@ -1,47 +1,42 @@
 'use client';
 
-import Link from 'next/link';
-
 import React, { useEffect, useState } from 'react';
 
 import { Image } from '@/components/atoms/images';
 import { coinFront, coinBack } from '@/mocks/images';
 
-const prefix = 'http://dev_platform_api.onefabric.co.kr';
+const prefix = 'https://api-platform.onefabric.co.kr';
 
 export default function Demo() {
   const [isFlipping, setIsFlipping] = useState(false);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState<'heads' | 'tails' | null>(null);
 
+  const getMoney = async () => {
+    const data = await (
+      await fetch(`${prefix}/coin/money-check?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9`, {
+        method: 'POST',
+        body: JSON.stringify({
+          code: '2EG38QILJ',
+          esntl_key: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
+        }),
+      })
+    ).json();
+
+    setScore(data.money);
+  };
+
   const handleWin = async () => {
-    setScore((prev) => prev + 200);
+    setScore((prev) => prev + 300);
 
     await (
       await fetch(
-        'http://dev_platform_api.onefabric.co.kr/coin/money-addition?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&money=200',
+        `${prefix}/coin/money-addition?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&money=300`,
         {
           method: 'POST',
         },
       )
     ).json();
-
-    const getMoney = async () => {
-      const data = await (
-        await fetch(
-          'http://dev_platform_api.onefabric.co.kr/coin/money-check?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              code: '2EG38QILJ',
-              esntl_key: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-            }),
-          },
-        )
-      ).json();
-
-      setScore(data.money);
-    };
 
     getMoney();
   };
@@ -51,38 +46,33 @@ export default function Demo() {
 
     await (
       await fetch(
-        'http://dev_platform_api.onefabric.co.kr/coin/money-deduction?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&money=100',
+        `${prefix}/coin/money-deduction?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&money=100`,
         {
           method: 'POST',
         },
       )
     ).json();
 
-    const getMoney = async () => {
-      const data = await (
-        await fetch(
-          'http://dev_platform_api.onefabric.co.kr/coin/money-check?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              code: '2EG38QILJ',
-              esntl_key: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-            }),
-          },
-        )
-      ).json();
-
-      setScore(data.money);
-    };
-
     getMoney();
   };
 
-  const flipCoin = () => {
-    if (score < 100) return;
+  const flipCoin = async () => {
+    const currentMoney = await (
+      await fetch(`${prefix}/coin/money-check?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9`, {
+        method: 'POST',
+        body: JSON.stringify({
+          code: '2EG38QILJ',
+          esntl_key: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
+        }),
+      })
+    ).json();
+
+    if (currentMoney.money < 100) return;
 
     setIsFlipping(true);
     setResult(null);
+
+    await handleLose();
 
     setTimeout(() => {
       const random = Math.random() < 0.5 ? 'heads' : 'tails';
@@ -90,8 +80,6 @@ export default function Demo() {
 
       if (random === 'heads') {
         handleWin();
-      } else {
-        handleLose();
       }
 
       setIsFlipping(false);
@@ -99,24 +87,10 @@ export default function Demo() {
   };
 
   useEffect(() => {
-    const getMoney = async () => {
-      const data = await (
-        await fetch(
-          'http://dev_platform_api.onefabric.co.kr/coin/money-check?code=2EG38QILJ&esntl_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              code: '2EG38QILJ',
-              esntl_key: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9',
-            }),
-          },
-        )
-      ).json();
-
-      setScore(data.money);
-    };
-
     getMoney();
+    const interval = setInterval(getMoney, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -166,13 +140,18 @@ export default function Demo() {
         </div>
 
         <div className={'flex items-center justify-center w-[1352px] mx-auto bg-[#D9D9D9]'}>
-          <Link
-            target={'_blank'}
-            href={'/wallet?code=2EG38QILJ&essential-key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&auto-login=true'}
+          <button
             className={'text-7xl gray-100 font-bold w-full h-full text-center p-8'}
+            onClick={() => {
+              window.open(
+                '/wallet?code=2EG38QILJ&essential-key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&auto-login=true',
+                '_blank',
+                'width=788, height=600',
+              );
+            }}
           >
             입/출금신청 바로가기
-          </Link>
+          </button>
         </div>
       </div>
     </div>
