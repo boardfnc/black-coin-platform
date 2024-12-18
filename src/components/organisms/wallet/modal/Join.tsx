@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import type { FormEvent } from 'react';
 import { useState, useMemo } from 'react';
@@ -25,8 +25,16 @@ export default function JoinModal() {
   const { open: openToast } = useToast();
   const { isOpen: isJoinOpen, closeModal: closeJoinModal } = useJoin();
   const { openModal: openLoginModal } = useLogin();
-
+  const router = useRouter();
   const searchParams = useSearchParams();
+
+  const code = searchParams.get('code');
+  const name = searchParams.get('name');
+  const essentialKey = searchParams.get('essential-key');
+  const phone = searchParams.get('phone');
+  const bank = searchParams.get('bank');
+  const bankAccount = searchParams.get('bank-account');
+  const bankAccountHolder = searchParams.get('bank-account-holder');
 
   const handleCloseModal = () => {
     setId('');
@@ -43,18 +51,13 @@ export default function JoinModal() {
 
         if (!status) return openToast({ type: 'error', message: message || '알 수 없는 오류가 발생했습니다.' });
 
+        if (code) router.replace(`/wallet?code=${code}`);
+        else router.replace('/wallet');
+
         setSuccess(true);
       }
     },
   });
-
-  const code = searchParams.get('code');
-  const name = searchParams.get('name');
-  const essentialKey = searchParams.get('essential-key');
-  const phone = searchParams.get('phone');
-  const bank = searchParams.get('bank');
-  const bankAccount = searchParams.get('bank-account');
-  const bankAccountHolder = searchParams.get('bank-account-holder');
 
   const isFormValid = useMemo(() => {
     return id !== '' && password !== '' && passwordConfirm !== '';

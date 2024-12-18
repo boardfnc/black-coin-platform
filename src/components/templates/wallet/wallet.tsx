@@ -85,12 +85,11 @@ export default function Wallet() {
   };
 
   useEffect(() => {
-    if (code) {
-      router.replace(`/wallet?code=${code}`);
-    } else {
-      router.replace('/wallet');
+    if (!isJoin) {
+      if (code) router.replace(`/wallet?code=${code}`);
+      else router.replace('/wallet');
     }
-  }, [router, code]);
+  }, [router, code, isJoin]);
 
   return (
     <>

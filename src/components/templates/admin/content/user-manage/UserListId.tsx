@@ -596,7 +596,7 @@ export default function UserList({ id }: IUserListIdProps) {
                             'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
-                          {userData.lastLoginIp}
+                          {userData.lastLoginIp || '-'}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>접속 OS</div>
@@ -605,7 +605,7 @@ export default function UserList({ id }: IUserListIdProps) {
                             'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
-                          {userData.lastLoginOs}
+                          {userData.lastLoginOs || '-'}
                         </div>
 
                         <div className={'text-gray-40 font-pre-14-m-130'}>브라우저</div>
@@ -614,7 +614,7 @@ export default function UserList({ id }: IUserListIdProps) {
                             'h-14 px-3.5 py-4 rounded-2xl bg-gray-90 text-gray-0 font-pre-16-r-130 border border-gray-80'
                           }
                         >
-                          {userData.lastLoginBrowser}
+                          {userData.lastLoginBrowser || '-'}
                         </div>
                       </div>
                     </div>
