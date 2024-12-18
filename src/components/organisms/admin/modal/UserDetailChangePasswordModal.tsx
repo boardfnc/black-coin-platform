@@ -4,12 +4,14 @@ import { useState } from 'react';
 import type { IUserDetailChangePasswordModalProps } from './UserDetailChangePasswordModal.types';
 
 import Modal from '@/components/atoms/modals/Modal';
+import { useAuthor } from '@/components/atoms/provider/AdminProvider';
 import { useRequest, useToast } from '@/hooks';
 import { adminMemberPasswordUpdateService } from '@/services/admin/member/adminMembers';
-import { mypagePasswordUpdateService } from '@/services/admin/member/members';
+import { memberPasswordUpdateService, mypagePasswordUpdateService } from '@/services/admin/member/members';
 
 export default function UserDetailChangePasswordModal(props: IUserDetailChangePasswordModalProps) {
   const { isOpen, onClose, id, isMyProfile } = props;
+  const { isSuperAdmin } = useAuthor();
   const { request } = useRequest();
 
   const { open: openToast } = useToast();
@@ -38,16 +40,25 @@ export default function UserDetailChangePasswordModal(props: IUserDetailChangePa
   // NOTE: 회원 비밀번호 업데이트
   const handleSubmit = async () => {
     if (formData.newPassword === formData.confirmPassword) {
-      const data = await request(() =>
-        isMyProfile
-          ? mypagePasswordUpdateService({
-              password: formData.newPassword,
-            })
-          : adminMemberPasswordUpdateService({
-              id: Number(id),
-              password: formData.newPassword,
-            }),
-      );
+      const data = await request(() => {
+        if (isMyProfile) {
+          return mypagePasswordUpdateService({
+            password: formData.newPassword,
+          });
+        }
+
+        if (isSuperAdmin) {
+          return adminMemberPasswordUpdateService({
+            id: Number(id),
+            password: formData.newPassword,
+          });
+        }
+
+        return memberPasswordUpdateService({
+          id: Number(id),
+          password: formData.newPassword,
+        });
+      });
 
       if (data?.status) {
         openToast({
