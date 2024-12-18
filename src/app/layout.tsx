@@ -2,6 +2,8 @@ import '@/styles/globals.css';
 import '@/styles/normalize.css';
 import '@/styles/tailwind.css';
 
+import Head from 'next/head';
+
 import { Suspense } from 'react';
 import type { PropsWithChildren } from 'react';
 
@@ -22,6 +24,10 @@ export default async function RootLayout({ children }: Readonly<PropsWithChildre
 
   return (
     <html lang={'ko'}>
+      <Head>
+        <meta httpEquiv={'Content-Security-Policy'} content={'upgrade-insecure-requests'} />
+      </Head>
+
       <body className={`${pretendardFont.variable} ${suitFont.variable} font-pretendard antialiased`}>
         <Suspense>
           <QueryProvider>

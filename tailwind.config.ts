@@ -5,6 +5,13 @@ const config: Config = {
   safelist: ['text-[#888B94]', 'text-[#0000F4]', 'text-[#F854DC]', 'text-[#ff6c5c]'],
   theme: {
     extend: {
+      keyframes: {
+        'coin-flip': {
+          '0%': { transform: 'translateY(0) rotateX(0)' },
+          '40%': { transform: 'translateY(-200px) rotateX(360deg)' },
+          '100%': { transform: 'translateY(0) rotateX(720deg)' },
+        },
+      },
       screens: {
         sm: '1367px',
         mobile: '391px',

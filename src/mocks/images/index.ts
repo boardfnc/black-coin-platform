@@ -5,3 +5,5 @@ export { default as contentsArea } from './contents-area.png';
 export { default as contentsArea2 } from './contents-area-2.png';
 export { default as profile } from './profile.png';
 export { default as profile2 } from './profile-2.png';
+export { default as coinFront } from './coin-front.png';
+export { default as coinBack } from './coin-back.png';
