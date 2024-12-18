@@ -100,6 +100,7 @@ export default function Demo() {
           <div className={'text-red-50 text-lg font-bold'}>※1회 배팅시 100원 소모! (승리시 +200원)</div>
 
           <div className={'flex flex-col items-center justify-center h-[600px]'}>
+            {!isFlipping && !result && <div className={'absolute text-7xl font-bold text-blue-500 mt-60'}>Clack!</div>}
             <div
               role={'button'}
               className={`w-32 h-32 rounded-full cursor-pointer flex items-center justify-center relative
