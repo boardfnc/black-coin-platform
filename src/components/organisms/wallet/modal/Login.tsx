@@ -48,6 +48,7 @@ export default function LoginModal() {
             isLogin: true,
           });
 
+          // HACK:
           queryClient.invalidateQueries({ queryKey: userInformationShowQueryKey });
           queryClient.invalidateQueries({ queryKey: accountShowQueryKey });
           queryClient.invalidateQueries({ queryKey: exchangeCheckQueryKey });

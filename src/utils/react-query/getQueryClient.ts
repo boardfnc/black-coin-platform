@@ -22,7 +22,7 @@ const getQueryClient = async () => {
   const cookieStore = await cookies();
 
   const queryClient = await generateQueryClient();
-  const isLogin = !!cookieStore.get('token');
+  const isLogin = !!cookieStore.get('token')?.value;
   const isMobile = await isMobileDevice();
 
   return { queryClient, isLogin, isMobile };

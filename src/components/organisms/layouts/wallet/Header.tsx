@@ -30,7 +30,7 @@ export default function Header() {
   const code = searchParams.get('code');
   const essentialKey = searchParams.get('essential-key');
 
-  const { data, isSuccess } = useQuery({
+  const { data } = useQuery({
     queryFn: () => automaticLoginService({ autoLogin, code: code!, esntl_key: essentialKey! }),
     queryKey: automaticLoginQueryKey,
     enabled: !!autoLogin && !!code && !!essentialKey,
@@ -62,13 +62,13 @@ export default function Header() {
   }, [isJoin, openJoinModal]);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (autoLogin && data?.status) {
       queryClient.setQueryData(clientInformationKey, {
         ...queryClient.getQueryData(clientInformationKey),
         isLogin: true,
       });
     }
-  }, [isSuccess, queryClient]);
+  }, [autoLogin, data, queryClient]);
 
   return (
     <div className={'sticky top-0 z-50 h-[70px] flex justify-between items-center px-10 bg-gray-0'}>
