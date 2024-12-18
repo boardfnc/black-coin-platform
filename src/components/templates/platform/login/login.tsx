@@ -98,6 +98,7 @@ export default function PlatformLogin() {
                   name={'id'}
                   value={loginForm.id}
                   onChange={handleChange}
+                  autoComplete={'username'}
                   className={'px-3 py-4 border-b border-gray-80 placeholder:text-gray-60 font-suit-16-400-130'}
                   placeholder={'아이디'}
                 />
@@ -106,6 +107,7 @@ export default function PlatformLogin() {
                   type={'password'}
                   value={loginForm.password}
                   onChange={handleChange}
+                  autoComplete={'current-password'}
                   className={'px-3 py-4 border-b border-gray-80 placeholder:text-gray-60 font-suit-16-400-130'}
                   placeholder={'비밀번호'}
                 />

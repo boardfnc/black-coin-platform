@@ -18,7 +18,10 @@ export default function Select({
 
   const createQueryString = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams);
+
     params.set(name, value);
+    params.set('page', '1');
+
     return params.toString();
   };
 

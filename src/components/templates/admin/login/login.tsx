@@ -55,8 +55,9 @@ export default function AdminLogin() {
                   <div className={'text-gray-60 font-pre-14-m-130'}>관리자아이디</div>
                   <input
                     value={loginId}
-                    onChange={(e) => setLoginId(e.target.value)}
+                    onChange={(event) => setLoginId(event.target.value)}
                     placeholder={'아이디 입력'}
+                    autoComplete={'username'}
                     className={
                       'w-full h-14 px-0 py-[15px] bg-variable-collection-color-gray-100 border-b border-variable-collection-color-gray-80 placeholder:text-gray-50 text-gray-0'
                     }
@@ -68,8 +69,9 @@ export default function AdminLogin() {
                   <input
                     type={'password'}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(event) => setPassword(event.target.value)}
                     placeholder={'비밀번호 입력'}
+                    autoComplete={'current-password'}
                     className={
                       'w-full h-14 px-0 py-[15px] bg-variable-collection-color-gray-100 border-b border-variable-collection-color-gray-80 placeholder:text-gray-50 text-gray-0'
                     }
@@ -101,6 +103,7 @@ export default function AdminLogin() {
                   className={'absolute w-[121px] h-[205px] top-[31px] left-[157px] object-cover'}
                   alt={'Lock'}
                   src={LockImage}
+                  priority
                 />
                 <div className={'absolute h-[42px] top-[246px] left-[130px] text-orange-orange50 font-pre-32-eb-130-2'}>
                   Black Coin
