@@ -3,7 +3,6 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 import type IUserDetailPartnerSearchModalProps from './UserDetailPartnerSearchModal.types';
-import type { IAdminManagersRequest } from '@/services/admin/member/adminManagers.types';
 
 import { IconLine24Close } from '@/components/atoms/icons/icon-line';
 import { Modal } from '@/components/atoms/modals';
@@ -29,12 +28,12 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
         per_page: perPage,
         search_keyword: searchKeyword,
         search_type: 'prtnr_nm',
-        sbscrb_dt_start: searchParams.get('startDate') || undefined,
-        sbscrb_dt_end: searchParams.get('endDate') || undefined,
-        mngr_sttus: Number(searchParams.get('status')) || undefined,
-        orderby: (searchParams.get('order')?.split(',') as IAdminManagersRequest['orderby']) || undefined,
+        sbscrb_dt_start: undefined,
+        sbscrb_dt_end: undefined,
+        mngr_sttus: undefined,
+        orderby: undefined,
       }),
-    [page, perPage, searchKeyword, searchParams],
+    [page, perPage, searchKeyword],
   );
 
   const { data, execute } = useFetch(DataParam);
@@ -44,6 +43,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
     execute();
   };
 
+  const totalLength = data?.pagination?.total ?? 0;
   const totalPage = data?.pagination?.total_pages ?? 0;
 
   return (
@@ -84,7 +84,7 @@ export default function UserDetailPartnerSearchModal(props: IUserDetailPartnerSe
         <div className={'flex flex-col gap-3'}>
           <div className={'flex gap-1 items-center text-gray-10 font-pre-16-m-130'}>
             <div className={'text-gray-0 font-pre-16-m-130'}>목록</div>
-            <div className={'text-primary-50 font-pre-16-m-130'}>{totalPage}</div>
+            <div className={'text-primary-50 font-pre-16-m-130'}>{totalLength}</div>
           </div>
 
           <div className={'h-[360px] overflow-y-auto'}>
