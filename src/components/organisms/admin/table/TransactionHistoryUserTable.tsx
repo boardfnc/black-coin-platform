@@ -5,7 +5,7 @@ import UserHistoryModal from '../modal/UserHistoryModal';
 import type { ITransactionHistoryUserTableProps } from './TransactionHistoryUserTable.types';
 
 import { dayjs } from '@/utils';
-import { convertDealStatus, convertDealType, convertMembershipGrade } from '@/utils/covert';
+import { convertDealStatus, convertDealStatusColor, convertDealType, convertMembershipGrade } from '@/utils/covert';
 
 export default function TransactionHistoryUserTable({ data }: ITransactionHistoryUserTableProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +61,7 @@ export default function TransactionHistoryUserTable({ data }: ITransactionHistor
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(Number(item.type))}</td>
-              <td className={'border p-2'}>{convertDealStatus(Number(item.status))}</td>
+              <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{convertMembershipGrade(Number(item.authorRank))}</td>
               <td className={'border p-2'}>{item.id}</td>
               <td className={'border p-2'}>{item.name}</td>

@@ -75,7 +75,7 @@ export default function SaleCATable({ data, refetch }: ISaleCATableProps) {
 
   const handleSaleRegister = async () => {
     const checkedData = data?.filter(
-      (item) => item.type === '1' && (item.status === '21' || item.status === '22') && checkedItems[item.uniqueId],
+      (item) => item.type === '1' && item.status === '21' && checkedItems[item.uniqueId],
     );
 
     if (checkedData && checkedData.length > 0) {

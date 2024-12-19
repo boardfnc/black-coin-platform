@@ -4,7 +4,7 @@ import type { ITransactionHistoryMyTradeTableProps } from './TransactionHistoryM
 
 import { TransactionHistoryMyTradeModal } from '@/components/organisms/admin/modal';
 import { dayjs } from '@/utils';
-import { convertDealStatus, convertDealType } from '@/utils/covert';
+import { convertDealStatus, convertDealStatusColor, convertDealType } from '@/utils/covert';
 
 export default function TransactionHistoryMyTradeTable({ data }: ITransactionHistoryMyTradeTableProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +54,7 @@ export default function TransactionHistoryMyTradeTable({ data }: ITransactionHis
               <td className={'border p-2'}>{item.tradeNumber}</td>
               <td className={'border p-2'}>{dayjs(item.applyDate).format('YYYY.MM.DD HH:mm:ss')}</td>
               <td className={'border p-2'}>{convertDealType(item.type)}</td>
-              <td className={'border p-2'}>{convertDealStatus(item.status)}</td>
+              <td className={`border p-2 ${convertDealStatusColor(item.status)}`}>{convertDealStatus(item.status)}</td>
               <td className={'border p-2'}>{item.purchasePrevCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>{item.purchaseCount.toLocaleString('ko-KR')}</td>
               <td className={'border p-2'}>
