@@ -226,7 +226,10 @@ export default function Filter({ date, search, select, radio, category, checkbox
 
     params.set('page', '1');
 
-    router.push(`?${params.toString()}`);
+    const searchCount = parseInt(searchParams.get('searchCount') || '0', 10) + 1;
+    params.set('searchCount', searchCount.toString());
+
+    router.replace(`?${params.toString()}`);
   };
 
   const handleDateButton = (value: string) => {
