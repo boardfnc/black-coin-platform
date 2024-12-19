@@ -185,7 +185,10 @@ export default function TransactionFeeHistory() {
   return (
     <div className={'w-full h-full bg-gray-100'}>
       <div className={'flex flex-col gap-5'}>
-        <AdminHeadline title={'거래 수수료 내역'} subTitle={['코인 관리', '거래 수수료 내역']} />
+        <AdminHeadline
+          title={'거래 수수료 내역'}
+          subTitle={isSuperAdmin ? ['코인 관리', '거래 수수료 내역'] : ['내 코인 관리', '거래 수수료 내역']}
+        />
 
         <div className={'flex flex-col gap-8 mx-4'}>
           <Filter select={filterSelect} checkbox={checkbox} subCheckbox={subCheckbox} />

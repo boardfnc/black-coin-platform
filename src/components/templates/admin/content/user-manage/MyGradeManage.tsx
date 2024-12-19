@@ -89,7 +89,7 @@ export default function MyGradeManage() {
   return (
     <>
       <div className={'w-full h-full text-gray-0 bg-gray-100'}>
-        <AdminHeadline title={'회원 등급 설정'} subTitle={['회원 관리', '회원 등급 관리', '회원 등급 설정']} />
+        <AdminHeadline title={'회원 등급 설정'} subTitle={['회원 관리', '회원 등급 관리']} />
 
         <div className={'flex flex-col gap-5 mt-5 mx-4'}>
           <div className={'flex flex-row gap-5'}>

@@ -119,7 +119,7 @@ export default function MyTrade() {
     <>
       <div className={'w-full h-full bg-gray-100'}>
         <div className={'flex flex-col gap-5'}>
-          <AdminHeadline title={'CA 거래 내역'} subTitle={['거래 내역', 'CA 거래 내역']} />
+          <AdminHeadline title={'내 거래 내역'} subTitle={['내 거래 내역']} />
 
           <div className={'flex flex-col gap-8 mx-4'}>
             <Filter

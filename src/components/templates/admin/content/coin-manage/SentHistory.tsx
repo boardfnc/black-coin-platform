@@ -141,7 +141,10 @@ export default function SentHistory() {
     <>
       <div className={'w-full h-full bg-gray-100'}>
         <div className={'flex flex-col gap-5'}>
-          <AdminHeadline title={'보낸 코인 내역'} subTitle={['내 코인 관리', '보낸 코인 내역']} />
+          <AdminHeadline
+            title={'보낸 코인 내역'}
+            subTitle={isSuperAdmin ? ['코인 관리', '보낸 코인 내역'] : ['내 코인 관리', '보낸 코인 내역']}
+          />
 
           <div className={'flex flex-col gap-5 mt-5 mx-4'}>
             {!isSuperAdmin && (
