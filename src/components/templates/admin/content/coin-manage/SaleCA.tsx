@@ -126,7 +126,7 @@ export default function SaleCA() {
   return (
     <div className={'w-full h-full bg-gray-100'}>
       <div className={'flex flex-col gap-5'}>
-        <AdminHeadline title={'코인 판매 관리 (CA)'} subTitle={['내 코인 관리', '코인 판매 관리 (CA)']} />
+        <AdminHeadline title={'코인 판매 관리 (CA)'} subTitle={['코인 관리', '코인 판매 관리 (CA)']} />
 
         <div className={'flex flex-col gap-8 mx-4'}>
           <div className={'flex flex-col gap-8'}>
