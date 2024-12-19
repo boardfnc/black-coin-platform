@@ -387,7 +387,7 @@ export default function GeneralUserListId({ id }: IGeneralUserListIdProps) {
                       <button
                         onClick={onClickSaveAuthorStatusUpdate}
                         className={
-                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl'
+                          'w-[70px] h-8 flex justify-center items-center text-primary-50 font-pre-14-m-130 py-4 border border-primary-50 text-center rounded-xl disabled:bg-gray-90 disabled:text-gray-40 disabled:border-gray-40'
                         }
                         disabled={userDataOrigin?.data.confm_sttus !== '1'}
                       >

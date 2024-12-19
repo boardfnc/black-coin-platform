@@ -34,6 +34,8 @@ export default function UserHistoryModal(props: IUserHistoryModalProps) {
 
   const handleClose = () => onClose();
 
+  if (transactionHistoryTableData == null) return null;
+
   return (
     <Modal isOpen={isOpen} onClose={handleClose} width={'960px'} height={'700px'}>
       <div className={'flex flex-col gap-[30px] px-2.5'}>

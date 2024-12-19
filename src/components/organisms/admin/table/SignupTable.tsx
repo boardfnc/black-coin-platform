@@ -124,12 +124,20 @@ export default function SignupTable({ data, refetch }: ISignupTableProps) {
                 {covertMemberJoinProgress(Number(item.memberStatus))}
               </td>
               <td className={'w-20 h-[52px] border p-2'}>
-                <Link
-                  className={'border border-gray-70 bg-gray-100 px-3 py-2 rounded-lg text-gray-0 font-pre-13-m-130'}
-                  href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.id)}
-                >
-                  수정
-                </Link>
+                {Number(item.memberStatus) === 3 && (
+                  <button className={'text-gray-100 bg-gray-80 px-3 py-2 rounded-lg font-pre-13-m-13'} disabled>
+                    수정
+                  </button>
+                )}
+
+                {Number(item.memberStatus) !== 3 && (
+                  <Link
+                    className={'border border-gray-70 bg-gray-100 px-3 py-2 rounded-lg text-gray-0 font-pre-13-m-130'}
+                    href={ROUTES.ADMIN.USER_MANAGE.GENERAL_USER_DETAIL(item.id)}
+                  >
+                    수정
+                  </Link>
+                )}
               </td>
               <td className={'w-20 h-[52px] border p-2'}>
                 <div className={'flex flex-row gap-[10px]'}>

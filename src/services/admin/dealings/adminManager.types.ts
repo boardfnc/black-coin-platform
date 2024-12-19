@@ -67,7 +67,7 @@ export interface IAdminMemberDetailsRequest {
   created_at_end?: string;
   search_type?: 'delng_no' | 'prtnr_nm' | 'code';
   search_keyword?: string;
-  mber_grd?: string;
+  mber_grd?: string[];
   delng_se?: string;
   delng_sttus?: string[];
   mngr_sttus?: string;

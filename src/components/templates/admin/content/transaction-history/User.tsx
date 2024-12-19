@@ -128,7 +128,7 @@ export default function TransactionHistoryUser() {
         search_type: searchParams.get('searchType') as IAdminMemberDetailsRequest['search_type'],
         delng_se: searchParams.get('primaryCategory') || undefined,
         delng_sttus: searchParams.get('secondaryCategory')?.split(',') || undefined,
-        mber_grd: searchParams.get('status') || undefined,
+        mber_grd: searchParams.get('status')?.split(',') || undefined,
         mngr_sttus: searchParams.get('mngrStatus') || undefined,
         created_at_start: searchParams.get('startDate') || undefined,
         created_at_end: searchParams.get('endDate') || undefined,
