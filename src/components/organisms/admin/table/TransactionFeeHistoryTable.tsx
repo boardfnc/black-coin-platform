@@ -104,7 +104,7 @@ export default function TransactionFeeHistoryTable({ data }: ITransactionFeeHist
             </td>
             <td className={'border p-2'}>{item.authorName || '-'}</td>
             <td className={'border p-2'}>{dayjs(item.date).format('YYYY.MM.DD HH:mm:ss') || '-'}</td>
-            <td className={'border p-2'}>{item.tradeNumber}</td>
+            <td className={'border p-2'}>{item.tradeNumber || '-'}</td>
             <td className={'border p-2'}>{convertDealStatus(item.type)}</td>
             <td className={'border p-2'}>{item.perFee ? item.perFee.toLocaleString('ko-KR') : '-'}</td>
             <td className={'border p-2'}>
