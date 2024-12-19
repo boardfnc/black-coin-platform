@@ -146,7 +146,7 @@ export default function SentHistory() {
             subTitle={isSuperAdmin ? ['코인 관리', '보낸 코인 내역'] : ['내 코인 관리', '보낸 코인 내역']}
           />
 
-          <div className={'flex flex-col gap-5 mt-5 mx-4'}>
+          <div className={'flex flex-col gap-5 mx-4'}>
             {!isSuperAdmin && (
               <div className={'flex flex-row justify-end items-center gap-2'}>
                 <button
