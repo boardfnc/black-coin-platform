@@ -172,7 +172,7 @@ export default function TransactionFeeHistory() {
         tradeNumber: item.delng_no,
         type: item.delng_se,
         perFee: item.csby_fee,
-        sellFee: item.purchs_fee,
+        sellFee: item.sle_fee,
         buyFee: item.purchs_fee,
         caCoin: item.ca_coin_blce || 0,
         feeBalance: item.fee_blce || 0,
