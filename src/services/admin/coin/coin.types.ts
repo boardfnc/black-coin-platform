@@ -150,7 +150,7 @@ export interface ICoinSaleManagersResponse extends IBaseWithPageResponse {
     rcpmny_acnutno: string;
     bank: string;
     dpstr: string;
-    compt_dt: string;
+    compt_dd: string;
     acnutno: string;
     hold_qy: number;
     delng_qy: number;

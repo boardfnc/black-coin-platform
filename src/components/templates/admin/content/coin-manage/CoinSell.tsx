@@ -89,7 +89,7 @@ export default function CoinSell() {
         holdAmount: item.hold_qy,
         bonusAmount: item.bnus_qy,
         paymentAmount: item.compt_qy,
-        completeDate: item.compt_dt,
+        completeDate: item.compt_dd,
       }) satisfies ICoinSellTableData,
   );
 
