@@ -95,8 +95,8 @@ export default function Wallet() {
   return (
     <>
       <div className={' min-h-screen bg-[#4D5258]'}>
-        <div className={'pt-[40px] pb-[100px]'}>
-          <div className={'mx-[120px] pb-[60px]'}>
+        <div className={'pt-[40px] pb-[100px] px-2'}>
+          <div className={'mx-0 sm:mx-[120px] pb-[60px]'}>
             <div className={'relative w-full h-[350px]'}>
               <Image className={'object-cover'} src={coinWallet} alt={'coin wallet'} fill priority />
             </div>
