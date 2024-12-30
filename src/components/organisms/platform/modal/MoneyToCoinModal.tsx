@@ -98,7 +98,7 @@ export default function ChangeCoinModal({ isOpen, onClose }: IChangeCoinModalPro
 
             <button
               className={'w-[90px] h-full text-gray-100 bg-gray-0 px-2 py-1 rounded-[14px]'}
-              onClick={() => setAmount(String(exchangeCheckData?.data?.money || 0))}
+              onClick={() => setAmount(String(exchangeCheckData?.data?.hold_coin || 0))}
             >
               전액입력
             </button>
