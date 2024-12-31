@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
+// eslint-disable-next-line import/no-cycle
 import { Wallet } from '.';
 
 import { Image } from '@/components/atoms/images';
