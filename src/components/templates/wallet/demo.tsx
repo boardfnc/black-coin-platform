@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 
+import { Wallet } from '.';
+
 import { Image } from '@/components/atoms/images';
 import { coinFront, coinBack } from '@/mocks/images';
 
@@ -88,13 +90,13 @@ export default function Demo() {
 
   useEffect(() => {
     getMoney();
-    const interval = setInterval(getMoney, 2000);
+    const interval = setInterval(getMoney, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={'min-h-screen bg-[#4D5258] py-[5.625rem]'}>
+    <div className={'h-auto bg-[#4D5258] pt-[5.625rem]'}>
       <div className={'flex flex-col gap-8 container mx-auto'}>
         <div className={'w-[1352px] h-[750px] mx-auto relative bg-gray-100 rounded-lg p-8'}>
           <div className={'text-red-50 text-lg font-bold'}>※1회 배팅시 100원 소모! (승리시 +200원)</div>
@@ -148,22 +150,9 @@ export default function Demo() {
             게임 머니: {score.toLocaleString('ko-kR')}원
           </div>
         </div>
-
-        <div className={'flex items-center justify-center w-[1352px] mx-auto bg-[#D9D9D9]'}>
-          <button
-            className={'text-7xl gray-100 font-bold w-full h-full text-center p-8'}
-            onClick={() => {
-              window.open(
-                '/wallet?code=2EG38QILJ&essential-key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9&auto-login=true',
-                '_blank',
-                'width=788, height=600',
-              );
-            }}
-          >
-            입/출금신청 바로가기
-          </button>
-        </div>
       </div>
+
+      <Wallet isBanner={false} isDemo />
     </div>
   );
 }

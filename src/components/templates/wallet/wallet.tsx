@@ -27,7 +27,12 @@ import { exchangeCheckQueryKey } from '@/services/platform/coin/exchange.query';
 import { useJoin } from '@/stores/join';
 import { useLogin } from '@/stores/login';
 
-export default function Wallet() {
+interface IWalletProps {
+  isBanner?: boolean;
+  isDemo?: boolean;
+}
+
+export default function Wallet({ isBanner = true, isDemo = false }: IWalletProps) {
   const { openModal: openLoginModal } = useLogin();
   const { openModal: openJoinModal } = useJoin();
   const queryClient = useQueryClient();
@@ -38,18 +43,17 @@ export default function Wallet() {
   const [isOpenChangeCoinModal, setIsOpenChangeCoinModal] = useState(false);
   const [isOpenChangeMoneyModal, setIsOpenChangeMoneyModal] = useState(false);
   const autoLogin = (() => {
-    const autoLogin = searchParams.get('auto-login');
+    const autoLogin = isDemo ? 'true' : searchParams.get('auto-login');
 
     if (autoLogin === 'true') return true;
 
-    if (typeof window !== 'undefined') {
-      return document.cookie.includes('auto-login=true');
-    }
+    if (typeof window !== 'undefined') return document.cookie.includes('auto-login=true');
+
     return false;
   })();
 
-  const code = searchParams.get('code');
-  const essentialKey = searchParams.get('essential-key');
+  const code = isDemo ? '2EG38QILJ' : searchParams.get('code');
+  const essentialKey = isDemo ? 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9' : searchParams.get('essential-key');
 
   const { data } = useQuery({
     queryKey: automaticLoginQueryKey,
@@ -63,7 +67,7 @@ export default function Wallet() {
     queryFn: () => exchangeCheckService(),
     queryKey: exchangeCheckQueryKey,
     enabled: isLogin,
-    refetchInterval: 2000,
+    refetchInterval: 1000,
   });
 
   const { mutate: logout } = useMutation({
@@ -86,21 +90,23 @@ export default function Wallet() {
   };
 
   useEffect(() => {
-    if (!isJoin) {
+    if (!isDemo && !isJoin) {
       if (code) router.replace(`/wallet?code=${code}`);
       else router.replace('/wallet');
     }
-  }, [router, code, isJoin]);
+  }, [router, code, isJoin, isDemo]);
 
   return (
     <>
       <div className={' min-h-screen bg-[#4D5258]'}>
         <div className={'pt-[40px] pb-[100px] px-2'}>
-          <div className={'mx-0 sm:mx-[120px] pb-[60px]'}>
-            <div className={'relative w-full h-[350px]'}>
-              <Image className={'object-cover'} src={coinWallet} alt={'coin wallet'} fill priority />
+          {isBanner && (
+            <div className={'mx-0 sm:mx-[120px] pb-[60px]'}>
+              <div className={'relative w-full h-[350px]'}>
+                <Image className={'object-cover'} src={coinWallet} alt={'coin wallet'} fill priority />
+              </div>
             </div>
-          </div>
+          )}
 
           <div className={'container max-w-[1080px] mx-auto'}>
             <div className={'flex flex-col gap-5'}>
